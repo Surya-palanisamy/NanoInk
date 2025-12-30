@@ -382,3 +382,6 @@ Here are some examples of void elements:
 <meta charset="UTF-8">
 ```
 These elements are called **"void"** because they don't have content, and their purpose is often to insert something into the document rather than encapsulating content. The self-closing syntax (`<element />`) is equivalent to `<element></element>` but is more concise.
+
+---
+Try Css : [[css]]
