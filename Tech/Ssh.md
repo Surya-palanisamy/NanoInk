@@ -38,6 +38,12 @@ ssh-keygen
 Default path:
 
 ~/.ssh/id_rsa
+
+```bash 
+ssh-keygen -t rsa -b 4096 
+```
+---
+
 #### Execute Command Without Login
 
 ```bash
@@ -207,3 +213,175 @@ Restart SSH.
 - SCP / rsync for file transfer
 - Tunneling for advanced usage
 ---
+## rsync — File Synchronization & Backup Tool  
+
+---
+
+###  What is rsync?
+`rsync` (Remote Sync) is used to **copy and synchronize files/folders** locally or between remote systems.  
+It is faster than `scp` because:
+- Transfers only differences  
+- Supports resume  
+- Preserves permissions & timestamps  
+
+---
+
+### 🧾 Basic Syntax
+```bash
+rsync [options] source destination
+```
+
+Examples:
+```bash
+rsync file.txt /home/user/Desktop/
+rsync myfolder/ backup/
+```
+
+---
+
+### Upload to Remote Server
+```bash
+rsync file.txt user@server:/path/
+```
+
+Directory:
+```bash
+rsync -av myfolder/ user@server:/path/
+```
+
+---
+
+###  Download from Remote Server
+```bash
+rsync -av user@server:/path/file.txt .
+```
+
+Directory:
+```bash
+rsync -av user@server:/path/folder/ .
+```
+
+---
+
+## 🧭 Important Options
+| Option | Meaning |
+|--------|--------|
+| `-a` | archive (preserves permissions, owner, time, recursive) |
+| `-v` | verbose |
+| `-z` | compress |
+| `-P` | progress + resume |
+| `--delete` | remove files not in source |
+| `-r` | recursive (included in `-a`) |
+
+**Most used combo**
+```bash
+rsync -avzP source/ destination/
+```
+
+---
+
+## ⚠️ Slash Rule (Very Important)
+- `folder/` → only contents  
+- `folder` → folder + contents  
+
+Example:
+```bash
+rsync -av Photos/ Backup/
+```
+Copies inside Photos → Backup/
+
+```bash
+rsync -av Photos Backup/
+```
+Creates:
+```
+Backup/Photos/
+```
+
+---
+
+## 🔁 Mirror Exact Copy
+Deletes extra files in destination:
+```bash
+rsync -av --delete source/ destination/
+```
+Use carefully!
+
+---
+
+## 🚀 Resume Large Transfers
+```bash
+rsync -avzP file.iso user@server:/path/
+```
+
+---
+
+## 🎯 Exclude Files
+Skip unwanted files:
+```bash
+rsync -av --exclude="*.log" folder/ backup/
+```
+
+Multiple:
+```bash
+rsync -av \
+--exclude="node_modules" \
+--exclude="*.tmp" \
+project/ backup/
+```
+
+---
+
+## 🔐 rsync Over SSH (Secure)
+```bash
+rsync -avz -e ssh folder/ user@server:/path/
+```
+
+Custom SSH Port:
+```bash
+rsync -avz -e "ssh -p 2222" folder/ user@server:/path/
+```
+
+---
+
+## 🧪 Real Use Cases
+### 1️⃣ Backup Home Directory
+```bash
+rsync -av ~/ Documents/Backup/
+```
+
+### 2️⃣ Deploy Website
+```bash
+rsync -avz site/ user@server:/var/www/html/
+```
+
+### 3️⃣ Sync External Drive
+```bash
+rsync -av /mnt/drive/ /backup/drive/
+```
+
+---
+
+## 🧠 Safety Tip
+Preview without making changes:
+```bash
+rsync -av --dry-run source/ destination/
+```
+
+---
+
+## 🏆 Practice
+1️⃣ Sync two folders  
+2️⃣ Test with `/` and without `/`  
+3️⃣ Try `--delete` carefully  
+4️⃣ Try remote sync  
+
+---
+
+> [!Summary]
+rsync is powerful because it is:
+- Fast  
+- Secure  
+- Efficient  
+- Backup-friendly  
+- Ideal for DevOps & servers  
