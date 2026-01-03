@@ -1,1 +1,9 @@
-{}
+{
+  "textFontFamily": "Inter",
+  "baseFontSize": 14,
+  "baseFontSizeAction": true,
+  "showViewHeader": true,
+  "interfaceFontFamily": "Adwaita Sans",
+  "nativeMenus": false,
+  "showRibbon": true
+}

@@ -11,10 +11,24 @@
             "id": "048054f515b4b335",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Tech/Express.js.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Express.js"
             }
           }
         ]
@@ -187,25 +201,25 @@
       "bases:Create new base": false
     }
   },
-  "active": "fa9f6c9a5edb738f",
+  "active": "048054f515b4b335",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Tech/Ssh.md",
-    "Tech/systemd linux.md",
-    "Tech/systemd linux.md",
-    "html.md",
-    "Tech/Ansible.md",
-    "Tech/Terraform vs Ansible vs Kubernetes.md",
     "Tech/Html.md",
-    "Tech/Unconfirmed 429097.crdownload",
+    "Tech/systemd linux.md",
+    "Tech/Ssh.md",
     "Tech/OS.md",
     "Tech/Nginx.md",
-    "Tech/Markdown.md",
     "Tech/Git-Github.md",
-    "Tech/Express.js.md",
-    "Tech/Computer-networks.md",
     "Tech/Css.md",
+    "Tech/Computer-networks.md",
+    "Tech/Express.js.md",
     "Tech/Docker.md",
+    "Tech/Ansible.md",
+    "n.md",
+    "Untitled.md",
+    "html.md",
+    "Tech/Terraform vs Ansible vs Kubernetes.md",
+    "Tech/Unconfirmed 429097.crdownload",
+    "Tech/Markdown.md",
     "Tech/K Vs A vs T.md",
     "Tech/SSH.md",
     "DSA/Patterns.md",
@@ -217,7 +231,6 @@
     "Tech",
     "DSA/DSA.md",
     "DSA/Strings.md",
-    "DSA/Stack.md",
     "DSA"
   ]
 }
