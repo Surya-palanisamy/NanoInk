@@ -372,6 +372,3 @@ nameserver 8.8.8.8
 nameserver 1.1.1.1
 
 ---
-
-try next : [[Express.js]]
-try next : [[Git and Github]]

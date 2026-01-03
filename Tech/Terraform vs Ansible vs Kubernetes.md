@@ -1,7 +1,8 @@
 ### DevOps Core Tools — Terraform vs Ansible vs Kubernetes
 
 #### 🧭 Big Picture
-These three tools **do different jobs**. They are not replacements.
+
+These three tools do different jobs. They are not replacements.
 
 | Tool           | What it Mainly Does                     |
 | -------------- | --------------------------------------- |
@@ -14,9 +15,11 @@ These three tools **do different jobs**. They are not replacements.
 ### 🧱 Terraform — Infrastructure as Code (IaC)
 
 ### 🔹 Purpose
+
 - Create and manage cloud infrastructure
 
 ### 🔹 What Terraform Can Create
+
 - Virtual Machines (EC2, Compute Engine, Azure VM)
 - Networks (VPC, Subnets)
 - Databases
@@ -24,13 +27,15 @@ These three tools **do different jobs**. They are not replacements.
 - Storage
 - Kubernetes Clusters
 
-####  Key Features
-- Declarative (You say *what* you want, Terraform handles *how*)
+#### Key Features
+
+- Declarative (You say _what_ you want, Terraform handles _how_)
 - Maintains State (remembers what it created)
 - Cloud Agnostic (AWS / Azure / GCP / On-prem)
 - Safe Apply (plan → review → execute)
 
-####  Use Cases
+#### Use Cases
+
 - Build production cloud setup
 - Create environments (Dev, Test, Prod)
 - Automate infrastructure creation
@@ -38,13 +43,15 @@ These three tools **do different jobs**. They are not replacements.
 
 ---
 
-###  Ansible — Configuration & Automation
+### Ansible — Configuration & Automation
 
-###  Purpose
+### Purpose
+
 - Configure systems
 - Automate repetitive admin work
 
-####  Common Uses
+#### Common Uses
+
 - Install software
 - Configure servers
 - Manage packages
@@ -52,25 +59,30 @@ These three tools **do different jobs**. They are not replacements.
 - System updates
 - Security configurations
 
-####  Key Features
+#### Key Features
+
 - Agentless (uses SSH)
 - YAML Playbooks
 - Idempotent (won’t redo same work)
 - Easily integrates in DevOps pipelines
 
-####  Use Case Example
+#### Use Case Example
+
 Instead of configuring 100 servers manually:
+
 - Write one Ansible Playbook
 - Run once → everything gets configured identically
 
 ---
 
-####  Kubernetes — Container Orchestration
+#### Kubernetes — Container Orchestration
 
-####  Purpose
+#### Purpose
+
 Run and manage containerized applications at scale.
 
-####  What Kubernetes Does
+#### What Kubernetes Does
+
 - Deploys containers
 - Scales automatically
 - Load balances
@@ -78,13 +90,16 @@ Run and manage containerized applications at scale.
 - Rolling updates
 - Manages cluster state
 
-####  Why It’s Needed
+#### Why It’s Needed
+
 When you have:
+
 - Many microservices
 - Many containers
 - Need reliability and scaling
 
-####  Works Best With
+#### Works Best With
+
 - Docker containers
 - Cloud native apps
 - Microservices architectures
@@ -101,23 +116,28 @@ Imagine building a city:
 
 ---
 
-####  Do They Work Together?
+#### Do They Work Together?
+
 Yes! In real DevOps pipelines, they are commonly used together.
 
 #### 🔥 Real-World Workflow Example
+
 1. **Terraform**
-- Creates AWS EC2  
-- Creates VPC  
-- Sets networking  
+
+- Creates AWS EC2
+- Creates VPC
+- Sets networking
 
 2. **Ansible**
-- Installs software  
-- Configures servers  
-- Prepares environment  
+
+- Installs software
+- Configures servers
+- Prepares environment
 
 3.  **Kubernetes**
-- Deploys applications  
-- Manages scaling & reliability  
+
+- Deploys applications
+- Manages scaling & reliability
 
 They are **teammates**, not competitors.
 
@@ -134,4 +154,3 @@ They are **teammates**, not competitors.
 | Works On | Cloud / VMs           | Any servers          | Containers              |
 
 ---
-

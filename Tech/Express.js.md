@@ -849,5 +849,3 @@ Project_Folder/
 
 ---
 
-Try next : [[Docker]]
-Try next : [[Git and Github]]

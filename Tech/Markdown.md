@@ -263,6 +263,3 @@ E = mc<sup>2</sup> (Einstein's equation)
 
 ---
 
-Try next : [[Docker]]
-Try next : [[Computer networks]]
-Try next : [[Git and Github]]

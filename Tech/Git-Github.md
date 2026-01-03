@@ -259,6 +259,3 @@ git revert <commit>
 ```
 
 Safely undo commit
-
-try next : [[Docker]]
-try next : [[Express.js]]
