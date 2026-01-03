@@ -5,6 +5,32 @@
 
 ![](../images/Docker-and-VM.png)
 
+| Feature        | VMs                 | Containers            |
+| -------------- | ------------------- | --------------------- |
+| Virtualizes    | Hardware            | OS / Runtime          |
+| OS Requirement | Own OS per VM       | Shared host OS        |
+| Size           | Heavy (GBs)         | Light (MBs)           |
+| Boot Time      | Minutes             | Seconds               |
+| Performance    | Moderate            | Near-native           |
+| Isolation      | Strong              | Moderate–Strong       |
+| Portability    | Good                | Excellent             |
+| Use Case       | Monolithic / Legacy | Microservices / Cloud |
+
+---
+
+## Real-World Examples
+
+**VMs Used In:**
+- AWS EC2, Azure VM
+- Running Windows + Linux on same server
+- Banking and enterprise systems
+
+**Containers Used In:**
+- Docker
+- Kubernetes
+- Microservices like Netflix, Uber, Spotify
+- CI/CD pipelines
+
 ### What Is Docker?
 
 > Docker is a platform that lets you build, run, and manage applications in lightweight containers.

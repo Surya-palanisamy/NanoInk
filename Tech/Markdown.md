@@ -16,7 +16,6 @@ Use `#` for headings. Add more `#` for smaller headings.
 ```
 
 ---
-
 ### Bold
 
 Use double asterisks (`**`) for bold text.
@@ -27,6 +26,7 @@ Example:
 ```
 
 Result:
+
 **This is bold text**
 
 ---
