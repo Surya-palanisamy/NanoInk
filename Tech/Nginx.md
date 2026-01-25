@@ -1,7 +1,8 @@
-# NGINX — ADVANCED CHEATSHEET (Quick Revision)
+# NGINX
 
 ---
 
+![](../images/nginx.png)
 ## 1️⃣ Install & Basic Commands
 
 ### Install

@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiSquareTerminal",
+      "LiFileTerminal",
       "LiCode2",
       "LiGithub",
-      "LiAward",
-      "LiAmpersand",
-      "LiCopySlash"
+      "LiAward"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -46,5 +46,7 @@
   "Tech/Terraform vs Ansible vs Kubernetes.md": "LiAmpersand",
   "Tech/systemd linux.md": "LiAward",
   "Tech/Git-Github.md": "LiGithub",
-  "Tech/Html.md": "LiCode2"
+  "Tech/Html.md": "LiCode2",
+  "Tech/Neovim.md": "LiFileTerminal",
+  "Tech/zshrc.md": "LiSquareTerminal"
 }

@@ -15,7 +15,7 @@ class Solution {
 }
 ```
 
-- Dry run (x=121): rev=1→12→121, temp→12→1→0 → rev==x → true
+- Dry run (x=121): rev=1→12→121, temp→12→1→0 → `rev==x` → true
 
 ---
 

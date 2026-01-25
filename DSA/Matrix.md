@@ -37,7 +37,7 @@ public class Main {
 - Dry run (3x3):
   - After transpose: `[[1,4,7],[2,5,8],[3,6,9]]`
   - Reverse rows: `[7,4,1]; [8,5,2]; [9,6,3]`
-  - Output:
-    741
-    852
-    963
+  - Output :
+    7 4 1
+    8 5 2
+    9 6 3

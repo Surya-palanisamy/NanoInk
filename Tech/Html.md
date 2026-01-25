@@ -1,45 +1,46 @@
+# HTML Cheat Sheet
+
 ## Getting Started
 
-### hello.html 
+### Minimal HTML5 document
 
 ```html
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML5 Boilerplate</title>
   </head>
   <body>
-    <h1>Hello world, hello CheatSheets.zip!</h1>
+    <h1>Hello, world!</h1>
   </body>
 </html>
 ```
 
-Or try it out in the [jsfiddle](https://jsfiddle.net/Fechin/1e4wz20b/)
+Try it live: https://jsfiddle.net/Fechin/1e4wz20b/
 
-### Comment
+### Comments
 
 ```html
-<!-- this is a comment -->
+<!-- Single-line comment -->
 
 <!--
-    Or you can comment out a
-    large number of lines.
+  Multi-line
+  comment
 -->
 ```
 
-### Paragraph
+### Paragraphs
 
 ```html
 <p>I'm from CheatSheets.zip</p>
 <p>Share quick reference cheat sheet.</p>
 ```
 
-See: [The Paragraph element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p)
+See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
 
-### HTML link
+### Links
 
 ```html
 <a href="https://cheatsheets.zip">CheatSheets</a>
@@ -48,42 +49,23 @@ See: [The Paragraph element](https://developer.mozilla.org/en-US/docs/Web/HTML/E
 <a href="sms:+12345678&body=ha%20ha">Msg</a>
 ```
 
----
+Common attributes: `href`, `rel`, `target` (`_self`, `_blank`, `_top`, `_parent`)
 
-|     |          |                                                                 |
-| --- | -------- | --------------------------------------------------------------- |
-|     | `href`   | The URL that the hyperlink points to                            |
-|     | `rel`    | Relationship of the linked URL                                  |
-|     | `target` | Link target location: <br/>`_self`, `_blank`, `_top`, `_parent` |
+### Images
 
-
-See: [The \<a> Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attributes)
-
-### Image Tag
-
-```html {.wrap}
+```html
 <img
   loading="lazy"
-  src="https://xxx.png"
+  src="https://example.com/image.png"
   alt="Describe image here"
   width="400"
   height="400"
 />
 ```
 
----
+Key attributes: `src` (required), `alt` (required), `width`, `height`, `loading`
 
-|     |           |                                          |
-| --- | --------- | ---------------------------------------- |
-|     | `src`     | Required, Image location _(URL \| Path)_ |
-|     | `alt`     | Describe of the image                    |
-|     | `width`   | Width of the image                       |
-|     | `height`  | Height of the image                      |
-|     | `loading` | How the browser should load              |
-
-See: [The Image Embed element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
-
-### Text Formatting Tags
+### Text formatting
 
 ```html
 <b>Bold Text</b>
@@ -96,11 +78,11 @@ See: [The Image Embed element](https://developer.mozilla.org/en-US/docs/Web/HTML
 <del>Deleted text</del>
 <mark>Highlighted text (HTML5)</mark>
 <ins>Inserted text</ins>
-<sup>Makes text superscripted</sup>
-<sub>Makes text subscripted</sub>
-<small>Makes text smaller</small>
+<sup>Superscript</sup>
+<sub>Subscript</sub>
+<small>Smaller text</small>
 <kbd>Ctrl</kbd>
-<blockquote>Text Block Quote</blockquote>
+<blockquote>Block quote</blockquote>
 ```
 
 ### Headings
@@ -114,76 +96,62 @@ See: [The Image Embed element](https://developer.mozilla.org/en-US/docs/Web/HTML
 <h6>This is Heading 6</h6>
 ```
 
-You should only have one h1 on your page
+Use one `<h1>` per page.
 
-### Section Divisions
+### Section divisions
 
-|                 |                                      |
-| --------------- | ------------------------------------ |
-| `<div></div>`   | Division or Section of Page Content  |
-| `<span></span>` | Section of text within other content |
-| `<p></p>`       | Paragraph of Text                    |
-| `<br>`          | Line Break                           |
-| `<hr>`          | Basic Horizontal Line                |
+- `<div>`: generic block container
+- `<span>`: generic inline container
+- `<p>`: paragraph
+- `<br>`: line break
+- `<hr>`: thematic break (horizontal rule)
 
-These are the tags used to divide your page up into sections
+### Inline frame
 
-### Inline Frame 
-
-```html {.wrap}
+```html
 <iframe
   title="New York"
   width="342"
   height="306"
-  id="gmap_canvas"
-  src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
-  scrolling="no"
->
-</iframe>
+  src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&z=13&output=embed"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+></iframe>
 ```
 
-#### ↓ Preview
-
-<iframe title="New York"
-    width="342"
-    height="306"
-    id="gmap_canvas"
-    src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
-    scrolling="no">
-</iframe>
-
-See: [The Inline Frame element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
+See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 
 ### JavaScript in HTML
 
 ```html
-<script type="text/javascript">
-  let text = 'Hello CheatSheets.zip';
+<script>
+  const text = "Hello CheatSheets.zip";
   alert(text);
 </script>
 ```
 
-#### External JavaScript
+External script:
 
 ```html
 <body>
   ...
-
   <script src="app.js"></script>
 </body>
 ```
 
 ### CSS in HTML
 
+Inline:
+
 ```html
-<style type="text/css">
+<style>
   h1 {
     color: purple;
   }
 </style>
 ```
 
-#### External stylesheet
+External:
 
 ```html
 <head>
@@ -192,9 +160,9 @@ See: [The Inline Frame element](https://developer.mozilla.org/en-US/docs/Web/HTM
 </head>
 ```
 
-## HTML5 Tags
+## HTML5 Semantic Tags
 
-### Document
+### Document skeleton
 
 ```html
 <body>
@@ -205,12 +173,12 @@ See: [The Inline Frame element](https://developer.mozilla.org/en-US/docs/Web/HTM
     <h1>CheatSheets.zip</h1>
   </main>
   <footer>
-    <p>©2023 CheatSheets.zip</p>
+    <p>©2024 CheatSheets.zip</p>
   </footer>
 </body>
 ```
 
-### Header Navigation
+### Header navigation
 
 ```html
 <header>
@@ -224,47 +192,41 @@ See: [The Inline Frame element](https://developer.mozilla.org/en-US/docs/Web/HTM
 </header>
 ```
 
-### HTML5 Tags 
+### Common HTML5 elements
 
-|                                                                                    |                                        |
-| ---------------------------------------------------------------------------------- | -------------------------------------- |
-| [article](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article)       | Content that’s independent             |
-| [aside](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)           | Secondary content                      |
-| [audio](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)           | Embeds a sound, or an audio stream     |
-| [bdi](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi)               | The Bidirectional Isolate element      |
-| [canvas](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)         | Draw graphics via JavaScript           |
-| [data](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data)             | Machine readable content               |
-| [datalist](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)     | A set of pre-defined options           |
-| [details](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)       | Additional information                 |
-| [dialog](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)         | A dialog box or sub-window             |
-| [embed](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed)           | Embeds external application            |
-| [figcaption](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption) | A caption or legend for a figure       |
-| [figure](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)         | A figure illustrated                   |
-| [footer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer)         | Footer or least important              |
-| [header](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header)         | Masthead or important information      |
-| [main](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main)             | The main content of the document       |
-| [mark](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark)             | Text highlighted                       |
-| [meter](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)           | A scalar value within a known range    |
-| [nav](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)               | A section of navigation links          |
-| [output](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output)         | The result of a calculation            |
-| [picture](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)       | A container for multiple image sources |
-| [progress](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)     | The completion progress of a task      |
-| [rp](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp)                 | Provides fall-back parenthesis         |
-| [rt](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt)                 | Defines the pronunciation of character |
-| [ruby](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby)             | Represents a ruby annotation           |
-| [section](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section)       | A group in a series of related content |
-| [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)         | Resources for the media elements       |
-| [summary](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary)       | A summary for the \<details> element   |
-| [template](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)     | Defines the fragments of HTML          |
-| [time](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)             | A time or date                         |
-| [track](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track)           | Text tracks for the media elements     |
-| [video](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)           | Embeds video                           |
-| [wbr](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)               | A line break opportunity               |
+- `article`: independent content
+- `aside`: secondary content
+- `audio`: sound stream
+- `bdi`: bidirectional isolate
+- `canvas`: graphics via JS
+- `data`: machine-readable value
+- `datalist`: predefined options
+- `details` / `summary`: toggleable details
+- `dialog`: dialog box
+- `embed`: external app
+- `figure` / `figcaption`: annotated media
+- `footer`: footer
+- `header`: header
+- `main`: main content
+- `mark`: highlight
+- `meter`: scalar value in range
+- `nav`: navigation links
+- `output`: calculation result
+- `picture`: responsive images
+- `progress`: task progress
+- `rp` / `rt` / `ruby`: ruby annotation
+- `section`: related content group
+- `source`: media source
+- `template`: inert HTML fragment
+- `time`: time or date
+- `track`: text tracks for media
+- `video`: embeds video
+- `wbr`: line break opportunity
 
-### HTML5 Video
+### Video
 
-```html {.wrap}
-<video controls="" width="100%">
+```html
+<video controls width="100%">
   <source
     src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
     type="video/mp4"
@@ -273,16 +235,9 @@ See: [The Inline Frame element](https://developer.mozilla.org/en-US/docs/Web/HTM
 </video>
 ```
 
-#### ↓ Preview
+### Audio
 
-<video controls="" width="100%">
-    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
-    Sorry, your browser doesn't support embedded videos.
-</video>
-
-### HTML5 Audio
-
-```html {.wrap}
+```html
 <audio
   controls
   src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"
@@ -291,28 +246,15 @@ See: [The Inline Frame element](https://developer.mozilla.org/en-US/docs/Web/HTM
 </audio>
 ```
 
-#### ↓ Preview
+### Ruby
 
-<audio controls class="w-full"
-    src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"> Your browser does not support the
-audio element. </audio>
-
-### HTML5 Ruby
-
-```html {.wrap}
+```html
 <ruby>
   汉 <rp>(</rp><rt>hàn</rt><rp>)</rp> 字 <rp>(</rp><rt>zì</rt><rp>)</rp>
 </ruby>
 ```
 
-#### ↓ Preview
-
-<ruby class="mt-4 text-center text-5xl">
-  汉 <rp>(</rp><rt>hàn</rt><rp>)</rp>
-  字 <rp>(</rp><rt>zì</rt><rp>)</rp>
-</ruby>
-
-### HTML5 kdi
+### `bdi`
 
 ```html
 <ul>
@@ -322,40 +264,28 @@ audio element. </audio>
 </ul>
 ```
 
-#### ↓ Preview
-
-<ul>
- <li>User <bdi>hrefs</bdi>: 60 points</li>
- <li>User <bdi>jdoe</bdi>: 80 points</li>
- <li>User <bdi>إيان</bdi>: 90 points</li>
-</ul>
-
-### HTML5 progress
+### Progress
 
 ```html
 <progress value="50" max="100"></progress>
 ```
 
-<progress value="50" max="100" class="w-full"></progress>
-
-### HTML5 mark
+### `mark`
 
 ```html
-<p>I Love <mark>CheatSheets.zip</mark></p>
+<p>I love <mark>CheatSheets.zip</mark></p>
 ```
 
-<p>I Love <mark>CheatSheets.zip</mark></p>
+## Tables
 
-## HTML Tables
-
-### Table Example 
+### Basic table
 
 ```html
 <table>
   <thead>
     <tr>
-      <td>name</td>
-      <td>age</td>
+      <th>name</th>
+      <th>age</th>
     </tr>
   </thead>
   <tbody>
@@ -371,68 +301,48 @@ audio element. </audio>
 </table>
 ```
 
-### HTML Table Tags {.row-span-2}
+### Table tags
 
-| Tag                                                                               | Description                      |
-| --------------------------------------------------------------------------------- | -------------------------------- |
-| [\<table>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table)       | Defines a table                  |
-| [\<th>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th)             | Defines a header cell in a table |
-| [\<tr>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr)             | Defines a row in a table         |
-| [\<td>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td)             | Defines a cell in a table        |
-| [\<caption>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption)   | Defines a table caption          |
-| [\<colgroup>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup) | Defines a group of columns       |
-| [\<col>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col)           | Defines a column within a table  |
-| [\<thead>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead)       | Groups the header content        |
-| [\<tbody>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody)       | Groups the body content          |
-| [\<tfoot>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot)       | Groups the footer content        |
+- `<table>`: table container
+- `<caption>`: table caption
+- `<colgroup>` / `<col>`: column grouping
+- `<thead>` / `<tbody>` / `<tfoot>`: sections
+- `<tr>`: row
+- `<th>`: header cell
+- `<td>`: data cell
 
-### \<td> Attributes
+### `<td>` attributes
 
-| Attribute | Description                                   |
-| --------- | --------------------------------------------- |
-| `colspan` | Number of columns a cell should span          |
-| `headers` | One or more header cells a cell is related to |
-| `rowspan` | Number of rows a cell should span             |
+- `colspan`: number of columns to span
+- `rowspan`: number of rows to span
+- `headers`: associated header cell IDs
 
-See: [td\#Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attributes)
+### `<th>` attributes
 
-### \<th> Attributes
+- `colspan`, `rowspan`, `headers`, `abbr`
+- `scope`: `col`, `row`, `colgroup`, `rowgroup`
 
-| Attribute                                                                        | Description                                   |
-| -------------------------------------------------------------------------------- | --------------------------------------------- |
-| `colspan`                                                                        | Number of columns a cell should span          |
-| `headers`                                                                        | One or more header cells a cell is related to |
-| `rowspan`                                                                        | Number of rows a cell should span             |
-| `abbr`                                                                           | Description of the cell's content             |
-| [scope](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-scope) | The header element relates to                 |
-
-See: [th\#Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attributes)
-
-## HTML Lists
+## Lists
 
 ### Unordered list
 
 ```html
 <ul>
-  <li>I'm an item</li>
-  <li>I'm another item</li>
-  <li>I'm another item</li>
+  <li>Item</li>
+  <li>Item</li>
+  <li>Item</li>
 </ul>
 ```
-
-See: [The Unordered List element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul)
 
 ### Ordered list
 
 ```html
 <ol>
-  <li>I'm the first item</li>
-  <li>I'm the second item</li>
-  <li>I'm the third item</li>
+  <li>First</li>
+  <li>Second</li>
+  <li>Third</li>
 </ol>
 ```
-
-See: [The Ordered List element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol)
 
 ### Definition list
 
@@ -445,226 +355,124 @@ See: [The Ordered List element](https://developer.mozilla.org/en-US/docs/Web/HTM
 </dl>
 ```
 
-See: [The Description List element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)
+## Forms
 
-## HTML Forms
-
-### Form tags 
+### Basic form
 
 ```html
-<form method="POST" action="api/login">
-  <label for="mail">Email: </label>
-  <input type="email" id="mail" name="mail" />
+<form method="POST" action="/api/login">
+  <label for="email">Email: </label>
+  <input type="email" id="email" name="email" required />
   <br />
   <label for="pw">Password: </label>
-  <input type="password" id="pw" name="pw" />
+  <input type="password" id="pw" name="pw" required />
+  <br />
+  <input type="checkbox" id="remember" name="remember" />
+  <label for="remember">Remember me</label>
   <br />
   <input type="submit" value="Login" />
-  <br />
-  <input type="checkbox" id="ck" name="ck" />
-  <label for="ck">Remember me</label>
 </form>
 ```
 
-#### ↓ Preview
+### Form attributes
 
-<form method="POST" action="api/login" style="padding: 20px;">
-    <label for="email">Email: </label> 
-    <input type="email" id="email" name="email" class="border border-slate-400 mt-2">
-    <br/>
-    <label for="pwd">Password: </label> 
-    <input type="password" id="pwd" name="pwd" class="border border-slate-400 mt-2">
-    <br/>
-    <input type="submit" value="Login" class="mt-2">
-    <br/>
-    <input type="checkbox" id="ck" name="ck" class="mt-2">
-    <label for="ck">Remember me</label> 
-</form>
+- `name`: form name
+- `action`: URL to submit to
+- `method`: `GET` (query string) or `POST` (request body)
+- `enctype`: encoding; e.g., `multipart/form-data` for file uploads
+- `onsubmit` / `onreset`: event handlers
 
-The HTML `<form>` element is used to collect and send information to an external source.
-
-### Form Attribute
-
-| Attribute  | Description                                                                                         |
-| ---------- | --------------------------------------------------------------------------------------------------- |
-| `name`     | Name of form for scripting                                                                          |
-| `action`   | URL of form script                                                                                  |
-| `method`   | HTTP method, `POST` / `GET` _(default)_                                                             |
-| `enctype`  | Media type, See [enctype](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/enctype) |
-| `onsubmit` | Runs when the form was submit                                                                       |
-| `onreset`  | Runs when the form was reset                                                                        |
-
-### Label tags
+### Labels
 
 ```html
 <!-- Nested label -->
-<label
-  >Click me
+<label>
+  Click me
   <input type="text" id="user" name="name" />
 </label>
-```
 
----
-
-```html
-<!-- 'for' attribute -->
+<!-- Associated by id -->
 <label for="user">Click me</label>
 <input id="user" type="text" name="name" />
 ```
 
-`for` in a label references an input's `id` attribute
+`for` must match the input’s `id`.
 
-### Input tags
+### Inputs
 
 ```html
-<label for="Name">Name:</label> <input type="text" name="Name" id="" />
+<label for="name">Name:</label> <input type="text" id="name" name="name" />
 ```
 
-#### ↓ Preview
+### Textarea
 
-<form style="padding: 20px;">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" class="border border-slate-400">
-</form>
-
-See: [HTML input Tags](/html#html-input-tags)
-
-### Textarea tags
-
-```html {.wrap}
+```html
 <textarea rows="2" cols="30" name="address" id="address"></textarea>
 ```
 
-#### ↓ Preview
-
-<form style="padding: 20px;">
-    <textarea rows="2" cols="30" name="address" id="address" class="border border-slate-400"style="width: 100%"></textarea>
-</form>
-
-Textarea is a multiple-line text input control
-
-### Radio Buttons
+### Radio buttons
 
 ```html
-<input type="radio" name="gender" id="m" />
+<input type="radio" name="gender" id="m" value="male" />
 <label for="m">Male</label>
-<input type="radio" name="gender" id="f" />
+<input type="radio" name="gender" id="f" value="female" />
 <label for="f">Female</label>
 ```
 
-#### ↓ Preview
-
-<form style="padding: 20px;">
-    <input type="radio" name="gender" id="m">
-    <label for="m">Male</label>
-    <input type="radio" name="gender" id="f">
-    <label for="f">Female</label>
-</form>
-
-Radio buttons are used to let the user select exactly one
+One selection per `name` group.
 
 ### Checkboxes
 
 ```html
-<input type="checkbox" name="s" id="soc" />
-<label for="soc">Soccer</label>
-<input type="checkbox" name="s" id="bas" />
-<label for="bas">Baseball</label>
+<input type="checkbox" name="sports" id="soccer" value="soccer" />
+<label for="soccer">Soccer</label>
+<input type="checkbox" name="sports" id="baseball" value="baseball" />
+<label for="baseball">Baseball</label>
 ```
 
-#### ↓ Preview
+Multiple selections allowed per `name`.
 
-<form style="padding: 20px;">
-    <input type="checkbox" name="sports" id="soccer">
-    <label for="soccer">Soccer</label>
-    <input type="checkbox" name="sports" id="baseball">
-    <label for="baseball">Baseball</label>
-</form>
-
-Checkboxes allows the user to select one or more
-
-### Select tags
+### Select
 
 ```html
 <label for="city">City:</label>
 <select name="city" id="city">
-  <option value="1">Sydney</option>
-  <option value="2">Melbourne</option>
-  <option value="3">Cromwell</option>
+  <option value="syd">Sydney</option>
+  <option value="mel">Melbourne</option>
+  <option value="cwl">Cromwell</option>
 </select>
 ```
 
-#### ↓ Preview
-
-<form style="padding: 20px">
-    <label for="city">City:</label>
-    <select name="city" id="city" class="border border-slate-400">
-        <option value="1">Sydney</option>
-        <option value="2">Melbourne</option>
-        <option value="3">Cromwell</option>
-    </select>
-</form>
-
-A select box is a dropdown list of options
-
-### Fieldset tags
+### Fieldset
 
 ```html
 <fieldset>
   <legend>Your favorite monster</legend>
-  <input type="radio" id="kra" name="m" />
-  <label for="kraken">Kraken</label><br />
-  <input type="radio" id="sas" name="m" />
+  <input type="radio" id="kra" name="monster" value="kraken" />
+  <label for="kra">Kraken</label><br />
+  <input type="radio" id="sas" name="monster" value="sasquatch" />
   <label for="sas">Sasquatch</label>
 </fieldset>
 ```
 
-#### ↓ Preview
-
-<form style="padding: 20px">
-    <fieldset class="border border-slate-400" style="padding: 20px">
-        <legend>Your favorite monster</legend>
-        <input type="radio" id="kra" name="monster">
-        <label for="kra">Kraken</label><br/>
-        <input type="radio" id="sas" name="monster">
-        <label for="sas">Sasquatch</label>
-    </fieldset>
-</form>
-
-### Datalist tags(HTML5)
+### Datalist (HTML5)
 
 ```html
-<label for="b">Choose a browser: </label>
-<input list="list" id="b" name="browser" />
-<datalist id="list">
-  <option value="Chrome"></option>
-  <option value="Firefox"></option>
-  <option value="Internet Explorer"></option>
-  <option value="Opera"></option>
-  <option value="Safari"></option>
-  <option value="Microsoft Edge"></option>
+<label for="browser">Choose a browser:</label>
+<input list="browsers" id="browser" name="browser" />
+<datalist id="browsers">
+  <option value="Chrome" />
+  <option value="Firefox" />
+  <option value="Opera" />
+  <option value="Safari" />
+  <option value="Microsoft Edge" />
 </datalist>
 ```
 
-#### ↓ Preview
-
-<form style="padding: 20px">
-    <label for="myBrowser">Choose a browser:</label>
-    <input list="browsers" id="myBrowser" name="myBrowser" class="border border-slate-400"/>
-    <datalist id="browsers">
-      <option value="Chrome">
-      <option value="Firefox">
-      <option value="Internet Explorer">
-      <option value="Opera">
-      <option value="Safari">
-      <option value="Microsoft Edge">
-    </datalist>
-</form>
-
-### Submit and Reset Buttons
+### Submit and reset
 
 ```html
-<form action="register.php" method="post">
+<form action="/register" method="post">
   <label for="foo">Name:</label>
   <input type="text" name="name" id="foo" />
   <input type="submit" value="Submit" />
@@ -672,184 +480,79 @@ A select box is a dropdown list of options
 </form>
 ```
 
-#### ↓ Preview
+### Input attributes (common)
 
-<form action="register.php" method="post" style="padding: 20px">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" class="border border-slate-400">
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-</form>
-
-`Submit` the data to server; `Reset` to default values
-
-## HTML input Tags 
-
-### Input Attributes 
-The input tag is an empty element, identifying the particular type of field information to obtain from a user.
-
-```html {.wrap}
-<input type="text" name="?" value="?" minlength="6" required />
-```
-
----
-
-| -   |                         |                                                                                                                               |
-| --- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-|     | `type="…"`              | The type of data that is being input                                                                                          |
-|     | `value="…"`             | Default value                                                                                                                 |
-|     | `name="…"`              | Used to describe this data in the HTTP request                                                                                |
-|     | `id="…"`                | Unique identifier that other HTML elements                                                                                    |
-|     | `readonly`              | Stops the user from modifying                                                                                                 |
-|     | `disabled`              | Stops any interaction                                                                                                         |
-|     | `checked`               | The radio or checkbox select or not                                                                                           |
-|     | `required`              | Being compulsory, See [required](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required#example)               |
-|     | `placeholder="…"`       | Adds a temporary, See [::placeholder](https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder#examples)                |
-|     | `autocomplete="off"`    | Disable auto completion                                                                                                       |
-|     | `autocapitalize="none"` | Disable auto capitalization                                                                                                   |
-|     | `inputmode="…"`         | Display a specific keyboard, See [inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)   |
-|     | `list="…"`              | The id of an associated [datalist](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)                        |
-|     | `maxlength="…"`         | Maximum number of characters                                                                                                  |
-|     | `minlength="…"`         | Minimum number of characters                                                                                                  |
-|     | `min="…"`               | Minimum numerical value on range & number                                                                                     |
-|     | `max="…"`               | Maximum numerical value on range & number                                                                                     |
-|     | `step="…"`              | How the number will increment in range & number                                                                               |
-|     | `pattern="…"`           | Specifies a [Regular expression](/regex), See [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern) |
-|     | `autofocus`             | Be focused                                                                                                                    |
-|     | `spellcheck`            | Perform spell checking                                                                                                        |
-|     | `multiple`              | Whether to allow [multiple](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/multiple) values                     |
-|     | `accept=""`             | Expected file type in [file](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file) upload controls            |
-
-
-Also see:
-[Attributes for the \<input> element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes)
+- `type`: input type
+- `name`: key used on submission
+- `id`: unique identifier
+- `value`: default value
+- `readonly`, `disabled`, `required`, `checked`
+- `placeholder`
+- `autocomplete="off"`
+- `min`, `max`, `step`, `minlength`, `maxlength`, `pattern`
+- `list`: associates with a `<datalist>`
+- `inputmode`: hints keyboard type
+- `autofocus`
+- `spellcheck`
+- `multiple` (file, email)
+- `accept` (file types)
 
 ### Input types
 
-|                   |                                                                                                                                          |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `type="checkbox"` | <input type="checkbox" class="border border-slate-400">                                                                                  |
-| `type="radio"`    | <input type="radio" class="border border-slate-400">                                                                                     |
-| `type="file"`     | <input type="file" class="border border-slate-400">                                                                                      |
-| `type="hidden"`   | <input type="hidden" class="border border-slate-400">                                                                                    |
-| `type="text"`     | <input type="text" class="border border-slate-400">                                                                                      |
-| `type="password"` | <input type="password" class="border border-slate-400">                                                                                  |
-| `type="image"`    | <input type="image" src="https://raw.githubusercontent.com/mdn/learning-area/master/html/forms/image-type-example/login.png" width="70"> |
-| `type="reset"`    | <input type="reset" class="border border-slate-400">                                                                                     |
-| `type="button"`   | <input type="button" class="border border-slate-400" value="button">                                                                     |
-| `type="submit"`   | <input type="submit" class="border border-slate-400">                                                                                    |
-
-#### New Input Types in HTML5
-
-|                         |                                                                      |
-| ----------------------- | -------------------------------------------------------------------- |
-| `type="color"`          | <input type="color" value="#0FB881" class="border border-slate-400"> |
-| `type="date"`           | <input type="date" class="border border-slate-400">                  |
-| `type="time"`           | <input type="time" class="border border-slate-400">                  |
-| `type="month"`          | <input type="month" class="border border-slate-400">                 |
-| `type="datetime-local"` | <input type="datetime-local" class="border border-slate-400">        |
-| `type="week"`           | <input type="week" class="border border-slate-400">                  |
-| `type="email"`          | <input type="email" class="border border-slate-400">                 |
-| `type="tel"`            | <input type="tel" class="border border-slate-400">                   |
-| `type="url"`            | <input type="url" class="border border-slate-400">                   |
-| `type="number"`         | <input type="number" class="border border-slate-400">                |
-| `type="search"`         | <input type="search" class="border border-slate-400">                |
-| `type="range"`          | <input type="range" class="border border-slate-400">                 |
+- `text`, `password`, `email`, `tel`, `url`
+- `number`, `range`
+- `checkbox`, `radio`
+- `file`, `hidden`
+- `image`, `reset`, `button`, `submit`
+- HTML5: `color`, `date`, `time`, `month`, `datetime-local`, `week`, `search`
 
 ### Input CSS selectors
 
-|               |                           |
-| ------------- | ------------------------- |
-| `input:focus` | When its keyboard focused |
+- `input:focus` — when focused
+- `input:required`, `input:invalid`, `input:disabled` — state selectors
 
-See: [Input pseudo classes](/css#input-pseudo-classes)
+## Meta Tags
 
-## HTML meta Tags 
-
-### Meta tags 
-
-The meta tag describes meta data within an HTML document. It explains additional material about the HTML.
+### Basics
 
 ```html
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your title</title>
 ```
 
-```html
-<!-- title -->
-<title>···</title>
-<meta property="og:title" content="···" />
-<meta name="twitter:title" content="···" />
-```
-
----
+### SEO / sharing essentials
 
 ```html
-<!-- url -->
-<link rel="canonical" href="https://···" />
-<meta property="og:url" content="https://···" />
-<meta name="twitter:url" content="https://···" />
-```
+<link rel="canonical" href="https://example.com/page" />
 
----
+<meta name="description" content="Description of this page" />
 
-```html
-<!-- description -->
-<meta name="description" content="···" />
-<meta property="og:description" content="···" />
-<meta name="twitter:description" content="···" />
-```
-
----
-
-```html
-<!-- image -->
-<meta property="og:image" content="https://···" />
-<meta name="twitter:image" content="https://···" />
-```
-
----
-
-```html
-<!-- ua -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-```
-
----
-
-```html
-<!-- viewport -->
-<meta name="viewport" content="width=device-width" />
-<meta name="viewport" content="width=1024" />
-```
-
-### Open Graph
-
-```html
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_CA" />
 <meta property="og:title" content="HTML cheatsheet" />
 <meta property="og:url" content="https://cheatsheets.zip/html" />
-<meta property="og:image" content="https://xxx.com/image.jpg" />
+<meta property="og:image" content="https://example.com/image.jpg" />
 <meta property="og:site_name" content="Name of your website" />
 <meta property="og:description" content="Description of this page" />
-```
 
-Used by Facebook, Instagram, Pinterest, LinkedIn, etc.
-
-### Twitter Cards
-
-```html
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@FechinLi" />
 <meta name="twitter:title" content="HTML cheatsheet" />
 <meta name="twitter:url" content="https://cheatsheets.zip/html" />
 <meta name="twitter:description" content="Description of this page" />
-<meta name="twitter:image" content="https://xxx.com/image.jpg" />
+<meta name="twitter:image" content="https://example.com/image.jpg" />
 ```
 
-See: [Twitter Card Documentation](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/summary)
+### Other meta
 
-### Geotagging
+```html
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+```
+
+Use modern browsers; avoid UA-sniffing.
+
+### Geotagging (rarely used)
 
 ```html
 <meta name="ICBM" content="45.416667,-75.7" />
@@ -858,8 +561,9 @@ See: [Twitter Card Documentation](https://developer.twitter.com/en/docs/tweets/o
 <meta name="geo.placename" content="Ottawa" />
 ```
 
-See: [Geotagging](https://en.wikipedia.org/wiki/Geotagging#HTML_pages)
+## References
 
-## Also see
-
-- [HTML 4.01 Specification](https://www.w3.org/TR/REC-html40/cover.html#minitoc) _(w3.org)_
+- HTML elements: https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+- HTML forms: https://developer.mozilla.org/en-US/docs/Learn/Forms
+- Meta data: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+- HTML 4.01 spec: https://www.w3.org/TR/REC-html40/cover.html#minitoc

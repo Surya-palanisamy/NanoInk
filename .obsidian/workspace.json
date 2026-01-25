@@ -4,31 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "f1ce95f436fcdee8",
+        "id": "1dbae7075cc57868",
         "type": "tabs",
         "children": [
           {
-            "id": "048054f515b4b335",
+            "id": "847dea1fbdc8d2a7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tech/Express.js.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Express.js"
+              "title": "New tab"
             }
           }
         ]
@@ -201,36 +187,40 @@
       "bases:Create new base": false
     }
   },
-  "active": "048054f515b4b335",
+  "active": "847dea1fbdc8d2a7",
   "lastOpenFiles": [
-    "Tech/Html.md",
+    "Untitled.base",
+    "2026-01-25.md",
+    "Untitled.canvas",
+    "Untitled 1.canvas",
+    "DSA/Math.md",
     "Tech/systemd linux.md",
-    "Tech/Ssh.md",
+    "Tech/zshrc.md",
+    "Tech/Neovim.md",
+    "Tech/zshrc",
     "Tech/OS.md",
-    "Tech/Nginx.md",
-    "Tech/Git-Github.md",
-    "Tech/Css.md",
-    "Tech/Computer-networks.md",
-    "Tech/Express.js.md",
-    "Tech/Docker.md",
     "Tech/Ansible.md",
+    "Tech/Computer-networks.md",
+    "Tech/Css.md",
+    "Tech/Express.js.md",
+    "Tech/Markdown.md",
+    "DSA/LinkedList.md",
+    "DSA/DynamicProgramming.md",
+    "DSA/Patterns.md",
+    "DSA/Matrix.md",
+    "Ma.md",
+    "Tech/Html.md",
+    "Tech/Nginx.md",
+    "Tech/Ssh.md",
+    "Tech/Git-Github.md",
+    "Tech/Docker.md",
     "n.md",
-    "Untitled.md",
     "html.md",
     "Tech/Terraform vs Ansible vs Kubernetes.md",
     "Tech/Unconfirmed 429097.crdownload",
-    "Tech/Markdown.md",
     "Tech/K Vs A vs T.md",
-    "Tech/SSH.md",
-    "DSA/Patterns.md",
-    "DSA/BitManipulation.md",
-    "DSA/Arrays.md",
     "images/Nginx.png",
-    "1,4,7],[2,5,8],[3,6,9.md",
-    "DSA/Matrix.md",
     "Tech",
-    "DSA/DSA.md",
-    "DSA/Strings.md",
     "DSA"
   ]
 }
