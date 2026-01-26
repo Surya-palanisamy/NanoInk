@@ -33,6 +33,7 @@ const MANIFEST = [
   { title: "OS", path: "Tech/OS.md", category: "Tech" },
   { title: "SSH", path: "Tech/Ssh.md", category: "Tech" },
   { title: "Systemd Linux", path: "Tech/systemd linux.md", category: "Tech" },
+  { title: "Java Script", path: "Tech/js.md", category: "Tech" },
   {
     title: "Terraform vs Ansible vs Kubernetes",
     path: "Tech/Terraform vs Ansible vs Kubernetes.md",

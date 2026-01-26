@@ -380,9 +380,6 @@ body {
 
 .note-body img {
 
-  width: 80%;
-  height: auto;
-  object-fit: contain;
   border-radius: 10px;
   border: 1px solid var(--border);
   display: block;
