@@ -338,4 +338,3 @@ Memory management allocates and deallocates memory efficiently.
 - Page fault triggers loading
 
 ---
-

@@ -4,17 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "1dbae7075cc57868",
+        "id": "38e5178e1ef9ead5",
         "type": "tabs",
         "children": [
           {
-            "id": "847dea1fbdc8d2a7",
+            "id": "92fd686337d1d14f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Mongodb.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Mongodb"
             }
           }
         ]
@@ -187,9 +201,32 @@
       "bases:Create new base": false
     }
   },
-  "active": "847dea1fbdc8d2a7",
+  "active": "92fd686337d1d14f",
   "lastOpenFiles": [
-    "Untitled.base",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.js",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.d.ts",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.js",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.d.ts",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-item.js",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-item.d.ts",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.js",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.d.ts",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.d.ts",
+    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js",
+    "astro/public/favicon.svg",
+    "astro/README.md",
+    "images/Pasted image 20260126154740.png",
+    "images/Nginx.png",
+    "images/mongodb.gif",
+    "Mongodb.md",
+    "shar.md",
+    "images/Sharding and replication.gif",
+    "Tech/Sharding and replication.gif",
+    "images/Pasted image 20260126153124.png",
+    "images/Pasted image 20260126152411.png",
+    "images/Pasted image 20260126152201.png",
+    "images/Pasted image 20260126152149.png",
     "2026-01-25.md",
     "Untitled.canvas",
     "Untitled 1.canvas",
@@ -197,7 +234,6 @@
     "Tech/systemd linux.md",
     "Tech/zshrc.md",
     "Tech/Neovim.md",
-    "Tech/zshrc",
     "Tech/OS.md",
     "Tech/Ansible.md",
     "Tech/Computer-networks.md",
@@ -214,13 +250,6 @@
     "Tech/Ssh.md",
     "Tech/Git-Github.md",
     "Tech/Docker.md",
-    "n.md",
-    "html.md",
-    "Tech/Terraform vs Ansible vs Kubernetes.md",
-    "Tech/Unconfirmed 429097.crdownload",
-    "Tech/K Vs A vs T.md",
-    "images/Nginx.png",
-    "Tech",
-    "DSA"
+    "n.md"
   ]
 }

@@ -3,15 +3,18 @@
 ---
 
 ![](../images/nginx.png)
+
 ## 1️⃣ Install & Basic Commands
 
 ### Install
+
 ```bash
 sudo apt update
 sudo apt install nginx
 ```
 
 ### Service Control
+
 ```bash
 sudo systemctl start nginx
 sudo systemctl stop nginx
@@ -21,6 +24,7 @@ sudo systemctl enable nginx
 ```
 
 ### Check Configuration
+
 ```bash
 nginx -t
 ```
@@ -29,14 +33,14 @@ nginx -t
 
 ## 2️⃣ Important Paths
 
-| Path | Meaning |
-|------|--------|
-| /etc/nginx/nginx.conf | Main config |
-| /etc/nginx/sites-available/ | Virtual hosts |
-| /etc/nginx/sites-enabled/ | Enabled sites |
-| /var/www/html | Default web root |
-| /var/log/nginx/access.log | Access logs |
-| /var/log/nginx/error.log | Error logs |
+| Path                        | Meaning          |
+| --------------------------- | ---------------- |
+| /etc/nginx/nginx.conf       | Main config      |
+| /etc/nginx/sites-available/ | Virtual hosts    |
+| /etc/nginx/sites-enabled/   | Enabled sites    |
+| /var/www/html               | Default web root |
+| /var/log/nginx/access.log   | Access logs      |
+| /var/log/nginx/error.log    | Error logs       |
 
 ---
 
@@ -57,6 +61,7 @@ server {
 ```
 
 Enable site
+
 ```bash
 sudo ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled/
 sudo nginx -t
@@ -90,6 +95,7 @@ server {
 ## 5️⃣ Load Balancing
 
 ### Round Robin (default)
+
 ```nginx
 upstream backend_servers {
   server 127.0.0.1:3000;
@@ -104,6 +110,7 @@ server {
 ```
 
 ### Least Connections
+
 ```nginx
 upstream backend_servers {
   least_conn;
@@ -113,6 +120,7 @@ upstream backend_servers {
 ```
 
 ### IP Hash (Sticky Sessions)
+
 ```nginx
 upstream backend_servers {
   ip_hash;
@@ -126,16 +134,19 @@ upstream backend_servers {
 ## 6️⃣ HTTPS & SSL (Let’s Encrypt)
 
 Install certbot
+
 ```bash
 sudo apt install certbot python3-certbot-nginx
 ```
 
 Generate SSL
+
 ```bash
 sudo certbot --nginx -d example.com -d www.example.com
 ```
 
 Auto renewal
+
 ```bash
 sudo certbot renew --dry-run
 ```
@@ -145,21 +156,25 @@ sudo certbot renew --dry-run
 ## 7️⃣ Security Hardening
 
 ### Hide Nginx Version
+
 ```nginx
 server_tokens off;
 ```
 
 ### Prevent Clickjacking
+
 ```nginx
 add_header X-Frame-Options "SAMEORIGIN";
 ```
 
 ### Prevent MIME sniffing
+
 ```nginx
 add_header X-Content-Type-Options nosniff;
 ```
 
 ### Enable HSTS (HTTPS Required)
+
 ```nginx
 add_header Strict-Transport-Security "max-age=31536000" always;
 ```
@@ -209,6 +224,7 @@ server {
 ## 1️⃣1️⃣ Redirects
 
 ### HTTP → HTTPS
+
 ```nginx
 server {
   listen 80;
@@ -218,6 +234,7 @@ server {
 ```
 
 ### Domain Redirect
+
 ```nginx
 server {
   listen 80;
@@ -276,9 +293,11 @@ location /ws/ {
 ## 1️⃣5️⃣ Logging
 
 Pretty log format
+
 ```nginx
 log_format main '$remote_addr - $remote_user [$time_local] '
 '"$request" $status $body_bytes_sent '
 '"$http_referer" "$http_user_agent"';
 access_log /var/log/nginx/access.log mai
 ---
+```

@@ -1,4 +1,3 @@
-
 ## Palindrome Number (LeetCode 9)
 
 ```java

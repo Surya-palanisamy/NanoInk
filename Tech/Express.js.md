@@ -1,4 +1,3 @@
-
 ---
 ![ok](../images/Express.png)
 
@@ -172,7 +171,7 @@ app.get("/", (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
+  console.log(`Server running on http://localhost:${PORT}`),
 );
 ```
 
@@ -329,7 +328,7 @@ app.post("/form", (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () =>
   console.log(`Server running
-on http://localhost:${PORT}`)
+on http://localhost:${PORT}`),
 );
 ```
 
@@ -621,7 +620,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 ```
 
@@ -710,7 +709,7 @@ async function updateMultipleUsers() {
       { age: { $lt: 25 } },
       {
         $set: { age: 25 },
-      }
+      },
     );
     console.log("Update Result:", result);
   } catch (error) {
@@ -848,4 +847,3 @@ Project_Folder/
 ```
 
 ---
-

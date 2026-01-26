@@ -1,21 +1,22 @@
-## Ansible 
+## Ansible
 
 ---
 
-##  What is Ansible?
+## What is Ansible?
 
 > Ansible is an **agentless automation tool** used for:
 
- - Server configuration  
- - Application deployment  
- - Orchestration  
- - Infrastructure automation  
+- Server configuration
+- Application deployment
+- Orchestration
+- Infrastructure automation
 
 > Uses **YAML Playbooks** + works over **SSH**.
 
 ---
 
 ## 🧾 Check Installation
+
 ```bash
 ansible --version
 ```
@@ -23,12 +24,15 @@ ansible --version
 ---
 
 ## 🌍 Inventory (Hosts File)
+
 Default inventory file:
+
 ```
 /etc/ansible/hosts
 ```
 
 Example:
+
 ```ini
 [webservers]
 192.168.1.10
@@ -39,6 +43,7 @@ Example:
 ```
 
 Custom inventory usage:
+
 ```bash
 ansible -i inventory.ini all -m ping
 ```
@@ -46,12 +51,15 @@ ansible -i inventory.ini all -m ping
 ---
 
 ## 🔐 SSH Setup (Passwordless Recommended)
+
 Generate key:
+
 ```bash
 ssh-keygen
 ```
 
 Copy key:
+
 ```bash
 ssh-copy-id user@server
 ```
@@ -59,11 +67,13 @@ ssh-copy-id user@server
 ---
 
 ## 🧪 Test Connection
+
 ```bash
 ansible all -m ping
 ```
 
 Specific group:
+
 ```bash
 ansible webservers -m ping
 ```
@@ -71,22 +81,27 @@ ansible webservers -m ping
 ---
 
 ## 🧭 Ad-hoc Commands
+
 Run command on remote:
+
 ```bash
 ansible all -m command -a "uptime"
 ```
 
 Install package:
+
 ```bash
 ansible all -m apt -a "name=nginx state=present" --become
 ```
 
 Copy file:
+
 ```bash
 ansible all -m copy -a "src=file.txt dest=/home/user/"
 ```
 
 Create directory:
+
 ```bash
 ansible all -m file -a "path=/opt/test state=directory"
 ```
@@ -94,7 +109,9 @@ ansible all -m file -a "path=/opt/test state=directory"
 ---
 
 ## 📜 Playbook Structure
+
 A playbook is YAML:
+
 ```yaml
 - hosts: webservers
   become: yes
@@ -106,6 +123,7 @@ A playbook is YAML:
 ```
 
 Run playbook:
+
 ```bash
 ansible-playbook site.yml
 ```
@@ -113,20 +131,22 @@ ansible-playbook site.yml
 ---
 
 ## 🧩 Common Modules
-| Module | Purpose |
-|--------|--------|
-| `ping` | test connectivity |
+
+| Module        | Purpose            |
+| ------------- | ------------------ |
+| `ping`        | test connectivity  |
 | `apt` / `yum` | package management |
-| `service` | manage services |
-| `copy` | copy files |
-| `file` | manage files/dirs |
-| `command` | run commands |
-| `shell` | run shell commands |
-| `user` | user management |
+| `service`     | manage services    |
+| `copy`        | copy files         |
+| `file`        | manage files/dirs  |
+| `command`     | run commands       |
+| `shell`       | run shell commands |
+| `user`        | user management    |
 
 ---
 
 ## ⚙️ Service Management
+
 ```yaml
 - name: Start nginx
   service:
@@ -135,6 +155,7 @@ ansible-playbook site.yml
 ```
 
 Enable service:
+
 ```yaml
 - name: Enable nginx
   service:
@@ -145,7 +166,9 @@ Enable service:
 ---
 
 ## 📂 Copy & Templates
+
 Copy file:
+
 ```yaml
 - name: Copy config
   copy:
@@ -154,6 +177,7 @@ Copy file:
 ```
 
 Template (Jinja2):
+
 ```yaml
 - name: Deploy template
   template:
@@ -164,12 +188,15 @@ Template (Jinja2):
 ---
 
 ## 🔑 Become (Root Privilege)
+
 In playbook:
+
 ```yaml
 become: yes
 ```
 
 In command:
+
 ```bash
 ansible-playbook play.yml --become
 ```
@@ -177,6 +204,7 @@ ansible-playbook play.yml --become
 ---
 
 ## 🧠 Variables
+
 ```yaml
 vars:
   package: nginx
@@ -191,6 +219,7 @@ tasks:
 ---
 
 ## 🎯 Handlers (Run Only When Changed)
+
 ```yaml
 tasks:
   - name: Install nginx
@@ -209,6 +238,7 @@ handlers:
 ---
 
 ## 🧪 Dry Run (Check Mode)
+
 ```bash
 ansible-playbook site.yml --check
 ```
@@ -216,13 +246,16 @@ ansible-playbook site.yml --check
 ---
 
 ## 🏎️ Speed Tips
+
 Disable SSH host checking:
+
 ```ini
 [defaults]
 host_key_checking = False
 ```
 
 Run in parallel:
+
 ```bash
 ansible-playbook site.yml -f 10
 ```
@@ -230,12 +263,15 @@ ansible-playbook site.yml -f 10
 ---
 
 ## 🧾 Facts (System Info)
+
 Show facts:
+
 ```bash
 ansible all -m setup
 ```
 
 Use in play:
+
 ```yaml
 ansible_facts['ansible_hostname']
 ```
@@ -243,11 +279,12 @@ ansible_facts['ansible_hostname']
 ---
 
 > [!Summary]
-Ansible is awesome because it is:
-- Agentless  
-- Simple YAML-based  
-- Secure (SSH)  
-- Scalable  
-- DevOps standard  
+> Ansible is awesome because it is:
+
+- Agentless
+- Simple YAML-based
+- Secure (SSH)
+- Scalable
+- DevOps standard
 
 ---

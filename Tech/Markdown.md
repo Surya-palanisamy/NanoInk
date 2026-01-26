@@ -1,4 +1,3 @@
-
 ## Basic Syntax
 
 Markdown is a lightweight markup language for creating formatted text. Below are examples with common syntax.
@@ -11,16 +10,20 @@ Use `#` for headings. Add more `#` for smaller headings.
 
 ```markdown
 # H1 - Main Title
+
 ## H2 - Section Title
+
 ### H3 - Subsection Title
 ```
 
 ---
+
 ### Bold
 
 Use double asterisks (`**`) for bold text.
 
 Example:
+
 ```markdown
 **This is bold text**
 ```
@@ -36,12 +39,13 @@ Result:
 Use single asterisks (`*`) or underscores (`_`) for italic text.
 
 Example:
+
 ```markdown
-*This is italic text*
+_This is italic text_
 ```
 
 Result:
-*This is italic text*
+_This is italic text_
 
 ---
 
@@ -50,11 +54,13 @@ Result:
 Use the greater-than symbol (`>`).
 
 Example:
+
 ```markdown
 > This is a blockquote.
 ```
 
 Result:
+
 > This is a blockquote.
 
 ---
@@ -64,6 +70,7 @@ Result:
 Use numbers followed by a period.
 
 Example:
+
 ```markdown
 1. First item
 2. Second item
@@ -71,9 +78,10 @@ Example:
 ```
 
 Result:
-1. First item  
-2. Second item  
-3. Third item  
+
+1. First item
+2. Second item
+3. Third item
 
 ---
 
@@ -82,6 +90,7 @@ Result:
 Use `-`, `+`, or `*`.
 
 Example:
+
 ```markdown
 - First item
 - Second item
@@ -89,9 +98,10 @@ Example:
 ```
 
 Result:
-- First item  
-- Second item  
-- Third item  
+
+- First item
+- Second item
+- Third item
 
 ---
 
@@ -100,15 +110,18 @@ Result:
 Wrap inline code with backticks (\`), or use triple backticks for code blocks.
 
 Example:
+
 ```markdown
 Inline code: `print("Hello, World!")`
 ```
----
-Result:  
-Inline code: `print("Hello, World!")`  
 
+---
+
+Result:  
+Inline code: `print("Hello, World!")`
 
 Code block:
+
 ```python
 def greet():
     print("Hello, World!")
@@ -121,11 +134,12 @@ def greet():
 Use three dashes (`---`), underscores (`___`), or asterisks (`***`).
 
 Example:
+
 ```markdown
 ---
-___
+---
 
-***
+---
 ```
 
 ---
@@ -135,9 +149,11 @@ ___
 Use `[text](URL)`.
 
 Example:
+
 ```markdown
 [Visit GitHub](https://github.com/)
 ```
+
 Result:
 
 [Visit GitHub](https://github.com/)
@@ -158,26 +174,27 @@ Result:
 
 ![Markdown Logo](https://www.markdownguide.org/assets/images/tux.png)
 
-***
+---
 
 ### Table
 
 Use pipes (`|`) and dashes (`-`) to create tables.
 
 Example:
+
 ```markdown
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
 ```
 
 Result:
 
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
 
 ---
 
@@ -186,6 +203,7 @@ Result:
 Add references using `[^1]`.
 
 Example:
+
 ```markdown
 This is a footnote example.[^1]
 
@@ -204,6 +222,7 @@ This is a footnote example.[^1]
 Use `~~` to strike through text.
 
 Example:
+
 ```markdown
 ~~This text is crossed out.~~
 ```
@@ -219,6 +238,7 @@ Result:
 Use `- [ ]` for incomplete tasks and `- [x]` for completed tasks.
 
 Example:
+
 ```markdown
 - [x] Complete homework
 - [ ] Learn Markdown
@@ -226,9 +246,10 @@ Example:
 ```
 
 Result:
-- [x] Complete homework  
-- [ ] Learn Markdown  
-- [ ] Submit the project  
+
+- [x] Complete homework
+- [ ] Learn Markdown
+- [ ] Submit the project
 
 ---
 
@@ -237,6 +258,7 @@ Result:
 Use text codes for emojis.
 
 Example:
+
 ```markdown
 I love programming! : heart_eyes:
 ```
@@ -252,6 +274,7 @@ I love programming! 😍
 Use `<sub>` for subscript and `<sup>` for superscript.
 
 Example:
+
 ```markdown
 H<sub>2</sub>O (Water)
 E = mc<sup>2</sup> (Einstein's equation)
@@ -262,4 +285,3 @@ H<sub>2</sub>O (Water)
 E = mc<sup>2</sup> (Einstein's equation)
 
 ---
-

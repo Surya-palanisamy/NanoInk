@@ -1,4 +1,3 @@
-
 # 🐳 Docker Beginner to Advanced – Single Markdown
 
 ---
@@ -21,11 +20,13 @@
 ## Real-World Examples
 
 **VMs Used In:**
+
 - AWS EC2, Azure VM
 - Running Windows + Linux on same server
 - Banking and enterprise systems
 
 **Containers Used In:**
+
 - Docker
 - Kubernetes
 - Microservices like Netflix, Uber, Spotify

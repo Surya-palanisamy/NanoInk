@@ -1,4 +1,3 @@
-
 ## 1. Two Sum (LeetCode 1)
 
 ```java
