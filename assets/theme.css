@@ -379,8 +379,10 @@ body {
 }
 
 .note-body img {
-  max-width: 100%;
+
+  width: 80%;
   height: auto;
+  object-fit: contain;
   border-radius: 10px;
   border: 1px solid var(--border);
   display: block;
