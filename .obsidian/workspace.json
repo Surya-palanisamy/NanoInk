@@ -201,8 +201,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "92fd686337d1d14f",
+  "active": "fa9f6c9a5edb738f",
   "lastOpenFiles": [
+    "images/mongoDB.png",
+    "images/mongoDB20260126154740.png",
+    "DSA/Arrays.md",
+    "Tech/Express.js.md",
+    "images/Express.png",
+    "Mongodb.md",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.js",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.d.ts",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.js",
@@ -213,20 +219,16 @@
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.d.ts",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.d.ts",
-    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js",
     "astro/public/favicon.svg",
     "astro/README.md",
     "images/Pasted image 20260126154740.png",
     "images/Nginx.png",
     "images/mongodb.gif",
-    "Mongodb.md",
     "shar.md",
     "images/Sharding and replication.gif",
     "Tech/Sharding and replication.gif",
     "images/Pasted image 20260126153124.png",
     "images/Pasted image 20260126152411.png",
-    "images/Pasted image 20260126152201.png",
-    "images/Pasted image 20260126152149.png",
     "2026-01-25.md",
     "Untitled.canvas",
     "Untitled 1.canvas",
@@ -238,7 +240,6 @@
     "Tech/Ansible.md",
     "Tech/Computer-networks.md",
     "Tech/Css.md",
-    "Tech/Express.js.md",
     "Tech/Markdown.md",
     "DSA/LinkedList.md",
     "DSA/DynamicProgramming.md",
@@ -249,7 +250,6 @@
     "Tech/Nginx.md",
     "Tech/Ssh.md",
     "Tech/Git-Github.md",
-    "Tech/Docker.md",
-    "n.md"
+    "Tech/Docker.md"
   ]
 }

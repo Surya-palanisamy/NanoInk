@@ -1,0 +1,391 @@
+:root {
+  --bg: #0f1115;
+  --panel: #161a23;
+  --panel-strong: #1c2130;
+  --text: #e8ecf2;
+  --text-dim: #9ca5b5;
+  --accent: #5eead4;
+  --accent-strong: #d42dc9;
+  --border: #232a3a;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --radius: 14px;
+  --code: #0b0d13;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background:
+    radial-gradient(
+      120% 120% at 20% 20%,
+      rgba(94, 234, 212, 0.07),
+      transparent 35%
+    ),
+    radial-gradient(
+      120% 120% at 80% 0%,
+      rgba(94, 234, 212, 0.05),
+      transparent 30%
+    ),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 22px 20px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.search input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--panel-strong);
+  color: var(--text);
+  outline: none;
+}
+
+.search input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.15);
+}
+
+#nav-list {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.nav-group {
+  background: var(--panel-strong);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 10px 4px 10px;
+}
+
+.nav-group h3 {
+  margin: 0 0 6px 4px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+
+.nav-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.01);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 14px;
+  transition:
+    border 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.nav-item:hover {
+  border-color: var(--border);
+  background: rgba(94, 234, 212, 0.05);
+  transform: translateX(2px);
+}
+
+.nav-item.active {
+  border-color: var(--accent);
+  background: rgba(94, 234, 212, 0.12);
+}
+
+.nav-item .nav-title {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content {
+  padding: 32px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.breadcrumb {
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+#note-title {
+  margin: 6px 0 0 0;
+  font-size: 28px;
+}
+
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  background: var(--panel-strong);
+}
+
+.ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.note-body {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px 30px;
+  line-height: 1.7;
+}
+
+.note-body h1,
+.note-body h2,
+.note-body h3,
+.note-body h4 {
+  color: var(--text);
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+
+.note-body p,
+.note-body li {
+  color: var(--text);
+}
+
+.note-body a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.note-body a:hover {
+  text-decoration: underline;
+}
+
+.note-body code {
+  background: var(--panel-strong);
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-family: "JetBrains Mono", "Inter", monospace;
+}
+
+.note-body pre {
+  background: #1e1e1e;
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  padding-top: 40px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  margin: 18px 0 22px;
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #3c3c3c;
+  background: #2d2d2d;
+  color: #cccccc;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copy-btn:hover {
+  background: #3c3c3c;
+  border-color: #505050;
+  color: #ffffff;
+}
+
+.copy-btn.copied {
+  background: #2ea043;
+  border-color: #2ea043;
+  color: #ffffff;
+}
+
+.copy-btn svg {
+  flex-shrink: 0;
+}
+
+.note-body pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: block;
+  font-size: 14px;
+  line-height: 1.7;
+  tab-size: 2;
+  color: #d4d4d4;
+}
+
+/* VS Code Dark+ Theme Colors */
+.note-body pre code .hljs-keyword,
+.note-body .hljs-keyword {
+  color: #ce3685;
+}
+
+.note-body pre code .hljs-built_in,
+.note-body .hljs-built_in {
+  color: #4ec9b0;
+}
+
+.note-body pre code .hljs-string,
+.note-body .hljs-string {
+  color: #0ee169;
+}
+
+.note-body pre code .hljs-number,
+.note-body .hljs-number {
+  color: #b5cea8;
+}
+
+.note-body pre code .hljs-comment,
+.note-body .hljs-comment {
+  color: #6a9955;
+}
+
+.note-body pre code .hljs-function,
+.note-body .hljs-function,
+.note-body pre code .hljs-title,
+.note-body .hljs-title {
+  color: #dcdcaa;
+}
+
+.note-body pre code .hljs-variable,
+.note-body .hljs-variable,
+.note-body pre code .hljs-params,
+.note-body .hljs-params {
+  color: #9cdcfe;
+}
+
+.note-body pre code .hljs-attr,
+.note-body .hljs-attr {
+  color: #9cdcfe;
+}
+
+.note-body pre code .hljs-literal,
+.note-body .hljs-literal {
+  color: hsl(309, 55%, 38%);
+}
+
+.note-body pre code .hljs-meta,
+.note-body .hljs-meta {
+  color: #c586c0;
+}
+
+.note-body pre code .hljs-regexp,
+.note-body .hljs-regexp {
+  color: #d16969;
+}
+
+.note-body pre code .hljs-symbol,
+.note-body .hljs-symbol {
+  color: #b5cea8;
+}
+
+.note-body pre code .hljs-class,
+.note-body .hljs-class {
+  color: #4ec9b0;
+}
+
+.note-body pre code .hljs-property,
+.note-body .hljs-property {
+  color: #9cdcfe;
+}
+
+.note-body pre code .hljs-operator,
+.note-body .hljs-operator {
+  color: #d4d4d4;
+}
+
+.note-body pre code .hljs-punctuation,
+.note-body .hljs-punctuation {
+  color: #d4d4d4;
+}
+
+.note-body img {
+  max-width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+  color: var(--text-dim);
+  margin: 18px 0;
+}
+
+ul,
+ol {
+  padding-left: 22px;
+}
+
+@media (max-width: 960px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: relative;
+    height: auto;
+  }
+  .content {
+    padding: 20px;
+  }
+}

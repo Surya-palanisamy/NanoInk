@@ -1,24 +1,27 @@
 # MongoDB: From Documents to Distributed Clusters 🚀
 
-![[Pasted image 20260126154740.png]]
+![go](../images/mongoDB.png)
+
 Goal: Go beyond “it’s a JSON database” and understand MongoDB’s internal mechanics, scaling strategies, indexing, and aggregation. 🧠
 
 ---
+
 ## 1. Philosophy & Document Model 📘
 
 ### Why MongoDB? (Significance) 🎯
 
 Relational databases normalize data across many tables (e.g., Users, Orders, Payments) and rely on JOINs. At scale, JOINs can be expensive. MongoDB’s guiding principle is:
 
-![[Pasted image 20260126152000.png| 500]]
+![MongoDB guiding principle](<../images/Pasted image 20260126152000.png>)
 
 - Data that is accessed together should be stored together. 📦
-Benefits:
+  Benefits:
 
 - Aligns naturally with object-oriented models 🧩
 - Reduces impedance mismatch 🔧
 - Fewer JOINs → faster reads ⚡
-![[Pasted image 20260126152059.png| 500]]
+
+![Document model benefits](<../images/Pasted image 20260126152059.png>)
 
 ### BSON (Binary JSON) 🧱
 
@@ -40,7 +43,8 @@ The `_id` Field (ObjectId) 🔑
 ## 2. Core Mechanics & CRUD 🛠️
 
 ### CRUD Operations 🔄
-![[Pasted image 20260126152411.png|500]]
+
+![CRUD Operations](<../images/Pasted image 20260126152411.png>)
 
 Insert ➕
 
@@ -310,11 +314,11 @@ Problem ❗:
 
 Solution ✅:
 
+![Sharding and replication](<../images/Sharding and replication.gif>)
 
-![[Sharding and replication.gif|500]])
 - Split data across shards.
 
-![[Pasted image 20260126152134.png| 500]]
+![Sharding components](<../images/Pasted image 20260126152134.png>)
 
 Components 🧰:
 
@@ -332,7 +336,7 @@ Shard Key 🔑:
 
 ## 6. Advanced & Modern Features ✨
 
-![[Pasted image 20260126152149.png| 500]]
+![Advanced features](<../images/Pasted image 20260126152149.png>)
 
 ### Multi-Document ACID Transactions 🔒
 
@@ -383,11 +387,8 @@ SQL still best for 🏦:
 - Strong relational integrity
 - Highly structured financial systems
 
-![[Pasted image 20260126152201.png| 500]]
-
-
+![SQL vs NoSQL comparison](<../images/Pasted image 20260126152201.png>)
 
 # How MongoDB works
 
-
-![[mongodb.gif|600]]
+![How MongoDB works](../images/mongodb.gif)

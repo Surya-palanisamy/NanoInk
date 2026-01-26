@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notebook | Obsidian Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css"
+    />
+    <style>
+      /* Override highlight.js theme with VS Code Dark+ colors */
+      .hljs {
+        background: #1e1e1e !important;
+        color: #d4d4d4 !important;
+      }
+      .hljs-keyword {
+        color: #b810af;
+      }
+      .hljs-built_in {
+        color: #4ec9b0 !important;
+      }
+      .hljs-string {
+        color: #42e111 !important;
+      }
+      .hljs-number {
+        color: #b5cea8 !important;
+      }
+      .hljs-comment {
+        color: #6a9955 !important;
+      }
+      .hljs-function,
+      .hljs-title {
+        color: #dcdcaa !important;
+      }
+      .hljs-variable,
+      .hljs-params {
+        color: #9cdcfe !important;
+      }
+      .hljs-attr {
+        color: #9cdcfe !important;
+      }
+      .hljs-literal {
+        color: #c926ce
+      }
+      .hljs-meta {
+        color: #c586c0 !important;
+      }
+      .hljs-regexp {
+        color: #d16969 !important;
+      }
+      .hljs-symbol {
+        color: #b5cea8 !important;
+      }
+      .hljs-class {
+        color: #4ec9b0 !important;
+      }
+      .hljs-property {
+        color: #9cdcfe !important;
+      }
+    </style>
+    <link rel="stylesheet" href="assets/theme.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">Vault</div>
+        <div class="search">
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search notes..."
+            autocomplete="off"
+          />
+        </div>
+        <nav id="nav-list" aria-label="Notes navigation"></nav>
+      </aside>
+      <main class="content">
+        <header class="content-header">
+          <div class="titles">
+            <div class="breadcrumb" id="breadcrumb">Pick a note</div>
+            <h1 id="note-title">Nothing loaded</h1>
+          </div>
+          <a
+            id="open-source"
+            class="ghost"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            >Open markdown</a
+          >
+        </header>
+        <article id="note-body" class="note-body">
+          Select a file from the left to render it.
+        </article>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
+    <script src="assets/manifest.js"></script>
+    <script src="assets/main.js"></script>
+  </body>
+</html>
