@@ -191,6 +191,8 @@
       window.location.hash = encodeURI(path);
     }
     loadContent(path);
+    // Close sidebar on mobile after selection
+    closeSidebar();
   }
 
   function loadFromHash() {
@@ -202,10 +204,49 @@
     if (entries.length) selectEntry(entries[0].path, true);
   }
 
+  // Mobile sidebar toggle functions
+  const menuToggle = document.getElementById("menu-toggle");
+  const sidebar = document.getElementById("sidebar");
+  const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+  function openSidebar() {
+    sidebar.classList.add("open");
+    sidebarOverlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove("open");
+    sidebarOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
   function init() {
     renderNav();
     searchInput.addEventListener("input", (e) => filterNav(e.target.value));
     window.addEventListener("hashchange", loadFromHash);
+
+    // Mobile menu toggle
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        if (sidebar.classList.contains("open")) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+    }
+
+    // Close sidebar when clicking overlay
+    if (sidebarOverlay) {
+      sidebarOverlay.addEventListener("click", closeSidebar);
+    }
+
+    // Close sidebar on escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeSidebar();
+    });
+
     loadFromHash();
   }
 

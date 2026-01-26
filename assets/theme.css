@@ -382,10 +382,118 @@ ol {
     grid-template-columns: 1fr;
   }
   .sidebar {
-    position: relative;
-    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  .sidebar-overlay.active {
+    display: block;
+  }
+  .menu-toggle {
+    display: flex;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 998;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--text);
+  }
+  .menu-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
   .content {
-    padding: 20px;
+    padding: 80px 16px 24px 16px;
+  }
+  .content-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #note-title {
+    font-size: 22px;
+  }
+  .note-body {
+    padding: 18px 16px;
+  }
+  .note-body pre {
+    padding: 14px 12px;
+    padding-top: 44px;
+    font-size: 13px;
+  }
+  .note-body pre code {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 72px 12px 20px 12px;
+  }
+  #note-title {
+    font-size: 18px;
+  }
+  .note-body {
+    padding: 14px 12px;
+  }
+  .note-body h1 {
+    font-size: 1.5em;
+  }
+  .note-body h2 {
+    font-size: 1.3em;
+  }
+  .note-body h3 {
+    font-size: 1.15em;
+  }
+  .note-body pre {
+    padding: 12px 10px;
+    padding-top: 40px;
+    border-radius: 10px;
+  }
+  .note-body pre code {
+    font-size: 12px;
+  }
+  .copy-btn {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  .ghost {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .note-body img {
+    border-radius: 8px;
+  }
+}
+
+/* Desktop: hide mobile elements */
+@media (min-width: 961px) {
+  .menu-toggle,
+  .sidebar-overlay {
+    display: none !important;
   }
 }
