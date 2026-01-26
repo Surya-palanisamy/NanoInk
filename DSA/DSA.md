@@ -989,6 +989,8 @@ Y 1
 
 ## 39. Matrix 90 Degree Rotation
 
+{% raw %}
+
 ```java
 public class Main {
     public static void main(String args[]) {
@@ -1026,5 +1028,7 @@ public class Main {
     }
 }
 ```
+
+{% endraw %}
 
 ---
