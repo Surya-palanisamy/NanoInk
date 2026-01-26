@@ -16,6 +16,22 @@
   box-sizing: border-box;
 }
 
+/* Hide scrollbars but allow scrolling */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   margin: 0;
   font-family:
@@ -43,6 +59,8 @@ body {
   display: grid;
   grid-template-columns: 320px 1fr;
   min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 .sidebar {
@@ -140,6 +158,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  min-width: 0;
 }
 
 .content-header {
@@ -361,8 +380,10 @@ body {
 
 .note-body img {
   max-width: 100%;
+  height: auto;
   border-radius: 10px;
   border: 1px solid var(--border);
+  display: block;
 }
 
 blockquote {
@@ -403,9 +424,12 @@ ol {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
   .sidebar-overlay.active {
     display: block;
+    opacity: 1;
   }
   .menu-toggle {
     display: flex;
@@ -413,69 +437,116 @@ ol {
     top: 16px;
     left: 16px;
     z-index: 998;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     align-items: center;
     justify-content: center;
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     color: var(--text);
+    -webkit-tap-highlight-color: transparent;
   }
-  .menu-toggle:hover {
+  .menu-toggle:hover,
+  .menu-toggle:active {
     border-color: var(--accent);
     color: var(--accent);
   }
   .content {
     padding: 80px 16px 24px 16px;
+    max-width: 100%;
+    width: 100%;
+    min-width: 0;
   }
   .content-header {
     flex-direction: column;
     align-items: flex-start;
+    max-width: 100%;
   }
   #note-title {
     font-size: 22px;
+    word-break: break-word;
+    max-width: 100%;
   }
   .note-body {
     padding: 18px 16px;
+    overflow-x: auto;
+    overflow-y: visible;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+  .note-body h1 {
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
   .note-body pre {
     padding: 14px 12px;
     padding-top: 44px;
     font-size: 13px;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: var(--radius);
+    max-width: 100%;
+    overflow-x: auto;
   }
   .note-body pre code {
     font-size: 13px;
   }
+  .note-body table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-item {
+    padding: 12px 14px;
+    min-height: 44px;
+  }
 }
 
 @media (max-width: 480px) {
+  .menu-toggle {
+    top: 12px;
+    left: 12px;
+    width: 44px;
+    height: 44px;
+  }
   .content {
-    padding: 72px 12px 20px 12px;
+    padding: 68px 12px 20px 12px;
+    max-width: 100%;
   }
   #note-title {
     font-size: 18px;
+    max-width: 100%;
   }
   .note-body {
     padding: 14px 12px;
+    max-width: 100%;
   }
   .note-body h1 {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
   .note-body h2 {
-    font-size: 1.3em;
+    font-size: 1.25em;
   }
   .note-body h3 {
-    font-size: 1.15em;
+    font-size: 1.1em;
+  }
+  .note-body p,
+  .note-body li {
+    font-size: 15px;
   }
   .note-body pre {
     padding: 12px 10px;
     padding-top: 40px;
-    border-radius: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
   }
   .note-body pre code {
     font-size: 12px;
+    line-height: 1.5;
   }
   .copy-btn {
     padding: 5px 8px;
@@ -487,6 +558,13 @@ ol {
   }
   .note-body img {
     border-radius: 8px;
+  }
+  .note-body code {
+    font-size: 13px;
+    word-break: break-word;
+  }
+  .breadcrumb {
+    font-size: 12px;
   }
 }
 
