@@ -1,10 +1,8 @@
----
-
 ## 1. IP Address?
 
 An IP Address is a unique number assigned to every device in a network so it can be identified and communicate.
 
-- Example: `192.168.1.10` (IPv4)  
+- Example: `192.168.1.10` (IPv4)
 - Types:
   - Private IP — used inside local networks
   - Public IP — used on the internet
@@ -15,6 +13,7 @@ An IP Address is a unique number assigned to every device in a network so it can
 ![](../images/Ipv4.png)
 
 #### 🌐 Localhost (Loopback)
+
 Used to refer to **your own computer**
 
 - `127.0.0.1` → Localhost (correct)
@@ -23,6 +22,7 @@ Used to refer to **your own computer**
   - testing
   - development
   - no internet needed
+
 ---
 
 #### 🏠 Private IP Addresses
@@ -134,7 +134,7 @@ SSL (Secure Sockets Layer) its successor TLS (Transport Layer Security) are the 
 #### Public Key vs Private Key
 
 | Feature        | Public Key                             | Private Key                          |
-| -------------- | -------------------------------------- | ------------------------------------ |
+| :------------- | :------------------------------------- | :----------------------------------- |
 | Who Owns It?   | Shared with everyone                   | Kept secret by the owner             |
 | Security Level | Safe to share                          | Must never be shared                 |
 | Used For       | Encrypting data, verifying signatures  | Decrypting data, creating signatures |
@@ -433,8 +433,6 @@ Contains:
 
 ---
 
----
-
 # 🔥 ADVANCED COMPUTER NETWORKS — QUICK NOTES
 
 ---
@@ -713,5 +711,593 @@ Creates secure encrypted tunnel between you and internet.
 
 Proxy → Hides identity only  
 VPN → Hides identity + encrypts traffic
+
+---
+
+## Quick Revision Notes
+
+### Networking Concepts
+
+---
+
+### 1. What is Routing?
+
+Routing is the process of selecting the best path for data packets to travel from a source device to a destination device across a network.
+
+#### Key Components
+
+- Routers
+- Routing Tables
+- Routing Protocols
+
+#### Types of Routing
+
+- Static Routing – manually configured paths
+- Dynamic Routing – automatic path selection
+
+---
+
+### 2. What Happens When You Ping a Website
+
+#### Example: ping facebook.com
+
+#### Steps:
+
+1. **DNS Resolution**
+   - Domain name is converted to IP address
+   - Example: facebook.com → 57.144.56.1
+
+2. **ICMP Packet Creation**
+   - System creates an ICMP Echo Request packet
+
+3. **Routing Table Lookup**
+   - OS checks where to send packet next
+
+4. **ARP Resolution**
+   - Finds MAC address of the gateway
+
+5. **Packet Sent to Router**
+
+6. **Routers Forward Packet Across Internet**
+
+7. **Facebook Server Responds**
+
+8. **Reply Returns to Your Device**
+
+---
+
+### 3. IP Address Types
+
+#### Local Private IP
+
+Example:
+
+- 10.36.173.15
+
+#### Public IPv4
+
+Example:
+
+- 106.192.67.211
+
+#### Public IPv6
+
+Example:
+
+- 2401:4900:caac:e542:5e7b:1927:7c77:5808
+
+#### Commands
+
+- Show IP addresses:
+  ip addr
+
+- Show neighbors (ARP table):
+  ip neigh
+
+- Show routing table:
+  ip route
+
+- Find public IP:
+  curl ifconfig.me
+
+---
+
+### 4. Traceroute
+
+Traceroute shows the path packets take across the internet.
+
+Command:
+traceroute facebook.com
+
+#### What Traceroute Shows
+
+- Each router hop
+- Latency between hops
+- Network path structure
+
+#### Important Notes
+
+- Some hops show \* \* \* due to ICMP blocking
+- Final hops may be hidden for security
+
+---
+
+### 5. Routing Protocols Overview
+
+Routing protocols decide HOW routers choose paths.
+
+#### Two Main Categories
+
+| Type                            | Example |
+| :------------------------------ | :------ |
+| Interior Gateway Protocol (IGP) | OSPF    |
+| Exterior Gateway Protocol (EGP) | BGP     |
+
+---
+
+### 6. OSPF – Open Shortest Path First
+
+- Used INSIDE one organization or ISP
+- Calculates shortest path using Dijkstra algorithm
+- Based on cost, bandwidth, and speed
+- Fast and dynamic
+
+#### Used In:
+
+- Company networks
+- University networks
+- Internal ISP routing
+
+#### Goal:
+
+Find the best path inside a single network
+
+---
+
+### 7. BGP – Border Gateway Protocol
+
+- Used BETWEEN different networks and ISPs
+- Runs the entire internet
+- Policy-based routing
+- Does NOT care about speed or distance
+
+#### What BGP Cares About:
+
+- Business agreements
+- Policies
+- Stability
+- AS-PATH
+
+---
+
+### 8. Difference Between OSPF and BGP
+
+| Feature        | OSPF             | BGP              |
+| :------------- | :--------------- | :--------------- |
+| Type           | Interior (IGP)   | Exterior (EGP)   |
+| Used In        | Inside a network | Between networks |
+| Goal           | Shortest path    | Best policy path |
+| Algorithm      | Dijkstra         | Path Vector      |
+| Internet Usage | No               | Yes              |
+
+---
+
+#### Important Difference Again
+
+| Protocol | Cares About                  |
+| :------- | :--------------------------- |
+| OSPF     | Speed / cost / shortest path |
+| RIP      | Hop count (distance)         |
+| BGP      | Policies and preferences     |
+
+---
+
+### 9. Autonomous System (AS)
+
+#### Definition
+
+An Autonomous System is a large network under single administrative control.
+
+#### AS Number (ASN)
+
+- Unique identifier for each network on the internet
+- Example:
+  - Google: AS15169
+  - Facebook: AS32934
+
+---
+
+### 10. AS-PATH in BGP
+
+- AS-PATH is a list of AS numbers a packet passes through
+- Used for:
+  - Loop prevention
+  - Path selection
+
+#### Example AS-PATH
+
+AS100 → AS200 → AS32934
+
+---
+
+### 11. Important Commands Learned
+
+#### DNS Lookup
+
+nslookup facebook.com
+
+#### Force IPv4 or IPv6
+
+curl -4 ifconfig.me
+curl -6 ifconfig.me
+
+#### Trace Route
+
+traceroute facebook.com
+
+#### View ARP Table
+
+ip neigh
+
+---
+
+### Final Summary
+
+- OSPF is used inside networks
+- BGP is used between networks
+- Traceroute shows path, not protocol
+- Internet routing is mostly BGP
+- Your PC only knows next hop, not full path
+
+---
+
+### GATE Networking Revision – Application Layer Protocols
+
+---
+
+### 1. Electronic Mail System Overview
+
+Email communication works using three main protocols:
+
+| Protocol | Purpose                                 |
+| :------- | :-------------------------------------- |
+| SMTP     | Sending emails                          |
+| POP3     | Receiving and downloading emails        |
+| IMAP     | Receiving and managing emails on server |
+
+---
+
+### 2. SMTP – Simple Mail Transfer Protocol
+
+#### Definition
+
+SMTP is a protocol used to SEND emails from a client to a mail server and between mail servers.
+
+#### Layer
+
+- Application Layer Protocol
+- Works over TCP
+
+#### Default Port Numbers
+
+- Port 25 – traditional SMTP
+- Port 465 – SMTPS (SSL)
+- Port 587 – SMTP with TLS (recommended)
+
+---
+
+#### Features of SMTP
+
+- Used only for sending emails
+- Text-based protocol
+- Uses TCP for reliable delivery
+- Works in push model (client pushes mail to server)
+
+---
+
+#### SMTP Communication Model
+
+User → SMTP Client → SMTP Server → Destination SMTP Server → Receiver
+
+---
+
+#### SMTP Commands
+
+Some important SMTP commands:
+
+| Command   | Meaning                   |
+| :-------- | :------------------------ |
+| HELO      | Identify client to server |
+| MAIL FROM | Sender address            |
+| RCPT TO   | Receiver address          |
+| DATA      | Start message body        |
+| QUIT      | End session               |
+
+---
+
+#### Limitations of SMTP
+
+- Cannot retrieve emails
+- No authentication by default
+- Works only for sending
+
+---
+
+### 3. POP3 – Post Office Protocol Version 3
+
+#### Definition
+
+POP3 is a protocol used to DOWNLOAD emails from mail server to client device.
+
+#### Port Numbers
+
+| Type        | Port |
+| :---------- | :--- |
+| POP3        | 110  |
+| POP3S (SSL) | 995  |
+
+---
+
+#### Characteristics
+
+- Downloads emails to local device
+- Usually deletes mail from server after download
+- Works in pull model
+- Simple and lightweight
+
+---
+
+#### POP3 Modes
+
+1. **Download and Delete**
+2. **Download and Keep Copy on Server**
+
+---
+
+#### Disadvantages of POP3
+
+- Not suitable for multiple devices
+- Limited synchronization
+- Emails stored locally
+
+---
+
+### 4. IMAP – Internet Message Access Protocol
+
+#### Definition
+
+IMAP is used to ACCESS and MANAGE emails directly on the mail server.
+
+#### Port Numbers
+
+| Type        | Port |
+| :---------- | :--- |
+| IMAP        | 143  |
+| IMAPS (SSL) | 993  |
+
+---
+
+#### Advantages of IMAP
+
+- Emails remain on server
+- Supports multiple devices
+- Folder synchronization
+- Better for modern email usage
+
+---
+
+#### IMAP vs POP3
+
+| Feature      | POP3          | IMAP             |
+| :----------- | :------------ | :--------------- |
+| Storage      | Local device  | Server           |
+| Sync         | No            | Yes              |
+| Multi-device | Poor          | Excellent        |
+| Speed        | Faster        | Slightly slower  |
+| Use Case     | Single device | Multiple devices |
+
+---
+
+### 5. Difference Between SMTP, POP3, IMAP
+
+| Protocol | Function                    |
+| :------- | :-------------------------- |
+| SMTP     | Send emails                 |
+| POP3     | Receive and download emails |
+| IMAP     | Access and manage emails    |
+
+---
+
+### 6. SSH – Secure Shell
+
+#### Definition
+
+SSH is a secure protocol used to remotely access and manage systems over a network.
+
+---
+
+#### Uses of SSH
+
+- Remote login
+- Remote command execution
+- Secure file transfer
+- Server administration
+
+---
+
+#### Port Number
+
+- Default SSH Port: **22**
+
+---
+
+#### Features
+
+- Encrypted communication
+- Secure authentication
+- Replaces older insecure protocols like Telnet
+- Supports key-based authentication
+
+---
+
+#### Authentication Methods
+
+1. Password authentication
+2. Public-key authentication
+
+---
+
+#### SSH Common Commands
+
+Connect to remote server:
+
+ssh user@hostname
+
+Copy files securely:
+
+scp file user@host:/path
+
+---
+
+#### Advantages of SSH
+
+- Strong security
+- Data confidentiality
+- Data integrity
+- Protection from eavesdropping
+
+---
+
+### 7. FTP – File Transfer Protocol
+
+#### Definition
+
+FTP is used to transfer files between a client and server over a network.
+
+---
+
+#### Port Numbers
+
+| Mode        | Port |
+| :---------- | :--- |
+| FTP Control | 21   |
+| FTP Data    | 20   |
+
+---
+
+#### Modes of FTP
+
+1. **Active Mode**
+2. **Passive Mode**
+
+| Feature                   | Active Mode | Passive Mode |
+| :------------------------ | :---------- | :----------- |
+| Who opens data connection | Server      | Client       |
+| Firewall friendly         | No          | Yes          |
+| Used today                | Rarely      | Mostly       |
+| Ports used                | 20 and 21   | 21 + random  |
+| NAT compatibility         | Poor        | Good         |
+
+---
+
+#### Characteristics
+
+- Client-server model
+- Supports upload and download
+- Unencrypted protocol
+- Works over TCP
+
+---
+
+#### FTP Commands
+
+| Command | Purpose       |
+| :------ | :------------ |
+| USER    | Username      |
+| PASS    | Password      |
+| LIST    | List files    |
+| RETR    | Download file |
+| STOR    | Upload file   |
+| QUIT    | End session   |
+
+---
+
+#### Limitations of FTP
+
+- No encryption
+- Credentials sent in plain text
+- Not secure for sensitive data
+
+---
+
+### 8. Secure Alternatives to FTP
+
+Because FTP is insecure, modern replacements are:
+
+| Protocol | Meaning                    |
+| :------- | :------------------------- |
+| FTPS     | FTP over SSL/TLS           |
+| SFTP     | SSH File Transfer Protocol |
+
+---
+
+#### Difference: FTP vs SFTP
+
+| Feature       | FTP | SFTP |
+| :------------ | :-- | :--- |
+| Encryption    | No  | Yes  |
+| Port          | 21  | 22   |
+| Security      | Low | High |
+| Protocol Base | FTP | SSH  |
+
+---
+
+### 9. GATE Exam Important Points
+
+#### Remember:
+
+- SMTP is used ONLY for sending
+- POP3 and IMAP are for receiving
+- SSH provides encrypted remote login
+- FTP is insecure by default
+- SFTP is NOT FTP – it is part of SSH
+
+---
+
+### 10. Common GATE Questions
+
+#### Example Question 1
+
+Which protocol is used to support electronic mail?
+
+Answer: TCP (Transport) and SMTP (Application)
+
+---
+
+#### Example Question 2
+
+Default port of SSH?
+
+Answer: 22
+
+---
+
+#### Example Question 3
+
+Which protocol keeps mail on server?
+
+Answer: IMAP
+
+---
+
+### Final Quick Revision Summary
+
+| Protocol | Purpose             | Port     |
+| :------- | :------------------ | :------- |
+| SMTP     | Send mail           | 25 / 587 |
+| POP3     | Receive mail        | 110      |
+| IMAP     | Access mail         | 143      |
+| SSH      | Secure remote login | 22       |
+| FTP      | File transfer       | 21       |
 
 ---

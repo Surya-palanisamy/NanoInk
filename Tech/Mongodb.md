@@ -12,7 +12,6 @@ Goal: Go beyond “it’s a JSON database” and understand MongoDB’s internal
 
 Relational databases normalize data across many tables (e.g., Users, Orders, Payments) and rely on JOINs. At scale, JOINs can be expensive. MongoDB’s guiding principle is:
 
-![MongoDB guiding principle](<../images/Pasted image 20260126152000.png>)
 
 - Data that is accessed together should be stored together. 📦
   Benefits:
@@ -20,6 +19,7 @@ Relational databases normalize data across many tables (e.g., Users, Orders, Pay
 - Aligns naturally with object-oriented models 🧩
 - Reduces impedance mismatch 🔧
 - Fewer JOINs → faster reads ⚡
+![MongoDB guiding principle](<../images/Pasted image 20260126152000.png>)
 
 ![Document model benefits](<../images/Pasted image 20260126152059.png>)
 
@@ -37,7 +37,35 @@ The `_id` Field (ObjectId) 🔑
 
 - 12 bytes: 4 bytes timestamp, 5 bytes random, 3 bytes counter
 - Creation time can be extracted from `_id` ⏲️
+Json:
+```
+{
+    "name": "Spring Boot",
+    "completed": false,
+    "videos": 160,
+    "likes": 10400,
+    "registrations": 4600,
+    "instructors": ["Prakash"],
+    "tech": ["Java", "Spring"],
+    "level": "Advanced"
+  }
+```
 
+
+MQl:
+```
+{
+    name: "Spring Boot",
+    completed: false,
+    videos: 160,
+    likes: 10400,
+    registrations: 4600,
+    instructors: ["Prakash"],
+    tech: ["Java", "Spring"],
+    level: "Advanced",
+    date:Date()
+  }
+```
 ---
 
 ## 2. Core Mechanics & CRUD 🛠️

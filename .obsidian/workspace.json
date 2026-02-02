@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mongodb.md",
+                "file": "Tech/Computer-networks.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Mongodb"
+              "title": "Computer-networks"
             }
           }
         ]
@@ -201,8 +201,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "fa9f6c9a5edb738f",
+  "active": "92fd686337d1d14f",
   "lastOpenFiles": [
+    "Tech/Mongodb.md",
     "images/mongoDB.png",
     "images/mongoDB20260126154740.png",
     "DSA/Arrays.md",
@@ -228,7 +229,6 @@
     "images/Sharding and replication.gif",
     "Tech/Sharding and replication.gif",
     "images/Pasted image 20260126153124.png",
-    "images/Pasted image 20260126152411.png",
     "2026-01-25.md",
     "Untitled.canvas",
     "Untitled 1.canvas",

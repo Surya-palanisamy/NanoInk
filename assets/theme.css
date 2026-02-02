@@ -236,6 +236,15 @@ body {
   font-family: "JetBrains Mono", "Inter", monospace;
 }
 
+table {
+  border-collapse: collapse;
+}
+td,
+th {
+  border: 1px solid #444;
+  padding: 12px 16px;
+}
+
 .note-body pre {
   background: #1e1e1e;
   border-radius: var(--radius);
@@ -379,7 +388,6 @@ body {
 }
 
 .note-body img {
-
   border-radius: 10px;
   border: 1px solid var(--border);
   display: block;
