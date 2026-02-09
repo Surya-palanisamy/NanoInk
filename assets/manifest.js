@@ -1,5 +1,10 @@
 // List of available markdown notes with categories
 const MANIFEST = [
+  {
+    title: "Time and Space Complexity",
+    path: "DSA/Algorithms.md",
+    category: "DSA",
+  },
   { title: "Mongodb", path: "Tech/Mongodb.md", category: "Database" },
   { title: "Mongodb", path: "Tech/DBMS.md", category: "Database" },
   { title: "Arrays", path: "DSA/Arrays.md", category: "DSA" },
