@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Tech/Computer-networks.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -30,8 +30,33 @@
               "icon": "lucide-file",
               "title": "Computer-networks"
             }
+          },
+          {
+            "id": "855cb249bb7aa215",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Algorithms.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Algorithms"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -201,8 +226,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "92fd686337d1d14f",
+  "active": "855cb249bb7aa215",
   "lastOpenFiles": [
+    "Tech/Computer-networks.md",
+    "Algorithms.md",
+    "images/Pasted image 20260202225457.png",
     "Tech/Mongodb.md",
     "images/mongoDB.png",
     "images/mongoDB20260126154740.png",
@@ -228,7 +256,6 @@
     "shar.md",
     "images/Sharding and replication.gif",
     "Tech/Sharding and replication.gif",
-    "images/Pasted image 20260126153124.png",
     "2026-01-25.md",
     "Untitled.canvas",
     "Untitled 1.canvas",
@@ -238,7 +265,6 @@
     "Tech/Neovim.md",
     "Tech/OS.md",
     "Tech/Ansible.md",
-    "Tech/Computer-networks.md",
     "Tech/Css.md",
     "Tech/Markdown.md",
     "DSA/LinkedList.md",
@@ -249,7 +275,6 @@
     "Tech/Html.md",
     "Tech/Nginx.md",
     "Tech/Ssh.md",
-    "Tech/Git-Github.md",
-    "Tech/Docker.md"
+    "Tech/Git-Github.md"
   ]
 }

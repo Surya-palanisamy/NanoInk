@@ -490,6 +490,7 @@ Types:
 - Dynamic NAT
 - PAT (Port Address Translation)
 
+![[../images/Pasted image 20260202225457.png]]
 ---
 
 ## 25. Firewall
