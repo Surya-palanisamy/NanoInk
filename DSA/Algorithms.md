@@ -2,6 +2,8 @@
 
 ## Time Complexity & Space Complexity
 
+![[../images/Algorithm.png]]
+
 =============================================
 1. Sorting Algorithms Comparison
 =============================================

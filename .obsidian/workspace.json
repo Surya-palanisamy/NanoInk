@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "38e5178e1ef9ead5",
+        "id": "2a3e7917df41f0d9",
         "type": "tabs",
         "children": [
           {
-            "id": "92fd686337d1d14f",
+            "id": "17ca9508cdd2b532",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -187,8 +187,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "92fd686337d1d14f",
+  "active": "17ca9508cdd2b532",
   "lastOpenFiles": [
+    "DSA/Algorithms.md",
+    "images/Algorithm.png",
+    "images/Pasted image 20260126152149.png",
+    "images/Pasted image 20260126152134.png",
+    "images/Pasted image 20260126152112.png",
+    "images/Pasted image 20260126152059.png",
+    "images/Pasted image 20260126152000.png",
     "Tech/Nginx.md",
     "Tech/ComputerNetworks/DNS.md",
     "DSA/LinkedList.md",
@@ -213,14 +220,8 @@
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.d.ts",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.d.ts",
-    "astro/public/favicon.svg",
     "astro/README.md",
-    "images/Pasted image 20260126154740.png",
-    "images/Nginx.png",
-    "images/mongodb.gif",
     "shar.md",
-    "images/Sharding and replication.gif",
-    "Tech/Sharding and replication.gif",
     "2026-01-25.md",
     "Untitled.canvas",
     "Untitled 1.canvas",
@@ -234,8 +235,6 @@
     "Tech/Markdown.md",
     "DSA/Patterns.md",
     "DSA/Matrix.md",
-    "Ma.md",
-    "Tech/Html.md",
-    "Tech/Ssh.md"
+    "Ma.md"
   ]
 }
