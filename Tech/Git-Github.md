@@ -83,7 +83,7 @@ Stage + commit tracked files
 
 ---
 
-![](../images/git.png)
+![Git Workflow](images/git.png)
 
 ### 5. BRANCHING
 
@@ -187,7 +187,7 @@ Fetch without merging
 
 ---
 
-![](../images/Git-and-github.png)
+![Git and GitHub](images/Git-and-github.png)
 
 ### 8. STASH
 

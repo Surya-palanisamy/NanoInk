@@ -2,7 +2,7 @@
 
 ---
 
-![](../images/Docker-and-VM.png)
+![Docker vs VM comparison](images/Docker-and-VM.png)
 
 | Feature        | VMs                 | Containers            |
 | -------------- | ------------------- | --------------------- |

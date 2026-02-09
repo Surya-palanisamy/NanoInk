@@ -112,30 +112,6 @@ ssh myserver
 
 connected
 
-### SSH Config File (Time Saver!)
-
-Location:
-
-```
-~/.ssh/config
-```
-
----
-
-Example:
-
-```
-Host myserver   HostName 192.168.1.10   User surya   Port 22   IdentityFile ~/.ssh/id_rsa
-```
-
-Now simply run:
-
-```bash
-ssh myserver
-```
-
----
-
 ### 📂 File Transfer Commands
 
 #### Upload File → Server

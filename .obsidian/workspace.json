@@ -37,8 +37,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Algorithms.md",
-                "mode": "source",
+                "file": "Tech/Nginx.md",
+                "mode": "preview",
                 "source": false,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Algorithms"
+              "title": "Nginx"
             }
           }
         ],
@@ -228,6 +228,9 @@
   },
   "active": "855cb249bb7aa215",
   "lastOpenFiles": [
+    "Tech/ComputerNetworks/DNS.md",
+    "DSA/LinkedList.md",
+    "DSA/DynamicProgramming.md",
     "Tech/Computer-networks.md",
     "Algorithms.md",
     "images/Pasted image 20260202225457.png",
@@ -267,14 +270,11 @@
     "Tech/Ansible.md",
     "Tech/Css.md",
     "Tech/Markdown.md",
-    "DSA/LinkedList.md",
-    "DSA/DynamicProgramming.md",
     "DSA/Patterns.md",
     "DSA/Matrix.md",
     "Ma.md",
     "Tech/Html.md",
     "Tech/Nginx.md",
-    "Tech/Ssh.md",
-    "Tech/Git-Github.md"
+    "Tech/Ssh.md"
   ]
 }

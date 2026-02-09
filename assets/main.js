@@ -221,6 +221,53 @@
     document.body.style.overflow = "";
   }
 
+  // Swipe gesture support for mobile
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+  const minSwipeDistance = 50;
+  const maxSwipeTime = 300;
+  let touchStartTime = 0;
+
+  function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+    touchStartTime = Date.now();
+  }
+
+  function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    const touchEndTime = Date.now();
+
+    // Check if swipe was quick enough
+    if (touchEndTime - touchStartTime > maxSwipeTime) return;
+
+    const swipeDistanceX = touchEndX - touchStartX;
+    const swipeDistanceY = Math.abs(touchEndY - touchStartY);
+
+    // Ensure horizontal swipe is dominant
+    if (swipeDistanceY > Math.abs(swipeDistanceX) * 0.5) return;
+
+    // Swipe right to open (from left edge)
+    if (
+      swipeDistanceX > minSwipeDistance &&
+      touchStartX < 30 &&
+      !sidebar.classList.contains("open")
+    ) {
+      openSidebar();
+    }
+
+    // Swipe left to close (when sidebar is open)
+    if (
+      swipeDistanceX < -minSwipeDistance &&
+      sidebar.classList.contains("open")
+    ) {
+      closeSidebar();
+    }
+  }
+
   function init() {
     renderNav();
     searchInput.addEventListener("input", (e) => filterNav(e.target.value));
@@ -245,6 +292,33 @@
     // Close sidebar on escape key
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeSidebar();
+    });
+
+    // Swipe gesture support for mobile
+    if ("ontouchstart" in window) {
+      document.addEventListener("touchstart", handleTouchStart, {
+        passive: true,
+      });
+      document.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+      // Also handle swipe on sidebar overlay
+      if (sidebarOverlay) {
+        sidebarOverlay.addEventListener("touchstart", handleTouchStart, {
+          passive: true,
+        });
+        sidebarOverlay.addEventListener("touchend", handleTouchEnd, {
+          passive: true,
+        });
+      }
+    }
+
+    // Handle window resize - close sidebar if switching to desktop
+    let lastWidth = window.innerWidth;
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 960 && lastWidth <= 960) {
+        closeSidebar();
+      }
+      lastWidth = window.innerWidth;
     });
 
     loadFromHash();

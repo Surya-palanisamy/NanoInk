@@ -2,7 +2,7 @@
 
 ---
 
-![](../images/nginx.png)
+![NGINX](images/Nginx.png)
 
 ## 1️⃣ Install & Basic Commands
 

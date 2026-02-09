@@ -1,137 +1,168 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-    />
-    <title>Notebook</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css"
-    />
-    <style>
-      /* Override highlight.js theme with VS Code Dark+ colors */
-      .hljs {
-        background: #1e1e1e !important;
-        color: #d4d4d4 !important;
-      }
-      .hljs-keyword {
-        color: #b810af;
-      }
-      .hljs-built_in {
-        color: #4ec9b0 !important;
-      }
-      .hljs-string {
-        color: #42e111 !important;
-      }
-      .hljs-number {
-        color: #b5cea8 !important;
-      }
-      .hljs-comment {
-        color: #6a9955 !important;
-      }
-      .hljs-function,
-      .hljs-title {
-        color: #dcdcaa !important;
-      }
-      .hljs-variable,
-      .hljs-params {
-        color: #9cdcfe !important;
-      }
-      .hljs-attr {
-        color: #9cdcfe !important;
-      }
-      .hljs-literal {
-        color: #c926ce;
-      }
-      .hljs-meta {
-        color: #c586c0 !important;
-      }
-      .hljs-regexp {
-        color: #d16969 !important;
-      }
-      .hljs-symbol {
-        color: #b5cea8 !important;
-      }
-      .hljs-class {
-        color: #4ec9b0 !important;
-      }
-      .hljs-property {
-        color: #9cdcfe !important;
-      }
-    </style>
-    <link rel="stylesheet" href="assets/theme.css" />
-  </head>
-  <body>
-    <div class="app">
-      <!-- Mobile menu toggle -->
-      <button
-        class="menu-toggle"
-        id="menu-toggle"
-        aria-label="Toggle navigation"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
-      <!-- Overlay for mobile -->
-      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+        <title>Notebook</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css"
+        />
+        <style>
+            /* Override highlight.js theme with GitHub Dark colors */
+            .hljs {
+                background: #0d1117 !important;
+                color: #c9d1d9 !important;
+            }
+            .hljs-keyword {
+                color: #ff7b72 !important;
+            }
+            .hljs-built_in {
+                color: #79c0ff !important;
+            }
+            .hljs-string {
+                color: #a5d6ff !important;
+            }
+            .hljs-number {
+                color: #79c0ff !important;
+            }
+            .hljs-comment {
+                color: #8b949e !important;
+                font-style: italic;
+            }
+            .hljs-function,
+            .hljs-title {
+                color: #d2a8ff !important;
+            }
+            .hljs-variable,
+            .hljs-params {
+                color: #ffa657 !important;
+            }
+            .hljs-attr {
+                color: #79c0ff !important;
+            }
+            .hljs-literal {
+                color: #79c0ff !important;
+            }
+            .hljs-meta {
+                color: #79c0ff !important;
+            }
+            .hljs-regexp {
+                color: #a5d6ff !important;
+            }
+            .hljs-symbol {
+                color: #79c0ff !important;
+            }
+            .hljs-class {
+                color: #ffa657 !important;
+            }
+            .hljs-property {
+                color: #79c0ff !important;
+            }
+            .hljs-name,
+            .hljs-selector-tag,
+            .hljs-tag {
+                color: #7ee787 !important;
+            }
+            .hljs-selector-class {
+                color: #d2a8ff !important;
+            }
+            .hljs-selector-id {
+                color: #79c0ff !important;
+            }
+            .hljs-attribute {
+                color: #79c0ff !important;
+            }
+            .hljs-operator {
+                color: #ff7b72 !important;
+            }
+            .hljs-type {
+                color: #ffa657 !important;
+            }
+            .hljs-addition {
+                color: #aff5b4 !important;
+                background-color: rgba(46, 160, 67, 0.15) !important;
+            }
+            .hljs-deletion {
+                color: #ffdcd7 !important;
+                background-color: rgba(248, 81, 73, 0.15) !important;
+            }
+        </style>
+        <link rel="stylesheet" href="assets/theme.css" />
+    </head>
+    <body>
+        <div class="app">
+            <!-- Mobile menu toggle -->
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Toggle navigation"
+            >
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <!-- Overlay for mobile -->
+            <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-      <aside class="sidebar" id="sidebar">
-        <div class="brand">Vault</div>
-        <div class="search">
-          <input
-            id="search-input"
-            type="search"
-            placeholder="Search notes..."
-            autocomplete="off"
-          />
+            <aside class="sidebar" id="sidebar">
+                <div class="brand">Zdpad</div>
+                <div class="search">
+                    <input
+                        id="search-input"
+                        type="search"
+                        placeholder="Search notes..."
+                        autocomplete="off"
+                    />
+                </div>
+                <nav id="nav-list" aria-label="Notes navigation"></nav>
+            </aside>
+            <main class="content">
+                <header class="content-header">
+                    <div class="titles">
+                        <div class="breadcrumb" id="breadcrumb">
+                            Pick a note
+                        </div>
+                        <h1 id="note-title">Nothing loaded</h1>
+                    </div>
+                    <a
+                        id="open-source"
+                        class="ghost"
+                        href="#"
+                        target="_blank"
+                        rel="noopener"
+                        >Open markdown</a
+                    >
+                </header>
+                <article id="note-body" class="note-body">
+                    Select a file from the left to render it.
+                </article>
+            </main>
         </div>
-        <nav id="nav-list" aria-label="Notes navigation"></nav>
-      </aside>
-      <main class="content">
-        <header class="content-header">
-          <div class="titles">
-            <div class="breadcrumb" id="breadcrumb">Pick a note</div>
-            <h1 id="note-title">Nothing loaded</h1>
-          </div>
-          <a
-            id="open-source"
-            class="ghost"
-            href="#"
-            target="_blank"
-            rel="noopener"
-            >Open markdown</a
-          >
-        </header>
-        <article id="note-body" class="note-body">
-          Select a file from the left to render it.
-        </article>
-      </main>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
-    <script src="assets/manifest.js"></script>
-    <script src="assets/main.js"></script>
-  </body>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
+        <script src="assets/manifest.js"></script>
+        <script src="assets/main.js"></script>
+    </body>
 </html>

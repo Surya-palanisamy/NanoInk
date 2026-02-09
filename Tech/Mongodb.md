@@ -1,6 +1,6 @@
 # MongoDB: From Documents to Distributed Clusters 🚀
 
-![go](../images/mongoDB.png)
+![MongoDB](images/mongoDB.png)
 
 Goal: Go beyond “it’s a JSON database” and understand MongoDB’s internal mechanics, scaling strategies, indexing, and aggregation. 🧠
 
@@ -12,16 +12,16 @@ Goal: Go beyond “it’s a JSON database” and understand MongoDB’s internal
 
 Relational databases normalize data across many tables (e.g., Users, Orders, Payments) and rely on JOINs. At scale, JOINs can be expensive. MongoDB’s guiding principle is:
 
-
 - Data that is accessed together should be stored together. 📦
   Benefits:
 
 - Aligns naturally with object-oriented models 🧩
 - Reduces impedance mismatch 🔧
 - Fewer JOINs → faster reads ⚡
-![MongoDB guiding principle](<../images/Pasted image 20260126152000.png>)
 
-![Document model benefits](<../images/Pasted image 20260126152059.png>)
+![MongoDB guiding principle](images/Pasted%20image%2020260126152000.png)
+
+![Document model benefits](images/Pasted%20image%2020260126152059.png)
 
 ### BSON (Binary JSON) 🧱
 
@@ -37,7 +37,8 @@ The `_id` Field (ObjectId) 🔑
 
 - 12 bytes: 4 bytes timestamp, 5 bytes random, 3 bytes counter
 - Creation time can be extracted from `_id` ⏲️
-Json:
+  Json:
+
 ```
 {
     "name": "Spring Boot",
@@ -51,8 +52,8 @@ Json:
   }
 ```
 
-
 MQl:
+
 ```
 {
     name: "Spring Boot",
@@ -66,13 +67,14 @@ MQl:
     date:Date()
   }
 ```
+
 ---
 
 ## 2. Core Mechanics & CRUD 🛠️
 
 ### CRUD Operations 🔄
 
-![CRUD Operations](<../images/Pasted image 20260126152411.png>)
+![CRUD Operations](images/Pasted%20image%2020260126152411.png)
 
 Insert ➕
 
@@ -364,7 +366,7 @@ Shard Key 🔑:
 
 ## 6. Advanced & Modern Features ✨
 
-![Advanced features](<../images/Pasted image 20260126152149.png>)
+![Advanced features](images/Pasted%20image%2020260126152149.png)
 
 ### Multi-Document ACID Transactions 🔒
 
@@ -415,8 +417,8 @@ SQL still best for 🏦:
 - Strong relational integrity
 - Highly structured financial systems
 
-![SQL vs NoSQL comparison](<../images/Pasted image 20260126152201.png>)
+![SQL vs NoSQL comparison](images/Pasted%20image%2020260126152201.png)
 
 # How MongoDB works
 
-![How MongoDB works](../images/mongodb.gif)
+![How MongoDB works](images/mongodb.gif)

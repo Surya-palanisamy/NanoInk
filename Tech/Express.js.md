@@ -1,7 +1,6 @@
-
 ---
 
-![ok](../images/Express.png)
+![Express.js](images/Express.png)
 
 ### 1. Hello World
 
@@ -40,7 +39,7 @@ Run
 node index.js
 ```
 
-![](../images/Web-browser.png)
+![Web Browser](images/Web-browser.png)
 ---
 
 ### 2. Express Generator CLI Help
@@ -74,7 +73,7 @@ DEBUG=myapp:* npm start
 
 > Features
 
-![](../images/Express-features.png)
+![Express Features](images/Express-features.png)
 
 ---
 
@@ -592,8 +591,8 @@ console.log(tokenss);
 
 ### 21.Connect to MongoDB
 
-![](../images/mongodb.png)
-![](../images/mongodb-document.png)
+![MongoDB](images/mongodb.png)
+![MongoDB Document](images/mongodb-document.png)
 
 ---
 
