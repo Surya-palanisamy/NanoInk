@@ -1,6 +1,7 @@
 // List of available markdown notes with categories
 const MANIFEST = [
   { title: "Mongodb", path: "Tech/Mongodb.md", category: "Database" },
+  { title: "Mongodb", path: "Tech/DBMS.md", category: "Database" },
   { title: "Arrays", path: "DSA/Arrays.md", category: "DSA" },
   {
     title: "Bit Manipulation",
