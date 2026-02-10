@@ -88,16 +88,59 @@
     return Array.from(grouped.entries());
   }
 
+  // Track collapsed state of categories (null = not initialized yet)
+  let collapsedCategories = null;
+
   function renderNav() {
     navList.innerHTML = "";
+    navButtons.length = 0;
     const groups = groupEntries();
+
+    // Initialize all categories as collapsed on first render
+    if (collapsedCategories === null) {
+      collapsedCategories = new Set(groups.map(([category]) => category));
+    }
+
     groups.forEach(([category, items]) => {
       const groupEl = document.createElement("section");
       groupEl.className = "nav-group";
 
       const heading = document.createElement("h3");
-      heading.textContent = category;
+      heading.className = "nav-group-header";
+      const isCollapsed = collapsedCategories.has(category);
+
+      // Create toggle arrow
+      const arrow = document.createElement("span");
+      arrow.className = "nav-toggle-arrow";
+      arrow.innerHTML = `<svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M3 2 L7 5 L3 8 Z"/></svg>`;
+
+      const categoryText = document.createElement("span");
+      categoryText.className = "nav-category-text";
+      categoryText.textContent = category;
+
+      const itemCount = document.createElement("span");
+      itemCount.className = "nav-item-count";
+      itemCount.textContent = items.length;
+
+      heading.appendChild(arrow);
+      heading.appendChild(categoryText);
+      heading.appendChild(itemCount);
+
+      // Toggle collapse on click
+      heading.addEventListener("click", () => {
+        if (collapsedCategories.has(category)) {
+          collapsedCategories.delete(category);
+          groupEl.classList.remove("collapsed");
+        } else {
+          collapsedCategories.add(category);
+          groupEl.classList.add("collapsed");
+        }
+      });
+
       groupEl.appendChild(heading);
+
+      const itemsContainer = document.createElement("div");
+      itemsContainer.className = "nav-items-container";
 
       items.forEach((item) => {
         const button = document.createElement("button");
@@ -106,8 +149,15 @@
         button.innerHTML = `<span class="nav-title">${item.title}</span>`;
         button.addEventListener("click", () => selectEntry(item.path));
         navButtons.push(button);
-        groupEl.appendChild(button);
+        itemsContainer.appendChild(button);
       });
+
+      groupEl.appendChild(itemsContainer);
+
+      // Apply collapsed state if previously collapsed
+      if (isCollapsed) {
+        groupEl.classList.add("collapsed");
+      }
 
       navList.appendChild(groupEl);
     });
@@ -158,6 +208,66 @@
           block.innerHTML = simpleHighlight(block.textContent || "");
         });
       }
+      // Wrap tables for horizontal scrolling and add copy buttons
+      document.querySelectorAll(".note-body table").forEach((table) => {
+        // Create wrapper
+        const wrapper = document.createElement("div");
+        wrapper.className = "table-wrapper";
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+
+        // Check if table needs scrolling
+        const checkScroll = () => {
+          if (wrapper.scrollWidth > wrapper.clientWidth) {
+            wrapper.classList.add("has-scroll");
+          } else {
+            wrapper.classList.remove("has-scroll");
+          }
+          // Check if scrolled to end
+          if (
+            wrapper.scrollLeft + wrapper.clientWidth >=
+            wrapper.scrollWidth - 5
+          ) {
+            wrapper.classList.add("scrolled-end");
+          } else {
+            wrapper.classList.remove("scrolled-end");
+          }
+        };
+
+        checkScroll();
+        wrapper.addEventListener("scroll", checkScroll);
+        window.addEventListener("resize", checkScroll);
+
+        // Add copy button
+        const btn = document.createElement("button");
+        btn.className = "table-copy-btn";
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span>`;
+        btn.addEventListener("click", async () => {
+          try {
+            // Convert table to text format
+            const rows = table.querySelectorAll("tr");
+            let text = "";
+            rows.forEach((row) => {
+              const cells = row.querySelectorAll("th, td");
+              const rowText = Array.from(cells)
+                .map((cell) => cell.textContent.trim())
+                .join("\t");
+              text += rowText + "\n";
+            });
+            await navigator.clipboard.writeText(text.trim());
+            btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Copied!</span>`;
+            btn.classList.add("copied");
+            setTimeout(() => {
+              btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span>`;
+              btn.classList.remove("copied");
+            }, 2000);
+          } catch (e) {
+            btn.innerHTML = `<span>Failed</span>`;
+          }
+        });
+        wrapper.appendChild(btn);
+      });
+
       // Add copy buttons to code blocks
       document.querySelectorAll(".note-body pre").forEach((pre) => {
         const code = pre.querySelector("code");

@@ -7,38 +7,43 @@ Operating System (OS) is system software that manages computer hardware, softwar
 ## 📚 Topics Covered
 
 ### Core Concepts
-| Topic | Description |
-|-------|-------------|
-| [Introduction](Introduction.md) | OS basics, types, functions, and architecture |
-| [Process Management](Process-Management.md) | Processes, PCB, states, and operations |
-| [Threads](Threads.md) | Thread concepts, types, and multithreading models |
-| [CPU Scheduling](CPU-Scheduling.md) | Scheduling algorithms and criteria |
+
+| Topic              | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| Introduction       | OS basics, types, functions, and architecture     |
+| Process Management | Processes, PCB, states, and operations            |
+| Threads            | Thread concepts, types, and multithreading models |
+| CPU Scheduling     | Scheduling algorithms and criteria                |
 
 ### Synchronization & Deadlocks
-| Topic | Description |
-|-------|-------------|
-| [Process Synchronization](Process-Synchronization.md) | Critical section, race conditions, synchronization tools |
-| [Deadlocks](Deadlocks.md) | Conditions, prevention, avoidance, detection, and recovery |
+
+| Topic                   | Description                                                |
+| ----------------------- | ---------------------------------------------------------- |
+| Process Synchronization | Critical section, race conditions, synchronization tools   |
+| Deadlocks               | Conditions, prevention, avoidance, detection, and recovery |
 
 ### Memory Management
-| Topic | Description |
-|-------|-------------|
-| [Memory Management](Memory-Management.md) | Allocation strategies, fragmentation, paging, segmentation |
-| [Virtual Memory](Virtual-Memory.md) | Demand paging, page replacement, thrashing |
+
+| Topic             | Description                                                |
+| ----------------- | ---------------------------------------------------------- |
+| Memory Management | Allocation strategies, fragmentation, paging, segmentation |
+| Virtual Memory    | Demand paging, page replacement, thrashing                 |
 
 ### Storage & I/O
-| Topic | Description |
-|-------|-------------|
-| [File Systems](File-Systems.md) | File operations, directory structures, allocation methods |
-| [Disk Management](Disk-Management.md) | Disk scheduling algorithms, RAID |
-| [I/O Systems](IO-Systems.md) | I/O hardware, software, and techniques |
+
+| Topic           | Description                                               |
+| --------------- | --------------------------------------------------------- |
+| File Systems    | File operations, directory structures, allocation methods |
+| Disk Management | Disk scheduling algorithms, RAID                          |
+| I/O Systems     | I/O hardware, software, and techniques                    |
 
 ### Advanced Topics
-| Topic | Description |
-|-------|-------------|
-| [System Calls](System-Calls.md) | Types, examples, and working mechanism |
-| [Inter-Process Communication](IPC.md) | Shared memory, message passing, pipes |
-| [Quick Q&A](Quick-QA.md) | Frequently asked placement questions |
+
+| Topic                       | Description                            |
+| --------------------------- | -------------------------------------- |
+| System Calls                | Types, examples, and working mechanism |
+| Inter-Process Communication | Shared memory, message passing, pipes  |
+| Quick Q&A                   | Frequently asked placement questions   |
 
 ---
 
@@ -81,26 +86,26 @@ Operating System (OS) is system software that manages computer hardware, softwar
 
 ## 📊 Quick Comparison: OS Types
 
-| Type | Description | Example |
-|------|-------------|---------|
-| Batch OS | Jobs processed in batches | IBM Mainframe |
-| Time-Sharing | Multiple users, time slicing | Unix |
-| Real-Time | Strict timing constraints | VxWorks, RTLinux |
-| Distributed | Multiple computers as one | LOCUS, Amoeba |
-| Network OS | Server-based networking | Novell NetWare |
-| Mobile OS | For mobile devices | Android, iOS |
+| Type         | Description                  | Example          |
+| ------------ | ---------------------------- | ---------------- |
+| Batch OS     | Jobs processed in batches    | IBM Mainframe    |
+| Time-Sharing | Multiple users, time slicing | Unix             |
+| Real-Time    | Strict timing constraints    | VxWorks, RTLinux |
+| Distributed  | Multiple computers as one    | LOCUS, Amoeba    |
+| Network OS   | Server-based networking      | Novell NetWare   |
+| Mobile OS    | For mobile devices           | Android, iOS     |
 
 ---
 
 ## 💡 Important Formulas
 
-| Metric | Formula |
-|--------|---------|
-| Turnaround Time (TAT) | Completion Time - Arrival Time |
-| Waiting Time (WT) | Turnaround Time - Burst Time |
-| Response Time | First Response - Arrival Time |
-| CPU Utilization | (Busy Time / Total Time) × 100 |
-| Throughput | Number of Processes / Total Time |
+| Metric                | Formula                          |
+| --------------------- | -------------------------------- |
+| Turnaround Time (TAT) | Completion Time - Arrival Time   |
+| Waiting Time (WT)     | Turnaround Time - Burst Time     |
+| Response Time         | First Response - Arrival Time    |
+| CPU Utilization       | (Busy Time / Total Time) × 100   |
+| Throughput            | Number of Processes / Total Time |
 
 ---
 

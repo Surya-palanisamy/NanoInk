@@ -1,12 +1,16 @@
 // List of available markdown notes with categories
 const MANIFEST = [
+  // DSA
+  {
+    title: "Overview",
+    path: "DSA/README.md",
+    category: "DSA",
+  },
   {
     title: "Time and Space Complexity",
     path: "DSA/Algorithms.md",
     category: "DSA",
   },
-  { title: "Mongodb", path: "Tech/Mongodb.md", category: "Database" },
-  { title: "Mongodb", path: "Tech/DBMS.md", category: "Database" },
   { title: "Arrays", path: "DSA/Arrays.md", category: "DSA" },
   {
     title: "Bit Manipulation",
@@ -14,17 +18,12 @@ const MANIFEST = [
     category: "DSA",
   },
   {
-    title: "DSA Overview",
-    path: "DSA/DSA.md",
-    category: "DSA",
-  },
-  {
-    title: "DynamicProgramming",
+    title: "Dynamic Programming",
     path: "DSA/DynamicProgramming.md",
     category: "DSA",
   },
   {
-    title: "LinkedList",
+    title: "Linked List",
     path: "DSA/LinkedList.md",
     category: "DSA",
   },
@@ -53,82 +52,138 @@ const MANIFEST = [
     path: "DSA/Strings.md",
     category: "DSA",
   },
+  // Database - SQL
   {
-    title: "Ansible",
-    path: "Tech/Ansible.md",
-    category: "Tech",
+    title: "Overview",
+    path: "Tech/Database/README.md",
+    category: "Database",
   },
   {
-    title: "Css",
-    path: "Tech/Css.md",
-    category: "Tech",
+    title: "DBMS Fundamentals",
+    path: "Tech/Database/SQL/DBMS.md",
+    category: "Database",
   },
   {
-    title: "Docker",
-    path: "Tech/Docker.md",
-    category: "Tech",
+    title: "SQL Language",
+    path: "Tech/Database/SQL/SQL.md",
+    category: "Database",
+  },
+  // Database - NoSQL
+  {
+    title: "MongoDB",
+    path: "Tech/Database/NoSQL/MongoDB.md",
+    category: "Database",
+  },
+  {
+    title: "Redis",
+    path: "Tech/Database/NoSQL/Redis.md",
+    category: "Database",
+  },
+  // Web Development
+  {
+    title: "Overview",
+    path: "Tech/WebDev/README.md",
+    category: "Web Development",
+  },
+  {
+    title: "HTML",
+    path: "Tech/WebDev/Html.md",
+    category: "Web Development",
+  },
+  {
+    title: "CSS",
+    path: "Tech/WebDev/Css.md",
+    category: "Web Development",
+  },
+  {
+    title: "JavaScript",
+    path: "Tech/WebDev/JavaScript.md",
+    category: "Web Development",
+  },
+  {
+    title: "JS Notes",
+    path: "Tech/WebDev/Js.md",
+    category: "Web Development",
   },
   {
     title: "Express.js",
-    path: "Tech/Express.js.md",
-    category: "Tech",
+    path: "Tech/WebDev/Express.js.md",
+    category: "Web Development",
+  },
+  // DevOps
+  {
+    title: "Overview",
+    path: "Tech/DevOps/README.md",
+    category: "DevOps",
   },
   {
-    title: "Git & Github",
-    path: "Tech/Git-Github.md",
-    category: "Tech",
+    title: "Ansible",
+    path: "Tech/DevOps/Ansible.md",
+    category: "DevOps",
   },
   {
-    title: "Html",
-    path: "Tech/Html.md",
-    category: "Tech",
-  },
-  {
-    title: "Linux Guide",
-    path: "Tech/Linux-Guide.md",
-    category: "Tech",
-  },
-  {
-    title: "Markdown",
-    path: "Tech/Markdown.md",
-    category: "Tech",
-  },
-  {
-    title: "Neovim",
-    path: "Tech/Neovim.md",
-    category: "Tech",
+    title: "Docker",
+    path: "Tech/DevOps/Docker.md",
+    category: "DevOps",
   },
   {
     title: "Nginx",
-    path: "Tech/Nginx.md",
-    category: "Tech",
-  },
-  {
-    title: "SSH",
-    path: "Tech/Ssh.md",
-    category: "Tech",
-  },
-  {
-    title: "Systemd Linux",
-    path: "Tech/systemd linux.md",
-    category: "Tech",
-  },
-  {
-    title: "Java Script",
-    path: "Tech/JavaScript.md",
-    category: "Tech",
+    path: "Tech/DevOps/Nginx.md",
+    category: "DevOps",
   },
   {
     title: "Terraform vs Ansible vs Kubernetes",
-    path: "Tech/Terraform vs Ansible vs Kubernetes.md",
-    category: "Tech",
+    path: "Tech/DevOps/Terraform-vs-Ansible-vs-Kubernetes.md",
+    category: "DevOps",
+  },
+  // Tools
+  {
+    title: "Overview",
+    path: "Tech/Tools/README.md",
+    category: "Tools",
   },
   {
-    title: "zshrc",
-    path: "Tech/zshrc.md",
-    category: "Tech",
+    title: "Git & GitHub",
+    path: "Tech/Tools/Git-Github.md",
+    category: "Tools",
   },
-  // Computer Networks - Organized
+  {
+    title: "Markdown",
+    path: "Tech/Tools/Markdown.md",
+    category: "Tools",
+  },
+  {
+    title: "Neovim",
+    path: "Tech/Tools/Neovim.md",
+    category: "Tools",
+  },
+  // Linux
+  {
+    title: "Overview",
+    path: "Tech/Linux/README.md",
+    category: "Linux",
+  },
+  {
+    title: "Linux Guide",
+    path: "Tech/Linux/Linux-Guide.md",
+    category: "Linux",
+  },
+  {
+    title: "SSH",
+    path: "Tech/Linux/Ssh.md",
+    category: "Linux",
+  },
+  {
+    title: "Systemd",
+    path: "Tech/Linux/Systemd-Linux.md",
+    category: "Linux",
+  },
+  {
+    title: "Zsh Configuration",
+    path: "Tech/Linux/zshrc.md",
+    category: "Linux",
+  },
+  // Computer Networks
   {
     title: "Overview",
     path: "Tech/ComputerNetworks/README.md",
@@ -194,7 +249,7 @@ const MANIFEST = [
     path: "Tech/ComputerNetworks/Quick-QA.md",
     category: "Computer Networks",
   },
-  // Operating Systems - Organized
+  // Operating Systems
   {
     title: "Overview",
     path: "Tech/OperatingSystems/README.md",

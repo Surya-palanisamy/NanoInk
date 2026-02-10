@@ -112,9 +112,8 @@ Important Points:
 - Hashing average: O(1)  
 - DP generally increases both time and space  
 
-=============================================
-FINAL MEMORY TRICKS
-=============================================
+
+# FINAL MEMORY TRICKS
 
 - Stable + fast: Merge Sort  
 - In-place + guaranteed: Heap Sort  

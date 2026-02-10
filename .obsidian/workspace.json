@@ -11,10 +11,24 @@
             "id": "17ca9508cdd2b532",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "DSA/Algorithms.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Algorithms"
             }
           }
         ]
@@ -189,6 +203,8 @@
   },
   "active": "17ca9508cdd2b532",
   "lastOpenFiles": [
+    "images/Pasted image 20260209220007.png",
+    "DSA/DSA.md",
     "DSA/Algorithms.md",
     "images/Algorithm.png",
     "images/Pasted image 20260126152149.png",
@@ -234,7 +250,6 @@
     "Tech/Css.md",
     "Tech/Markdown.md",
     "DSA/Patterns.md",
-    "DSA/Matrix.md",
-    "Ma.md"
+    "DSA/Matrix.md"
   ]
 }
