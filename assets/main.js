@@ -1,4 +1,3 @@
-// Obsidian-like reader with tree navigation and resizable sidebar
 (() => {
   const navList = document.getElementById("nav-list");
   const searchInput = document.getElementById("search-input");
@@ -145,7 +144,6 @@
 
       folderRow.innerHTML = `
         <span class="tree-chevron-wrapper">${chevronIcon}</span>
-        <span class="tree-folder-icon">${isCollapsed ? folderIcon : folderOpenIcon}</span>
         <span class="tree-label">${node.name}</span>
       `;
 
@@ -193,7 +191,6 @@
       fileRow.dataset.path = node.path;
 
       fileRow.innerHTML = `
-        <span class="tree-file-icon">${fileIcon}</span>
         <span class="tree-label">${node.name}</span>
       `;
 
