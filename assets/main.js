@@ -1,4 +1,4 @@
-// Basic Obsidian-like reader that fetches markdown and renders it client-side
+// Obsidian-like reader with tree navigation and resizable sidebar
 (() => {
   const navList = document.getElementById("nav-list");
   const searchInput = document.getElementById("search-input");
@@ -6,9 +6,37 @@
   const noteTitle = document.getElementById("note-title");
   const breadcrumb = document.getElementById("breadcrumb");
   const openSource = document.getElementById("open-source");
+  const sidebar = document.getElementById("sidebar");
 
-  const entries = Array.isArray(MANIFEST) ? [...MANIFEST] : [];
-  const entryByPath = new Map(entries.map((item) => [item.path, item]));
+  // Build flat list of all file entries for search and lookup
+  const allEntries = [];
+  const entryByPath = new Map();
+
+  function collectEntries(node, parentPath = "") {
+    if (node.path) {
+      const entry = {
+        name: node.name,
+        path: node.path,
+        parentPath: parentPath,
+      };
+      allEntries.push(entry);
+      entryByPath.set(node.path, entry);
+    }
+    if (node.children) {
+      const currentPath =
+        node.name === "root"
+          ? ""
+          : parentPath
+            ? `${parentPath}/${node.name}`
+            : node.name;
+      node.children.forEach((child) => collectEntries(child, currentPath));
+    }
+  }
+
+  if (MANIFEST && MANIFEST.children) {
+    collectEntries(MANIFEST);
+  }
+
   const navButtons = [];
 
   marked.setOptions({
@@ -75,100 +103,178 @@
     return output;
   }
 
-  function groupEntries() {
-    const grouped = new Map();
-    entries.forEach((item) => {
-      const category = item.category || "Notes";
-      if (!grouped.has(category)) grouped.set(category, []);
-      grouped.get(category).push(item);
-    });
-    grouped.forEach((list) =>
-      list.sort((a, b) => a.title.localeCompare(b.title)),
-    );
-    return Array.from(grouped.entries());
-  }
+  // Track collapsed state of folders
+  const collapsedFolders = new Set();
+  // Initially collapse all top-level folders
+  let initialized = false;
 
-  // Track collapsed state of categories (null = not initialized yet)
-  let collapsedCategories = null;
+  // Material Icons (using Google Material Icons font)
+  const folderIcon = `<span class="material-icons tree-icon folder-icon">folder</span>`;
+  const folderOpenIcon = `<span class="material-icons tree-icon folder-icon folder-open">folder_open</span>`;
+  const fileIcon = `<span class="material-icons tree-icon file-icon">description</span>`;
+  const chevronIcon = `<span class="material-icons tree-chevron">chevron_right</span>`;
+
+  function renderTreeNode(node, depth = 0, parentId = "") {
+    const isFolder = !!node.children;
+    const nodeId = parentId ? `${parentId}/${node.name}` : node.name;
+
+    if (node.name === "root") {
+      const container = document.createElement("div");
+      container.className = "tree-root";
+      node.children.forEach((child) => {
+        container.appendChild(renderTreeNode(child, 0, ""));
+      });
+      return container;
+    }
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "tree-node";
+
+    if (isFolder) {
+      // Initialize all top-level folders as collapsed on first render
+      if (!initialized && depth === 0) {
+        collapsedFolders.add(nodeId);
+      }
+
+      const isCollapsed = collapsedFolders.has(nodeId);
+
+      const folderRow = document.createElement("div");
+      folderRow.className = `tree-folder ${isCollapsed ? "collapsed" : ""}`;
+      folderRow.dataset.depth = depth;
+      folderRow.style.paddingLeft = `calc(${depth} * var(--tree-indent, 16px) + 8px)`;
+
+      folderRow.innerHTML = `
+        <span class="tree-chevron-wrapper">${chevronIcon}</span>
+        <span class="tree-folder-icon">${isCollapsed ? folderIcon : folderOpenIcon}</span>
+        <span class="tree-label">${node.name}</span>
+      `;
+
+      folderRow.addEventListener("click", () => {
+        const wasCollapsed = collapsedFolders.has(nodeId);
+        if (wasCollapsed) {
+          collapsedFolders.delete(nodeId);
+          folderRow.classList.remove("collapsed");
+          childrenContainer.classList.remove("collapsed");
+          folderRow.querySelector(".tree-folder-icon").innerHTML =
+            folderOpenIcon;
+        } else {
+          collapsedFolders.add(nodeId);
+          folderRow.classList.add("collapsed");
+          childrenContainer.classList.add("collapsed");
+          folderRow.querySelector(".tree-folder-icon").innerHTML = folderIcon;
+        }
+      });
+
+      wrapper.appendChild(folderRow);
+
+      const childrenContainer = document.createElement("div");
+      childrenContainer.className = `tree-children ${isCollapsed ? "collapsed" : ""}`;
+
+      // Sort children: folders first, then files, each alphabetically
+      const sortedChildren = [...node.children].sort((a, b) => {
+        const aIsFolder = !!a.children;
+        const bIsFolder = !!b.children;
+        if (aIsFolder && !bIsFolder) return -1;
+        if (!aIsFolder && bIsFolder) return 1;
+        return a.name.localeCompare(b.name);
+      });
+
+      sortedChildren.forEach((child) => {
+        childrenContainer.appendChild(renderTreeNode(child, depth + 1, nodeId));
+      });
+
+      wrapper.appendChild(childrenContainer);
+    } else {
+      // File node
+      const fileRow = document.createElement("button");
+      fileRow.className = "tree-file";
+      fileRow.dataset.depth = depth;
+      fileRow.style.paddingLeft = `calc(${depth} * var(--tree-indent, 16px) + 28px)`;
+      fileRow.dataset.path = node.path;
+
+      fileRow.innerHTML = `
+        <span class="tree-file-icon">${fileIcon}</span>
+        <span class="tree-label">${node.name}</span>
+      `;
+
+      fileRow.addEventListener("click", () => selectEntry(node.path));
+      navButtons.push(fileRow);
+
+      wrapper.appendChild(fileRow);
+    }
+
+    return wrapper;
+  }
 
   function renderNav() {
     navList.innerHTML = "";
     navButtons.length = 0;
-    const groups = groupEntries();
 
-    // Initialize all categories as collapsed on first render
-    if (collapsedCategories === null) {
-      collapsedCategories = new Set(groups.map(([category]) => category));
+    if (MANIFEST && MANIFEST.children) {
+      const tree = renderTreeNode(MANIFEST);
+      navList.appendChild(tree);
     }
 
-    groups.forEach(([category, items]) => {
-      const groupEl = document.createElement("section");
-      groupEl.className = "nav-group";
-
-      const heading = document.createElement("h3");
-      heading.className = "nav-group-header";
-      const isCollapsed = collapsedCategories.has(category);
-
-      // Create toggle arrow
-      const arrow = document.createElement("span");
-      arrow.className = "nav-toggle-arrow";
-      arrow.innerHTML = `<svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M3 2 L7 5 L3 8 Z"/></svg>`;
-
-      const categoryText = document.createElement("span");
-      categoryText.className = "nav-category-text";
-      categoryText.textContent = category;
-
-      const itemCount = document.createElement("span");
-      itemCount.className = "nav-item-count";
-      itemCount.textContent = items.length;
-
-      heading.appendChild(arrow);
-      heading.appendChild(categoryText);
-      heading.appendChild(itemCount);
-
-      // Toggle collapse on click
-      heading.addEventListener("click", () => {
-        if (collapsedCategories.has(category)) {
-          collapsedCategories.delete(category);
-          groupEl.classList.remove("collapsed");
-        } else {
-          collapsedCategories.add(category);
-          groupEl.classList.add("collapsed");
-        }
-      });
-
-      groupEl.appendChild(heading);
-
-      const itemsContainer = document.createElement("div");
-      itemsContainer.className = "nav-items-container";
-
-      items.forEach((item) => {
-        const button = document.createElement("button");
-        button.className = "nav-item";
-        button.dataset.path = item.path;
-        button.innerHTML = `<span class="nav-title">${item.title}</span>`;
-        button.addEventListener("click", () => selectEntry(item.path));
-        navButtons.push(button);
-        itemsContainer.appendChild(button);
-      });
-
-      groupEl.appendChild(itemsContainer);
-
-      // Apply collapsed state if previously collapsed
-      if (isCollapsed) {
-        groupEl.classList.add("collapsed");
-      }
-
-      navList.appendChild(groupEl);
-    });
+    initialized = true;
   }
 
   function filterNav(term) {
     const query = term.trim().toLowerCase();
+
+    if (!query) {
+      // Show all and restore collapsed state
+      document.querySelectorAll(".tree-node").forEach((node) => {
+        node.style.display = "";
+      });
+      document.querySelectorAll(".tree-folder").forEach((folder) => {
+        folder.style.display = "";
+      });
+      document.querySelectorAll(".tree-children").forEach((children) => {
+        children.style.display = "";
+      });
+      navButtons.forEach((btn) => {
+        btn.style.display = "";
+      });
+      return;
+    }
+
+    // When searching, show matching files and their parent folders
+    const matchingPaths = new Set();
+    const parentFolders = new Set();
+
+    allEntries.forEach((entry) => {
+      if (
+        entry.name.toLowerCase().includes(query) ||
+        entry.path.toLowerCase().includes(query)
+      ) {
+        matchingPaths.add(entry.path);
+        // Add all parent folders
+        const parts = entry.path.split("/");
+        let current = "";
+        for (let i = 0; i < parts.length - 1; i++) {
+          current = current ? `${current}/${parts[i]}` : parts[i];
+          parentFolders.add(current);
+        }
+      }
+    });
+
+    // Show/hide based on matches
     navButtons.forEach((btn) => {
-      const text = `${btn.textContent}`.toLowerCase();
-      const match = text.includes(query);
-      btn.style.display = match ? "flex" : "none";
+      const path = btn.dataset.path;
+      btn.style.display = matchingPaths.has(path) ? "" : "none";
+    });
+
+    // Expand and show parent folders of matches
+    document.querySelectorAll(".tree-folder").forEach((folder) => {
+      // Always show folders when searching (we'll show/hide children)
+    });
+
+    // Expand all folders when searching
+    document.querySelectorAll(".tree-children").forEach((children) => {
+      children.classList.remove("collapsed");
+    });
+    document.querySelectorAll(".tree-folder").forEach((folder) => {
+      folder.classList.remove("collapsed");
     });
   }
 
@@ -182,10 +288,14 @@
     const entry = entryByPath.get(path);
     if (!entry) return;
     setActive(path);
-    breadcrumb.textContent = `${entry.category || "Notes"} / ${entry.title}`;
-    noteTitle.textContent = entry.title;
+
+    // Create breadcrumb from path
+    const pathParts = path.replace(/\.md$/, "").split("/");
+    breadcrumb.textContent = pathParts.join(" / ");
+    noteTitle.textContent = entry.name;
     openSource.href = encodeURI(entry.path);
     noteBody.innerHTML = "Loading…";
+
     try {
       const res = await fetch(encodeURI(entry.path));
       if (!res.ok) throw new Error(`Fetch failed (${res.status})`);
@@ -208,22 +318,20 @@
           block.innerHTML = simpleHighlight(block.textContent || "");
         });
       }
+
       // Wrap tables for horizontal scrolling and add copy buttons
       document.querySelectorAll(".note-body table").forEach((table) => {
-        // Create wrapper
         const wrapper = document.createElement("div");
         wrapper.className = "table-wrapper";
         table.parentNode.insertBefore(wrapper, table);
         wrapper.appendChild(table);
 
-        // Check if table needs scrolling
         const checkScroll = () => {
           if (wrapper.scrollWidth > wrapper.clientWidth) {
             wrapper.classList.add("has-scroll");
           } else {
             wrapper.classList.remove("has-scroll");
           }
-          // Check if scrolled to end
           if (
             wrapper.scrollLeft + wrapper.clientWidth >=
             wrapper.scrollWidth - 5
@@ -238,13 +346,11 @@
         wrapper.addEventListener("scroll", checkScroll);
         window.addEventListener("resize", checkScroll);
 
-        // Add copy button
         const btn = document.createElement("button");
         btn.className = "table-copy-btn";
         btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span>`;
         btn.addEventListener("click", async () => {
           try {
-            // Convert table to text format
             const rows = table.querySelectorAll("tr");
             let text = "";
             rows.forEach((row) => {
@@ -301,7 +407,6 @@
       window.location.hash = encodeURI(path);
     }
     loadContent(path);
-    // Close sidebar on mobile after selection
     closeSidebar();
   }
 
@@ -309,14 +414,27 @@
     const hash = decodeURI(window.location.hash.replace(/^#/, ""));
     if (hash && entryByPath.has(hash)) {
       selectEntry(hash, true);
+      // Expand parent folders to show the active item
+      expandToPath(hash);
       return;
     }
-    if (entries.length) selectEntry(entries[0].path, true);
+    if (allEntries.length) selectEntry(allEntries[0].path, true);
+  }
+
+  function expandToPath(path) {
+    const parts = path.split("/");
+    let current = "";
+    for (let i = 0; i < parts.length - 1; i++) {
+      current = current ? `${current}/${parts[i]}` : parts[i];
+      collapsedFolders.delete(current);
+    }
+    // Re-render to apply expanded state
+    renderNav();
+    setActive(path);
   }
 
   // Mobile sidebar toggle functions
   const menuToggle = document.getElementById("menu-toggle");
-  const sidebar = document.getElementById("sidebar");
   const sidebarOverlay = document.getElementById("sidebar-overlay");
 
   function openSidebar() {
@@ -329,6 +447,102 @@
     sidebar.classList.remove("open");
     sidebarOverlay.classList.remove("active");
     document.body.style.overflow = "";
+  }
+
+  // Resizable sidebar
+  function initResizableSidebar() {
+    const resizer = document.createElement("div");
+    resizer.className = "sidebar-resizer";
+    sidebar.appendChild(resizer);
+
+    let isResizing = false;
+    let startX = 0;
+    let startWidth = 0;
+
+    const minWidth = 180;
+    const maxWidth = 500;
+
+    // Load saved width from localStorage
+    const savedWidth = localStorage.getItem("sidebarWidth");
+    if (savedWidth) {
+      const width = parseInt(savedWidth, 10);
+      if (width >= minWidth && width <= maxWidth) {
+        sidebar.style.width = `${width}px`;
+        document.documentElement.style.setProperty(
+          "--sidebar-width",
+          `${width}px`,
+        );
+      }
+    }
+
+    resizer.addEventListener("mousedown", (e) => {
+      isResizing = true;
+      startX = e.clientX;
+      startWidth = sidebar.offsetWidth;
+      document.body.style.cursor = "col-resize";
+      document.body.style.userSelect = "none";
+      resizer.classList.add("resizing");
+      e.preventDefault();
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!isResizing) return;
+
+      const diff = e.clientX - startX;
+      let newWidth = startWidth + diff;
+
+      // Clamp width
+      newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+
+      sidebar.style.width = `${newWidth}px`;
+      document.documentElement.style.setProperty(
+        "--sidebar-width",
+        `${newWidth}px`,
+      );
+    });
+
+    document.addEventListener("mouseup", () => {
+      if (isResizing) {
+        isResizing = false;
+        document.body.style.cursor = "";
+        document.body.style.userSelect = "";
+        resizer.classList.remove("resizing");
+        // Save width to localStorage
+        localStorage.setItem("sidebarWidth", sidebar.offsetWidth.toString());
+      }
+    });
+
+    // Touch support for mobile/tablet
+    resizer.addEventListener("touchstart", (e) => {
+      isResizing = true;
+      startX = e.touches[0].clientX;
+      startWidth = sidebar.offsetWidth;
+      resizer.classList.add("resizing");
+      e.preventDefault();
+    });
+
+    document.addEventListener("touchmove", (e) => {
+      if (!isResizing) return;
+
+      const diff = e.touches[0].clientX - startX;
+      let newWidth = startWidth + diff;
+
+      newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+
+      sidebar.style.width = `${newWidth}px`;
+      document.documentElement.style.setProperty(
+        "--sidebar-width",
+        `${newWidth}px`,
+      );
+    });
+
+    document.addEventListener("touchend", () => {
+      if (isResizing) {
+        isResizing = false;
+        resizer.classList.remove("resizing");
+        localStorage.setItem("sidebarWidth", sidebar.offsetWidth.toString());
+      }
+    });
   }
 
   // Swipe gesture support for mobile
@@ -351,16 +565,13 @@
     touchEndY = e.changedTouches[0].screenY;
     const touchEndTime = Date.now();
 
-    // Check if swipe was quick enough
     if (touchEndTime - touchStartTime > maxSwipeTime) return;
 
     const swipeDistanceX = touchEndX - touchStartX;
     const swipeDistanceY = Math.abs(touchEndY - touchStartY);
 
-    // Ensure horizontal swipe is dominant
     if (swipeDistanceY > Math.abs(swipeDistanceX) * 0.5) return;
 
-    // Swipe right to open (from left edge)
     if (
       swipeDistanceX > minSwipeDistance &&
       touchStartX < 30 &&
@@ -369,7 +580,6 @@
       openSidebar();
     }
 
-    // Swipe left to close (when sidebar is open)
     if (
       swipeDistanceX < -minSwipeDistance &&
       sidebar.classList.contains("open")
@@ -380,10 +590,11 @@
 
   function init() {
     renderNav();
+    initResizableSidebar();
+
     searchInput.addEventListener("input", (e) => filterNav(e.target.value));
     window.addEventListener("hashchange", loadFromHash);
 
-    // Mobile menu toggle
     if (menuToggle) {
       menuToggle.addEventListener("click", () => {
         if (sidebar.classList.contains("open")) {
@@ -394,24 +605,20 @@
       });
     }
 
-    // Close sidebar when clicking overlay
     if (sidebarOverlay) {
       sidebarOverlay.addEventListener("click", closeSidebar);
     }
 
-    // Close sidebar on escape key
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeSidebar();
     });
 
-    // Swipe gesture support for mobile
     if ("ontouchstart" in window) {
       document.addEventListener("touchstart", handleTouchStart, {
         passive: true,
       });
       document.addEventListener("touchend", handleTouchEnd, { passive: true });
 
-      // Also handle swipe on sidebar overlay
       if (sidebarOverlay) {
         sidebarOverlay.addEventListener("touchstart", handleTouchStart, {
           passive: true,
@@ -422,7 +629,6 @@
       }
     }
 
-    // Handle window resize - close sidebar if switching to desktop
     let lastWidth = window.innerWidth;
     window.addEventListener("resize", () => {
       if (window.innerWidth > 960 && lastWidth <= 960) {
