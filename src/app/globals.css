@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-height: 60px;
+    --sidebar-width: 280px;
+    --toc-width: 240px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  /* Scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-neutral-600 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-500;
+  }
+}
+
+/* Code block syntax highlighting */
+.prose pre {
+  @apply bg-[#1e1e2e] rounded-xl p-5 pt-12 overflow-x-auto my-5 relative border border-white/10 shadow-lg;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-sm leading-7 font-mono text-[#e4e4e7];
+}
+
+/* Highlight.js theme overrides */
+.hljs {
+  background: #1e1e2e !important;
+  color: #e4e4e7 !important;
+}
+.hljs-keyword {
+  color: #cba6f7 !important;
+}
+.hljs-built_in {
+  color: #f9e2af !important;
+}
+.hljs-string {
+  color: #a6e3a1 !important;
+}
+.hljs-number {
+  color: #fab387 !important;
+}
+.hljs-comment {
+  color: #6c7086 !important;
+  font-style: italic;
+}
+.hljs-function,
+.hljs-title {
+  color: #89b4fa !important;
+}
+.hljs-variable {
+  color: #f38ba8 !important;
+}
+.hljs-params {
+  color: #cdd6f4 !important;
+}
+.hljs-attr {
+  color: #f9e2af !important;
+}
+.hljs-literal {
+  color: #fab387 !important;
+}
+.hljs-meta {
+  color: #89dceb !important;
+}
+.hljs-regexp {
+  color: #f5c2e7 !important;
+}
+.hljs-symbol {
+  color: #94e2d5 !important;
+}
+.hljs-class {
+  color: #f9e2af !important;
+}
+.hljs-property {
+  color: #89b4fa !important;
+}
+.hljs-operator {
+  color: #89dceb !important;
+}
+.hljs-punctuation {
+  color: #bac2de !important;
+}
+.hljs-name {
+  color: #89b4fa !important;
+}
+.hljs-selector-tag {
+  color: #cba6f7 !important;
+}
+.hljs-selector-class {
+  color: #f9e2af !important;
+}
+.hljs-selector-id {
+  color: #89b4fa !important;
+}
+.hljs-tag {
+  color: #cba6f7 !important;
+}
+.hljs-attribute {
+  color: #f9e2af !important;
+}
+.hljs-type {
+  color: #f9e2af !important;
+}
+.hljs-addition {
+  color: #a6e3a1 !important;
+  background-color: rgba(166, 227, 161, 0.1) !important;
+}
+.hljs-deletion {
+  color: #f38ba8 !important;
+  background-color: rgba(243, 139, 168, 0.1) !important;
+}
+
+/* Prose styles for markdown content */
+.prose h1 {
+  @apply text-3xl font-bold text-neutral-100 mt-12 mb-5 pb-3 border-b border-neutral-700;
+}
+.prose h2 {
+  @apply text-2xl font-semibold text-neutral-100 mt-10 mb-4;
+}
+.prose h3 {
+  @apply text-xl font-semibold text-neutral-200 mt-8 mb-3;
+}
+.prose h4 {
+  @apply text-lg font-medium text-neutral-200 mt-6 mb-2;
+}
+.prose p {
+  @apply my-4 text-neutral-300 leading-7;
+}
+.prose a {
+  @apply text-accent hover:text-accent-hover underline underline-offset-2;
+}
+.prose ul,
+.prose ol {
+  @apply pl-7 my-4 text-neutral-300;
+}
+.prose li {
+  @apply my-2;
+}
+.prose blockquote {
+  @apply border-l-[3px] border-accent pl-5 py-4 my-5 bg-accent-soft rounded-r-lg text-neutral-400;
+}
+.prose code:not(pre code) {
+  @apply bg-neutral-800 text-accent px-1.5 py-0.5 rounded text-sm font-mono;
+}
+.prose table {
+  @apply w-full border-collapse my-5;
+}
+.prose th {
+  @apply bg-neutral-800 text-left p-3 font-semibold text-neutral-200 border border-neutral-700;
+}
+.prose td {
+  @apply p-3 border border-neutral-700 text-neutral-300;
+}
+.prose img {
+  @apply rounded-lg max-w-full h-auto my-4;
+}
+.prose hr {
+  @apply border-neutral-700 my-8;
+}
+
+/* Light mode prose */
+.light .prose h1,
+.light .prose h2 {
+  @apply text-neutral-900 border-neutral-200;
+}
+.light .prose h3,
+.light .prose h4 {
+  @apply text-neutral-800;
+}
+.light .prose p,
+.light .prose li {
+  @apply text-neutral-700;
+}
+.light .prose blockquote {
+  @apply text-neutral-600;
+}
+.light .prose code:not(pre code) {
+  @apply bg-neutral-100 text-red-600;
+}
+.light .prose th {
+  @apply bg-neutral-100 text-neutral-800 border-neutral-200;
+}
+.light .prose td {
+  @apply border-neutral-200 text-neutral-700;
+}
+.light .prose hr {
+  @apply border-neutral-200;
+}
