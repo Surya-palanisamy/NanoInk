@@ -25,11 +25,11 @@ SMTP is a protocol used to SEND emails from a client to a mail server and betwee
 
 ### Port Numbers
 
-| Type                  | Port |
-| :-------------------- | :--- |
-| Traditional SMTP      | 25   |
-| SMTPS (SSL)           | 465  |
-| SMTP with TLS         | 587  |
+| Type             | Port |
+| :--------------- | :--- |
+| Traditional SMTP | 25   |
+| SMTPS (SSL)      | 465  |
+| SMTP with TLS    | 587  |
 
 > Port 587 is recommended for modern email sending.
 

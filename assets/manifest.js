@@ -1,5 +1,3 @@
-// Tree-based manifest for hierarchical navigation
-// Each node can be a folder (with children) or a file (with path)
 const MANIFEST = {
   name: "root",
   children: [
