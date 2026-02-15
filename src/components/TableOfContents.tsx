@@ -9,9 +9,11 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     return (
       <aside className="hidden xl:block fixed top-[var(--header-height)] right-0 w-[240px] h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary overflow-y-auto">
         <div className="p-4">
-          <h3 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-3">
-            Contents
-          </h3>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.18em]">
+              Contents
+            </h3>
+          </div>
           <p className="text-sm text-neutral-500">No headings found</p>
         </div>
       </aside>
@@ -21,20 +23,25 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   return (
     <aside className="hidden xl:block fixed top-[var(--header-height)] right-0 w-[240px] h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary overflow-y-auto">
       <div className="p-4">
-        <h3 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-3">
-          Contents
-        </h3>
-        <nav className="space-y-1">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.18em]">
+            Contents
+          </h3>
+        </div>
+        <nav className="space-y-1.5 border-l border-white/5 pl-3">
           {headings.map((heading) => (
             <a
               key={heading.id}
               href={`#${heading.id}`}
-              className={`block text-sm text-neutral-400 hover:text-accent transition-colors ${
-                heading.level === 1 ? "font-medium" : ""
+              title={heading.text}
+              className={`group block text-[13px] leading-5 text-neutral-400 hover:text-neutral-100 transition-colors ${
+                heading.level === 1 ? "font-semibold" : "font-normal"
               }`}
-              style={{ paddingLeft: `${(heading.level - 1) * 12}px` }}
+              style={{ paddingLeft: `${(heading.level - 1) * 10}px` }}
             >
-              {heading.text}
+              <span className="block truncate group-hover:translate-x-0.5 transition-transform">
+                {heading.text}
+              </span>
             </a>
           ))}
         </nav>

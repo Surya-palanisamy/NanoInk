@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { marked } from "marked";
+import type { Renderer } from "marked";
 import hljs from "highlight.js";
 
 // Configure marked with highlight.js
@@ -100,7 +101,15 @@ export async function getMarkdownContent(filePath: string): Promise<{
     const combinedRenderer = new marked.Renderer();
     combinedRenderer.code = renderer.code;
     combinedRenderer.heading = headingRenderer.heading;
-    combinedRenderer.image = (href, title, text) => {
+    (
+      combinedRenderer as Renderer & {
+        image: (
+          href: string | null,
+          title: string | null,
+          text: string,
+        ) => string;
+      }
+    ).image = (href, title, text) => {
       const src = normalizeImageSrc(href);
       const titleAttr = title ? ` title="${title}"` : "";
       return `<img src="${src}" alt="${text}"${titleAttr} />`;
