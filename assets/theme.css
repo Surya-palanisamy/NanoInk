@@ -2,7 +2,7 @@
   --bg: #0c0c0c;
   --bg-secondary: #111111;
   --bg-tertiary: #161616;
-  --panel: #111111;
+  --panel: #000;
   --panel-strong: #1a1a1a;
   --text: #e5e5e5;
   --text-muted: #a3a3a3;
@@ -1197,7 +1197,6 @@ tr:nth-child(even) td {
 .note-body pre {
   border-radius: 6px;
   overflow-x: auto;
-  padding: 6px;
   margin: 20px 0;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1594,8 +1593,6 @@ hr {
     font-size: 15px;
   }
   .note-body pre {
-    padding: 16px;
-    padding-top: 50px;
     font-size: 13px;
     margin-left: -12px;
     margin-right: -12px;
@@ -1709,7 +1706,7 @@ hr {
   }
   .note-body pre {
     padding: 12px;
-    padding-top: 46px;
+    padding-top: 36px;
     margin-left: -16px;
     margin-right: -16px;
     border-radius: 0;
