@@ -66,12 +66,16 @@ export async function getMarkdownContent(filePath: string): Promise<{
   try {
     const fileContent = fs.readFileSync(fullPath, "utf-8");
 
-    // Parse headings for TOC
+    // Parse headings for TOC (excluding code blocks)
     const headings: { id: string; text: string; level: number }[] = [];
+
+    // Remove code blocks to avoid picking up bash comments as headings
+    const contentWithoutCodeBlocks = fileContent.replace(/```[\s\S]*?```/g, "");
+
     const headingRegex = /^(#{1,4})\s+(.+)$/gm;
     let match;
 
-    while ((match = headingRegex.exec(fileContent)) !== null) {
+    while ((match = headingRegex.exec(contentWithoutCodeBlocks)) !== null) {
       const level = match[1].length;
       const text = match[2].trim();
       const id = text

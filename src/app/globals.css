@@ -42,6 +42,42 @@
   body {
     @apply antialiased;
   }
+
+  /* Scrollbar styling */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+  }
+
+  .light * {
+    scrollbar-color: #c4c4c4 transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .light ::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+  }
+
+  .light ::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+  }
 }
 
 /* Code block syntax highlighting */

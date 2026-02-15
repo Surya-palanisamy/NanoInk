@@ -1,39 +1,20 @@
----
-title: JavaScript
-date: 2020-12-24 17:12:25
-background: bg-[#ebd94e]
-tags:
-  - js
-  - web
-categories:
-  - Programming
-intro: |
-  A JavaScript cheat sheet with the most important concepts, functions, methods, and more. A complete quick reference for beginners.
-plugins:
-  - copyCode
-  - runCode
----
-
 ## Getting Started
 
 ### Introduction
 
 JavaScript is a lightweight, interpreted programming language.
- 
-- [JSON cheatsheet](/json) _(cheatsheets.zip)_
-- [Regex in JavaScript](/regex#regex-in-javascript) _(cheatsheets.zip)_
 
 ### Console
 
 ```javascript
 // => Hello world!
-console.log('Hello world!');
+console.log("Hello world!");
 
 // => Hello CheatSheets.zip
-console.warn('hello %s', 'CheatSheets.zip');
+console.warn("hello %s", "CheatSheets.zip");
 
 // Prints error message to stderr
-console.error(new Error('Oops!'));
+console.error(new Error("Oops!"));
 ```
 
 ### Numbers
@@ -47,7 +28,7 @@ let price = 4.99;
 
 ```javascript
 let x = null;
-let name = 'Tammy';
+let name = "Tammy";
 const found = false;
 
 // => Tammy, false, null
@@ -60,14 +41,14 @@ console.log(a); // => undefined
 ### Strings
 
 ```javascript
-let singleQuotes = 'Wheres my bandit hat?';
-let doubleQuotes = 'Wheres my bandit hat?';
+let singleQuotes = "Wheres my bandit hat?";
+let doubleQuotes = "Wheres my bandit hat?";
 // this is used to embed expressions or for creating multi-line strings
 let backTicks = `Wheres my bandit hat? ${some_value}`;
 
 // they can also be mixed,
 // NOTE: if you need the functionality of the backticks, use it as the surrounding quotes
-let mixedQuotes = `hello ${'dear' + name}, "let's have a great day today`;
+let mixedQuotes = `hello ${"dear" + name}, "let's have a great day today`;
 
 // => 21
 console.log(singleQuotes.length);
@@ -113,7 +94,7 @@ console.log(number);
 let age = 7;
 
 // String concatenation
-'Tommy is ' + age + ' years old.';
+"Tommy is " + age + " years old.";
 
 // String interpolation
 `Tommy is ${age} years old.`;
@@ -145,7 +126,7 @@ numberOfColumns = 8;
 const isMailSent = true;
 
 if (isMailSent) {
-  console.log('Mail sent to recipient');
+  console.log("Mail sent to recipient");
 }
 ```
 
@@ -186,7 +167,7 @@ true && false; // false
 250 >= 250; // true
 1 === 1; // true
 1 === 2; // false
-1 === '1'; // false
+1 === "1"; // false
 ```
 
 #### Logical Operator !
@@ -202,20 +183,20 @@ console.log(oppositeValue);
 #### Nullish coalescing operator ??
 
 ```javascript
-null ?? 'I win'; //  'I win'
-undefined ?? 'Me too'; //  'Me too'
+null ?? "I win"; //  'I win'
+undefined ?? "Me too"; //  'Me too'
 
-false ?? 'I lose'; //  false
-0 ?? 'I lose again'; //  0
-'' ?? 'Damn it'; //  ''
+false ?? "I lose"; //  false
+0 ?? "I lose again"; //  0
+"" ?? "Damn it"; //  ''
 ```
 
 #### Optional Chaining ?.
 
 ```javascript
 const obj = {
-  name: 'John Doe',
-  age: 8
+  name: "John Doe",
+  age: 8,
 };
 
 console.log(obj?.address);
@@ -227,13 +208,13 @@ console.log(obj?.address);
 const size = 10;
 
 if (size > 100) {
-  console.log('Big');
+  console.log("Big");
 } else if (size > 20) {
-  console.log('Medium');
+  console.log("Medium");
 } else if (size > 4) {
-  console.log('Small');
+  console.log("Small");
 } else {
-  console.log('Tiny');
+  console.log("Tiny");
 }
 // Print: Small
 ```
@@ -241,31 +222,31 @@ if (size > 100) {
 ### switch Statement
 
 ```javascript
-const food = 'salad';
+const food = "salad";
 
 switch (food) {
-  case 'oyster':
-    console.log('The taste of the sea');
+  case "oyster":
+    console.log("The taste of the sea");
     break;
-  case 'pizza':
-    console.log('A delicious pie');
+  case "pizza":
+    console.log("A delicious pie");
     break;
   default:
-    console.log('Enjoy your meal');
+    console.log("Enjoy your meal");
 }
 ```
 
 ### Object Lookup
 
 ```javascript
-const food = 'salad';
+const food = "salad";
 
 const foods = {
-  oyster: 'The taste of the sea',
-  pizza: 'A delicious pie'
+  oyster: "The taste of the sea",
+  pizza: "A delicious pie",
 };
 
-console.log(foods[food] || 'Enjoy your meal');
+console.log(foods[food] || "Enjoy your meal");
 ```
 
 ### == vs ===
@@ -273,12 +254,12 @@ console.log(foods[food] || 'Enjoy your meal');
 ```javascript
 0 == false; // true
 0 === false; // false, different type
-1 == '1'; // true,  automatic type conversion
-1 === '1'; // false, different type
+1 == "1"; // true,  automatic type conversion
+1 === "1"; // false, different type
 null == undefined; // true
 null === undefined; // false
-'0' == false; // true
-'0' === false; // false
+"0" == false; // true
+"0" === false; // false
 ```
 
 The `==` just check the value, `===` check both the value and the type.
@@ -302,12 +283,12 @@ sum(3, 6); // 9
 ```javascript
 // Named function
 function rocketToMars() {
-  return 'BOOM!';
+  return "BOOM!";
 }
 
 // Anonymous function
 const rocketToMars = function () {
-  return 'BOOM!';
+  return "BOOM!";
 };
 ```
 
@@ -326,7 +307,7 @@ console.log(sum(2, 5)); // => 7
 
 ```javascript
 const printHello = () => {
-  console.log('hello');
+  console.log("hello");
 };
 printHello(); // => hello
 ```
@@ -381,7 +362,7 @@ sum(2, 4); // 6
 
 ```javascript
 const dog = function () {
-  return 'Woof!';
+  return "Woof!";
 };
 ```
 
@@ -408,7 +389,7 @@ function add(num1, num2) {
 
 ```javascript
 function myFunction() {
-  var pizzaName = 'Margarita';
+  var pizzaName = "Margarita";
   // Code here can use pizzaName
 }
 
@@ -421,7 +402,7 @@ function myFunction() {
 const isLoggedIn = true;
 
 if (isLoggedIn == true) {
-  const statusMessage = 'Logged in.';
+  const statusMessage = "Logged in.";
 }
 
 // Uncaught ReferenceError...
@@ -432,7 +413,7 @@ console.log(statusMessage);
 
 ```javascript
 // Variable declared globally
-const color = 'blue';
+const color = "blue";
 
 function printColor() {
   console.log(color);
@@ -487,10 +468,10 @@ The variable has its own copy using `let`, and the variable has shared copy usin
 ### Arrays
 
 ```javascript
-const fruits = ['apple', 'orange', 'banana'];
+const fruits = ["apple", "orange", "banana"];
 
 // Different data types
-const data = [1, 'chicken', false];
+const data = [1, "chicken", false];
 ```
 
 ### Property .length
@@ -526,8 +507,8 @@ console.log(myArray[1]); // 200
 
 ```javascript
 // Adding a single element:
-const cart = ['apple', 'orange'];
-cart.push('pear');
+const cart = ["apple", "orange"];
+cart.push("pear");
 
 // Adding multiple elements:
 const numbers = [1, 2];
@@ -539,7 +520,7 @@ Add items to the end and returns the new array length.
 ### Array.pop()
 
 ```javascript
-const fruits = ['apple', 'orange', 'banana'];
+const fruits = ["apple", "orange", "banana"];
 
 const fruit = fruits.pop(); // 'banana'
 console.log(fruits); // ["apple", "orange"]
@@ -550,7 +531,7 @@ Remove an item from the end and returns the removed item.
 ### Array.shift()
 
 ```javascript
-let cats = ['Bob', 'Willy', 'Mini'];
+let cats = ["Bob", "Willy", "Mini"];
 
 cats.shift(); // ['Willy', 'Mini']
 ```
@@ -560,13 +541,13 @@ Remove an item from the beginning and returns the removed item.
 ### Array.unshift()
 
 ```javascript
-let cats = ['Bob'];
+let cats = ["Bob"];
 
 // => ['Willy', 'Bob']
-cats.unshift('Willy');
+cats.unshift("Willy");
 
 // => ['Puff', 'George', 'Willy', 'Bob']
-cats.unshift('Puff', 'George');
+cats.unshift("Puff", "George");
 ```
 
 Add items to the beginning and returns the new array length.
@@ -589,7 +570,7 @@ If you want to avoid mutating your original array, you can use concat.
 ### Destructuring
 
 ```javascript
-const [name, age] = ['John Doe', 8];
+const [name, age] = ["John Doe", 8];
 
 console.log(name);
 console.log(age);
@@ -604,7 +585,7 @@ console.log(age);
 const emptySet = new Set();
 
 // Set Object with values
-const setObj = new Set([1, true, 'hi']);
+const setObj = new Set([1, true, "hi"]);
 ```
 
 ### Add
@@ -613,19 +594,19 @@ const setObj = new Set([1, true, 'hi']);
 const emptySet = new Set();
 
 // add values
-emptySet.add('a'); // 'a'
+emptySet.add("a"); // 'a'
 emptySet.add(1); // 'a', 1
 emptySet.add(true); // 'a', 1, true
-emptySet.add('a'); // 'a', 1, true
+emptySet.add("a"); // 'a', 1, true
 ```
 
 ### Delete
 
 ```javascript
-const emptySet = new Set([1, true, 'a']);
+const emptySet = new Set([1, true, "a"]);
 
 // delete values
-emptySet.delete('a'); // 1, true
+emptySet.delete("a"); // 1, true
 emptySet.delete(true); // 1
 emptySet.delete(1); //
 ```
@@ -633,10 +614,10 @@ emptySet.delete(1); //
 ### Has
 
 ```javascript
-const setObj = new Set([1, true, 'a']);
+const setObj = new Set([1, true, "a"]);
 
 // returns true or false
-setObj.has('a'); // true
+setObj.has("a"); // true
 setObj.has(1); // true
 setObj.has(false); // false
 ```
@@ -644,7 +625,7 @@ setObj.has(false); // false
 ### Clear
 
 ```javascript
-const setObj = new Set([1, true, 'a']);
+const setObj = new Set([1, true, "a"]);
 
 // clears the set
 console.log(setObj); // 1, true, 'a'
@@ -654,7 +635,7 @@ setObj.clear(); //
 ### Size
 
 ```javascript
-const setObj = new Set([1, true, 'a']);
+const setObj = new Set([1, true, "a"]);
 
 consoloe.log(setObj.size); // 3
 ```
@@ -662,7 +643,7 @@ consoloe.log(setObj.size); // 3
 ### ForEach
 
 ```javascript
-const setObj = new Set([1, true, 'a']);
+const setObj = new Set([1, true, "a"]);
 
 setObj.forEach(function (value) {
   console.log(value);
@@ -692,7 +673,7 @@ while (i < 5) {
 ### Reverse Loop
 
 ```javascript
-const fruits = ['apple', 'orange', 'banana'];
+const fruits = ["apple", "orange", "banana"];
 
 for (let i = fruits.length - 1; i >= 0; i--) {
   console.log(`${i}. ${fruits[i]}`);
@@ -756,7 +737,7 @@ for (i = 0; i < 10; i++) {
   if (i === 3) {
     continue;
   }
-  text += 'The number is ' + i + '<br>';
+  text += "The number is " + i + "<br>";
 }
 ```
 
@@ -773,7 +754,7 @@ for (let i = 0; i < 2; i += 1) {
 ### for...in loop
 
 ```javascript
-const fruits = ['apple', 'orange', 'banana'];
+const fruits = ["apple", "orange", "banana"];
 
 // 1. Print only indexes
 for (let index in fruits) {
@@ -803,7 +784,7 @@ for (let index in fruits) {
 ### for...of loop
 
 ```javascript
-const fruits = ['apple', 'orange', 'banana'];
+const fruits = ["apple", "orange", "banana"];
 
 for (let fruit of fruits) {
   console.log(fruit);
@@ -868,10 +849,10 @@ console.log(sum); // 10
 ### Array.map()
 
 ```javascript
-const members = ['Taylor', 'Donald', 'Don', 'Natasha', 'Bobby'];
+const members = ["Taylor", "Donald", "Don", "Natasha", "Bobby"];
 
 const announcements = members.map((member) => {
-  return member + ' joined the contest.';
+  return member + " joined the contest.";
 });
 
 console.log(announcements);
@@ -902,8 +883,8 @@ const filteredArray = randomNumbers.filter((n) => {
 
 ```javascript
 const apple = {
-  color: 'Green',
-  price: { bulk: '$3/kg', smallQty: '$4/kg' }
+  color: "Green",
+  price: { bulk: "$3/kg", smallQty: "$4/kg" },
 };
 console.log(apple.color); // => Green
 console.log(apple.price.bulk); // => $3/kg
@@ -927,7 +908,7 @@ const trainSchedule = {
 
 ```javascript
 const classElection = {
-  date: 'January 12'
+  date: "January 12",
 };
 
 console.log(classElection.place); // undefined
@@ -937,16 +918,16 @@ console.log(classElection.place); // undefined
 
 ```javascript
 const student = {
-  name: 'Sheldon',
+  name: "Sheldon",
   score: 100,
-  grade: 'A'
+  grade: "A",
 };
 
 console.log(student);
 // { name: 'Sheldon', score: 100, grade: 'A' }
 
 delete student.score;
-student.grade = 'F';
+student.grade = "F";
 console.log(student);
 // { name: 'Sheldon', grade: 'F' }
 
@@ -958,8 +939,8 @@ student = {};
 
 ```javascript
 const person = {
-  name: 'Tom',
-  age: '22'
+  name: "Tom",
+  age: "22",
 };
 const { name, age } = person;
 console.log(name); // 'Tom'
@@ -970,10 +951,10 @@ console.log(age); // '22'
 
 ```javascript
 const person = {
-  firstName: 'Matilda',
+  firstName: "Matilda",
   age: 27,
-  hobby: 'knitting',
-  goal: 'learning JavaScript'
+  hobby: "knitting",
+  goal: "learning JavaScript",
 };
 
 delete person.hobby; // or delete person[hobby];
@@ -992,11 +973,11 @@ console.log(person);
 
 ```javascript
 const origNum = 8;
-const origObj = { color: 'blue' };
+const origObj = { color: "blue" };
 
 const changeItUp = (num, obj) => {
   num = 7;
-  obj.color = 'red';
+  obj.color = "red";
 };
 
 changeItUp(origNum, origObj);
@@ -1012,7 +993,7 @@ console.log(origObj.color);
 ### Shorthand object creation
 
 ```javascript
-const activity = 'Surfing';
+const activity = "Surfing";
 const beach = { activity };
 console.log(beach); // { activity: 'Surfing' }
 ```
@@ -1021,11 +1002,11 @@ console.log(beach); // { activity: 'Surfing' }
 
 ```javascript
 const cat = {
-  name: 'Pipey',
+  name: "Pipey",
   age: 8,
   whatName() {
     return this.name;
-  }
+  },
 };
 console.log(cat.whatName()); // => Pipey
 ```
@@ -1042,8 +1023,8 @@ const dogFactory = (name, age, breed) => {
     age: age,
     breed: breed,
     bark() {
-      console.log('Woof!');
-    }
+      console.log("Woof!");
+    },
   };
 };
 ```
@@ -1058,11 +1039,11 @@ const engine = {
   },
   // anonymous arrow function expression with no arguments
   sputter: () => {
-    console.log('The engine sputters...');
-  }
+    console.log("The engine sputters...");
+  },
 };
 
-engine.start('noisily');
+engine.start("noisily");
 engine.sputter();
 ```
 
@@ -1070,28 +1051,28 @@ engine.sputter();
 
 ```javascript
 const myCat = {
-  _name: 'Dottie',
+  _name: "Dottie",
   get name() {
     return this._name;
   },
   set name(newName) {
     this._name = newName;
-  }
+  },
 };
 
 // Reference invokes the getter
 console.log(myCat.name);
 
 // Assignment invokes the setter
-myCat.name = 'Yankee';
+myCat.name = "Yankee";
 ```
 
 ### Destructuring
 
 ```javascript
 const obj = {
-  name: 'John Doe',
-  age: 8
+  name: "John Doe",
+  age: 8,
 };
 
 const { name, age } = obj;
@@ -1111,16 +1092,16 @@ class Dog {
   }
 
   introduce() {
-    console.log('This is ' + this._name + ' !');
+    console.log("This is " + this._name + " !");
   }
 
   // A static method
   static bark() {
-    console.log('Woof!');
+    console.log("Woof!");
   }
 }
 
-const myDog = new Dog('Buster');
+const myDog = new Dog("Buster");
 myDog.introduce();
 
 // Calling the static method
@@ -1137,7 +1118,7 @@ class Song {
   }
 
   play() {
-    console.log('Song playing!');
+    console.log("Song playing!");
   }
 }
 
@@ -1155,7 +1136,7 @@ class Song {
   }
 }
 
-const mySong = new Song('Bohemian Rhapsody', 'Queen');
+const mySong = new Song("Bohemian Rhapsody", "Queen");
 console.log(mySong.title);
 ```
 
@@ -1164,11 +1145,11 @@ console.log(mySong.title);
 ```javascript
 class Song {
   play() {
-    console.log('Playing!');
+    console.log("Playing!");
   }
 
   stop() {
-    console.log('Stopping!');
+    console.log("Stopping!");
   }
 }
 ```
@@ -1193,9 +1174,9 @@ class Song extends Media {
 }
 
 const mySong = new Song({
-  artist: 'Queen',
-  name: 'Bohemian Rhapsody',
-  publishDate: 1975
+  artist: "Queen",
+  name: "Bohemian Rhapsody",
+  publishDate: 1975,
 });
 ```
 
@@ -1264,7 +1245,7 @@ module.exports = {
   add,
   subtract,
   multiply,
-  duplicate
+  duplicate,
 };
 ```
 
@@ -1272,7 +1253,7 @@ module.exports = {
 
 ```javascript
 // main.js
-const myMath = require('./myMath.js');
+const myMath = require("./myMath.js");
 
 console.log(myMath.add(6, 2)); // 8
 console.log(myMath.subtract(6, 2)); // 4
@@ -1289,15 +1270,15 @@ const promise = new Promise((resolve, reject) => {
   const res = true;
   // An asynchronous operation.
   if (res) {
-    resolve('Resolved!');
+    resolve("Resolved!");
   } else {
-    reject(Error('Error'));
+    reject(Error("Error"));
   }
 });
 
 promise.then(
   (res) => console.log(res),
-  (err) => console.error(err)
+  (err) => console.error(err),
 );
 ```
 
@@ -1305,7 +1286,7 @@ promise.then(
 
 ```javascript
 const executorFn = (resolve, reject) => {
-  resolve('Resolved!');
+  resolve("Resolved!");
 };
 
 const promise = new Promise(executorFn);
@@ -1315,7 +1296,7 @@ const promise = new Promise(executorFn);
 
 ```javascript
 const loginAlert = () => {
-  console.log('Login');
+  console.log("Login");
 };
 
 setTimeout(loginAlert, 6000);
@@ -1326,7 +1307,7 @@ setTimeout(loginAlert, 6000);
 ```javascript
 const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('Result');
+    resolve("Result");
   }, 200);
 });
 
@@ -1336,7 +1317,7 @@ promise.then(
   },
   (err) => {
     console.error(err);
-  }
+  },
 );
 ```
 
@@ -1345,7 +1326,7 @@ promise.then(
 ```javascript
 const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject(Error('Promise Rejected Unconditionally.'));
+    reject(Error("Promise Rejected Unconditionally."));
   }, 1000);
 });
 
@@ -1399,7 +1380,7 @@ Promise.allSettled([promise1, promise2]).then((res) => {
 ```javascript
 const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('*');
+    resolve("*");
   }, 1000);
 });
 
@@ -1408,7 +1389,7 @@ const twoStars = (star) => {
 };
 
 const oneDot = (star) => {
-  return star + '.';
+  return star + ".";
 };
 
 const print = (val) => {
@@ -1423,7 +1404,7 @@ promise.then(twoStars).then(oneDot).then(print);
 
 ```javascript
 const executorFn = (resolve, reject) => {
-  console.log('The executor function of the promise!');
+  console.log("The executor function of the promise!");
 };
 
 const promise = new Promise(executorFn);
@@ -1433,14 +1414,14 @@ const promise = new Promise(executorFn);
 
 ```javascript
 const promise = new Promise((resolve) =>
-  setTimeout(() => resolve('dAlan'), 100)
+  setTimeout(() => resolve("dAlan"), 100),
 );
 
 promise
   .then((res) => {
-    return res === 'Alan'
-      ? Promise.resolve('Hey Alan!')
-      : Promise.reject('Who are you?');
+    return res === "Alan"
+      ? Promise.resolve("Hey Alan!")
+      : Promise.reject("Who are you?");
   })
   .then(
     (res) => {
@@ -1448,7 +1429,7 @@ promise
     },
     (err) => {
       console.error(err);
-    }
+    },
   );
 ```
 
@@ -1461,7 +1442,7 @@ const mock = (success, timeout = 1000) => {
       if (success) {
         resolve({ status: 200, data: {} });
       } else {
-        reject({ message: 'Error' });
+        reject({ message: "Error" });
       }
     }, timeout);
   });
@@ -1483,7 +1464,7 @@ const someEvent = async () => {
 function helloWorld() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve('Hello World!');
+      resolve("Hello World!");
     }, 2000);
   });
 }
@@ -1491,13 +1472,13 @@ function helloWorld() {
 const msg = async function () {
   //Async Function Expression
   const msg = await helloWorld();
-  console.log('Message:', msg);
+  console.log("Message:", msg);
 };
 
 const msg1 = async () => {
   //Async Arrow Function
   const msg = await helloWorld();
-  console.log('Message:', msg);
+  console.log("Message:", msg);
 };
 
 msg(); // Message: Hello World! <-- after 2 seconds
@@ -1510,7 +1491,7 @@ msg1(); // Message: Hello World! <-- after 2 seconds
 let pro1 = Promise.resolve(5);
 let pro2 = 44;
 let pro3 = new Promise(function (resolve, reject) {
-  setTimeout(resolve, 100, 'foo');
+  setTimeout(resolve, 100, "foo");
 });
 
 Promise.all([pro1, pro2, pro3]).then(function (values) {
@@ -1525,14 +1506,14 @@ Promise.all([pro1, pro2, pro3]).then(function (values) {
 function helloWorld() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve('Hello World!');
+      resolve("Hello World!");
     }, 2000);
   });
 }
 
 async function msg() {
   const msg = await helloWorld();
-  console.log('Message:', msg);
+  console.log("Message:", msg);
 }
 
 msg(); // Message: Hello World! <-- after 2 seconds
@@ -1547,7 +1528,7 @@ try {
   let user = JSON.parse(json); // <-- no errors
   console.log(user.name); // no name!
 } catch (e) {
-  console.error('Invalid JSON data!');
+  console.error("Invalid JSON data!");
 }
 ```
 
@@ -1557,14 +1538,14 @@ try {
 function helloWorld() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve('Hello World!');
+      resolve("Hello World!");
     }, 2000);
   });
 }
 
 async function msg() {
   const msg = await helloWorld();
-  console.log('Message:', msg);
+  console.log("Message:", msg);
 }
 
 msg(); // Message: Hello World! <-- after 2 seconds
@@ -1588,7 +1569,7 @@ Also see: [JSON cheatsheet](/json)
 
 ```javascript
 const xhr = new XMLHttpRequest();
-xhr.open('GET', 'mysite.com/getjson');
+xhr.open("GET", "mysite.com/getjson");
 ```
 
 `XMLHttpRequest` is a browser-level API that enables the client to script data transfers via JavaScript, NOT part of the
@@ -1598,8 +1579,8 @@ JavaScript language.
 
 ```javascript
 const req = new XMLHttpRequest();
-req.responseType = 'json';
-req.open('GET', '/getdata?id=65');
+req.responseType = "json";
+req.open("GET", "/getdata?id=65");
 req.onload = () => {
   console.log(xhr.response);
 };
@@ -1611,13 +1592,13 @@ req.send();
 
 ```javascript
 const data = {
-  fish: 'Salmon',
-  weight: '1.5 KG',
-  units: 5
+  fish: "Salmon",
+  weight: "1.5 KG",
+  units: 5,
 };
 const xhr = new XMLHttpRequest();
-xhr.open('POST', '/inventory/add');
-xhr.responseType = 'json';
+xhr.open("POST", "/inventory/add");
+xhr.responseType = "json";
 xhr.send(JSON.stringify(data));
 
 xhr.onload = () => {
@@ -1649,7 +1630,7 @@ fetch(url, {
 ### JSON Formatted
 
 ```javascript
-fetch('url-that-returns-JSON')
+fetch("url-that-returns-JSON")
   .then((response) => response.json())
   .then((jsonResponse) => {
     console.log(jsonResponse);
@@ -1672,20 +1653,20 @@ fetch('url')
 ### Fetch API Function
 
 ```javascript
-fetch('https://api-xxx.com/endpoint', {
-  method: 'POST',
-  body: JSON.stringify({ id: '200' })
+fetch("https://api-xxx.com/endpoint", {
+  method: "POST",
+  body: JSON.stringify({ id: "200" }),
 })
   .then(
     (response) => {
       if (response.ok) {
         return response.json();
       }
-      throw new Error('Request failed!');
+      throw new Error("Request failed!");
     },
     (networkError) => {
       console.log(networkError.message);
-    }
+    },
   )
   .then((jsonResponse) => {
     console.log(jsonResponse);
@@ -1699,7 +1680,7 @@ const getSuggestions = async () => {
   const wordQuery = inputField.value;
   const endpoint = `${url}${queryParams}${wordQuery}`;
   try {
-    const response = await fetch(endpoint, { cache: 'no-cache' });
+    const response = await fetch(endpoint, { cache: "no-cache" });
     if (response.ok) {
       const jsonResponse = await response.json();
     }
