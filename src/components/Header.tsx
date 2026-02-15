@@ -64,7 +64,7 @@ export function Header() {
             >
               {theme === "dark" ? (
                 <svg
-                  className="w-6 h-6 text-yellow-400"
+                  className="w-7 h-7 text-yellow-400"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >

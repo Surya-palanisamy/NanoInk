@@ -61,7 +61,7 @@ export default async function DocPage({ params }: DocPageProps) {
     <div className="flex flex-col lg:flex-row w-full">
       {/* Main content */}
       <div className="flex-1 w-full">
-        <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 xl:pr-8">
+        <div className="max-w-4xl mx-auto lg:mx-0 px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 xl:pr-8">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-neutral-500 mb-4 sm:mb-6 overflow-x-auto pb-2">
             {breadcrumbParts.map((part, index) => (
