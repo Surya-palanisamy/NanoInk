@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Learning Hub",
+  title: "Nano Ink",
   description:
     "Your personal knowledge base for Computer Science & Software Engineering",
 };

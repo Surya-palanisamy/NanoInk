@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: DocPageProps) {
   const { title } = await getMarkdownContent(filePath);
 
   return {
-    title: `${title} | Learning Hub`,
+    title: `${title} | Nano Ink`,
   };
 }
 

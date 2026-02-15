@@ -135,7 +135,7 @@ export default function HomePage() {
       {/* Hero */}
       <div className="mb-10">
         <h1 className="text-4xl font-bold text-neutral-100 dark:text-neutral-100 light:text-neutral-900 mb-4">
-          Welcome to Learning Hub
+          Welcome to Nano Ink
         </h1>
         <p className="text-lg text-neutral-400 dark:text-neutral-400 light:text-neutral-600">
           Your personal knowledge base for Computer Science & Software

@@ -409,7 +409,7 @@
 
   // Show home page with category cards
   function showHomePage() {
-    noteTitle.textContent = "Welcome to Learning Hub";
+    noteTitle.textContent = "Welcome to Nano Ink";
     breadcrumb.innerHTML = `<span>Home</span>`;
 
     // Clear active state from nav
