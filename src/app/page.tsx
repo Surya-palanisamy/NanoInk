@@ -131,24 +131,24 @@ export default function HomePage() {
   const categories = manifest.children;
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
+    <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-8 sm:py-12">
       {/* Hero */}
-      <div className="mb-10">
-        <h1 className="text-4xl font-bold text-neutral-100 dark:text-neutral-100 light:text-neutral-900 mb-4">
+      <div className="mb-10 sm:mb-12">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-100 dark:text-neutral-100 light:text-neutral-900 mb-3 sm:mb-4">
           Welcome to Nano Ink
         </h1>
-        <p className="text-lg text-neutral-400 dark:text-neutral-400 light:text-neutral-600">
+        <p className="text-base sm:text-lg text-neutral-400 dark:text-neutral-400 light:text-neutral-600 max-w-2xl">
           Your personal knowledge base for Computer Science & Software
           Engineering
         </p>
       </div>
 
       {/* Categories Grid */}
-      <section className="mb-12">
-        <h2 className="text-sm font-semibold text-neutral-500 uppercase tracking-wide mb-5">
+      <section className="mb-12 sm:mb-14">
+        <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 uppercase tracking-wide mb-4 sm:mb-5">
           Browse Topics
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {categories.map((cat) => {
             const fileCount = countFiles(cat);
             const readmePath = cat.children?.find(
@@ -162,21 +162,23 @@ export default function HomePage() {
               <Link
                 key={cat.name}
                 href={href}
-                className="group flex items-center gap-4 p-5 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-xl hover:border-accent hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                className="group flex flex-col sm:flex-row sm:items-center gap-3 p-4 sm:p-5 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg sm:rounded-xl hover:border-accent hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
-                <div className="flex items-center justify-center w-14 h-14 bg-accent-soft rounded-xl text-accent">
-                  {categoryIcons[cat.name] || defaultIcon}
+                <div className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-accent-soft rounded-lg sm:rounded-xl text-accent flex-shrink-0">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8">
+                    {categoryIcons[cat.name] || defaultIcon}
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-neutral-100 dark:text-neutral-100 light:text-neutral-900 group-hover:text-accent transition-colors">
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-sm sm:text-base text-neutral-100 dark:text-neutral-100 light:text-neutral-900 group-hover:text-accent transition-colors">
                     {formatCategoryName(cat.name)}
                   </h3>
-                  <span className="text-sm text-neutral-500">
+                  <span className="text-xs sm:text-sm text-neutral-500">
                     {fileCount} {fileCount === 1 ? "note" : "notes"}
                   </span>
                 </div>
                 <svg
-                  className="w-5 h-5 text-neutral-500 group-hover:text-accent group-hover:translate-x-1 transition-all"
+                  className="w-5 h-5 text-neutral-500 group-hover:text-accent group-hover:translate-x-1 transition-all flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -191,18 +193,19 @@ export default function HomePage() {
 
       {/* Quick Start */}
       <section>
-        <h2 className="text-sm font-semibold text-neutral-500 uppercase tracking-wide mb-5">
+        <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 uppercase tracking-wide mb-4 sm:mb-5">
           Quick Start
         </h2>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2 sm:gap-3">
           {quickLinks.map((link) => (
             <Link
               key={link.path}
               href={link.path}
-              className="inline-flex items-center gap-2 px-5 py-3 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-xl text-neutral-300 dark:text-neutral-300 light:text-neutral-700 font-medium text-sm hover:border-accent hover:text-accent hover:bg-accent-soft transition-all"
+              className="inline-flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg sm:rounded-xl text-neutral-300 dark:text-neutral-300 light:text-neutral-700 font-medium text-xs sm:text-sm hover:border-accent hover:text-accent hover:bg-accent-soft transition-all"
             >
-              <span className="text-lg">{link.emoji}</span>
-              <span>{link.label}</span>
+              <span className="text-base sm:text-lg">{link.emoji}</span>
+              <span className="hidden sm:inline">{link.label}</span>
+              <span className="sm:hidden">{link.label.split(" ")[0]}</span>
             </Link>
           ))}
         </div>

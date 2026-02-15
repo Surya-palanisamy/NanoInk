@@ -204,18 +204,18 @@ export function Sidebar({ manifest }: SidebarProps) {
         <div key={nodeId} className="flex flex-col">
           <button
             onClick={() => toggleFolder(nodeId)}
-            className="flex items-center gap-2 px-4 py-2 text-sm text-neutral-400 hover:text-neutral-200 hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-colors"
-            style={{ paddingLeft: `${depth * 16 + 16}px` }}
+            className="flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm text-neutral-400 hover:text-neutral-200 hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-colors"
+            style={{ paddingLeft: `${depth * 16 + 12}px` }}
           >
             <svg
-              className={`w-4 h-4 transition-transform ${isCollapsed ? "" : "rotate-90"}`}
+              className={`w-4 h-4 flex-shrink-0 transition-transform ${isCollapsed ? "" : "rotate-90"}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
               <polyline points="9 18 15 12 9 6" />
             </svg>
-            <span className="font-medium">{node.name}</span>
+            <span className="font-medium truncate">{node.name}</span>
           </button>
           {!isCollapsed && (
             <div className="flex flex-col">
@@ -236,12 +236,13 @@ export function Sidebar({ manifest }: SidebarProps) {
       <Link
         key={node.path}
         href={href}
-        className={`block px-4 py-2 text-sm transition-colors ${
+        className={`block px-3 sm:px-4 py-2 text-xs sm:text-sm transition-colors truncate ${
           isActive
             ? "text-accent bg-accent-soft font-medium"
             : "text-neutral-400 hover:text-neutral-200 hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong"
         }`}
-        style={{ paddingLeft: `${depth * 16 + 32}px` }}
+        style={{ paddingLeft: `${depth * 16 + 28}px` }}
+        title={node.name}
       >
         {node.name}
       </Link>
@@ -253,7 +254,8 @@ export function Sidebar({ manifest }: SidebarProps) {
       {/* Mobile toggle button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="lg:hidden fixed top-[calc(var(--header-height)+12px)] left-3 z-40 p-2.5 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg"
+        className="lg:hidden fixed top-[calc(var(--header-height)+8px)] left-2 z-40 p-2 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg hover:bg-dark-panel-strong transition-colors"
+        title="Open navigation"
       >
         <svg
           className="w-5 h-5 text-neutral-300"

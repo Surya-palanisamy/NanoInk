@@ -68,6 +68,7 @@ export async function getMarkdownContent(filePath: string): Promise<{
 
     // Parse headings for TOC (excluding code blocks)
     const headings: { id: string; text: string; level: number }[] = [];
+    const idCountMap = new Map<string, number>();
 
     // Remove code blocks to avoid picking up bash comments as headings
     const contentWithoutCodeBlocks = fileContent.replace(/```[\s\S]*?```/g, "");
@@ -78,10 +79,20 @@ export async function getMarkdownContent(filePath: string): Promise<{
     while ((match = headingRegex.exec(contentWithoutCodeBlocks)) !== null) {
       const level = match[1].length;
       const text = match[2].trim();
-      const id = text
+      let id = text
         .toLowerCase()
         .replace(/[^\w\s-]/g, "")
         .replace(/\s+/g, "-");
+
+      // Handle duplicate IDs by appending a counter
+      if (idCountMap.has(id)) {
+        const count = idCountMap.get(id)! + 1;
+        idCountMap.set(id, count);
+        id = `${id}-${count}`;
+      } else {
+        idCountMap.set(id, 0);
+      }
+
       headings.push({ id, text, level });
     }
 
@@ -91,13 +102,25 @@ export async function getMarkdownContent(filePath: string): Promise<{
       ? titleMatch[1].trim()
       : filePath.split("/").pop()?.replace(".md", "") || "Untitled";
 
-    // Custom heading renderer to add IDs
+    // Custom heading renderer to add IDs with duplicate handling
     const headingRenderer = new marked.Renderer();
+    const rendererIdCountMap = new Map<string, number>();
+
     headingRenderer.heading = function (text: string, level: number) {
-      const id = text
+      let id = text
         .toLowerCase()
         .replace(/[^\w\s-]/g, "")
         .replace(/\s+/g, "-");
+
+      // Handle duplicate IDs by appending a counter
+      if (rendererIdCountMap.has(id)) {
+        const count = rendererIdCountMap.get(id)! + 1;
+        rendererIdCountMap.set(id, count);
+        id = `${id}-${count}`;
+      } else {
+        rendererIdCountMap.set(id, 0);
+      }
+
       return `<h${level} id="${id}">${text}</h${level}>`;
     };
 

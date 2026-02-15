@@ -90,14 +90,14 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh] bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-3 sm:px-4 bg-black/60 backdrop-blur-sm"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="w-full max-w-xl bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary rounded-xl border border-dark-border dark:border-dark-border light:border-light-border shadow-2xl overflow-hidden">
+      <div className="w-full max-w-2xl sm:max-w-xl bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary rounded-lg sm:rounded-xl border border-dark-border dark:border-dark-border light:border-light-border shadow-2xl overflow-hidden">
         {/* Search Input */}
-        <div className="flex items-center gap-3 p-4 border-b border-dark-border dark:border-dark-border light:border-light-border">
+        <div className="flex items-center gap-3 p-3 sm:p-4 border-b border-dark-border dark:border-dark-border light:border-light-border">
           <svg
-            className="w-5 h-5 text-neutral-500"
+            className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-500 flex-shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -110,23 +110,23 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search documentation..."
-            className="flex-1 bg-transparent text-neutral-100 dark:text-neutral-100 light:text-neutral-900 placeholder-neutral-500 outline-none text-base"
+            className="flex-1 bg-transparent text-neutral-100 dark:text-neutral-100 light:text-neutral-900 placeholder-neutral-500 outline-none text-sm sm:text-base"
             autoFocus
           />
-          <kbd className="px-2 py-1 text-xs bg-dark-panel-strong dark:bg-dark-panel-strong light:bg-light-panel-strong text-neutral-500 rounded">
+          <kbd className="hidden sm:block px-2 py-1 text-xs bg-dark-panel-strong dark:bg-dark-panel-strong light:bg-light-panel-strong text-neutral-500 rounded">
             ESC
           </kbd>
         </div>
 
         {/* Results */}
-        <div className="max-h-80 overflow-y-auto">
+        <div className="max-h-64 sm:max-h-80 overflow-y-auto">
           {results.length === 0 && query && (
-            <div className="p-4 text-center text-neutral-500">
+            <div className="p-4 text-center text-sm text-neutral-500">
               No results found
             </div>
           )}
           {results.length === 0 && !query && (
-            <div className="p-4 text-center text-neutral-500">
+            <div className="p-4 text-center text-sm text-neutral-500">
               Type to search...
             </div>
           )}
@@ -134,7 +134,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             <button
               key={result.path}
               onClick={() => navigateToResult(result.path)}
-              className={`w-full flex items-center gap-3 p-3 text-left transition-colors ${
+              className={`w-full flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 text-left transition-colors ${
                 index === selectedIndex
                   ? "bg-accent/20 text-accent"
                   : "hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong text-neutral-300 dark:text-neutral-300 light:text-neutral-700"
@@ -154,7 +154,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 />
               </svg>
               <div className="flex-1 min-w-0">
-                <div className="font-medium truncate">{result.name}</div>
+                <div className="font-medium text-sm sm:text-base truncate">
+                  {result.name}
+                </div>
                 <div className="text-xs text-neutral-500 truncate">
                   {result.parentPath}
                 </div>

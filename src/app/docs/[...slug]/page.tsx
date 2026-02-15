@@ -58,36 +58,43 @@ export default async function DocPage({ params }: DocPageProps) {
   const breadcrumbParts = slug.slice(0, -1);
 
   return (
-    <div className="flex">
+    <div className="flex flex-col lg:flex-row w-full">
       {/* Main content */}
-      <div className="flex-1 max-w-4xl mx-auto px-6 py-8 xl:mr-[240px]">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-neutral-500 mb-6">
-          {breadcrumbParts.map((part, index) => (
-            <span key={index} className="flex items-center gap-2">
-              <span className="text-neutral-400">{part}</span>
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+      <div className="flex-1 w-full">
+        <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 xl:pr-8">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-neutral-500 mb-4 sm:mb-6 overflow-x-auto pb-2">
+            {breadcrumbParts.map((part, index) => (
+              <span
+                key={index}
+                className="flex items-center gap-1 sm:gap-2 whitespace-nowrap"
               >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
+                <span className="text-neutral-400 text-xs sm:text-sm truncate">
+                  {part}
+                </span>
+                <svg
+                  className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </span>
+            ))}
+            <span className="text-neutral-200 dark:text-neutral-200 light:text-neutral-800 text-xs sm:text-sm truncate">
+              {finalSlug[finalSlug.length - 1]}
             </span>
-          ))}
-          <span className="text-neutral-200 dark:text-neutral-200 light:text-neutral-800">
-            {finalSlug[finalSlug.length - 1]}
-          </span>
-        </nav>
+          </nav>
 
-        {/* Article */}
-        <article>
-          <h1 className="text-4xl font-bold text-neutral-100 dark:text-neutral-100 light:text-neutral-900 mb-8">
-            {title}
-          </h1>
-          <MarkdownContent content={content} />
-        </article>
+          {/* Article */}
+          <article>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-100 dark:text-neutral-100 light:text-neutral-900 mb-6 sm:mb-8 break-words">
+              {title}
+            </h1>
+            <MarkdownContent content={content} />
+          </article>
+        </div>
       </div>
 
       {/* Table of Contents */}
