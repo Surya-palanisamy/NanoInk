@@ -162,29 +162,22 @@ export default function HomePage() {
               <Link
                 key={cat.name}
                 href={href}
-                className="group flex flex-col sm:flex-row sm:items-center gap-3 p-4 sm:p-5 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg sm:rounded-xl hover:border-accent hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-all hover:-translate-y-0.5 hover:shadow-lg w-full"
+                className="group flex flex-col sm:flex-row sm:items-center gap-3 p-4 sm:p-5 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg sm:rounded-xl hover:border-accent hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-all hover:-translate-y-0.5 hover:shadow-lg w-full "
               >
-                <div className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-accent-soft rounded-lg sm:rounded-xl text-accent flex-shrink-0">
+                <div className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-accent-soft rounded-lg sm:rounded-xl text-accent flex-shrink-0 self-center sm:self-auto">
                   <div className="w-6 h-6 sm:w-8 sm:h-8">
                     {categoryIcons[cat.name] || defaultIcon}
                   </div>
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 self-center sm:self-auto">
                   <h3 className="font-semibold text-sm sm:text-base text-neutral-100 dark:text-neutral-100 light:text-neutral-900 group-hover:text-accent transition-colors">
                     {formatCategoryName(cat.name)}
                   </h3>
-                  <span className="text-xs sm:text-sm text-neutral-500">
+                  <span className="text-xs sm:text-sm text-neutral-500 self-center sm:self-auto">
                     {fileCount} {fileCount === 1 ? "note" : "notes"}
                   </span>
                 </div>
-                <svg
-                  className="w-5 h-5 text-neutral-500 group-hover:text-accent group-hover:translate-x-1 transition-all flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
+               
               </Link>
             );
           })}
