@@ -26,7 +26,7 @@ export function Header() {
               >
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" />
               </svg>
-              <span className="hidden sm:inline text-base sm:text-lg font-semibold text-neutral-100 dark:text-neutral-100 light:text-neutral-900">
+              <span className="text-[16px] sm:inline text-base sm:text-lg font-semibold text-neutral-100 dark:text-neutral-100 light:text-black">
                 Nano Ink
               </span>
             </Link>
@@ -37,7 +37,7 @@ export function Header() {
             {/* Search Button */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2 px-3 py-1.5 bg-dark-panel-strong dark:bg-dark-panel-strong light:bg-light-panel-strong border border-dark-border dark:border-dark-border light:border-light-border rounded-lg text-neutral-400 hover:text-neutral-200 transition-colors text-sm"
+              className="flex items-center gap-2 px-3 py-1.5 bg-dark-panel-strong dark:bg-dark-panel-strong light:bg-light-panel-strong border border-dark-border dark:border-dark-border light:border-light-border rounded-lg text-neutral-400 light:text-black hover:text-neutral-200 light:hover:text-black transition-colors text-sm"
               title="Search (⌘K)"
             >
               <svg
@@ -77,7 +77,7 @@ export function Header() {
                 </svg>
               ) : (
                 <svg
-                  className="w-6 h-6 text-neutral-600"
+                  className="w-6 h-6 text-neutral-600 light:text-black"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -94,13 +94,13 @@ export function Header() {
 
             {/* GitHub Link */}
             <a
-              href="https://github.com"
+              href="https://github.com/Surya-palanisamy/nanoink"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-colors flex-shrink-0"
             >
               <svg
-                className="w-5 h-5 text-neutral-400 hover:text-neutral-200"
+                className="w-5 h-5 text-neutral-400 light:text-black hover:text-neutral-200 light:hover:text-black"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >

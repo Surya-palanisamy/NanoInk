@@ -134,10 +134,10 @@ export default function HomePage() {
     <div className="max-w-6xl mx-auto lg:mx-0 px-3 sm:px-4 lg:px-6 py-8 sm:py-12">
       {/* Hero */}
       <div className="mb-10 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-100 dark:text-neutral-100 light:text-neutral-900 mb-3 sm:mb-4">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-100 dark:text-neutral-100 light:text-black mb-3 sm:mb-4">
           Welcome to Nano Ink
         </h1>
-        <p className="text-base sm:text-lg text-neutral-400 dark:text-neutral-400 light:text-neutral-600 max-w-2xl">
+        <p className="text-base sm:text-lg text-neutral-400 dark:text-neutral-400 light:text-black max-w-2xl">
           Your personal knowledge base for Computer Science & Software
           Engineering
         </p>
@@ -145,7 +145,7 @@ export default function HomePage() {
 
       {/* Categories Grid */}
       <section className="mb-12 sm:mb-14">
-        <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 uppercase tracking-wide mb-4 sm:mb-5">
+        <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 light:text-black uppercase tracking-wide mb-4 sm:mb-5">
           Browse Topics
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
@@ -170,14 +170,13 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex-1 min-w-0 self-center sm:self-auto">
-                  <h3 className="font-semibold text-sm sm:text-base text-neutral-100 dark:text-neutral-100 light:text-neutral-900 group-hover:text-accent transition-colors">
+                  <h3 className="font-semibold text-sm sm:text-base text-neutral-100 dark:text-neutral-100 light:text-black group-hover:text-accent transition-colors">
                     {formatCategoryName(cat.name)}
                   </h3>
-                  <span className="text-xs sm:text-sm text-neutral-500 self-center sm:self-auto">
+                  <span className="text-xs sm:text-sm text-neutral-500 light:text-black self-center sm:self-auto">
                     {fileCount} {fileCount === 1 ? "note" : "notes"}
                   </span>
                 </div>
-               
               </Link>
             );
           })}
@@ -186,7 +185,7 @@ export default function HomePage() {
 
       {/* Quick Start */}
       <section>
-        <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 uppercase tracking-wide mb-4 sm:mb-5">
+        <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 light:text-black uppercase tracking-wide mb-4 sm:mb-5">
           Quick Start
         </h2>
         <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -194,7 +193,7 @@ export default function HomePage() {
             <Link
               key={link.path}
               href={link.path}
-              className="inline-flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg sm:rounded-xl text-neutral-300 dark:text-neutral-300 light:text-neutral-700 font-medium text-xs sm:text-sm hover:border-accent hover:text-accent hover:bg-accent-soft transition-all"
+              className="inline-flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg sm:rounded-xl text-neutral-300 dark:text-neutral-300 light:text-black font-medium text-xs sm:text-sm hover:border-accent hover:text-accent hover:bg-accent-soft transition-all"
             >
               <span className="text-base sm:text-lg">{link.emoji}</span>
               <span className="hidden sm:inline">{link.label}</span>

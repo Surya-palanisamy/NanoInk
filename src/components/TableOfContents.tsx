@@ -13,7 +13,9 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   const renderItems = (onItemClick?: () => void) => {
     if (!hasHeadings) {
       return (
-        <p className="text-xs xl:text-sm text-neutral-500">No headings found</p>
+        <p className="text-xs xl:text-sm text-neutral-500 light:text-black">
+          No headings found
+        </p>
       );
     }
 
@@ -25,7 +27,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
             href={`#${heading.id}`}
             title={heading.text}
             onClick={onItemClick}
-            className={`group block text-[11px] xl:text-[13px] leading-4 xl:leading-5 text-neutral-400 hover:text-neutral-100 transition-colors truncate ${
+            className={`group block text-[11px] xl:text-[13px] leading-4 xl:leading-5 text-neutral-400 light:text-black hover:text-neutral-100 light:hover:text-black transition-colors truncate ${
               heading.level === 1 ? "font-semibold" : "font-normal"
             }`}
             style={{ paddingLeft: `${(heading.level - 1) * 8}px` }}
@@ -50,7 +52,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
         disabled={!hasHeadings}
       >
         <svg
-          className="w-5 h-5 text-neutral-300"
+          className="w-5 h-5 text-neutral-300 light:text-black"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -80,7 +82,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       >
         <div className="p-3">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.18em]">
+            <h3 className="text-xs font-semibold text-neutral-400 light:text-black uppercase tracking-[0.18em]">
               Contents
             </h3>
             <button
@@ -90,7 +92,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
               title="Close contents"
             >
               <svg
-                className="w-4 h-4 text-neutral-400"
+                className="w-4 h-4 text-neutral-400 light:text-black"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -112,7 +114,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       <aside className="hidden xl:block fixed top-[var(--header-height)] right-0 w-[200px] xl:w-[240px] h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary overflow-y-auto">
         <div className="p-3 xl:p-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.18em]">
+            <h3 className="text-xs font-semibold text-neutral-400 light:text-black uppercase tracking-[0.18em]">
               Contents
             </h3>
           </div>

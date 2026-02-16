@@ -97,7 +97,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         {/* Search Input */}
         <div className="flex items-center gap-3 p-3 sm:p-4 border-b border-dark-border dark:border-dark-border light:border-light-border">
           <svg
-            className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-500 flex-shrink-0"
+            className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-500 light:text-black flex-shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -110,10 +110,10 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search documentation..."
-            className="flex-1 bg-transparent text-neutral-100 dark:text-neutral-100 light:text-neutral-900 placeholder-neutral-500 outline-none text-sm sm:text-base"
+            className="flex-1 bg-transparent text-neutral-100 dark:text-neutral-100 light:text-black placeholder-neutral-500 outline-none text-sm sm:text-base"
             autoFocus
           />
-          <kbd className="hidden sm:block px-2 py-1 text-xs bg-dark-panel-strong dark:bg-dark-panel-strong light:bg-light-panel-strong text-neutral-500 rounded">
+          <kbd className="hidden sm:block px-2 py-1 text-xs bg-dark-panel-strong dark:bg-dark-panel-strong light:bg-light-panel-strong text-neutral-500 light:text-black rounded">
             ESC
           </kbd>
         </div>
@@ -121,12 +121,12 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         {/* Results */}
         <div className="max-h-64 sm:max-h-80 overflow-y-auto">
           {results.length === 0 && query && (
-            <div className="p-4 text-center text-sm text-neutral-500">
+            <div className="p-4 text-center text-sm text-neutral-500 light:text-black">
               No results found
             </div>
           )}
           {results.length === 0 && !query && (
-            <div className="p-4 text-center text-sm text-neutral-500">
+            <div className="p-4 text-center text-sm text-neutral-500 light:text-black">
               Type to search...
             </div>
           )}
@@ -137,7 +137,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               className={`w-full flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 text-left transition-colors ${
                 index === selectedIndex
                   ? "bg-accent/20 text-accent"
-                  : "hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong text-neutral-300 dark:text-neutral-300 light:text-neutral-700"
+                  : "hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong text-neutral-300 dark:text-neutral-300 light:text-black"
               }`}
             >
               <svg
@@ -157,7 +157,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 <div className="font-medium text-sm sm:text-base truncate">
                   {result.name}
                 </div>
-                <div className="text-xs text-neutral-500 truncate">
+                <div className="text-xs text-neutral-500 light:text-black truncate">
                   {result.parentPath}
                 </div>
               </div>

@@ -204,7 +204,7 @@ export function Sidebar({ manifest }: SidebarProps) {
         <div key={nodeId} className="flex flex-col">
           <button
             onClick={() => toggleFolder(nodeId)}
-            className="flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm text-neutral-400 hover:text-neutral-200 hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-colors"
+            className="flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm text-neutral-400 light:text-black hover:text-neutral-200 light:hover:text-black hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-colors"
             style={{ paddingLeft: `${depth * 16 + 12}px` }}
           >
             <svg
@@ -239,7 +239,7 @@ export function Sidebar({ manifest }: SidebarProps) {
         className={`block px-3 sm:px-4 py-2 text-xs sm:text-sm transition-colors truncate ${
           isActive
             ? "text-accent bg-accent-soft font-medium"
-            : "text-neutral-400 hover:text-neutral-200 hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong"
+            : "text-neutral-400 light:text-black hover:text-neutral-200 light:hover:text-black hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong"
         }`}
         style={{ paddingLeft: `${depth * 16 + 28}px` }}
         title={node.name}
@@ -258,7 +258,7 @@ export function Sidebar({ manifest }: SidebarProps) {
         title="Open navigation"
       >
         <svg
-          className="w-5 h-5 text-neutral-300"
+          className="w-5 h-5 text-neutral-300 light:text-black"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

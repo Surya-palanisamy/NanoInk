@@ -431,24 +431,24 @@ td {
 /* Light mode prose */
 .light .prose h1,
 .light .prose h2 {
-  @apply text-neutral-900 border-neutral-200;
+  @apply text-black border-neutral-200;
 }
 .light .prose h3,
 .light .prose h4 {
-  @apply text-neutral-800;
+  @apply text-black;
 }
 .light .prose p,
 .light .prose li {
-  @apply text-neutral-700;
+  @apply text-black;
 }
 .light .prose blockquote {
-  @apply text-neutral-600;
+  @apply text-black;
 }
 .light .prose th {
-  @apply bg-neutral-100 text-neutral-800 border-neutral-200;
+  @apply bg-neutral-100 text-black border-neutral-200;
 }
 .light .prose td {
-  @apply border-neutral-200 text-neutral-700;
+  @apply border-neutral-200 text-black;
 }
 .light .prose hr {
   @apply border-neutral-200;

@@ -1,10 +1,10 @@
+import { Header } from "@/components/Header";
+import { Sidebar } from "@/components/Sidebar";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { getManifest } from "@/lib/manifest";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { Header } from "@/components/Header";
-import { Sidebar } from "@/components/Sidebar";
-import { getManifest } from "@/lib/manifest";
 
 const inter = Inter({
   subsets: ["latin"],
