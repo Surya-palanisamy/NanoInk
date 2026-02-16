@@ -101,6 +101,32 @@
   }
 }
 
+@keyframes pageCinematicIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    filter: blur(6px);
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.page-enter {
+  animation: pageCinematicIn 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter {
+    animation: none;
+  }
+}
+
 /* Code block syntax highlighting */
 .prose pre {
   @apply rounded-xl p-5 pt-12 overflow-x-auto my-5 relative border shadow-lg;
