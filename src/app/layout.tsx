@@ -17,9 +17,49 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nano Ink",
+  title: {
+    default: "Nano Ink",
+    template: "%s | Nano Ink",
+  },
   description:
     "Your personal knowledge base for Computer Science & Software Engineering",
+  applicationName: "Nano Ink",
+  authors: [{ name: "Surya palanisamy" }],
+  creator: "Surya palanisamy",
+  publisher: "Surya palanisamy",
+  keywords: [
+    "Computer Science",
+    "Software Engineering",
+    "Knowledge Base",
+    "Notes",
+    "Learning Hub",
+    "Tech Notes",
+    "Programming",
+    "Development",
+    "Tech Learning",
+    "CS Concepts",
+    "Software Design",
+    "Coding Notes",
+    "Tech Reference",
+    "Nano Ink",
+  ],
+  metadataBase: new URL("https://nano-ink.vercel.app"),
+  openGraph: {
+    type: "website",
+    siteName: "Nano Ink",
+    title: "Nano Ink",
+    description:
+      "Your personal knowledge base for Computer Science & Software Engineering",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nano Ink",
+    description:
+      "Your personal knowledge base for Computer Science & Software Engineering",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
