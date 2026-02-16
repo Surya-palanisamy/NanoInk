@@ -4,7 +4,7 @@ import { getManifest, countFiles, formatCategoryName } from "@/lib/manifest";
 const categoryIcons: Record<string, React.ReactNode> = {
   ComputerNetworks: (
     <svg
-      className="w-8 h-8"
+      className="w-full h-full"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -17,7 +17,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ),
   Database: (
     <svg
-      className="w-8 h-8"
+      className="w-full h-full"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -30,7 +30,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ),
   DevOps: (
     <svg
-      className="w-8 h-8"
+      className="w-full h-full"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -42,7 +42,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ),
   DSA: (
     <svg
-      className="w-8 h-8"
+      className="w-full h-full"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -55,7 +55,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ),
   Linux: (
     <svg
-      className="w-8 h-8"
+      className="w-full h-full"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -67,7 +67,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ),
   OperatingSystems: (
     <svg
-      className="w-8 h-8"
+      className="w-full h-full"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -80,7 +80,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ),
   Tools: (
     <svg
-      className="w-8 h-8"
+      className="w-full h-full"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -91,7 +91,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ),
   WebDev: (
     <svg
-      className="w-8 h-8"
+      className="w-full h-full"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -105,7 +105,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
 
 const defaultIcon = (
   <svg
-    className="w-8 h-8"
+    className="w-full h-full"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
