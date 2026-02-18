@@ -1,3 +1,67 @@
+.sidebar-toc {
+  scrollbar-width: thin;
+  scrollbar-color: #444 #222;
+}
+.sidebar-toc::-webkit-scrollbar {
+  width: 8px;
+  background: #222;
+}
+.sidebar-toc::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+.sidebar-toc::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* TOC Scrollbar - Dark Theme */
+.toc-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}
+
+.toc-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.toc-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toc-scrollbar::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.toc-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Light theme TOC scrollbar */
+.light .toc-scrollbar {
+  scrollbar-color: #d4d4d4 transparent;
+}
+
+.light .toc-scrollbar::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.light .toc-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Sticky TOC positioning */
+.sticky-toc {
+  position: fixed;
+}
 @import "tailwindcss";
 
 @custom-variant light (&:is(.light *));
@@ -33,6 +97,7 @@
   :root {
     --header-height: 60px;
     --sidebar-width: 280px;
+    --toc-width: 240px;
     --code-bg: #111111;
     --code-border: rgba(255, 255, 255, 0.1);
     --code-fg: #e4e4e7;
@@ -523,4 +588,20 @@ td {
 .light .hljs-deletion {
   color: #b91c1c !important;
   background-color: rgba(239, 68, 68, 0.12) !important;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  color: #1f2937;
+
+  /* Fluid font scaling */
+  font-size: clamp(16px, 1.2vw + 14px, 18px);
+
+  /* Comfortable reading */
+  line-height: 1.7;
+
+  /* Better paragraph spacing */
+  margin-bottom: 1.2em;
 }

@@ -6,7 +6,7 @@
 
 SSH (Secure Shell) allows secure remote login, command execution, and file transfer between systems over an encrypted channel.
 
-> [!Default port]
+> port
 > 22
 
 ---

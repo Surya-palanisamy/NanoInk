@@ -1,5 +1,3 @@
-# Systemd, systemctl & journalctl – Deep Practical Guide
-
 ## What is systemd?
 
 systemd is the modern init system and service manager used in Linux systems such as Fedora, Ubuntu, RHEL, Arch, Debian, etc.

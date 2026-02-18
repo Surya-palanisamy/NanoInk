@@ -1,5 +1,3 @@
-# Linux Guide: Basics to Advanced
-
 ## 1. What is Linux?
 
 **Linux** is the engine that powers millions of servers, phones (Android), and computers worldwide.
