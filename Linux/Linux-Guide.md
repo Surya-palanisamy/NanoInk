@@ -1030,7 +1030,7 @@ ssh myserver
 
 ```bash
 # Download file
-curl -O https://example.com/file.zip
+curl -O https://example.com/img.jpg
 
 # Test HTTP endpoint
 curl http://localhost:8080               # GET request
