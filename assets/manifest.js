@@ -89,7 +89,7 @@ const MANIFEST = {
       name: "Linux",
       children: [
         { name: "README", path: "Linux/README.md" },
-        { name: "Linux-Guide", path: "Linux/Linux-Guide.md" },
+        { name: "Linux", path: "Linux/Linux.md" },
         { name: "Ssh", path: "Linux/Ssh.md" },
         { name: "Systemd-Linux", path: "Linux/Systemd-Linux.md" },
         { name: "zshrc", path: "Linux/zshrc.md" },
