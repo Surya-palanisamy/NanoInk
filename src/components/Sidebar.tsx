@@ -11,7 +11,7 @@ interface SidebarProps {
 }
 
 const MIN_SIDEBAR_WIDTH = 220;
-const MAX_SIDEBAR_WIDTH = 360;
+const MAX_SIDEBAR_WIDTH = 280;
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
 
 export function Sidebar({ manifest }: SidebarProps) {
@@ -282,17 +282,21 @@ export function Sidebar({ manifest }: SidebarProps) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-[var(--header-height)] left-0 h-[calc(100vh-var(--header-height))] bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border-r border-dark-border dark:border-dark-border light:border-light-border overflow-y-auto z-50 transition-transform lg:translate-x-0 ${
+        className={`sidebar-toc fixed top-[var(--header-height)] left-0 h-[calc(100vh-var(--header-height))] bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border-r border-dark-border dark:border-dark-border light:border-light-border overflow-y-auto z-50 transition-transform lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
-        style={{ width: `${sidebarWidth}px` }}
+        style={{
+          width: `${sidebarWidth}px`,
+          minWidth: 220,
+          maxWidth: 180,
+        }}
       >
         <div
           role="separator"
           aria-orientation="vertical"
           aria-label="Resize sidebar"
           onPointerDown={startResize}
-          className={`hidden lg:block absolute right-0 top-0 h-full w-3 cursor-col-resize group ${
+          className={`absolute right-0 top-0 h-full w-3 cursor-col-resize group ${
             isResizing ? "bg-accent/10" : "bg-transparent"
           }`}
         >

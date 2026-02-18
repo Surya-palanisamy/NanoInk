@@ -1,19 +1,25 @@
 # install zsh
-
+```
 sudo dnf install zsh -y
+```
 
 # Set zsh as default shell
-
+```
 chsh -s $(which zsh)
 sudo dnf install zsh-autosuggestions
+```
 
 # Install zsh-syntax-highlighting
-
+```
 sudo dnf install zsh-syntax-highlighting
-
+```
 # Install fzf
-
+```
 sudo dnf install fzf
+```
+
+### .zshrc file:
+
 
 ```bash
 

@@ -121,7 +121,7 @@ const quickLinks = [
     label: "Data Structures & Algorithms",
     emoji: "🚀",
   },
-  { path: "/docs/Linux/Linux-Guide", label: "Linux Guide", emoji: "🐧" },
+  { path: "/docs/Linux/Linux", label: "Linux", emoji: "🐧" },
   { path: "/docs/DevOps/Docker", label: "Docker Basics", emoji: "🐳" },
   { path: "/docs/WebDev/JavaScript", label: "JavaScript", emoji: "⚡" },
 ];

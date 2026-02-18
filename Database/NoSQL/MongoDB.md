@@ -429,19 +429,19 @@ SQL still best for 🏦:
 
 ### Connect MongoDB Shell
 
-```mongosh
+```bash
 mongo # connects to mongodb://127.0.0.1:27017 by default
 ```
 
-```mongosh
+```bash
 mongo --host <host> --port <port> -u <user> -p <pwd> # omit the password if you want a prompt
 ```
 
-```mongosh
+```bash
 mongo "mongodb://192.168.1.1:27017"
 ```
 
-```mongosh
+```bash
 mongo "mongodb+srv://cluster-name.abcde.mongodb.net/<dbname>" --username <username> # MongoDB Atlas
 ```
 
@@ -449,25 +449,25 @@ mongo "mongodb+srv://cluster-name.abcde.mongodb.net/<dbname>" --username <userna
 
 Show dbs :
 
-```mongosh
+```bash
 db // prints the current database
 ```
 
 Switch database :
 
-```mongosh
+```bash
 use <database_name>
 ```
 
 Show collections :
 
-```mongosh
+```bash
 show collections
 ```
 
 Run JavaScript file :
 
-```mongosh
+```bash
 load("myScript.js")
 ```
 
@@ -477,7 +477,7 @@ load("myScript.js")
 
 ### Create
 
-```mongosh
+```bash
 db.coll.insertOne({name: "Max"})
 db.coll.insertMany([{name: "Max"}, {name:"Alex"}]) // ordered bulk insert
 db.coll.insertMany([{name: "Max"}, {name:"Alex"}], {ordered: false}) // unordered bulk insert
@@ -487,7 +487,7 @@ db.coll.insertMany({name: "Max"}, {"writeConcern": {"w": "majority", "wtimeout":
 
 ### Delete
 
-```mongosh
+```bash
 db.coll.deleteOne({name: "Max"})
 db.coll.deleteMany( $and: [{name: "Max"}, {justOne: true}]) //delete all entries which contain both values
 db.coll.deleteMany( $or: [{name: "Max"}, {justOne: true}])  //delete all entries which contain any of the specified values
@@ -498,7 +498,7 @@ db.coll.findOneAndDelete({"name": "Max"})
 
 ### Update
 
-```mongosh
+```bash
 db.coll.updateMany({"_id": 1}, {$set: {"year": 2016}}) // WARNING! Replaces the entire document where "_id" = 1
 db.coll.updateOne({"_id": 1}, {$set: {"year": 2016, name: "Max"}})
 db.coll.updateOne({"_id": 1}, {$unset: {"year": 1}})
@@ -510,9 +510,9 @@ db.coll.updateOne({"_id": 1}, {$max: {"imdb": 8}})
 db.coll.updateMany({"_id": {$lt: 10}}, {$set: {"lastModified": ISODate()}})
 ```
 
-### Array 
+### Array
 
-```mongosh
+```bash
 db.coll.updateOne({"_id": 1}, {$push :{"array": 1}})
 db.coll.updateOne({"_id": 1}, {$pull :{"array": 1}})
 db.coll.updateOne({"_id": 1}, {$addToSet :{"array": 2}})
@@ -525,39 +525,39 @@ db.coll.updateMany({}, {$inc: {"grades.$[]": 10}})
 db.coll.updateMany({}, {$set: {"grades.$[element]": 100}}, {arrayFilters: [{"element": {$gte: 100}}]})
 ```
 
-### Update many 
+### Update many
 
-```mongosh
+```bash
 db.coll.updateMany({"year": 1999}, {$set: {"decade": "90's"}})
 ```
 
-### FindOneAndUpdate 
+### FindOneAndUpdate
 
-```mongosh
+```bash
 db.coll.findOneAndUpdate({"name": "Max"}, {$inc: {"points": 5}}, {returnNewDocument: true})
 ```
 
-### Upsert 
+### Upsert
 
-```mongosh
+```bash
 db.coll.updateOne({"_id": 1}, {$set: {item: "apple"}, $setOnInsert: {defaultQty: 100}}, {upsert: true})
 ```
 
-### Replace 
+### Replace
 
-```mongosh
+```bash
 db.coll.replaceOne({"name": "Max"}, {"firstname": "Maxime", "surname": "Beugnet"})
 ```
 
-### Write concern 
+### Write concern
 
-```mongosh
+```bash
 db.coll.updateMany({}, {$set: {"x": 1}}, {"writeConcern": {"w": "majority", "wtimeout": 5000}})
 ```
 
-### Find 
+### Find
 
-```mongosh
+```bash
 db.coll.findOne() // returns a single document
 db.coll.find()    // returns a cursor - show 20 results - "it" to display more
 db.coll.find().pretty()
@@ -569,14 +569,14 @@ db.coll.distinct("name")
 
 ### Count
 
-```mongosh
+```bash
 db.coll.estimatedDocumentCount()  // estimation based on collection metadata
 db.coll.countDocuments({age: 32}) // alias for an aggregation pipeline - accurate count
 ```
 
 ### Comparison
 
-```mongosh
+```bash
 db.coll.find({"year": {$gt: 1970}})
 db.coll.find({"year": {$gte: 1970}})
 db.coll.find({"year": {$lt: 1970}})
@@ -588,7 +588,7 @@ db.coll.find({"year": {$nin: [1958, 1959]}})
 
 ### Logical
 
-```mongosh
+```bash
 db.coll.find({name:{$not: {$eq: "Max"}}})
 db.coll.find({$or: [{"year" : 1958}, {"year" : 1959}]})
 db.coll.find({$nor: [{price: 1.99}, {sale: true}]})
@@ -602,7 +602,7 @@ $and: [
 
 ### Element
 
-```mongosh
+```bash
 db.coll.find({name: {$exists: true}})
 db.coll.find({"zipCode": {$type: 2 }})
 db.coll.find({"zipCode": {$type: "string"}})
@@ -610,7 +610,7 @@ db.coll.find({"zipCode": {$type: "string"}})
 
 ### Aggregation Pipeline
 
-```mongosh
+```bash
 db.coll.aggregate([
 {$match: {status: "A"}},
 {$group: {_id: "$cust_id", total: {$sum: "$amount"}}},
@@ -620,20 +620,20 @@ db.coll.aggregate([
 
 ### Text search with a "text" index
 
-```mongosh
+```bash
 db.coll.find({$text: {$search: "cake"}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}})
 ```
 
 ### Regex
 
-```mongosh
+```bash
 db.coll.find({name: /^Max/}) // regex: starts by letter "M"
 db.coll.find({name: /^Max$/i}) // regex case insensitive
 ```
 
 ### Array
 
-```mongosh
+```bash
 db.coll.find({tags: {$all: ["Realm", "Charts"]}})
 db.coll.find({field: {$size: 2}}) // impossible to index - prefer storing the size of the array & update it
 db.coll.find({results: {$elemMatch: {product: "xyz", score: {$gte: 8}}}})
@@ -641,7 +641,7 @@ db.coll.find({results: {$elemMatch: {product: "xyz", score: {$gte: 8}}}})
 
 ### Projections
 
-```mongosh
+```bash
 db.coll.find({"x": 1}, {"actors": 1}) // actors + \_id
 db.coll.find({"x": 1}, {"actors": 1, "\_id": 0}) // actors
 db.coll.find({"x": 1}, {"actors": 0, "summary": 0}) // all but "actors" and "summary"
@@ -649,28 +649,28 @@ db.coll.find({"x": 1}, {"actors": 0, "summary": 0}) // all but "actors" and "sum
 
 ### Sort, skip, limit
 
-```mongosh
+```bash
 db.coll.find({}).sort({"year": 1, "rating": -1}).skip(10).limit(3)
 ```
 
 ### Read Concern
 
-```mongosh
+```bash
 db.coll.find().readConcern("majority")
 ```
 
-## Databases and Collections {.cols-2}
+## Databases and Collections
 
-### Drop 
+### Drop
 
-```mongosh
+```bash
 db.coll.drop()    // removes the collection and its index definitions
 db.dropDatabase() // double check that you are *NOT* on the PROD cluster... :-)
 ```
 
-### Create Collection 
+### Create Collection
 
-```mongosh
+```bash
 db.createCollection("contacts", {
    validator: {$jsonSchema: {
       bsonType: "object",
@@ -694,9 +694,9 @@ db.createCollection("contacts", {
 })
 ```
 
-### Other Collection Functions 
+### Other Collection Functions
 
-```mongosh
+```bash
 db.coll.stats()
 db.coll.storageSize()
 db.coll.totalIndexSize()
@@ -705,33 +705,33 @@ db.coll.validate({full: true})
 db.coll.renameCollection("new_coll", true) // 2nd parameter to drop the target collection if exists
 ```
 
-## Indexes {.cols-2}
+## Indexes
 
 ### Basics
 
 #### List
 
-```mongosh
+```bash
 db.coll.getIndexes()
 db.coll.getIndexKeys()
 ```
 
 #### Drop Indexes
 
-```mongosh
+```bash
 db.coll.dropIndex("name_1")
 ```
 
 #### Hide/Unhide Indexes
 
-```mongosh
+```bash
 db.coll.hideIndex("name_1")
 db.coll.unhideIndex("name_1")
 ```
 
 ### Create Indexes
 
-```mongosh
+```bash
 // Index Types
 db.coll.createIndex({"name": 1})                // single field index
 db.coll.createIndex({"name": 1, "date": 1})     // compound index

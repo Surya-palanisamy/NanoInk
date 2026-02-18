@@ -1,14 +1,91 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface TableOfContentsProps {
   headings: { id: string; text: string; level: number }[];
 }
 
+const MIN_WIDTH = 180;
+const MAX_WIDTH = 240;
+const DEFAULT_WIDTH = 240;
+
 export function TableOfContents({ headings }: TableOfContentsProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [width, setWidth] = useState(DEFAULT_WIDTH);
+  const [activeHeadingId, setActiveHeadingId] = useState<string | null>(null);
+  const isResizing = useRef(false);
+  const startXRef = useRef(0);
+  const startWidthRef = useRef(0);
   const hasHeadings = headings.length > 0;
+
+  // Handle resize
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    isResizing.current = true;
+    startXRef.current = e.clientX;
+    startWidthRef.current = width;
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+    document.body.style.userSelect = "none";
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isResizing.current) return;
+    const deltaX = startXRef.current - e.clientX;
+    const newWidth = startWidthRef.current + deltaX;
+
+    if (newWidth >= MIN_WIDTH && newWidth <= MAX_WIDTH) {
+      setWidth(newWidth);
+      // Update CSS variable for main content margin
+      document.documentElement.style.setProperty(
+        "--toc-width",
+        `${newWidth}px`,
+      );
+    }
+  };
+
+  const handleMouseUp = () => {
+    isResizing.current = false;
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseUp);
+    document.body.style.userSelect = "auto";
+  };
+
+  // Scroll detection for highlighting
+  useEffect(() => {
+    // Initialize CSS variable
+    document.documentElement.style.setProperty("--toc-width", `${width}px`);
+  }, [width]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!hasHeadings) return;
+
+      const headingElements = headings
+        .map((h) => ({
+          id: h.id,
+          element: document.getElementById(h.id),
+        }))
+        .filter((h) => h.element !== null);
+
+      let activeId: string | null = null;
+
+      for (const { id, element } of headingElements) {
+        const rect = element!.getBoundingClientRect();
+        if (rect.top <= 150 && rect.top >= 0) {
+          activeId = id;
+        }
+      }
+
+      if (activeId) {
+        setActiveHeadingId(activeId);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, true);
+    return () => window.removeEventListener("scroll", handleScroll, true);
+  }, [headings, hasHeadings]);
 
   const renderItems = (onItemClick?: () => void) => {
     if (!hasHeadings) {
@@ -21,22 +98,31 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
     return (
       <nav className="space-y-1 xl:space-y-1.5 border-l border-white/5 pl-2 xl:pl-3">
-        {headings.map((heading, index) => (
-          <a
-            key={`${heading.id}-${index}`}
-            href={`#${heading.id}`}
-            title={heading.text}
-            onClick={onItemClick}
-            className={`group block text-[11px] xl:text-[13px] leading-4 xl:leading-5 text-neutral-400 light:text-black hover:text-neutral-100 light:hover:text-black transition-colors truncate ${
-              heading.level === 1 ? "font-semibold" : "font-normal"
-            }`}
-            style={{ paddingLeft: `${(heading.level - 1) * 8}px` }}
-          >
-            <span className="block truncate group-hover:translate-x-0.5 transition-transform">
-              {heading.text}
-            </span>
-          </a>
-        ))}
+        {headings.map((heading, index) => {
+          const isActive = activeHeadingId === heading.id;
+          return (
+            <a
+              key={`${heading.id}-${index}`}
+              href={`#${heading.id}`}
+              title={heading.text}
+              onClick={onItemClick}
+              className={`group block text-[11px] xl:text-[13px] leading-4 xl:leading-5 transition-all truncate ${
+                isActive
+                  ? "text-accent font-semibold"
+                  : "text-neutral-400 light:text-black hover:text-neutral-100 light:hover:text-black"
+              } ${heading.level === 1 ? "font-semibold" : "font-normal"}`}
+              style={{ paddingLeft: `${(heading.level - 1) * 8}px` }}
+            >
+              <span
+                className={`block truncate transition-transform ${
+                  isActive ? "translate-x-1" : "group-hover:translate-x-0.5"
+                }`}
+              >
+                {heading.text}
+              </span>
+            </a>
+          );
+        })}
       </nav>
     );
   };
@@ -76,7 +162,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
       {/* Mobile TOC panel */}
       <aside
-        className={`xl:hidden fixed top-[var(--header-height)] right-0 w-[220px] h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary overflow-y-auto z-50 transition-transform ${
+        className={`xl:hidden fixed top-[var(--header-height)] right-0 w-[220px] h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary overflow-y-auto toc-scrollbar z-50 transition-transform ${
           isMobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -111,8 +197,11 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       </aside>
 
       {/* Desktop TOC */}
-      <aside className="hidden xl:block fixed top-[var(--header-height)] right-0 w-[200px] xl:w-[240px] h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary overflow-y-auto">
-        <div className="p-3 xl:p-4">
+      <aside
+        className="hidden xl:flex xl:flex-col fixed top-[var(--header-height)] right-0 sticky-toc z-30 h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary overflow-hidden"
+        style={{ width: `${width}px` }}
+      >
+        <div className="flex-1 overflow-y-auto toc-scrollbar p-3 xl:p-4 pb-8">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-xs font-semibold text-neutral-400 light:text-black uppercase tracking-[0.18em]">
               Contents
@@ -120,6 +209,13 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
           </div>
           {renderItems()}
         </div>
+
+        {/* Resize handle */}
+        <div
+          onMouseDown={handleMouseDown}
+          className="absolute left-0 top-0 w-1 h-full cursor-col-resize hover:bg-accent/60 bg-transparent transition-all duration-200 hover:w-1.5 group"
+          title="Drag to resize table of contents"
+        />
       </aside>
     </>
   );
