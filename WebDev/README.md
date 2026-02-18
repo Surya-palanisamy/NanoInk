@@ -8,18 +8,18 @@ A comprehensive guide to web development technologies, covering frontend and bac
 
 ### Frontend
 
-| File            | Description                                            |
-| :-------------- | :----------------------------------------------------- |
-| HTML            | Structure and semantic elements of web pages           |
-| CSS             | Styling, layouts, flexbox, grid, and responsive design |
-| JavaScript      | Core JS concepts, DOM manipulation, ES6+ features      |
-| JS (Additional) | Additional JavaScript notes and examples               |
+| File       | Description                                            |
+| :--------- | :----------------------------------------------------- |
+| HTML       | Structure and semantic elements of web pages           |
+| CSS        | Styling, layouts, flexbox, grid, and responsive design |
+| JavaScript | Core JS concepts, DOM manipulation, ES6+ features      |
 
 ### Backend
 
-| File       | Description                                |
-| :--------- | :----------------------------------------- |
-| Express.js | Node.js web framework, routing, middleware |
+| File       | Description                                          |
+| :--------- | :--------------------------------------------------- |
+| Express.js | Node.js web framework, routing, middleware           |
+| REST       | REST API design, HTTP methods, status codes          |
 
 ---
 
@@ -65,5 +65,6 @@ A comprehensive guide to web development technologies, covering frontend and bac
 1. Start with **HTML** to understand document structure
 2. Learn **CSS** for styling and layouts
 3. Master **JavaScript** for interactivity
-4. Build backend APIs with **Express.js**
-5. Connect frontend and backend for full-stack development
+4. Understand **REST** API design principles
+5. Build backend APIs with **Express.js**
+6. Connect frontend and backend for full-stack development
