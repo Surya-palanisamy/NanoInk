@@ -54,6 +54,7 @@ export function getManifest(): ManifestRoot {
           {
             name: "NoSQL",
             children: [
+              { name: "README", path: "Database/NoSQL/README.md" },
               { name: "MongoDB", path: "Database/NoSQL/MongoDB.md" },
               { name: "Redis", path: "Database/NoSQL/Redis.md" },
             ],
@@ -61,6 +62,7 @@ export function getManifest(): ManifestRoot {
           {
             name: "SQL",
             children: [
+              { name: "README", path: "Database/SQL/README.md" },
               { name: "DBMS", path: "Database/SQL/DBMS.md" },
               { name: "SQL", path: "Database/SQL/SQL.md" },
             ],
@@ -161,7 +163,7 @@ export function getManifest(): ManifestRoot {
           { name: "Express.js", path: "WebDev/Express.js.md" },
           { name: "Html", path: "WebDev/Html.md" },
           { name: "JavaScript", path: "WebDev/JavaScript.md" },
-          { name: "Js", path: "WebDev/Js.md" },
+          { name: "REST", path: "WebDev/REST.md" },
         ],
       },
     ],
