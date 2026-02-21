@@ -73,14 +73,21 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
       for (const { id, element } of headingElements) {
         const rect = element!.getBoundingClientRect();
-        if (rect.top <= 150 && rect.top >= 0) {
+        // If the heading is within 150px of the top (or has scrolled past it)
+        if (rect.top <= 150) {
           activeId = id;
         }
       }
 
-      if (activeId) {
-        setActiveHeadingId(activeId);
+      // If at top of page, optionally highlight first item if visible
+      if (!activeId && headingElements.length > 0) {
+        const firstRect = headingElements[0].element!.getBoundingClientRect();
+        if (firstRect.top <= window.innerHeight * 0.8) {
+          activeId = headingElements[0].id;
+        }
       }
+
+      setActiveHeadingId((prev) => prev !== activeId ? activeId : prev);
     };
 
     window.addEventListener("scroll", handleScroll, true);
@@ -132,7 +139,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       {/* Mobile TOC toggle */}
       <button
         onClick={() => setIsMobileOpen(true)}
-        className="xl:hidden fixed top-[calc(var(--header-height)+8px)] right-2 z-40 p-2 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg hover:bg-dark-panel-strong transition-colors"
+        className="xl:hidden fixed top-[calc(var(--header-height)+16px)] right-4 z-40 p-2.5 bg-dark-secondary/80 dark:bg-dark-secondary/80 light:bg-light-secondary/80 backdrop-blur-md border border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 rounded-xl hover:bg-dark-panel-strong transition-colors shadow-lg"
         title="Open contents"
         aria-label="Open table of contents"
         disabled={!hasHeadings}
@@ -162,8 +169,8 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
       {/* Mobile TOC panel */}
       <aside
-        className={`xl:hidden fixed top-[var(--header-height)] right-0 w-[220px] h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary overflow-y-auto toc-scrollbar z-50 transition-transform ${
-          isMobileOpen ? "translate-x-0" : "translate-x-full"
+        className={`xl:hidden fixed top-[var(--header-height)] right-0 w-[240px] h-[calc(100vh-var(--header-height))] border-l border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 bg-dark-secondary/90 dark:bg-dark-secondary/90 light:bg-light-secondary/90 backdrop-blur-xl overflow-y-auto toc-scrollbar z-50 transition-transform ${
+          isMobileOpen ? "translate-x-0 shadow-[-10px_0_30px_rgba(0,0,0,0.5)] light:shadow-[-10px_0_30px_rgba(0,0,0,0.1)]" : "translate-x-full"
         }`}
       >
         <div className="p-3">
@@ -198,7 +205,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
       {/* Desktop TOC */}
       <aside
-        className="hidden xl:flex xl:flex-col fixed top-[var(--header-height)] right-0 z-30 h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary"
+        className="hidden xl:flex xl:flex-col fixed top-[var(--header-height)] right-0 z-30 h-[calc(100vh-var(--header-height))] border-l border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 bg-dark-secondary/80 dark:bg-dark-secondary/80 light:bg-light-secondary/80 backdrop-blur-md"
         style={{ width: `${width}px` }}
       >
         <div className="flex-1 flex flex-col min-h-0 overflow-hidden">

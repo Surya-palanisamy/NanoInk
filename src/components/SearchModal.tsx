@@ -93,9 +93,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
       className="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-3 sm:px-4 bg-black/60 backdrop-blur-sm"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="w-full max-w-2xl sm:max-w-xl bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary rounded-lg sm:rounded-xl border border-dark-border dark:border-dark-border light:border-light-border shadow-2xl overflow-hidden">
+      <div className="w-full max-w-2xl sm:max-w-xl bg-dark-secondary/90 dark:bg-dark-secondary/90 light:bg-light-secondary/90 backdrop-blur-xl rounded-lg sm:rounded-2xl border border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 shadow-2xl overflow-hidden animate-slide-up">
         {/* Search Input */}
-        <div className="flex items-center gap-3 p-3 sm:p-4 border-b border-dark-border dark:border-dark-border light:border-light-border">
+        <div className="flex items-center gap-3 p-3 sm:p-5 border-b border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50">
           <svg
             className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-500 light:text-black flex-shrink-0"
             fill="none"

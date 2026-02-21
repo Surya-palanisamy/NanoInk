@@ -11,7 +11,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 h-[var(--header-height)] bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border-b border-dark-border dark:border-dark-border light:border-light-border z-50 transition-colors">
+      <header className="fixed top-0 left-0 right-0 h-[var(--header-height)] bg-dark-secondary/80 dark:bg-dark-secondary/80 light:bg-light-secondary/80 backdrop-blur-md border-b border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 z-50 transition-colors">
         <div className="flex items-center justify-between h-full px-3 sm:px-4 lg:px-6">
           {/* Left: Logo */}
           <div className="flex items-center gap-3 sm:gap-6 min-w-0">
@@ -37,7 +37,7 @@ export function Header() {
             {/* Search Button */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2 px-3 py-1.5 bg-dark-panel-strong dark:bg-dark-panel-strong light:bg-light-panel-strong border border-dark-border dark:border-dark-border light:border-light-border rounded-lg text-neutral-400 light:text-black hover:text-neutral-200 light:hover:text-black transition-colors text-sm"
+              className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-dark-panel-strong/50 dark:bg-dark-panel-strong/50 light:bg-light-panel-strong/50 border border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 rounded-xl text-neutral-400 light:text-black hover:text-neutral-200 light:hover:text-black hover:border-accent/40 transition-all text-sm group"
               title="Search (⌘K)"
             >
               <svg

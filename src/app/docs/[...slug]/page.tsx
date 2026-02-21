@@ -34,7 +34,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: DocPageProps) {
   const { slug } = await params;
   const finalSlug = isDirectory(slug) ? [...slug, "README"] : slug;
-  const filePath = finalSlug.join("/") + ".md";
+  const joinedSlug = finalSlug.join("/");
+  const filePath = joinedSlug.endsWith(".md") ? joinedSlug : `${joinedSlug}.md`;
   const { title } = await getMarkdownContent(filePath);
 
   return {
@@ -47,7 +48,8 @@ export default async function DocPage({ params }: DocPageProps) {
 
   // If slug points to a directory, load its README instead
   const finalSlug = isDirectory(slug) ? [...slug, "README"] : slug;
-  const filePath = finalSlug.join("/") + ".md";
+  const joinedSlug = finalSlug.join("/");
+  const filePath = joinedSlug.endsWith(".md") ? joinedSlug : `${joinedSlug}.md`;
   const { content, title, headings } = await getMarkdownContent(filePath);
 
   if (content === "<p>Could not load this note.</p>") {

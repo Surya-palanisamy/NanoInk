@@ -131,25 +131,28 @@ export default function HomePage() {
   const categories = manifest.children;
 
   return (
-    <div className="page-enter max-w-6xl mx-auto lg:mx-0 px-3 sm:px-4 lg:px-6 py-8 sm:py-12">
+    <div className="page-enter max-w-6xl mx-auto lg:mx-0 px-3 sm:px-4 lg:px-6 py-8 sm:py-12 relative">
+      {/* Ambient background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-accent/20 blur-[120px] rounded-full pointer-events-none -mr-40" />
+      
       {/* Hero */}
-      <div className="mb-10 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-100 dark:text-neutral-100 light:text-black mb-3 sm:mb-4">
-          Welcome to Nano Ink
+      <div className="mb-10 sm:mb-14 relative z-10 text-center lg:text-left mt-8">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neutral-100 to-neutral-400 dark:from-neutral-100 dark:to-neutral-400 light:from-black light:to-neutral-600 mb-4 sm:mb-6 tracking-tight">
+          Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#06b6d4]">Nano Ink</span>
         </h1>
-        <p className="text-base sm:text-lg text-neutral-400 dark:text-neutral-400 light:text-black max-w-2xl">
+        <p className="text-base sm:text-lg lg:text-xl text-neutral-400 dark:text-neutral-400 light:text-neutral-600 max-w-2xl mx-auto lg:mx-0">
           Your personal knowledge base for Computer Science & Software
           Engineering
         </p>
       </div>
 
       {/* Categories Grid */}
-      <section className="mb-12 sm:mb-14">
+      <section className="mb-12 sm:mb-16 relative z-10">
         <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 light:text-black uppercase tracking-wide mb-4 sm:mb-5">
           Browse Topics
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-          {categories.map((cat) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {categories.map((cat, index) => {
             const fileCount = countFiles(cat);
             const readmePath = cat.children?.find(
               (c) => c.name === "README",
@@ -157,23 +160,26 @@ export default function HomePage() {
             const href = readmePath
               ? `/docs/${readmePath.replace(".md", "")}`
               : `/docs/${cat.name}/README`;
+            
+            const staggerDelay = (index % 8) + 1;
 
             return (
               <Link
                 key={cat.name}
                 href={href}
-                className="group flex flex-col sm:flex-row sm:items-center gap-3 p-4 sm:p-5 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg sm:rounded-xl hover:border-accent hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-all hover:-translate-y-0.5 hover:shadow-lg w-full "
+                className={`animate-slide-up stagger-${staggerDelay} group flex flex-col sm:flex-row sm:items-center gap-4 p-5 sm:p-6 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-xl sm:rounded-2xl hover:border-accent/50 hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] light:hover:shadow-[0_8px_30px_rgba(139,92,246,0.1)] w-full relative overflow-hidden`}
               >
-                <div className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-accent-soft rounded-lg sm:rounded-xl text-accent flex-shrink-0 self-center sm:self-auto">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/0 to-accent/0 group-hover:from-accent/5 group-hover:to-transparent transition-colors duration-500" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-accent-soft rounded-xl text-accent flex-shrink-0 self-center sm:self-auto relative z-10 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7">
                     {categoryIcons[cat.name] || defaultIcon}
                   </div>
                 </div>
-                <div className="flex-1 min-w-0 self-center sm:self-auto">
-                  <h3 className="font-semibold text-sm sm:text-base text-neutral-100 dark:text-neutral-100 light:text-black group-hover:text-accent transition-colors">
+                <div className="flex-1 min-w-0 self-center sm:self-auto relative z-10">
+                  <h3 className="font-semibold text-base sm:text-lg text-neutral-100 dark:text-neutral-100 light:text-black group-hover:text-accent transition-colors">
                     {formatCategoryName(cat.name)}
                   </h3>
-                  <span className="text-xs sm:text-sm text-neutral-500 light:text-black self-center sm:self-auto">
+                  <span className="text-xs sm:text-sm text-neutral-500 light:text-neutral-500 self-center sm:self-auto block mt-1">
                     {fileCount} {fileCount === 1 ? "note" : "notes"}
                   </span>
                 </div>
@@ -188,14 +194,14 @@ export default function HomePage() {
         <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 light:text-black uppercase tracking-wide mb-4 sm:mb-5">
           Quick Start
         </h2>
-        <div className="flex flex-wrap gap-2 sm:gap-3">
-          {quickLinks.map((link) => (
+        <div className="flex flex-wrap gap-3 sm:gap-4">
+          {quickLinks.map((link, i) => (
             <Link
               key={link.path}
               href={link.path}
-              className="inline-flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-lg sm:rounded-xl text-neutral-300 dark:text-neutral-300 light:text-black font-medium text-xs sm:text-sm hover:border-accent hover:text-accent hover:bg-accent-soft transition-all"
+              className={`animate-slide-up stagger-${(i % 8) + 1} inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3.5 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-xl sm:rounded-2xl text-neutral-300 dark:text-neutral-300 light:text-black font-medium text-sm sm:text-base hover:border-accent/50 hover:text-accent hover:bg-accent-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}
             >
-              <span className="text-base sm:text-lg">{link.emoji}</span>
+              <span className="text-lg sm:text-xl group-hover:scale-110 transition-transform">{link.emoji}</span>
               <span className="hidden sm:inline">{link.label}</span>
               <span className="sm:hidden">{link.label.split(" ")[0]}</span>
             </Link>
