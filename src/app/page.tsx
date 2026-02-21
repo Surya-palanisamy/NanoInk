@@ -131,7 +131,7 @@ export default function HomePage() {
   const categories = manifest.children;
 
   return (
-    <div className="max-w-6xl mx-auto lg:mx-0 px-3 sm:px-4 lg:px-6 py-8 sm:py-12">
+    <div className="page-enter max-w-6xl mx-auto lg:mx-0 px-3 sm:px-4 lg:px-6 py-8 sm:py-12">
       {/* Hero */}
       <div className="mb-10 sm:mb-12">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-100 dark:text-neutral-100 light:text-black mb-3 sm:mb-4">

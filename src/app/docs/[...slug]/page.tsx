@@ -58,9 +58,12 @@ export default async function DocPage({ params }: DocPageProps) {
   const breadcrumbParts = slug.slice(0, -1);
 
   return (
-    <div className="flex flex-col lg:flex-row w-full">
-      {/* Main content */}
-      <main className="flex-1 w-full xl:pr-[var(--toc-width,240px)]">
+    <>
+      {/* Table of Contents - NOT affected by page-enter animation */}
+      <TableOfContents headings={headings} />
+      
+      {/* Main article content - with page-enter animation applied only here */}
+      <div className="page-enter flex-1 w-full xl:pr-[var(--toc-width,240px)]">
         <div className="max-w-4xl mx-auto lg:mx-0 px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-neutral-500 light:text-black mb-4 sm:mb-6 overflow-x-auto pb-2">
@@ -92,10 +95,7 @@ export default async function DocPage({ params }: DocPageProps) {
             <MarkdownContent content={content} />
           </article>
         </div>
-      </main>
-
-      {/* Table of Contents */}
-      <TableOfContents headings={headings} />
-    </div>
+      </div>
+    </>
   );
 }

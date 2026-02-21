@@ -58,9 +58,11 @@
   background-clip: content-box;
 }
 
-/* Sticky TOC positioning */
+/* Sticky TOC positioning - ensure fixed positioning works correctly */
 .sticky-toc {
   position: fixed;
+  /* Don't apply any transform to avoid creating stacking context */
+  will-change: auto;
 }
 @import "tailwindcss";
 

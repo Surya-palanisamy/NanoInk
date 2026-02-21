@@ -77,7 +77,7 @@ export default function RootLayout({
             <Header />
             <div className="flex pt-[var(--header-height)]">
               <Sidebar manifest={manifest} />
-              <main className="page-enter flex-1 w-full min-h-[calc(100vh-var(--header-height))] lg:ml-[var(--sidebar-width)] transition-all overflow-x-hidden">
+              <main className="flex-1 w-full min-h-[calc(100vh-var(--header-height))] lg:ml-[var(--sidebar-width)] transition-all overflow-x-hidden">
                 {children}
               </main>
             </div>

@@ -288,7 +288,7 @@ export function Sidebar({ manifest }: SidebarProps) {
         style={{
           width: `${sidebarWidth}px`,
           minWidth: 220,
-          maxWidth: 180,
+          maxWidth: 280,
         }}
       >
         <div

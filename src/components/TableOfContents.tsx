@@ -198,16 +198,18 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
       {/* Desktop TOC */}
       <aside
-        className="hidden xl:flex xl:flex-col fixed top-[var(--header-height)] right-0 sticky-toc z-30 h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary overflow-hidden"
+        className="hidden xl:flex xl:flex-col fixed top-[var(--header-height)] right-0 z-30 h-[calc(100vh-var(--header-height))] border-l border-dark-border dark:border-dark-border light:border-light-border bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary"
         style={{ width: `${width}px` }}
       >
-        <div className="flex-1 overflow-y-auto toc-scrollbar p-3 xl:p-4 pb-8">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs font-semibold text-neutral-400 light:text-black uppercase tracking-[0.18em]">
-              Contents
-            </h3>
+        <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
+          <div className="flex-1 overflow-y-auto toc-scrollbar p-3 xl:p-4 pb-8">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-xs font-semibold text-neutral-400 light:text-black uppercase tracking-[0.18em]">
+                Contents
+              </h3>
+            </div>
+            {renderItems()}
           </div>
-          {renderItems()}
         </div>
 
         {/* Resize handle */}
