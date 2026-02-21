@@ -71,9 +71,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans min-h-screen bg-dark-bg dark:bg-dark-bg light:bg-light-bg text-neutral-100 dark:text-neutral-100 light:text-black transition-colors`}>
         <ThemeProvider>
-          <div className="min-h-screen bg-dark-bg dark:bg-dark-bg light:bg-light-bg transition-colors">
+          <div className="flex flex-col min-h-screen">
             <Header />
             <div className="flex pt-[var(--header-height)]">
               <Sidebar manifest={manifest} />

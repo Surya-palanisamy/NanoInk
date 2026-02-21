@@ -14,6 +14,20 @@
   background: #666;
 }
 
+/* Light theme Sidebar scrollbar */
+.light .sidebar-toc, html.light .sidebar-toc {
+  scrollbar-color: #c4c4c4 transparent;
+}
+.light .sidebar-toc::-webkit-scrollbar, html.light .sidebar-toc::-webkit-scrollbar {
+  background: transparent;
+}
+.light .sidebar-toc::-webkit-scrollbar-thumb, html.light .sidebar-toc::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+}
+.light .sidebar-toc::-webkit-scrollbar-thumb:hover, html.light .sidebar-toc::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
 /* TOC Scrollbar - Dark Theme */
 .toc-scrollbar {
   scrollbar-width: thin;
@@ -42,17 +56,17 @@
 }
 
 /* Light theme TOC scrollbar */
-.light .toc-scrollbar {
+.light .toc-scrollbar, html.light .toc-scrollbar {
   scrollbar-color: #d4d4d4 transparent;
 }
 
-.light .toc-scrollbar::-webkit-scrollbar-thumb {
+.light .toc-scrollbar::-webkit-scrollbar-thumb, html.light .toc-scrollbar::-webkit-scrollbar-thumb {
   background: #c4c4c4;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
-.light .toc-scrollbar::-webkit-scrollbar-thumb:hover {
+.light .toc-scrollbar::-webkit-scrollbar-thumb:hover, html.light .toc-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #a0a0a0;
   border: 2px solid transparent;
   background-clip: content-box;
@@ -67,8 +81,11 @@
 @import "tailwindcss";
 
 @custom-variant light (&:is(.light *));
+@custom-variant dark (&:is(.dark *));
 
 @theme {
+  --breakpoint-xs: 320px;
+
   --color-accent: #fd5750;
   --color-accent-hover: #ff6b65;
   --color-accent-soft: rgba(253, 87, 80, 0.12);
@@ -137,7 +154,7 @@
     scrollbar-color: #333 transparent;
   }
 
-  .light * {
+  .light *, html.light {
     scrollbar-color: #c4c4c4 transparent;
   }
 
@@ -159,10 +176,12 @@
     background: #555;
   }
 
+  html.light ::-webkit-scrollbar-thumb,
   .light ::-webkit-scrollbar-thumb {
     background: #c4c4c4;
   }
 
+  html.light ::-webkit-scrollbar-thumb:hover,
   .light ::-webkit-scrollbar-thumb:hover {
     background: #a0a0a0;
   }
@@ -592,6 +611,4 @@ td {
   background-color: rgba(239, 68, 68, 0.12) !important;
 }
 
-body {
-  color: #1f2937;
-}
+
