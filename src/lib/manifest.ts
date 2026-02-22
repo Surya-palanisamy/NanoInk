@@ -91,7 +91,6 @@ export function getManifest(): ManifestRoot {
           { name: "LinkedList", path: "DSA/LinkedList.md" },
           { name: "Math", path: "DSA/Math.md" },
           { name: "Matrix", path: "DSA/Matrix.md" },
-          { name: "OOP", path: "DSA/OOP.md" },
           { name: "Patterns", path: "DSA/Patterns.md" },
           { name: "Stack", path: "DSA/Stack.md" },
           { name: "Strings", path: "DSA/Strings.md" },
@@ -163,6 +162,14 @@ export function getManifest(): ManifestRoot {
           { name: "Html", path: "WebDev/Html.md" },
           { name: "JavaScript", path: "WebDev/JavaScript.md" },
           { name: "REST", path: "WebDev/REST.md" },
+        ],
+      },
+      {
+        name: "Java",
+        children: [
+          { name: "README", path: "Java/README.md" },
+          { name: "Java Basics", path: "Java/Java.md" },
+          { name: "OOPs", path: "Java/OOP.md" },
         ],
       },
     ],
