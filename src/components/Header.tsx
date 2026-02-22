@@ -1,14 +1,11 @@
 "use client";
-
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 import { SearchModal } from "./SearchModal";
 import { useState } from "react";
-
 export function Header() {
   const { theme, toggleTheme } = useTheme();
   const [searchOpen, setSearchOpen] = useState(false);
-
   return (
     <>
       <header className="fixed top-0 left-0 right-0 h-[var(--header-height)] bg-dark-secondary/80 dark:bg-dark-secondary/80 light:bg-light-secondary/80 backdrop-blur-md border-b border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 z-50 transition-colors">
@@ -31,7 +28,6 @@ export function Header() {
               </span>
             </Link>
           </div>
-
           {/* Right: Search, Theme, GitHub */}
           <div className="flex items-center gap-2 sm:gap-3 ml-auto flex-shrink-0">
             {/* Search Button */}
@@ -54,7 +50,6 @@ export function Header() {
                 ⌘K
               </kbd>
             </button>
-
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
@@ -91,7 +86,6 @@ export function Header() {
                 </svg>
               )}
             </button>
-
             {/* GitHub Link */}
             <a
               href="https://github.com/Surya-palanisamy/nanoink"
@@ -110,7 +104,6 @@ export function Header() {
           </div>
         </div>
       </header>
-
       <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );

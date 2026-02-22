@@ -1,15 +1,11 @@
 "use client";
-
 import { useState, useEffect, useRef } from "react";
-
 interface TableOfContentsProps {
   headings: { id: string; text: string; level: number }[];
 }
-
 const MIN_WIDTH = 180;
 const MAX_WIDTH = 240;
 const DEFAULT_WIDTH = 240;
-
 export function TableOfContents({ headings }: TableOfContentsProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [width, setWidth] = useState(DEFAULT_WIDTH);
@@ -18,7 +14,6 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   const startXRef = useRef(0);
   const startWidthRef = useRef(0);
   const hasHeadings = headings.length > 0;
-
   // Handle resize
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -29,12 +24,10 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     document.addEventListener("mouseup", handleMouseUp);
     document.body.style.userSelect = "none";
   };
-
   const handleMouseMove = (e: MouseEvent) => {
     if (!isResizing.current) return;
     const deltaX = startXRef.current - e.clientX;
     const newWidth = startWidthRef.current + deltaX;
-
     if (newWidth >= MIN_WIDTH && newWidth <= MAX_WIDTH) {
       setWidth(newWidth);
       // Update CSS variable for main content margin
@@ -44,33 +37,27 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       );
     }
   };
-
   const handleMouseUp = () => {
     isResizing.current = false;
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseup", handleMouseUp);
     document.body.style.userSelect = "auto";
   };
-
   // Scroll detection for highlighting
   useEffect(() => {
     // Initialize CSS variable
     document.documentElement.style.setProperty("--toc-width", `${width}px`);
   }, [width]);
-
   useEffect(() => {
     const handleScroll = () => {
       if (!hasHeadings) return;
-
       const headingElements = headings
         .map((h) => ({
           id: h.id,
           element: document.getElementById(h.id),
         }))
         .filter((h) => h.element !== null);
-
       let activeId: string | null = null;
-
       for (const { id, element } of headingElements) {
         const rect = element!.getBoundingClientRect();
         // If the heading is within 150px of the top (or has scrolled past it)
@@ -78,7 +65,6 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
           activeId = id;
         }
       }
-
       // If at top of page, optionally highlight first item if visible
       if (!activeId && headingElements.length > 0) {
         const firstRect = headingElements[0].element!.getBoundingClientRect();
@@ -86,14 +72,11 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
           activeId = headingElements[0].id;
         }
       }
-
       setActiveHeadingId((prev) => prev !== activeId ? activeId : prev);
     };
-
     window.addEventListener("scroll", handleScroll, true);
     return () => window.removeEventListener("scroll", handleScroll, true);
   }, [headings, hasHeadings]);
-
   const renderItems = (onItemClick?: () => void) => {
     if (!hasHeadings) {
       return (
@@ -102,7 +85,6 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
         </p>
       );
     }
-
     return (
       <nav className="space-y-1 xl:space-y-1.5 border-l border-white/5 pl-2 xl:pl-3">
         {headings.map((heading, index) => {
@@ -133,7 +115,6 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       </nav>
     );
   };
-
   return (
     <>
       {/* Mobile TOC toggle */}
@@ -158,7 +139,6 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
           />
         </svg>
       </button>
-
       {/* Mobile overlay */}
       {isMobileOpen && (
         <div
@@ -166,7 +146,6 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
           onClick={() => setIsMobileOpen(false)}
         />
       )}
-
       {/* Mobile TOC panel */}
       <aside
         className={`xl:hidden fixed top-[var(--header-height)] right-0 w-[240px] h-[calc(100vh-var(--header-height))] border-l border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 bg-dark-bg dark:bg-dark-bg light:bg-light-bg backdrop-blur-xl overflow-y-auto toc-scrollbar z-50 transition-transform ${
@@ -202,7 +181,6 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
           {renderItems(() => setIsMobileOpen(false))}
         </div>
       </aside>
-
       {/* Desktop TOC */}
       <aside
         className="hidden xl:flex xl:flex-col fixed top-[var(--header-height)] right-0 z-30 h-[calc(100vh-var(--header-height))] border-l border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 bg-dark-bg dark:bg-dark-bg light:bg-light-bg backdrop-blur-md"
@@ -218,7 +196,6 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
             {renderItems()}
           </div>
         </div>
-
         {/* Resize handle */}
         <div
           onMouseDown={handleMouseDown}

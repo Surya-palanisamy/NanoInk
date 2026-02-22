@@ -1,5 +1,4 @@
 ## Right Triangle
-
 ```java
 class Solution {
     public void printRightTriangle(int n) {
@@ -10,7 +9,6 @@ class Solution {
     }
 }
 ```
-
 ```
 *
 * *
@@ -18,11 +16,8 @@ class Solution {
 * * * *
 * * * * *
 ```
-
 ---
-
 ## Inverted Right Triangle
-
 ```java
 class Solution {
     public void printInvertedRightTriangle(int n) {
@@ -33,7 +28,6 @@ class Solution {
     }
 }
 ```
-
 ```
 * * * * *
 * * * *
@@ -41,11 +35,8 @@ class Solution {
 * *
 *
 ```
-
 ---
-
 ## Left Triangle
-
 ```java
 class Solution {
     public void printLeftTriangle(int n) {
@@ -57,7 +48,6 @@ class Solution {
     }
 }
 ```
-
 ```
         *
       * *
@@ -65,11 +55,8 @@ class Solution {
   * * * *
 * * * * *
 ```
-
 ---
-
 ## Pyramid
-
 ```java
 class Solution {
     public void printPyramid(int n) {
@@ -81,7 +68,6 @@ class Solution {
     }
 }
 ```
-
 ```
     *
    ***
@@ -89,11 +75,8 @@ class Solution {
  *******
 *********
 ```
-
 ---
-
 ## Inverted Pyramid
-
 ```java
 class Solution {
     public void printInvertedPyramid(int n) {
@@ -105,7 +88,6 @@ class Solution {
     }
 }
 ```
-
 ```
 *********
  *******
@@ -113,11 +95,8 @@ class Solution {
    ***
     *
 ```
-
 ---
-
 ## Diamond
-
 ```java
 class Solution {
     public void printDiamond(int n) {
@@ -134,7 +113,6 @@ class Solution {
     }
 }
 ```
-
 ```
     *
    ***
@@ -146,11 +124,8 @@ class Solution {
    ***
     *
 ```
-
 ---
-
 ## Opposite Zero and One
-
 ```java
 class Main {
     public static void main(String[] args) {
@@ -164,18 +139,14 @@ class Main {
     }
 }
 ```
-
 ```
 0
 1 0
 0 1 0
 1 0 1 0
 ```
-
 ---
-
 ## Diagonal Cross (Both Diagonals)
-
 ```java
 class Main {
     public static void main(String[] args) {
@@ -190,7 +161,6 @@ class Main {
     }
 }
 ```
-
 ```
 *       *
   *   *
@@ -198,11 +168,8 @@ class Main {
   *   *
 *       *
 ```
-
 ---
-
 ## Diagonal Numbers
-
 ```java
 class Main {
     public static void main(String[] args) {
@@ -217,18 +184,14 @@ class Main {
     }
 }
 ```
-
 ```
 1
   2
     3
       4
 ```
-
 ---
-
 ## Diagonal Cross Numbers
-
 ```java
 class Main {
     public static void main(String[] args) {
@@ -243,7 +206,6 @@ class Main {
     }
 }
 ```
-
 ```
 1       1
   2   2

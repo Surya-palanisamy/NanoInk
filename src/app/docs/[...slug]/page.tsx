@@ -3,26 +3,21 @@ import { TableOfContents } from "@/components/TableOfContents";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { getManifest } from "@/lib/manifest";
 import { notFound } from "next/navigation";
-
 interface DocPageProps {
   params: Promise<{
     slug: string[];
   }>;
 }
-
 function isDirectory(slug: string[], manifest = getManifest()): boolean {
   let current: any = manifest;
-
   for (const part of slug) {
     if (!current.children) return false;
     const found = current.children.find((child: any) => child.name === part);
     if (!found) return false;
     current = found;
   }
-
   return !!current.children && current.children.length > 0;
 }
-
 // Generate static params for all markdown files
 export async function generateStaticParams() {
   const paths = getAllMarkdownPaths();
@@ -30,40 +25,32 @@ export async function generateStaticParams() {
     slug: path.split("/"),
   }));
 }
-
 export async function generateMetadata({ params }: DocPageProps) {
   const { slug } = await params;
   const finalSlug = isDirectory(slug) ? [...slug, "README"] : slug;
   const joinedSlug = finalSlug.join("/");
   const filePath = joinedSlug.endsWith(".md") ? joinedSlug : `${joinedSlug}.md`;
   const { title } = await getMarkdownContent(filePath);
-
   return {
     title: `${title} | Nano Ink`,
   };
 }
-
 export default async function DocPage({ params }: DocPageProps) {
   const { slug } = await params;
-
   // If slug points to a directory, load its README instead
   const finalSlug = isDirectory(slug) ? [...slug, "README"] : slug;
   const joinedSlug = finalSlug.join("/");
   const filePath = joinedSlug.endsWith(".md") ? joinedSlug : `${joinedSlug}.md`;
   const { content, title, headings } = await getMarkdownContent(filePath);
-
   if (content === "<p>Could not load this note.</p>") {
     notFound();
   }
-
   // Build breadcrumb
   const breadcrumbParts = slug.slice(0, -1);
-
   return (
     <>
       {/* Table of Contents - NOT affected by page-enter animation */}
       <TableOfContents headings={headings} />
-      
       {/* Main article content - with page-enter animation applied only here */}
       <div className="page-enter flex-1 w-full xl:pr-[var(--toc-width,240px)]">
         <div className="max-w-4xl mx-auto lg:mx-0 px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8">
@@ -91,7 +78,6 @@ export default async function DocPage({ params }: DocPageProps) {
               {finalSlug[finalSlug.length - 1]}
             </span>
           </nav>
-
           {/* Article */}
           <article>
             <MarkdownContent content={content} />

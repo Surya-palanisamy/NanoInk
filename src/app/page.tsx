@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getManifest, countFiles, formatCategoryName } from "@/lib/manifest";
-
 const categoryIcons: Record<string, React.ReactNode> = {
   ComputerNetworks: (
     <svg
@@ -102,7 +101,6 @@ const categoryIcons: Record<string, React.ReactNode> = {
     </svg>
   ),
 };
-
 const defaultIcon = (
   <svg
     className="w-full h-full"
@@ -114,7 +112,6 @@ const defaultIcon = (
     <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
   </svg>
 );
-
 const quickLinks = [
   {
     path: "/docs/DSA/README",
@@ -125,11 +122,9 @@ const quickLinks = [
   { path: "/docs/DevOps/Docker", label: "Docker Basics", emoji: "🐳" },
   { path: "/docs/WebDev/JavaScript", label: "JavaScript", emoji: "⚡" },
 ];
-
 export default function HomePage() {
   const manifest = getManifest();
   const categories = manifest.children;
-
   return (
     <div className="page-enter max-w-6xl mx-auto lg:mx-0 px-3 sm:px-4 lg:px-6 py-8 sm:py-12 relative">
       <style dangerouslySetInnerHTML={{ __html: `
@@ -141,7 +136,6 @@ export default function HomePage() {
       `}} />
       {/* Ambient background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-accent/20 blur-[120px] rounded-full pointer-events-none -mr-40" />
-      
       {/* Hero */}
       <div className="mb-10 sm:mb-14 relative z-10 text-center lg:text-left mt-8">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neutral-100 to-neutral-400 dark:from-neutral-100 dark:to-neutral-400 light:from-black light:to-neutral-600 mb-4 sm:mb-6 tracking-tight">
@@ -152,7 +146,6 @@ export default function HomePage() {
           Engineering
         </p>
       </div>
-
       {/* Categories Grid */}
       <section className="mb-12 sm:mb-16 relative z-10">
         <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 light:text-black uppercase tracking-wide mb-4 sm:mb-5">
@@ -167,9 +160,7 @@ export default function HomePage() {
             const href = readmePath
               ? `/docs/${readmePath.replace(".md", "")}`
               : `/docs/${cat.name}/README`;
-            
             const staggerDelay = (index % 8) + 1;
-
             return (
               <Link
                 key={cat.name}
@@ -195,7 +186,6 @@ export default function HomePage() {
           })}
         </div>
       </section>
-
       {/* Quick Start */}
       <section>
         <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 light:text-black uppercase tracking-wide mb-4 sm:mb-5">

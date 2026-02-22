@@ -1,5 +1,4 @@
 ## Coin Change Ways
-
 ```java
 public class CoinChangeWays {
     public static int countWays(int[] coins, int amount) {
@@ -14,7 +13,6 @@ public class CoinChangeWays {
     }
 }
 ```
-
 - Dry run (coins={1,2,5}, amount=5):
   - start: [1,0,0,0,0,0]
   - coin=1 → [1,1,1,1,1,1]

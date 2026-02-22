@@ -3,16 +3,13 @@ import path from "path";
 import { marked } from "marked";
 import type { Renderer } from "marked";
 import hljs from "highlight.js";
-
 // Configure marked with highlight.js
 marked.setOptions({
   gfm: true,
   breaks: true,
 });
-
 // Custom renderer for code highlighting
 const renderer = new marked.Renderer();
-
 const normalizeImageSrc = (href: string | null) => {
   if (!href) return "";
   const trimmed = href.trim();
@@ -24,7 +21,6 @@ const normalizeImageSrc = (href: string | null) => {
   ) {
     return trimmed;
   }
-
   let normalized = trimmed;
   while (normalized.startsWith("../")) {
     normalized = normalized.slice(3);
@@ -32,29 +28,22 @@ const normalizeImageSrc = (href: string | null) => {
   if (normalized.startsWith("./")) {
     normalized = normalized.slice(2);
   }
-
   if (normalized.startsWith("images/")) {
     return `/${normalized}`;
   }
-
   return normalized;
 };
-
 renderer.code = function (code: string, language: string | undefined) {
   const lang = language || "";
   let highlighted: string;
-
   if (lang && hljs.getLanguage(lang)) {
     highlighted = hljs.highlight(code, { language: lang }).value;
   } else {
     highlighted = hljs.highlightAuto(code).value;
   }
-
   return `<pre><code class="hljs language-${lang}">${highlighted}</code></pre>`;
 };
-
 marked.use({ renderer });
-
 export async function getMarkdownContent(filePath: string): Promise<{
   content: string;
   title: string;
@@ -62,20 +51,15 @@ export async function getMarkdownContent(filePath: string): Promise<{
 }> {
   // Build the full path to the markdown file
   const fullPath = path.join(process.cwd(), filePath);
-
   try {
     const fileContent = fs.readFileSync(fullPath, "utf-8");
-
     // Parse headings for TOC (excluding code blocks)
     const headings: { id: string; text: string; level: number }[] = [];
     const idCountMap = new Map<string, number>();
-
     // Remove code blocks to avoid picking up bash comments as headings
     const contentWithoutCodeBlocks = fileContent.replace(/```[\s\S]*?```/g, "");
-
     const headingRegex = /^(#{1,4})\s+(.+)$/gm;
     let match;
-
     while ((match = headingRegex.exec(contentWithoutCodeBlocks)) !== null) {
       const level = match[1].length;
       const text = match[2].trim();
@@ -83,7 +67,6 @@ export async function getMarkdownContent(filePath: string): Promise<{
         .toLowerCase()
         .replace(/[^\w\s-]/g, "")
         .replace(/\s+/g, "-");
-
       // Handle duplicate IDs by appending a counter
       if (idCountMap.has(id)) {
         const count = idCountMap.get(id)! + 1;
@@ -92,26 +75,21 @@ export async function getMarkdownContent(filePath: string): Promise<{
       } else {
         idCountMap.set(id, 0);
       }
-
       headings.push({ id, text, level });
     }
-
     // Extract title from first h1 or filename
     const titleMatch = fileContent.match(/^#\s+(.+)$/m);
     const title = titleMatch
       ? titleMatch[1].trim()
       : filePath.split("/").pop()?.replace(".md", "") || "Untitled";
-
     // Custom heading renderer to add IDs with duplicate handling
     const headingRenderer = new marked.Renderer();
     const rendererIdCountMap = new Map<string, number>();
-
     headingRenderer.heading = function (text: string, level: number) {
       let id = text
         .toLowerCase()
         .replace(/[^\w\s-]/g, "")
         .replace(/\s+/g, "-");
-
       // Handle duplicate IDs by appending a counter
       if (rendererIdCountMap.has(id)) {
         const count = rendererIdCountMap.get(id)! + 1;
@@ -120,10 +98,8 @@ export async function getMarkdownContent(filePath: string): Promise<{
       } else {
         rendererIdCountMap.set(id, 0);
       }
-
       return `<h${level} id="${id}">${text}</h${level}>`;
     };
-
     // Combine renderers
     const combinedRenderer = new marked.Renderer();
     combinedRenderer.code = renderer.code;
@@ -141,11 +117,8 @@ export async function getMarkdownContent(filePath: string): Promise<{
       const titleAttr = title ? ` title="${title}"` : "";
       return `<img src="${src}" alt="${text}"${titleAttr} />`;
     };
-
     marked.use({ renderer: combinedRenderer });
-
     const content = marked.parse(fileContent) as string;
-
     return { content, title, headings };
   } catch (error) {
     console.error(`Error reading file: ${filePath}`, error);
@@ -156,18 +129,14 @@ export async function getMarkdownContent(filePath: string): Promise<{
     };
   }
 }
-
 export function getAllMarkdownPaths(): string[] {
   const paths: string[] = [];
-
   function scanDir(dir: string, basePath = "") {
     const items = fs.readdirSync(dir);
-
     for (const item of items) {
       const fullPath = path.join(dir, item);
       const relativePath = basePath ? `${basePath}/${item}` : item;
       const stat = fs.statSync(fullPath);
-
       if (
         stat.isDirectory() &&
         !item.startsWith(".") &&
@@ -180,7 +149,6 @@ export function getAllMarkdownPaths(): string[] {
       }
     }
   }
-
   scanDir(process.cwd());
   return paths;
 }

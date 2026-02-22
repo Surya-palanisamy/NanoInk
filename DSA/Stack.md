@@ -1,10 +1,7 @@
 # Stack
-
 ## Valid Parentheses (LeetCode 20)
-
 ```java
 import java.util.*;
-
 public class Main {
     public static boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();

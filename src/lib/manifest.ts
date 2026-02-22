@@ -3,12 +3,10 @@ export interface ManifestNode {
   path?: string;
   children?: ManifestNode[];
 }
-
 export interface ManifestRoot {
   name: string;
   children: ManifestNode[];
 }
-
 // Read manifest from the original manifest.js
 export function getManifest(): ManifestRoot {
   return {
@@ -170,13 +168,11 @@ export function getManifest(): ManifestRoot {
     ],
   };
 }
-
 // Get all file entries flattened
 export function getAllEntries(
   manifest: ManifestRoot,
 ): { name: string; path: string; parentPath: string }[] {
   const entries: { name: string; path: string; parentPath: string }[] = [];
-
   function collect(node: ManifestNode, parentPath = "") {
     if (node.path) {
       entries.push({
@@ -190,17 +186,14 @@ export function getAllEntries(
       node.children.forEach((child) => collect(child, currentPath));
     }
   }
-
   manifest.children.forEach((child) => collect(child, ""));
   return entries;
 }
-
 // Count files in a node
 export function countFiles(node: ManifestNode): number {
   if (!node.children) return 1;
   return node.children.reduce((acc, child) => acc + countFiles(child), 0);
 }
-
 // Format category name
 export function formatCategoryName(name: string): string {
   return name

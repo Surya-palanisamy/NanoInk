@@ -1,14 +1,11 @@
 "use client";
-
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { getManifest, getAllEntries } from "@/lib/manifest";
-
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
 export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<
@@ -16,9 +13,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   >([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
-
   const entries = useMemo(() => getAllEntries(getManifest()), []);
-
   useEffect(() => {
     if (isOpen) {
       setQuery("");
@@ -26,13 +21,11 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
       setSelectedIndex(0);
     }
   }, [isOpen]);
-
   useEffect(() => {
     if (!query.trim()) {
       setResults([]);
       return;
     }
-
     const q = query.toLowerCase();
     const filtered = entries
       .filter(
@@ -41,11 +34,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
           entry.path.toLowerCase().includes(q),
       )
       .slice(0, 10);
-
     setResults(filtered);
     setSelectedIndex(0);
   }, [query, entries]);
-
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -55,9 +46,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
           // Parent handles opening
         }
       }
-
       if (!isOpen) return;
-
       if (e.key === "Escape") {
         onClose();
       } else if (e.key === "ArrowDown") {
@@ -71,11 +60,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         navigateToResult(results[selectedIndex].path);
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, results, selectedIndex, onClose]);
-
   const navigateToResult = useCallback(
     (filePath: string) => {
       // Convert file path to URL path
@@ -85,9 +72,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     },
     [router, onClose],
   );
-
   if (!isOpen) return null;
-
   return (
     <div
       className="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-3 sm:px-4 bg-black/60 backdrop-blur-sm"
@@ -117,7 +102,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             ESC
           </kbd>
         </div>
-
         {/* Results */}
         <div className="max-h-64 sm:max-h-80 overflow-y-auto">
           {results.length === 0 && query && (

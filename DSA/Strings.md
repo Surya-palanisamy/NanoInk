@@ -1,7 +1,5 @@
 # Strings
-
 ## Reverse String (LeetCode 344)
-
 ```java
 class Solution {
     public void reverseString(char[] s) {
@@ -15,16 +13,12 @@ class Solution {
     }
 }
 ```
-
 - Dry run (s = [h,e,l,l,o]):
   - swap 0↔4 → [o,e,l,l,h]
   - swap 1↔3 → [o,l,l,e,h]
   - left=2,right=2 → stop → [o,l,l,e,h]
-
 ---
-
 ## Length of Last Word (LeetCode 58)
-
 ```java
 class Solution {
     public int lengthOfLastWord(String s) {
@@ -33,15 +27,11 @@ class Solution {
     }
 }
 ```
-
 - Dry run ("Hello World "):
   - trim → "Hello World"
   - split → ["Hello","World"] → last="World" → len=5
-
 ---
-
 ## Roman to Integer (LeetCode 13)
-
 ```java
 class Solution {
     public int romanToInt(String s) {
@@ -63,7 +53,6 @@ class Solution {
     }
 }
 ```
-
 - Dry run ("MCMXCIV") from right:
   - V(5) → sum=5
   - I(1): 1\*4<5 → sum=4
@@ -72,11 +61,8 @@ class Solution {
   - M(1000): add → 1094
   - C(100): subtract → 994
   - M(1000): add → 1994
-
 ---
-
 ## Anagram (LeetCode 242)
-
 ```java
 class Solution {
     public boolean isAnagram(String s, String t) {
@@ -91,16 +77,12 @@ class Solution {
     }
 }
 ```
-
 - Dry run (s="ab", t="ba"):
   - i=0: freq[a]++ →1; freq[b]-- →-1
   - i=1: freq[b]++ →0; freq[a]-- →0
   - All zeros → true
-
 ---
-
 ## Frequency of Character (uppercase)
-
 ```java
 class Main {
     public static void main(String[] args) {
@@ -117,7 +99,6 @@ class Main {
     }
 }
 ```
-
 - Dry run:
   - S→ index 18 → freq[18]=1
   - U→ 20 → 1

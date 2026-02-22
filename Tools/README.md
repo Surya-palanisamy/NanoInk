@@ -1,23 +1,15 @@
 # Development Tools
-
 Essential tools and utilities for developers to improve productivity and workflow.
-
 ---
-
 ## 📚 Topics
-
 | File         | Description                                            |
 | :----------- | :----------------------------------------------------- |
 | Git & GitHub | Version control, branching, merging, GitHub workflows  |
 | Neovim       | Advanced Vim-based text editor configuration and usage |
 | Markdown     | Markdown syntax and formatting guide                   |
-
 ---
-
 ## 🎯 Quick Reference
-
 ### Git Essential Commands
-
 | Command                  | Description                     |
 | :----------------------- | :------------------------------ |
 | `git init`               | Initialize a new repository     |
@@ -28,11 +20,8 @@ Essential tools and utilities for developers to improve productivity and workflo
 | `git pull`               | Pull from remote                |
 | `git branch`             | List branches                   |
 | `git checkout -b <name>` | Create and switch to new branch |
-
 ---
-
 ## 📖 Learning Path
-
 1. Start with **Git & GitHub** for version control fundamentals
 2. Learn **Markdown** for documentation
 3. Explore **Neovim** for efficient text editing

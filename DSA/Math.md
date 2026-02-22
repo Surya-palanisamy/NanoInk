@@ -1,5 +1,4 @@
 ## Palindrome Number (LeetCode 9)
-
 ```java
 class Solution {
     public boolean isPalindrome(int x) {
@@ -13,13 +12,9 @@ class Solution {
     }
 }
 ```
-
 - Dry run (x=121): rev=1→12→121, temp→12→1→0 → `rev==x` → true
-
 ---
-
 ## Sqrt(x) (LeetCode 69)
-
 ```java
 class Solution {
     public int mySqrt(int x) {
@@ -33,5 +28,4 @@ class Solution {
     }
 }
 ```
-
 - Dry run (x=8): mid=4→too big; mid=1→ans=1; mid=2→ans=2; mid=3→too big; stop → 2

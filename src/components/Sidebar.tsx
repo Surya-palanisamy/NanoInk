@@ -1,19 +1,15 @@
 "use client";
-
 import { useState, useEffect, useRef } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ManifestRoot, ManifestNode } from "@/lib/manifest";
-
 interface SidebarProps {
   manifest: ManifestRoot;
 }
-
 const MIN_SIDEBAR_WIDTH = 220;
 const MAX_SIDEBAR_WIDTH = 280;
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
-
 export function Sidebar({ manifest }: SidebarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [collapsedFolders, setCollapsedFolders] = useState<Set<string>>(
@@ -24,7 +20,6 @@ export function Sidebar({ manifest }: SidebarProps) {
   const resizeStartX = useRef(0);
   const resizeStartWidth = useRef(280);
   const pathname = usePathname();
-
   useEffect(() => {
     const savedWidth = Number(localStorage.getItem(SIDEBAR_WIDTH_KEY));
     if (!Number.isNaN(savedWidth) && savedWidth > 0) {
@@ -35,7 +30,6 @@ export function Sidebar({ manifest }: SidebarProps) {
       setSidebarWidth(clamped);
     }
   }, []);
-
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--sidebar-width",
@@ -43,36 +37,30 @@ export function Sidebar({ manifest }: SidebarProps) {
     );
     localStorage.setItem(SIDEBAR_WIDTH_KEY, String(sidebarWidth));
   }, [sidebarWidth]);
-
   useEffect(() => {
     if (!isResizing) return;
     const previousCursor = document.body.style.cursor;
     const previousUserSelect = document.body.style.userSelect;
     document.body.style.cursor = "col-resize";
     document.body.style.userSelect = "none";
-
     return () => {
       document.body.style.cursor = previousCursor;
       document.body.style.userSelect = previousUserSelect;
     };
   }, [isResizing]);
-
   // Initialize collapsed state - collapse all by default
   useEffect(() => {
     const topLevelFolders = manifest.children.map((c) => c.name);
     setCollapsedFolders(new Set(topLevelFolders));
   }, [manifest]);
-
   // Close sidebar on route change (mobile)
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
-
   useEffect(() => {
     if (!pathname.startsWith("/docs/")) return;
     const slug = decodeURIComponent(pathname.replace("/docs/", ""));
     const targetPath = `${slug}.md`;
-
     const findAncestorFolderIds = (root: ManifestRoot, path: string) => {
       const walk = (
         node: ManifestNode,
@@ -80,11 +68,9 @@ export function Sidebar({ manifest }: SidebarProps) {
         ancestors: string[],
       ): string[] | null => {
         const nodeId = parentId ? `${parentId}/${node.name}` : node.name;
-
         if (node.path && node.path === path) {
           return ancestors;
         }
-
         if (node.children) {
           const nextAncestors = [...ancestors, nodeId];
           for (const child of node.children) {
@@ -92,20 +78,16 @@ export function Sidebar({ manifest }: SidebarProps) {
             if (result) return result;
           }
         }
-
         return null;
       };
-
       for (const child of root.children) {
         const result = walk(child, "", []);
         if (result) return result;
       }
       return [];
     };
-
     const openFolders = findAncestorFolderIds(manifest, targetPath);
     if (openFolders.length === 0) return;
-
     setCollapsedFolders((prev) => {
       const next = new Set(prev);
       openFolders.forEach((folderId) => {
@@ -114,25 +96,20 @@ export function Sidebar({ manifest }: SidebarProps) {
       return next;
     });
   }, [pathname, manifest]);
-
   // Handle swipe gestures for mobile
   useEffect(() => {
     let touchStartX = 0;
     let touchStartY = 0;
-
     const handleTouchStart = (e: TouchEvent) => {
       touchStartX = e.changedTouches[0].screenX;
       touchStartY = e.changedTouches[0].screenY;
     };
-
     const handleTouchEnd = (e: TouchEvent) => {
       const touchEndX = e.changedTouches[0].screenX;
       const touchEndY = e.changedTouches[0].screenY;
       const swipeDistanceX = touchEndX - touchStartX;
       const swipeDistanceY = Math.abs(touchEndY - touchStartY);
-
       if (swipeDistanceY > Math.abs(swipeDistanceX) * 0.5) return;
-
       if (swipeDistanceX > 50 && touchStartX < 30 && !isOpen) {
         setIsOpen(true);
       }
@@ -140,18 +117,15 @@ export function Sidebar({ manifest }: SidebarProps) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("touchstart", handleTouchStart, {
       passive: true,
     });
     document.addEventListener("touchend", handleTouchEnd, { passive: true });
-
     return () => {
       document.removeEventListener("touchstart", handleTouchStart);
       document.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isOpen]);
-
   const toggleFolder = (folderId: string) => {
     setCollapsedFolders((prev) => {
       const next = new Set(prev);
@@ -163,13 +137,11 @@ export function Sidebar({ manifest }: SidebarProps) {
       return next;
     });
   };
-
   const startResize = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.button !== 0) return;
     resizeStartX.current = event.clientX;
     resizeStartWidth.current = sidebarWidth;
     setIsResizing(true);
-
     const handlePointerMove = (moveEvent: PointerEvent) => {
       const delta = moveEvent.clientX - resizeStartX.current;
       const nextWidth = resizeStartWidth.current + delta;
@@ -179,17 +151,14 @@ export function Sidebar({ manifest }: SidebarProps) {
       );
       setSidebarWidth(clamped);
     };
-
     const handlePointerUp = () => {
       setIsResizing(false);
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerup", handlePointerUp);
     };
-
     window.addEventListener("pointermove", handlePointerMove);
     window.addEventListener("pointerup", handlePointerUp);
   };
-
   const renderNode = (
     node: ManifestNode,
     depth = 0,
@@ -198,7 +167,6 @@ export function Sidebar({ manifest }: SidebarProps) {
     const nodeId = parentId ? `${parentId}/${node.name}` : node.name;
     const isFolder = !!node.children;
     const isCollapsed = collapsedFolders.has(nodeId);
-
     if (isFolder) {
       return (
         <div key={nodeId} className="flex flex-col">
@@ -227,11 +195,9 @@ export function Sidebar({ manifest }: SidebarProps) {
         </div>
       );
     }
-
     // File node
     const href = `/docs/${node.path?.replace(".md", "").split("/").join("/")}`;
     const isActive = pathname === href;
-
     return (
       <Link
         key={node.path}
@@ -248,7 +214,6 @@ export function Sidebar({ manifest }: SidebarProps) {
       </Link>
     );
   };
-
   return (
     <>
       {/* Mobile toggle button */}
@@ -271,7 +236,6 @@ export function Sidebar({ manifest }: SidebarProps) {
           />
         </svg>
       </button>
-
       {/* Overlay for mobile */}
       {isOpen && (
         <div
@@ -279,7 +243,6 @@ export function Sidebar({ manifest }: SidebarProps) {
           onClick={() => setIsOpen(false)}
         />
       )}
-
       {/* Sidebar */}
       <aside
         className={`sidebar-toc fixed top-[var(--header-height)] left-0 h-[calc(100vh-var(--header-height))] bg-dark-bg dark:bg-dark-bg light:bg-light-bg backdrop-blur-md border-r border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 overflow-y-auto z-50 transition-transform lg:translate-x-0 ${
@@ -302,12 +265,10 @@ export function Sidebar({ manifest }: SidebarProps) {
         >
           <span className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-accent opacity-70 transition-opacity group-hover:opacity-100" />
         </div>
-
         {/* Navigation */}
         <nav className="py-2">
           {manifest.children.map((child) => renderNode(child))}
         </nav>
-
         {/* Footer */}
       </aside>
     </>
