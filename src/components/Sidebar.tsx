@@ -282,7 +282,7 @@ export function Sidebar({ manifest }: SidebarProps) {
 
       {/* Sidebar */}
       <aside
-        className={`sidebar-toc fixed top-[var(--header-height)] left-0 h-[calc(100vh-var(--header-height))] bg-dark-secondary/80 dark:bg-dark-secondary/80 light:bg-light-secondary/80 backdrop-blur-md border-r border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 overflow-y-auto z-50 transition-transform lg:translate-x-0 ${
+        className={`sidebar-toc fixed top-[var(--header-height)] left-0 h-[calc(100vh-var(--header-height))] bg-dark-bg dark:bg-dark-bg light:bg-light-bg backdrop-blur-md border-r border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 overflow-y-auto z-50 transition-transform lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         style={{

@@ -132,6 +132,13 @@ export default function HomePage() {
 
   return (
     <div className="page-enter max-w-6xl mx-auto lg:mx-0 px-3 sm:px-4 lg:px-6 py-8 sm:py-12 relative">
+      <style dangerouslySetInnerHTML={{ __html: `
+        :root {
+          --color-accent: #f87171 !important;
+          --color-accent-hover: #fca5a5 !important;
+          --color-accent-soft: rgba(248, 113, 113, 0.1) !important;
+        }
+      `}} />
       {/* Ambient background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-accent/20 blur-[120px] rounded-full pointer-events-none -mr-40" />
       
