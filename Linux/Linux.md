@@ -87,9 +87,9 @@ ln -s /etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/mysite
 # Vi. Users and Permissions
 
 ### User Management
-
-```bash
+```
 # Who am I?
+```bash
 whoami                 # Current username
 ```
 

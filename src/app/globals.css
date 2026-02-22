@@ -15,10 +15,7 @@
 }
 
 /* TOC Scrollbar - Dark Theme */
-.toc-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #404040 transparent;
-}
+
 
 .toc-scrollbar::-webkit-scrollbar {
   width: 8px;
@@ -42,9 +39,6 @@
 }
 
 /* Light theme TOC scrollbar */
-.light .toc-scrollbar {
-  scrollbar-color: #d4d4d4 transparent;
-}
 
 .light .toc-scrollbar::-webkit-scrollbar-thumb {
   background: #c4c4c4;
@@ -123,6 +117,13 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: var(--color-dark-bg);
+  }
+  
+  html.light {
+    color-scheme: light;
+    background-color: var(--color-light-bg);
   }
 
   body {
@@ -147,7 +148,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--color-dark-bg);
+  }
+  
+  .light ::-webkit-scrollbar-track {
+    background: var(--color-light-bg);
   }
 
   ::-webkit-scrollbar-thumb {
@@ -644,6 +649,4 @@ td {
   background-color: rgba(239, 68, 68, 0.12) !important;
 }
 
-body {
-  color: #1f2937;
-}
+

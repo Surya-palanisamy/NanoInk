@@ -169,7 +169,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
       {/* Mobile TOC panel */}
       <aside
-        className={`xl:hidden fixed top-[var(--header-height)] right-0 w-[240px] h-[calc(100vh-var(--header-height))] border-l border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 bg-dark-secondary/90 dark:bg-dark-secondary/90 light:bg-light-secondary/90 backdrop-blur-xl overflow-y-auto toc-scrollbar z-50 transition-transform ${
+        className={`xl:hidden fixed top-[var(--header-height)] right-0 w-[240px] h-[calc(100vh-var(--header-height))] border-l border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 bg-dark-bg dark:bg-dark-bg light:bg-light-bg backdrop-blur-xl overflow-y-auto toc-scrollbar z-50 transition-transform ${
           isMobileOpen ? "translate-x-0 shadow-[-10px_0_30px_rgba(0,0,0,0.5)] light:shadow-[-10px_0_30px_rgba(0,0,0,0.1)]" : "translate-x-full"
         }`}
       >
@@ -205,7 +205,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
       {/* Desktop TOC */}
       <aside
-        className="hidden xl:flex xl:flex-col fixed top-[var(--header-height)] right-0 z-30 h-[calc(100vh-var(--header-height))] border-l border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 bg-dark-secondary/80 dark:bg-dark-secondary/80 light:bg-light-secondary/80 backdrop-blur-md"
+        className="hidden xl:flex xl:flex-col fixed top-[var(--header-height)] right-0 z-30 h-[calc(100vh-var(--header-height))] border-l border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 bg-dark-bg dark:bg-dark-bg light:bg-light-bg backdrop-blur-md"
         style={{ width: `${width}px` }}
       >
         <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
