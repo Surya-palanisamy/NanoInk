@@ -1,4 +1,4 @@
-## 1. What is Linux?
+## What is Linux?
 
 **Linux** is the engine that powers millions of servers, phones (Android), and computers worldwide.
 
@@ -16,7 +16,7 @@
 - Complete control over your system
 - Free and open source
 
-## 2. Getting Started
+## Getting Started
 
 ### Choose a Distribution
 
@@ -84,11 +84,11 @@ ln -s /path/to/original /path/to/shortcut
 # Example: create shortcut to nginx config
 ln -s /etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/mysite
 
+```
 # Vi. Users and Permissions
 
 ### User Management
-```
-# Who am I?
+## Who am I?
 ```bash
 whoami                 # Current username
 ```

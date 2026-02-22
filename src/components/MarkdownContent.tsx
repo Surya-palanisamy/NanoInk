@@ -29,7 +29,8 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
       ) as HTMLButtonElement | null;
       if (!button || !container.contains(button)) return;
 
-      const pre = button.closest("pre");
+      const wrapper = button.closest(".code-block-wrapper");
+      const pre = wrapper ? wrapper.querySelector("pre") : button.closest("pre");
       const code = pre?.querySelector("code");
       const text = code?.textContent ?? "";
 
@@ -49,12 +50,23 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
     const addButtons = () => {
       const blocks = container.querySelectorAll("pre");
       blocks.forEach((pre) => {
-        if (pre.querySelector(`.${COPY_BUTTON_CLASS}`)) return;
+        if (pre.parentElement?.classList.contains("code-block-wrapper")) return;
+        
+        const wrapper = document.createElement("div");
+        wrapper.className = "code-block-wrapper relative group my-5";
+        
+        pre.parentNode?.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        // Remove vertical margins from pre since the wrapper handles them
+        pre.style.marginTop = "0";
+        pre.style.marginBottom = "0";
+
         const button = document.createElement("button");
         button.type = "button";
         button.className = `${COPY_BUTTON_CLASS} ${COPY_BUTTON_CLASSES}`;
         button.innerHTML = COPY_ICON;
-        pre.appendChild(button);
+        wrapper.appendChild(button);
       });
     };
 

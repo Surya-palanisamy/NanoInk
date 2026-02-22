@@ -93,6 +93,7 @@ export function getManifest(): ManifestRoot {
           { name: "LinkedList", path: "DSA/LinkedList.md" },
           { name: "Math", path: "DSA/Math.md" },
           { name: "Matrix", path: "DSA/Matrix.md" },
+          { name: "OOP", path: "DSA/OOP.md" },
           { name: "Patterns", path: "DSA/Patterns.md" },
           { name: "Stack", path: "DSA/Stack.md" },
           { name: "Strings", path: "DSA/Strings.md" },
