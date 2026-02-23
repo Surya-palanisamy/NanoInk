@@ -88,6 +88,7 @@ export function getManifest(): ManifestRoot {
           { name: "Arrays", path: "DSA/Arrays.md" },
           { name: "BitManipulation", path: "DSA/BitManipulation.md" },
           { name: "DynamicProgramming", path: "DSA/DynamicProgramming.md" },
+          { name: "GreedyAlgorithm", path: "DSA/GreedyAlgorithm.md" },
           { name: "LinkedList", path: "DSA/LinkedList.md" },
           { name: "Math", path: "DSA/Math.md" },
           { name: "Matrix", path: "DSA/Matrix.md" },
