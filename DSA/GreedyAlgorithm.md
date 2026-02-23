@@ -42,3 +42,4 @@ class Solution {
   - n = 4, canEat = 2
   - set = {1, 2, 3}, uniqueTypes = 3
   - Math.min(3, 2) → Answer is 2.
+
