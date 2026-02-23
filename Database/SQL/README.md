@@ -24,8 +24,3 @@ A comprehensive guide to SQL and relational database concepts.
 | DCL      | GRANT, REVOKE                 | Control access      |
 | TCL      | COMMIT, ROLLBACK, SAVEPOINT   | Manage transactions |
 ---
-## 📖 Learning Path
-1. Start with **DBMS** for foundational concepts
-2. Learn **SQL** for practical query writing
-3. Practice with joins, subqueries, and aggregations
-4. Understand indexing and optimization

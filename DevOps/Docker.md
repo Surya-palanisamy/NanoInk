@@ -1,6 +1,7 @@
 # 🐳 Docker Beginner to Advanced – Single Markdown
 ---
 ![Docker vs VM comparison](images/Docker-and-VM.png)
+
 | Feature        | VMs                 | Containers            |
 | -------------- | ------------------- | --------------------- |
 | Virtualizes    | Hardware            | OS / Runtime          |
@@ -10,7 +11,8 @@
 | Performance    | Moderate            | Near-native           |
 | Isolation      | Strong              | Moderate–Strong       |
 | Portability    | Good                | Excellent             |
-| Use Case       | Monolithic / Legacy | Microservices / Cloud |
+| Use Case       | Monolithic / Legazcy | Microservices / Cloud |
+
 ---
 ## Real-World Examples
 **VMs Used In:**
@@ -200,7 +202,7 @@ docker network disconnect MyNetwork my-nginx
 docker network rm MyNetwork
 ```
 ---
-#### 9.Volumes (Persistent Storage)
+### 9.Volumes (Persistent Storage)
 1. Create Volume
 ```docker
 docker volume create myVolume
@@ -221,7 +223,7 @@ docker volume ls
 docker volume prune
 ```
 ---
-### 9.Adding DNS to Docker Containers
+### 10.Adding DNS to Docker Containers
 You can control how containers resolve domain names using Docker DNS options.
 ---
 > Add DNS While Running a Container

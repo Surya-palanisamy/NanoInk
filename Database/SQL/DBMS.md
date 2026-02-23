@@ -709,10 +709,3 @@ Foreign Key   → References Primary Key
 Composite Key = Multiple Attributes
 ```
 ---
-## Further Reading
-- [SQL Guide](./SQL.md) - Complete SQL reference
-- [MongoDB Guide](./Mongodb.md) - Document database in-depth
-- [Redis Guide](./Redis.md) - In-memory data store
-- [Database Design - Stanford Course](https://online.stanford.edu/courses/soe-ydatabases-databases)
-- [Use The Index, Luke](https://use-the-index-luke.com/)
-- [CMU Database Systems](https://15445.courses.cs.cmu.edu/)

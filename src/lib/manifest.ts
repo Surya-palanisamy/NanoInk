@@ -52,15 +52,15 @@ export function getManifest(): ManifestRoot {
           {
             name: "NoSQL",
             children: [
-              { name: "README", path: "Database/NoSQL/README.md" },
+          
               { name: "MongoDB", path: "Database/NoSQL/MongoDB.md" },
-              { name: "Redis", path: "Database/NoSQL/Redis.md" },
+            
             ],
           },
           {
             name: "SQL",
             children: [
-              { name: "README", path: "Database/SQL/README.md" },
+            
               { name: "DBMS", path: "Database/SQL/DBMS.md" },
               { name: "SQL", path: "Database/SQL/SQL.md" },
             ],
