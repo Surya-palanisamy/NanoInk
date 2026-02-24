@@ -26,7 +26,6 @@ export const metadata: Metadata = {
   publisher: "Surya palanisamy",
   keywords: [
     "Computer Science",
-    "Software Engineering",
     "Knowledge Base",
     "Notes",
     "Learning Hub",
@@ -35,7 +34,6 @@ export const metadata: Metadata = {
     "Development",
     "Tech Learning",
     "CS Concepts",
-    "Software Design",
     "Coding Notes",
     "Tech Reference",
     "Nano Ink",
@@ -46,13 +44,13 @@ export const metadata: Metadata = {
     siteName: "Nano Ink",
     title: "Nano Ink",
     description:
-      "Your personal knowledge base for Computer Science & Software Engineering",
+      "Your personal knowledge base for Computer Science",
   },
   twitter: {
     card: "summary_large_image",
     title: "Nano Ink",
     description:
-      "Your personal knowledge base for Computer Science & Software Engineering",
+      "Your personal knowledge base for Computer Science",
   },
   icons: {
     icon: "/favicon.ico",

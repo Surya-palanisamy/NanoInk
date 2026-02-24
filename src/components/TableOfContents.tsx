@@ -77,7 +77,39 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     window.addEventListener("scroll", handleScroll, true);
     return () => window.removeEventListener("scroll", handleScroll, true);
   }, [headings, hasHeadings]);
-  const renderItems = (onItemClick?: () => void) => {
+
+  // Auto-scroll TOC when active heading changes
+  useEffect(() => {
+    if (!activeHeadingId) return;
+    
+    const prefix = isMobileOpen ? "mobile" : "desktop";
+    const activeElement = document.getElementById(`toc-${prefix}-${activeHeadingId}`);
+    
+    if (activeElement) {
+      const container = activeElement.closest('.overflow-y-auto') as HTMLElement;
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        const elementRect = activeElement.getBoundingClientRect();
+        
+        const isVisible = elementRect.top >= containerRect.top && elementRect.bottom <= containerRect.bottom;
+        
+        if (!isVisible) {
+          const scrollOffset = elementRect.top - containerRect.top - (containerRect.height / 2) + (elementRect.height / 2);
+          container.scrollBy({
+            top: scrollOffset,
+            behavior: "smooth"
+          });
+        }
+      } else {
+        activeElement.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    }
+  }, [activeHeadingId, isMobileOpen]);
+
+  const renderItems = (prefix: string, onItemClick?: () => void) => {
     if (!hasHeadings) {
       return (
         <p className="text-xs xl:text-sm text-neutral-500 light:text-black">
@@ -91,6 +123,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
           const isActive = activeHeadingId === heading.id;
           return (
             <a
+              id={`toc-${prefix}-${heading.id}`}
               key={`${heading.id}-${index}`}
               href={`#${heading.id}`}
               title={heading.text}
@@ -104,7 +137,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
             >
               <span
                 className={`block truncate transition-transform ${
-                  isActive ? "translate-x-1" : "group-hover:translate-x-0.5"
+                  isActive ? "translate-x-1" : ""
                 }`}
               >
                 {heading.text}
@@ -178,7 +211,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
               </svg>
             </button>
           </div>
-          {renderItems(() => setIsMobileOpen(false))}
+          {renderItems("mobile", () => setIsMobileOpen(false))}
         </div>
       </aside>
       {/* Desktop TOC */}
@@ -193,13 +226,13 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
                 Contents
               </h3>
             </div>
-            {renderItems()}
+            {renderItems("desktop")}
           </div>
         </div>
         {/* Resize handle */}
         <div
           onMouseDown={handleMouseDown}
-          className="absolute left-0 top-0 w-1 h-full cursor-col-resize hover:bg-accent/60 bg-transparent transition-all duration-200 hover:w-1.5 group"
+          className="absolute left-0 top-0 w-1 h-full cursor-col-resize hover:bg-accent/60 bg-transparent transition-colors duration-200 group"
           title="Drag to resize table of contents"
         />
       </aside>
