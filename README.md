@@ -1,6 +1,6 @@
 # Nano Ink
 
-A personal knowledge base for Computer Science and Software Engineering.
+A personal knowledge base for Computer Science 
 
 ## Features
 

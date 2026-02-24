@@ -433,7 +433,7 @@
 
     let homeHTML = `
       <div class="home-hero">
-        <p class="home-subtitle">Your personal knowledge base for Computer Science & Software Engineering</p>
+        <p class="home-subtitle">Your personal knowledge base for Computer Science</p>
       </div>
       <div class="home-categories">
         <h2 class="home-section-title">Browse Topics</h2>

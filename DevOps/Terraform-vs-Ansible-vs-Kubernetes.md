@@ -1,11 +1,13 @@
 ### DevOps Core Tools — Terraform vs Ansible vs Kubernetes
 #### 🧭 Big Picture
 These three tools do different jobs. They are not replacements.
+
 | Tool           | What it Mainly Does                     |
 | -------------- | --------------------------------------- |
 | **Terraform**  | Builds infrastructure (Cloud resources) |
 | **Ansible**    | Configures & automates systems          |
 | **Kubernetes** | Runs & manages containers               |
+
 ---
 ### 🧱 Terraform — Infrastructure as Code (IaC)
 ### 🔹 Purpose

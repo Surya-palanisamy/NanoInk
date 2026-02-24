@@ -21,8 +21,7 @@ export default function HomePage() {
           Welcome to <span className="text-accent">Nano Ink</span>
         </h1>
         <p className="text-base sm:text-lg lg:text-lg text-neutral-400 dark:text-neutral-400 light:text-neutral-600 max-w-2xl mx-auto lg:mx-0">
-          Your personal knowledge base for Computer Science & Software
-          Engineering
+          Your personal knowledge base for Computer Science
         </p>
       </div>
       {/* Categories Grid */}
@@ -30,7 +29,7 @@ export default function HomePage() {
         <h2 className="text-xs sm:text-sm font-semibold text-neutral-500 light:text-black uppercase tracking-wide mb-4 sm:mb-5">
           Browse Topics
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
           {categories.map((cat, index) => {
             const fileCount = countFiles(cat);
             const readmePath = cat.children?.find(
@@ -44,15 +43,15 @@ export default function HomePage() {
               <Link
                 key={cat.name}
                 href={href}
-                className={`animate-slide-up stagger-${staggerDelay} group flex flex-col sm:flex-row sm:items-center gap-4 p-5 sm:p-6 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-xl sm:rounded-2xl hover:border-accent/50 hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-colors duration-300 w-full relative overflow-hidden`}
+                className={`animate-slide-up stagger-${staggerDelay} group flex flex-col items-center justify-center p-4 sm:p-6 bg-dark-secondary dark:bg-dark-secondary light:bg-light-secondary border border-dark-border dark:border-dark-border light:border-light-border rounded-xl sm:rounded-2xl hover:border-accent/50 hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-colors duration-300 w-full relative overflow-hidden aspect-[2/1] sm:aspect-auto sm:min-h-[120px]`}
               >
                 <div className="absolute inset-0 bg-transparent group-hover:bg-accent/5 transition-colors duration-500" />
                 
-                <div className="flex-1 min-w-0 self-center sm:self-auto relative z-10">
-                  <h3 className="font-semibold text-base sm:text-lg text-neutral-100 dark:text-neutral-100 light:text-black group-hover:text-accent transition-colors">
+                <div className="flex flex-col items-center justify-center text-center relative z-10 w-full">
+                  <h3 className="font-semibold text-sm sm:text-lg text-neutral-100 dark:text-neutral-100 light:text-black group-hover:text-accent transition-colors leading-tight line-clamp-2">
                     {formatCategoryName(cat.name)}
                   </h3>
-                  <span className="text-xs sm:text-sm text-neutral-500 light:text-neutral-500 self-center sm:self-auto block mt-1">
+                  <span className="text-xs sm:text-sm text-neutral-500 light:text-neutral-500 block mt-1.5">
                     {fileCount} {fileCount === 1 ? "note" : "notes"}
                   </span>
                 </div>

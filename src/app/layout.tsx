@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | Nano Ink",
   },
   description:
-    "Your personal knowledge base for Computer Science & Software Engineering",
+    "Your personal knowledge base for Computer Science",
   applicationName: "Nano Ink",
   authors: [{ name: "Surya palanisamy" }],
   creator: "Surya palanisamy",

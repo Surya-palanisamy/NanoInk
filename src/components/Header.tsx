@@ -2,10 +2,22 @@
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 import { SearchModal } from "./SearchModal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export function Header() {
   const { theme, toggleTheme } = useTheme();
   const [searchOpen, setSearchOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
   return (
     <>
       <header className="fixed top-0 left-0 right-0 h-[var(--header-height)] bg-dark-secondary/80 dark:bg-dark-secondary/80 light:bg-light-secondary/80 backdrop-blur-md border-b border-dark-border/50 dark:border-dark-border/50 light:border-light-border/50 z-50 transition-colors">
