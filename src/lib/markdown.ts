@@ -58,7 +58,7 @@ export async function getMarkdownContent(filePath: string): Promise<{
     const idCountMap = new Map<string, number>();
     // Remove code blocks to avoid picking up bash comments as headings
     const contentWithoutCodeBlocks = fileContent.replace(/```[\s\S]*?```/g, "");
-    const headingRegex = /^(#{1,4})\s+(.+)$/gm;
+    const headingRegex = /^(#{1,2})\s+(.+)$/gm;
     let match;
     while ((match = headingRegex.exec(contentWithoutCodeBlocks)) !== null) {
       const level = match[1].length;

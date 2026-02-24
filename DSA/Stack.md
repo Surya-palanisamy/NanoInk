@@ -1,5 +1,7 @@
 # Stack
+
 ## Valid Parentheses (LeetCode 20)
+
 ```java
 import java.util.*;
 public class Main {

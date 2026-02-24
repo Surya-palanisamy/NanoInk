@@ -1,6 +1,6 @@
 ## Getting Started
 
-### Hello.java
+## Hello.java
 
 ```java
 public class Hello {
@@ -20,7 +20,7 @@ $ java Hello
 Hello, world!
 ```
 
-### Variables
+## Variables
 
 ```java
 int num = 5;
@@ -30,7 +30,7 @@ boolean bool = true;
 String site = "cheatsheets.zip";
 ```
 
-### Primitive Data Types
+## Primitive Data Types
 
 | Data Type | Size   | Default | Range               |
 | --------- | ------ | ------- | :------------------ |
@@ -45,7 +45,7 @@ String site = "cheatsheets.zip";
 
 {.show-header}
 
-### Strings
+## Strings
 
 ```java
 String first = "John";
@@ -56,7 +56,7 @@ System.out.println(name);
 
 See: [Strings](#java-strings)
 
-### Loops
+## Loops
 
 ```java
 String word = "CheatSheets";
@@ -68,7 +68,7 @@ for (char c: word.toCharArray()) {
 
 See: [Loops](#java-loops)
 
-### Arrays
+## Arrays
 
 ```java
 char[] chars = new char[10];
@@ -81,7 +81,7 @@ boolean[] answers = {true, false};
 
 See: [Arrays](#java-arrays)
 
-### Swap
+## Swap
 
 ```java
 int a = 1;
@@ -93,7 +93,7 @@ b = temp;
 System.out.println(a + " " + b); // 2 1
 ```
 
-### Type Casting
+## Type Casting
 
 ```java
 // Widening
@@ -108,7 +108,7 @@ Integer.parseInt("10");   // 10
 Double.parseDouble("10"); // 10.0
 ```
 
-### Conditionals
+## Conditionals
 
 ```java
 int j = 10;
@@ -123,7 +123,7 @@ if (j == 10) {
 
 See: [Conditionals](#java-conditionals)
 
-### User Input
+## User Input
 
 ```java
 Scanner in = new Scanner(System.in);
@@ -135,7 +135,7 @@ System.out.println(num);
 
 ## Java Strings
 
-### Basic
+## Basic
 
 ```java
 String str1 = "value";
@@ -143,7 +143,7 @@ String str2 = new String("value");
 String str3 = String.valueOf(123);
 ```
 
-### Concatenation
+## Concatenation
 
 ```java
 String s = 3 + "str" + 3;     // 3str3
@@ -154,7 +154,7 @@ String s = "" + 3 + 3 + "23"; // 3323
 String s = 3 + 3 + 23;        // Incompatible types
 ```
 
-### StringBuilder
+## StringBuilder
 
 `StringBuilder sb = new StringBuilder(10);`
 
@@ -201,7 +201,7 @@ String s = 3 + 3 + 23;        // Incompatible types
   0   1   2   3   4   5   6   7   8   9
 ```
 
-### Comparison
+## Comparison
 
 ```java
 String s1 = new String("cheatsheets.zip");
@@ -211,7 +211,7 @@ s1.equals(s2)     // true
 "AB".equalsIgnoreCase("ab")  // true
 ```
 
-### Manipulation
+## Manipulation
 
 ```java
 String str = "Abcd";
@@ -223,7 +223,7 @@ str.replace("b", "-"); // A-cd
 "ab".toCharArray();    // {'a', 'b'}
 ```
 
-### Information
+## Information
 
 ```java
 String str = "abcd";
@@ -240,7 +240,7 @@ str.startsWith("a"); // true
 str.isEmpty();       // false
 ```
 
-### Immutable
+## Immutable
 
 ```java
 String str = "hello";
@@ -262,7 +262,7 @@ Once created cannot be modified, any modification creates a new String
 
 ## Java Arrays
 
-### Declare
+## Declare
 
 ```java
 int[] a1;
@@ -274,7 +274,7 @@ a4[2] = 2;
 a4[3] = 3;
 ```
 
-### Modify
+## Modify
 
 ```java
 int[] a = {1, 2, 3};
@@ -284,7 +284,7 @@ System.out.println(a[0]); // 9
 System.out.println(a.length); // 3
 ```
 
-### Loop (Read & Modify)
+## Loop (Read & Modify)
 
 ```java
 int[] arr = {1, 2, 3};
@@ -295,7 +295,7 @@ for (int i=0; i < arr.length; i++) {
 // Outputs: 2 4 6
 ```
 
-### Loop (Read)
+## Loop (Read)
 
 ```java
 String[] arr = {"a", "b", "c"};
@@ -305,7 +305,7 @@ for (String a: arr) {
 // Outputs: a b c
 ```
 
-### Multidimensional Arrays
+## Multidimensional Arrays
 
 ```java
 int[][] matrix = { {1, 2, 3}, {4, 5} };
@@ -321,7 +321,7 @@ for (int i = 0; i < a.length; ++i) {
 // Outputs: 1 2 3 4 5 6 7
 ```
 
-### Sort
+## Sort
 
 ```java
 char[] chars = {'b', 'a', 'c'};
@@ -332,7 +332,7 @@ Arrays.toString(chars);
 
 ## Java Operators
 
-### Arithmetic Operators
+## Arithmetic Operators
 
 | Operator | Description                                            |
 | -------- | ------------------------------------------------------ |
@@ -342,7 +342,7 @@ Arrays.toString(chars);
 | `/`      | Division operator                                      |
 | `%`      | Remainder operator                                     |
 
-### Assignment & Unary Operators
+## Assignment & Unary Operators
 
 | Operator | Description                                                 |
 | -------- | ----------------------------------------------------------- |
@@ -351,7 +351,7 @@ Arrays.toString(chars);
 | `--`     | Decrement operator; decrements a value by 1                 |
 | `!`      | Logical complement operator; inverts the value of a boolean |
 
-### Relational Operators
+## Relational Operators
 
 | Operator     | Description                            |
 | ------------ | -------------------------------------- |
@@ -363,7 +363,7 @@ Arrays.toString(chars);
 | `<=`         | Less than or equal to                  |
 | `instanceof` | Compares an object to a specified type |
 
-### Logical Operators
+## Logical Operators
 
 | Operator | Description                                    |
 | -------- | ---------------------------------------------- | --- | -------------- |
@@ -371,7 +371,7 @@ Arrays.toString(chars);
 | `        |                                                | `   | Conditional-OR |
 | `?:`     | Ternary (shorthand for if-then-else statement) |
 
-### Bitwise Operators
+## Bitwise Operators
 
 | Operator | Description              |
 | -------- | ------------------------ | -------------------- |
@@ -385,7 +385,7 @@ Arrays.toString(chars);
 
 ## Java Conditionals
 
-### If else
+## If else
 
 ```java
 int k = 15;
@@ -398,7 +398,7 @@ if (k > 20) {
 }
 ```
 
-### Switch
+## Switch
 
 ```java
 int month = 3;
@@ -421,7 +421,7 @@ switch (month) {
 System.out.println("Result " + str);
 ```
 
-### Ternary operator
+## Ternary operator
 
 ```java
 int a = 10;
@@ -433,7 +433,7 @@ System.out.println(max);
 
 ## Java Loops
 
-### For Loop
+## For Loop
 
 ```java
 for (int i = 0; i < 10; i++) {
@@ -451,7 +451,7 @@ for (int i = 0,j = 0; i < 3; i++,j--) {
 // Outputs: 0|0 -1|1 -2|2
 ```
 
-### Enhanced For Loop
+## Enhanced For Loop
 
 ```java
 int[] numbers = {1,2,3,4,5};
@@ -463,7 +463,7 @@ for (int number: numbers) {
 
 Used to loop around array's or List's
 
-### While Loop
+## While Loop
 
 ```java
 int count = 0;
@@ -474,7 +474,7 @@ while (count < 5) {
 // Outputs: 01234
 ```
 
-### Do While Loop
+## Do While Loop
 
 ```java
 int count = 0;
@@ -485,7 +485,7 @@ do {
 // Outputs: 01234
 ```
 
-### Continue Statement
+## Continue Statement
 
 ```java
 for (int i = 0; i < 5; i++) {
@@ -497,7 +497,7 @@ for (int i = 0; i < 5; i++) {
 // Outputs: 0124
 ```
 
-### Break Statement
+## Break Statement
 
 ```java
 for (int i = 0; i < 5; i++) {
@@ -511,7 +511,7 @@ for (int i = 0; i < 5; i++) {
 
 ## Java Collections Framework
 
-### Java Collections
+## Java Collections
 
 | Collection                                                                                                         | Interface   | Ordered | Sorted | Thread safe | Duplicate | Nullable           |
 | ------------------------------------------------------------------------------------------------------------------ | ----------- | ------- | ------ | ----------- | --------- | ------------------ |
@@ -538,9 +538,7 @@ for (int i = 0; i < 5; i++) {
 | [LinkedBlockingDeque](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/LinkedBlockingDeque.html)     | Deque       | Y       | _N_    | Y           | Y         | _N_                |
 | [PriorityBlockingQueue](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/PriorityBlockingQueue.html) | Queue       | Y       | _N_    | Y           | Y         | _N_                |
 
-
-
-### ArrayList
+## ArrayList
 
 ```java
 List<Integer> nums = new ArrayList<>();
@@ -561,7 +559,7 @@ for (Integer value : nums) {
 }
 ```
 
-### HashMap
+## HashMap
 
 ```java
 Map<Integer, String> m = new HashMap<>();
@@ -579,7 +577,7 @@ m.forEach((key, value) -> {
 });
 ```
 
-### HashSet
+## HashSet
 
 ```java
 Set<String> set = new HashSet<>();
@@ -600,7 +598,7 @@ for (String element : set) {
 }
 ```
 
-### ArrayDeque
+## ArrayDeque
 
 ```java
 Deque<String> a = new ArrayDeque<>();
@@ -620,7 +618,7 @@ System.out.println(a.pop());
 
 ## Misc
 
-### Access Modifiers
+## Access Modifiers
 
 | Modifier    | Class | Package | Subclass | World |
 | ----------- | ----- | ------- | -------- | ----- |
@@ -629,8 +627,7 @@ System.out.println(a.pop());
 | no modifier | Y     | Y       | _N_      | _N_   |
 | private     | Y     | _N_     | _N_      | _N_   |
 
-
-### Regular expressions
+## Regular expressions
 
 ```java
 String text = "I am learning Java";
@@ -641,8 +638,7 @@ text.split("\\|");
 text.split(Pattern.quote("|"));
 ```
 
-
-### Comment
+## Comment
 
 ```java
 // I am a single line comment!
@@ -658,7 +654,7 @@ multi-line comment!
  */
 ```
 
-### Keywords
+## Keywords
 
 - `abstract`
 - `continue`
@@ -710,9 +706,8 @@ multi-line comment!
 - `native`
 - `super`
 - `while`
-  
 
-### Math methods
+## Math methods
 
 | Method                | Description            |
 | --------------------- | :--------------------- |
@@ -730,7 +725,7 @@ multi-line comment!
 | `Math.toDegrees(rad)` | Angle rad in degrees   |
 | `Math.toRadians(deg)` | Angle deg in radians   |
 
-### Try/Catch/Finally
+## Try/Catch/Finally
 
 ```java
 try {

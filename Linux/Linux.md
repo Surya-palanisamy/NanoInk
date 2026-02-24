@@ -1,25 +1,36 @@
 ## What is Linux?
+
 **Linux** is the engine that powers millions of servers, phones (Android), and computers worldwide.
-### Core Parts
+
+## Core Parts
+
 - **Kernel**: The brain that talks to your hardware (CPU, RAM, disk)
 - **Distributions (Distros)**: Complete packages like Ubuntu, Fedora, or Arch that bundle the kernel with tools
 - **Shell**: The command-line interface (Bash/Zsh) where you type commands
 - **Package Manager**: App store for installing software (`apt`, `dnf`, `pacman`)
-### Why Learn Linux?
+
+## Why Learn Linux?
+
 - Powers 90%+ of web servers and cloud infrastructure
 - Required for DevOps, system administration, and backend development
 - Complete control over your system
 - Free and open source
+
 ## Getting Started
-### Choose a Distribution
+
+## Choose a Distribution
+
 | Distro            | Best For                      | Package Manager |
 | ----------------- | ----------------------------- | --------------- |
 | **Ubuntu/Debian** | Beginners, stability          | `apt`           |
 | **Fedora/RHEL**   | Enterprise, latest features   | `dnf`           |
 | **Arch Linux**    | Advanced users, customization | `pacman`        |
 | **Alpine**        | Containers, minimal systems   | `apk`           |
-### Essential Commands
-### Navigation
+
+## Essential Commands
+
+## Navigation
+
 ```bash
 pwd                    # Show current directory
 ls -la                 # List files (including hidden)
@@ -27,8 +38,11 @@ cd /path/to/folder     # Change directory
 cd -                   # Go back to previous directory
 cd ~                   # Go to home directory
 ```
-# Understanding the Filesystem
-### Important Directories
+
+## Understanding the Filesystem
+
+## Important Directories
+
 ```
 /  (Root directory — everything starts here)
 ├── /home         # User home directories (e.g., /home/john)
@@ -42,7 +56,9 @@ cd ~                   # Go to home directory
 ├── /proc         # Virtual filesystem for process & system info
 └── /sys          # Kernel and hardware information (sysfs)
 ```
-### Disk Usage
+
+## Disk Usage
+
 ```bash
 # Check disk space
 df -h                  # Show disk usage for all partitions
@@ -54,21 +70,106 @@ lsblk -f               # Include filesystem types
 # Show mounted filesystems
 mount                  # List all mounts
 ```
-### Symbolic Links (Shortcuts)
+
+## Symbolic Links (Shortcuts)
+
 ```bash
 # Create a shortcut to a file or folder
 ln -s /path/to/original /path/to/shortcut
 # Example: create shortcut to nginx config
 ln -s /etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/mysite
 ```
-# Vi. Users and Permissions
-### User Management
-## Who am I?
+
+## Users and Permissions
+
+## User Management
+
+#### Who am I?
+
 ```bash
 whoami                 # Current username
 ```
-# Installing Software
-### Ubuntu/Debian (apt)
+
+#### View all users
+
+```bash
+# List all users
+cat /etc/passwd
+```
+
+## Groups
+
+```bash
+# See your groups
+groups                 # Your groups
+groups alice           # Alice's groups
+# Create group
+sudo groupadd developers
+# Add user to group
+sudo usermod -aG developers alice     # -a appends, don't remove existing
+sudo usermod -aG sudo alice           # Give sudo access
+# Remove user from group
+sudo gpasswd -d alice developers
+```
+
+## The `sudo` Command
+
+`sudo` = "superuser do" - run commands as admin/root
+
+```bash
+# Run command as admin
+sudo apt update
+sudo systemctl restart nginx
+# Edit system files
+sudo nano /etc/hosts
+# Become root user (not recommended)
+sudo -i                # Login shell as root
+sudo su                # Switch to root
+# See what you can sudo
+sudo -l
+```
+
+**Important:** Only users in the `sudo` group (Debian/Ubuntu) or `wheel` group (RHEL/Fedora) can use sudo
+
+```bash
+head -n 20 file.txt # First 20 lines
+tail -f /var/log/syslog # Follow log file in real-time
+```
+
+## Creating and editing
+
+```bash
+mkdir myfolder # Create directory
+mkdir -p path/to/deep/folder # Create nested directories
+touch newfile.txt # Create empty file
+nano file.txt # Simple text editor
+vim file.txt # Advanced text editor
+```
+
+## File Permissions
+
+```bash
+# Read permissions
+ls -l file.txt         # Shows: -rw-r--r-- (owner, group, others)
+# Change permissions
+chmod 644 file.txt     # rw-r--r-- (owner: read+write, others: read)
+chmod +x script.sh     # Make executable
+chmod 755 script.sh    # rwxr-xr-x (common for scripts)
+# Change owner
+sudo chown user:group file.txt
+```
+
+**Permission Numbers:**
+
+- `7` = read + write + execute (rwx)
+- `6` = read + write (rw-)
+- `5` = read + execute (r-x)
+- `4` = read only (r--)
+
+## Installing Software
+
+## Ubuntu/Debian (apt)
+
 ```bash
 # Update package list
 sudo apt update
@@ -88,7 +189,9 @@ apt show nginx                       # Package details
 sudo apt autoremove                  # Remove unused packages
 sudo apt clean                       # Clear download cache
 ```
-### Fedora/RHEL/CentOS (dnf)
+
+## Fedora/RHEL/CentOS (dnf)
+
 ```bash
 sudo dnf install nginx
 sudo dnf remove nginx
@@ -96,7 +199,9 @@ sudo dnf upgrade                     # Update all packages
 sudo dnf search nginx
 sudo dnf info nginx
 ```
-### Arch Linux (pacman)
+
+## Arch Linux (pacman)
+
 ```bash
 sudo pacman -S nginx                 # Install
 sudo pacman -R nginx                 # Remove
@@ -104,72 +209,136 @@ sudo pacman -Rns nginx               # Remove with dependencies
 sudo pacman -Syu                     # Update system
 sudo pacman -Ss nginx                # Search
 ```
-### Snap Packages (Universal)
+
+## Snap Packages (Universal)
+
 ```bash
 sudo snap install code --classic     # VS Code
 sudo snap remove code
 snap find discord
 ```
-# View all users
-```bash
-# List all users
-cat /etc/passwd
-```
-### Groups
-```bash
-# See your groups
-groups                 # Your groups
-groups alice           # Alice's groups
-# Create group
-sudo groupadd developers
-# Add user to group
-sudo usermod -aG developers alice     # -a appends, don't remove existing
-sudo usermod -aG sudo alice           # Give sudo access
-# Remove user from group
-sudo gpasswd -d alice developers
-```
-### The `sudo` Command
-`sudo` = "superuser do" - run commands as admin/root
-```bash
-# Run command as admin
-sudo apt update
-sudo systemctl restart nginx
-# Edit system files
-sudo nano /etc/hosts
-# Become root user (not recommended)
-sudo -i                # Login shell as root
-sudo su                # Switch to root
-# See what you can sudo
-sudo -l
-```
-**Important:** Only users in the `sudo` group (Debian/Ubuntu) or `wheel` group (RHEL/Fedora) can use sudo
-```bash
-head -n 20 file.txt # First 20 lines
-tail -f /var/log/syslog # Follow log file in real-time
-```
-# Creating and editing
-```bash
-mkdir myfolder # Create directory
-mkdir -p path/to/deep/folder # Create nested directories
-touch newfile.txt # Create empty file
-nano file.txt # Simple text editor
-vim file.txt # Advanced text editor
-```
-# Managing Processes
-### View Running Processes
+
+## Managing Processes
+
+## View Running Processes
+
 ```bash
 # List all processes
 ps aux                           # All processes, detailed
 ps aux | grep nginx              # Find specific process
+pidof nginx                      # Same as pgrep
+pstree                           # Tree view of processes
 ```
-Managing Services (systemd)
-Systemd controls background services like web servers, databases, SSH, etc.
-### Basic Service Control
-# Check service status
+
+## Stop/Kill Processes
+
 ```bash
-syst. Networking Basics
+# Gentle stop (gives process time to cleanup)
+kill 1234                        # Send SIGTERM to PID 1234
+killall nginx                    # Kill all nginx processes
+pkill -f python                  # Kill by name pattern
+# Force kill (last resort - data may be lost!)
+kill -9 1234                     # Send SIGKILL
+killall -9 nginx
 ```
-### Check Network Status
+
+**Kill Signal Cheat Sheet:**
+
+- `SIGTERM` (15): Polite "please exit" - default
+- `SIGKILL` (9): Force kill - use when SIGTERM fails
+- `SIGHUP` (1): Reload config without restart
+
+## Background Jobs
+
+```bash
+# Run in background
+command &                        # Start in background
+./long-script.sh &
+# Manage jobs
+jobs                             # List background jobs
+fg                               # Bring to foreground
+bg                               # Resume in background
+Ctrl+Z                           # Pause current process
+bg                               # Continue paused process in background
+# Example workflow
+./server.sh                      # Start server
+Ctrl+Z                           # Pause it
+bg                               # Run in background
+jobs                             # See it running
+fg                               # Bring back to foreground
+```
+
+## Resource Control
+
+```bash
+# Start process with lower priority (nice = less CPU)
+nice -n 10 ./cpu-heavy-script.sh      # Lower priority
+nice -n -5 ./important-task.sh        # Higher priority (requires sudo)
+# Change priority of running process
+renice 10 -p 1234                     # Make PID 1234 lower priority
+```
+
+## Managing Services (systemd)
+
+Systemd controls background services like web servers, databases, SSH, etc.
+
+#### Basic Service Control
+
+```bash
+# Check service status
+systemctl status nginx
+# Start/stop services
+sudo systemctl start nginx
+sudo systemctl stop nginx
+sudo systemctl restart nginx
+# Enable on boot
+sudo systemctl enable nginx          # Start on boot
+sudo systemctl disable nginx         # Don't start on boot
+sudo systemctl enable --now nginx    # Enable AND start immediately
+```
+
+#### View All Services
+
+```bash
+systemctl list-units --type=service          # Running services
+systemctl list-unit-files --type=service     # All services
+systemctl list-units --failed                # Failed services
+```
+
+#### Service Logs
+
+```bash
+# View service logs
+journalctl -u nginx                          # All nginx logs
+journalctl -u nginx --since "1 hour ago"     # Last hour
+journalctl -u nginx --since today            # Today's logs
+journalctl -fu nginx                         # Follow live (-f)
+journalctl -u nginx -n 50                    # Last 50 lines
+# System-wide logs
+journalctl -xe                               # Recent errors
+journalctl -k                                # Kernel messages
+journalctl --since "2024-01-15"              # Specific date
+```
+
+#### Example: Set up a Web Server
+
+```bash
+# Install nginx
+sudo apt install nginx
+# Start and enable on boot
+sudo systemctl enable --now nginx
+# Check status
+systemctl status nginx
+# View logs
+journalctl -fu nginx
+# Restart after config change
+sudo systemctl restart nginx
+```
+
+## Networking Basics
+
+## Check Network Status
+
 ```bash
 # Show network interfaces and IP addresses
 ip a                             # Modern way
@@ -178,8 +347,96 @@ ifconfig                         # Older way (may need net-tools package)
 ip route
 route -n                         # Older way
 ```
-# Storage Management
-### View Disks and Partitions
+
+## DNS lookup
+
+```bash
+dig google.com                   # Detailed DNS info
+nslookup google.com             # Simple DNS lookup
+host google.com                 # Quick DNS check
+```
+
+## Check open ports
+
+```bash
+sudo ss -tulpen                  # List listening ports (modern)
+sudo netstat -tulpen            # Older way
+```
+
+## Firewall (UFW - Ubuntu/Debian)
+
+```bash
+# Enable firewall
+sudo ufw enable
+sudo ufw status                  # Check status
+# Allow ports
+sudo ufw allow 22/tcp            # SSH
+sudo ufw allow 80/tcp            # HTTP
+sudo ufw allow 443/tcp           # HTTPS
+sudo ufw allow 22,80,443/tcp     # Multiple ports
+# Allow from specific IP
+sudo ufw allow from 192.168.1.100
+# Delete rules
+sudo ufw status numbered         # Show rule numbers
+sudo ufw delete 3                # Delete rule #3
+# Disable firewall
+sudo ufw disable
+```
+
+## SSH (Remote Access)
+
+```bash
+# Connect to remote server
+ssh user@192.168.1.100
+ssh user@example.com
+# Generate SSH key (do this on your local machine)
+ssh-keygen -t ed25519 -C "your_email@example.com"
+# Keys saved to: ~/.ssh/id_ed25519 (private) and ~/.ssh/id_ed25519.pub (public)
+# Copy key to server (enables passwordless login)
+ssh-copy-id user@server-ip
+# SSH config file (~/.ssh/config)
+Host myserver
+    HostName 192.168.1.100
+    User john
+    Port 22
+    IdentityFile ~/.ssh/id_ed25519
+# Now you can connect with:
+ssh myserver
+```
+
+## Test Web Services
+
+```bash
+# Download file
+curl -O https://example.com/img.jpg
+# Test HTTP endpoint
+curl http://localhost:8080               # GET request
+curl -I https://example.com              # Show headers only
+curl -v https://api.example.com          # Verbose output
+# POST request with JSON
+curl -X POST http://localhost:3000/api \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John"}'
+# Test if port is open
+nc -zv localhost 80                      # netcat port check
+telnet localhost 80                      # telnet (old school)
+```
+
+## Download Files
+
+```bash
+# Using curl
+curl -O https://example.com/file.zip     # Save with original name
+curl -o myfile.zip https://example.com/file.zip  # Custom name
+# Using wget
+wget https://example.com/file.zip
+wget -c https://example.com/bigfile.zip  # Resume download
+```
+
+## Storage Management
+
+## View Disks and Partitions
+
 ```bash
 # List all disks and partitions
 lsblk                            # Tree view
@@ -189,7 +446,9 @@ sudo parted -l                   # Alternative tool
 # Show UUIDs (unique disk identifiers)
 sudo blkid
 ```
-### Create and Format a Partition
+
+## Create and Format a Partition
+
 ```bash
 # ⚠️ WARNING: These commands can erase data!
 # 1. Create partition (interactive)
@@ -204,7 +463,9 @@ sudo mount /dev/sdb1 /mnt/mydisk
 # 4. Auto-mount on boot (add to /etc/fstab)
 # /dev/sdb1  /mnt/mydisk  ext4  defaults  0  2
 ```
-### Check and Repair Filesystem
+
+## Check and Repair Filesystem
+
 ```bash
 # ⚠️ IMPORTANT: Unmount first!
 sudo umount /dev/sdb1
@@ -212,15 +473,30 @@ sudo umount /dev/sdb1
 sudo fsck /dev/sdb1              # Check filesystem
 sudo fsck -y /dev/sdb1           # Auto-fix errors
 ```
-### Add Swap Space
-- Monitoring and Logs
-### System Resource Usage
+
+## Add Swap Space
+
 ```bash
-# Memory usage
-free -h                          # RAM and swap
-free . Security Best Practices
+sudo chmod 600 /swapfile         # Security
+sudo mkswap /swapfile
+sudo swapon /swapfile
 ```
-### Essential Security Steps
+
+#### Make permanent (add to /etc/fstab)
+
+#### /swapfile none swap sw 0 0
+
+#### Check swap
+
+```bash
+free -h
+swapon --show
+```
+
+## Security Best Practices
+
+## Essential Security Steps
+
 ```bash
 # 1. Keep system updated
 sudo apt update && sudo apt upgrade -y
@@ -242,7 +518,9 @@ sudo ufw allow 443
 systemctl list-units --type=service
 sudo systemctl disable apache2  # If not using
 ```
-### File Permission Security
+
+## File Permission Security
+
 ```bash
 # Bad - anyone can read/write/execute
 chmod 777 file.txt              # ❌ NEVER DO THIS
@@ -254,7 +532,9 @@ chmod 755 script.sh             # ✅ Owner can run, others can read
 # Sensitive files
 chmod 600 /etc/app/secrets.conf # ✅ Only owner can read
 ```
-### Monitor Failed Login Attempts
+
+## Monitor Failed Login Attempts
+
 ```bash
 # See who tried to log in
 sudo journalctl -u ssh --since today | grep -i failed
@@ -264,22 +544,138 @@ sudo apt install fail2ban
 sudo systemctl enable --now fail2ban
 sudo fail2ban-client status sshd
 ```
-### Security Checklist
- Automation with Scripts and Cron
-### Basic Shell Script
+
+## For Remote Servers (SSH Setup)
+
+```bash
+# Install SSH server
+sudo apt install openssh-server
+# Generate SSH key on your local machine
+ssh-keygen -t ed25519
+# Copy key to server
+ssh-copy-id user@server-ip
+# Secure SSH: edit /etc/ssh/sshd_config
+PermitRootLogin no
+PasswordAuthentication no
+```
+
+## Automation with Scripts and Cron
+
+## Basic Shell Script
+
 Create a file `backup.sh`:
+
 ```bash
 #!/bin/bash
 # Simple backup script
-. Web Server Setup (Nginx)
+# Create backup directory
+mkdir -p "$BACKUP"
+# Copy files
+echo "Starting backup..."
+cp -r "$SOURCE" "$BACKUP"
+echo "Backup complete: $BACKUP"
 ```
-### Install Nginx
+
+Make it executable and run:
+
 ```bash
-# Ubuntu/Debian
-sudo apt update
-sudo apt install nginx
-# Sta. Docker Basics
-### Install Docker
+chmod +x backup.sh
+./backup.sh
+```
+
+## Script with Arguments
+
+```bash
+#!/bin/bash
+# greet.sh - Say hello
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <name>"
+    exit 1
+fi
+NAME=$1
+echo "Hello, $NAME!"
+```
+
+Usage:
+
+```bash
+./greet.sh John
+# Output: Hello, John!
+```
+
+## Scheduled Tasks with Cron
+
+Cron runs commands automatically at scheduled times.
+
+```bash
+# Edit your crontab
+crontab -e
+# Crontab format:
+# ┌─ minute (0-59)
+# │ ┌─ hour (0-23)
+# │ │ ┌─ day of month (1-31)
+# │ │ │ ┌─ month (1-12)
+# │ │ │ │ ┌─ day of week (0-6, 0=Sunday)
+# │ │ │ │ │
+# * * * * * command to execute
+```
+
+Common examples:
+
+```bash
+# Run every day at 2 AM
+0 2 * * * /home/john/backup.sh
+# Run every hour
+0 * * * * /usr/local/bin/cleanup.sh
+# Run every Monday at 9 AM
+0 9 * * 1 /home/john/weekly-report.sh
+# Run every 15 minutes
+*/15 * * * * /home/john/check-status.sh
+# Run on reboot
+@reboot /home/john/start-services.sh
+# View your scheduled tasks
+crontab -l
+```
+
+## Useful Script Examples
+
+**Check if service is running:**
+
+```bash
+#!/bin/bash
+if systemctl is-active --quiet nginx; then
+    echo "nginx is running"
+else
+    echo "nginx is NOT running"
+    sudo systemctl start nginx
+fi
+```
+
+**Loop through files:**
+
+```bash
+#!/bin/bash
+for file in /var/log/*.log; do
+    echo "Processing: $file"
+    # Do something with $file
+done
+```
+
+**Check if command exists:**
+
+```bash
+#!/bin/bash
+if command -v docker &> /dev/null; then
+    echo "Docker is installed"
+else
+    echo "Docker is NOT installed"
+fi
+```
+
+## Docker Basics
+
+## Install Docker
+
 ```bash
 # Ubuntu/Debian
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -291,7 +687,9 @@ sudo usermod -aG docker $USER
 docker --version
 docker run hello-world
 ```
-### Working with Images
+
+## Working with Images
+
 ```bash
 # Search for images
 docker search nginx
@@ -304,7 +702,9 @@ docker images
 docker rmi nginx
 docker rmi ubuntu:22.04
 ```
-### Running Containers
+
+## Running Containers
+
 ```bash
 # Run container (interactive)
 docker run -it ubuntu bash       # Run Ubuntu and get a shell
@@ -320,156 +720,29 @@ docker stop web
 docker start web
 docker restart web
 # Remove container
-docker Troubleshooting Common Issues
+docker rm web
 ```
-### System is Slow
+
+## Execute commands in containers
+
 ```bash
-# 1. Check CPU usage
-top                              # Press '1' to see per-core
-htop                             # Better UI
-# 2. Check memory
-free -h                          # Is swap being used heavily?
+docker exec -it web bash         # Get shell inside container
+docker exec web ls /etc/nginx    # Run single command
 ```
-# 3. . Backups
-### Simple Backup with rsync
-```bash
-# Backup directory to external drive
-rsync -av --delete /home/john/ /mnt/backup/john/
-# -a = archive mode (preserves permissions, times, etc.)
-# -v = verbose
-# --delete = remove files in destination that don't exist in source
-# Backup over network
-rsync -avz /home/john/ user@server:/backup/john/
-# -z = compress during transfer
-# Dry run (see what would change)
-rsync -avn --delete /home/john/ /mnt/backup/john/
-```
-### Compress and Archive
-```bash
-# Create compressed backup
-tar -czf backup-$(date +%Y%m%d).tar.gz /home/john
-# Extract backup
-tar -xzf backup-20240115.tar.gz
-# List contents without extracting
-tar -tzf backup.tar.gz
-```
-# Find large files
-### System Information
-```bash
-uname -a                         # Kernel version
-lsb_release -a                   # OS version (Ubuntu/Debian)
-hostnamectl                      # System details
-uptime                           # Uptime and load
-```
-### File Operations
-```bash
-ls -la                           # List all files
-cp file.txt backup.txt           # Copy
-mv old.txt new.txt               # Move/rename
-rm file.txt                      # Delete
-find . -name "*.log"             # Find files
-```
-### Processes
-```bash
-ps aux                           # List all processes
-top                              # Monitor processes
-kill <pid>                       # Stop process
-pkill nginx                      # Kill by name
-```
-### Networking
-```bash
-ip a                             # IP addresses
-ping google.com                  # Test connectivity
-ss -tulpen                       # Open ports
-curl https://example.com         # HTTP request
-```
-### Services
-```bash
-systemctl status nginx           # Check service
-systemctl start nginx            # Start service
-systemctl enable nginx           # Enable on boot
-journalctl -u nginx              # View logs
-```
-### Storage
-```bash
-df -h                            # Disk space
-du -sh *                         # Directory sizes
-lsblk                            # List disks
-```
----
-## 19. Additional Resources
-### Getting Help
-```bash
-man ls                           # Manual for 'ls' command
-ls --help                        # Quick help
-info ls                          # Detailed info
-tldr ls                          # Simple examples (install tldr first)
-```
-### Online Resources
-- **Ubuntu Documentation**: https://help.ubuntu.com
-- **Arch Wiki**: https://wiki.archlinux.org (works for all distros)
-- **DigitalOcean Tutorials**: https://digitalocean.com/community/tutorials
-- **Linux Journey**: https://linuxjourney.com (beginner-friendly)
----
-# 1. Check firewall
-```bash
-sudo ufw status
-sudo ufw allow 22
-```
-# 2. Check if port is listening
-```bash
-sudo ss -tulpen | grep :22
-```
-# 3. Test from server itself
-```bash
-ssh localhost
-```
-# 4. Check logs
-```bash
-journalctl -u sshd -f
-tail -f /var/log/auth.log
-```
-### Permission Denied Errors
-```bash
-# Check file ownership and permissions
-ls -la file.txt
-# Fix ownership
-sudo chown user:user file.txt
-# Fix permissions
-chmod 644 file.txt               # For regular files
-chmod 755 directory/             # For directories
-chmod +x script.sh               # For scripts
-# Add user to group
-sudo usermod -aG groupname username
-# Log out and back in
-```
-### Trace System Calls (Advanced)
-```bash
-# See what a process is doing
-strace -p <pid>                  # Attach to running process
-strace command                   # Trace command from start
-# Example: why is ls slow?
-strace ls /var/log 2>&1 | grep open
-```
-# Execute command in running container
-```bash
-docker exec -it web bash # Get shell inside 
-```
-container
-```bash
-docker exec web ls /etc/nginx # Run single command
-```
-# View container details
+
+## View container details
+
 ```bash
 docker inspect web
+docker stats                     # Live resource usage
 ```
-```bash
-docker stats # Live resource usage
-```
-### Docker Compose (Multi-container apps)
+
+## Docker Compose (Multi-container apps)
+
 Create `docker-compose.yml`:
+
 ```yaml
-version: '3'
+version: "3"
 services:
   web:
     image: nginx
@@ -484,7 +757,9 @@ services:
 volumes:
   pgdata:
 ```
+
 Commands:
+
 ```bash
 # Start all services
 docker compose up -d
@@ -495,7 +770,9 @@ docker compose down
 # Rebuild and start
 docker compose up -d --build
 ```
-### Cleanup
+
+## Cleanup
+
 ```bash
 # Remove stopped containers
 docker container prune
@@ -507,7 +784,19 @@ docker system prune -a
 docker rm web
 docker rmi nginx
 ```
-### Basic Configuration
+
+## Web Server Setup (Nginx)
+
+## Install Nginx
+
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install nginx
+```
+
+## Basic Configuration
+
 ```bash
 # Config files location
 /etc/nginx/nginx.conf            # Main config
@@ -532,7 +821,9 @@ sudo nginx -t
 # Reload nginx
 sudo systemctl reload nginx
 ```
-### SSL/HTTPS with Let's Encrypt
+
+## SSL/HTTPS with Let's Encrypt
+
 ```bash
 # Install Certbot
 sudo apt install certbot python3-certbot-nginx
@@ -541,7 +832,9 @@ sudo certbot --nginx -d example.com -d www.example.com
 # Auto-renewal (runs automatically)
 sudo certbot renew --dry-run
 ```
-### Reverse Proxy (for Node.js/Python apps)
+
+## Reverse Proxy (for Node.js/Python apps)
+
 ```nginx
 # /etc/nginx/sites-available/api
 server {
@@ -559,7 +852,9 @@ server {
     }
 }
 ```
-### Useful Nginx Commands
+
+## Useful Nginx Commands
+
 ```bash
 # Test config for errors
 sudo nginx -t
@@ -573,104 +868,24 @@ sudo tail -f /var/log/nginx/error.log
 # Check which sites are enabled
 ls -l /etc/nginx/sites-enabled/
 ```
-# Create backup directory
+
+## Monitoring and Logs
+
+## System Resource Usage
+
 ```bash
-mkdir -p "$BACKUP"
-```
-# Copy files
-```bash
-echo "Starting backup..."
-cp -r "$SOURCE" "$BACKUP"
-echo "Backup complete: $BACKUP"
-```
-Make it executable and run:
-```bash
-chmod +x backup.sh
-./backup.sh
-```
-### Script with Arguments
-```bash
-#!/bin/bash
-# greet.sh - Say hello
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <name>"
-    exit 1
-fi
-NAME=$1
-echo "Hello, $NAME!"
-```
-Usage:
-```bash
-./greet.sh John
-# Output: Hello, John!
-```
-### Scheduled Tasks with Cron
-Cron runs commands automatically at scheduled times.
-```bash
-# Edit your crontab
-crontab -e
-# Crontab format:
-# ┌─ minute (0-59)
-# │ ┌─ hour (0-23)
-# │ │ ┌─ day of month (1-31)
-# │ │ │ ┌─ month (1-12)
-# │ │ │ │ ┌─ day of week (0-6, 0=Sunday)
-# │ │ │ │ │
-# * * * * * command to execute
-```
-Common examples:
-```bash
-# Run every day at 2 AM
-0 2 * * * /home/john/backup.sh
-# Run every hour
-0 * * * * /usr/local/bin/cleanup.sh
-# Run every Monday at 9 AM
-0 9 * * 1 /home/john/weekly-report.sh
-# Run every 15 minutes
-*/15 * * * * /home/john/check-status.sh
-# Run on reboot
-@reboot /home/john/start-services.sh
-# View your scheduled tasks
-crontab -l
-```
-### Useful Script Examples
-**Check if service is running:**
-```bash
-#!/bin/bash
-if systemctl is-active --quiet nginx; then
-    echo "nginx is running"
-else
-    echo "nginx is NOT running"
-    sudo systemctl start nginx
-fi
-```
-**Loop through files:**
-```bash
-#!/bin/bash
-for file in /var/log/*.log; do
-    echo "Processing: $file"
-    # Do something with $file
-done
-```
-**Check if command exists:**
-```bash
-#!/bin/bash
-if command -v docker &> /dev/null; then
-    echo "Docker is installed"
-else
-    echo "Docker is NOT installed"
-fi
-```
--  Use the principle of least privilege
-  top # Basic monitor (press q to quit)
-  htop # Better UI (install with apt/dnf)
-  uptime # System uptime and load average
+# Memory usage
+free -h                          # RAM and swap
+top                              # Basic monitor (press q to quit)
+htop                             # Better UI (install with apt/dnf)
+uptime                           # System uptime and load average
 # Real-time resource monitor
-```bash
-vmstat 1 # Update every second
-iostat -x 1 # Disk I/O stats (install sysstat)
+vmstat 1                         # Update every second
+iostat -x 1                      # Disk I/O stats (install sysstat)
 ```
-### System Logs
+
+## System Logs
+
 ```bash
 # Modern (systemd) logs
 journalctl -xe                   # Recent errors
@@ -689,14 +904,18 @@ sudo less /var/log/apache2/error.log  # Apache errors
 tail -f /var/log/myapp.log       # Live updates
 less +F /var/log/myapp.log       # Less with follow mode
 ```
-### Kernel Messages
+
+## Kernel Messages
+
 ```bash
 dmesg                            # Boot and hardware messages
 dmesg | grep -i error            # Find errors
 dmesg -w                         # Follow mode
 dmesg --level=err,warn           # Only errors and warnings
 ```
-### Quick Health Check
+
+## Quick Health Check
+
 ```bash
 # Check if anything is wrong
 systemctl --failed               # Failed services
@@ -704,184 +923,101 @@ journalctl -p err --since today  # Today's errors
 df -h | grep -v tmpfs           # Disk space issues
 free -h                          # Memory issues
 uptime                           # Load average (if > CPU count, system is busy)
-sudo chmod 600 /swapfile # Security
-sudo mkswap /swapfile
-sudo swapon /swapfile
 ```
-# Make permanent (add to /etc/fstab)
-#### /swapfile none swap sw 0 0
-#### Check swap
+
+## Backups
+
+## Simple Backup with rsync
+
 ```bash
-free -h
-swapon --show
+# Backup directory to external drive
+rsync -av --delete /home/john/ /mnt/backup/john/
+# -a = archive mode (preserves permissions, times, etc.)
+# -v = verbose
+# --delete = remove files in destination that don't exist in source
+# Backup over network
+rsync -avz /home/john/ user@server:/backup/john/
+# -z = compress during transfer
+# Dry run (see what would change)
+rsync -avn --delete /home/john/ /mnt/backup/john/
 ```
-# DNS lookup
+
+## Compress and Archive
+
 ```bash
-dig google.com                   # Detailed DNS info
-nslookup google.com             # Simple DNS lookup
-host google.com                 # Quick DNS check
+# Create compressed backup
+tar -czf backup-$(date +%Y%m%d).tar.gz /home/john
+# Extract backup
+tar -xzf backup-20240115.tar.gz
+# List contents without extracting
+tar -tzf backup.tar.gz
 ```
-# Check open ports
+
+## Troubleshooting Common Issues
+
+## System is Slow
+
 ```bash
-sudo ss -tulpen                  # List listening ports (modern)
-sudo netstat -tulpen            # Older way
+# 1. Check CPU usage
+top                              # Press '1' to see per-core
+htop                             # Better UI
+# 2. Check memory
+free -h                          # Is swap being used heavily?
 ```
-### Firewall (UFW - Ubuntu/Debian)
+
+## Find large files
+
 ```bash
-# Enable firewall
-sudo ufw enable
-sudo ufw status                  # Check status
-# Allow ports
-sudo ufw allow 22/tcp            # SSH
-sudo ufw allow 80/tcp            # HTTP
-sudo ufw allow 443/tcp           # HTTPS
-sudo ufw allow 22,80,443/tcp     # Multiple ports
-# Allow from specific IP
-sudo ufw allow from 192.168.1.100
-# Delete rules
-sudo ufw status numbered         # Show rule numbers
-sudo ufw delete 3                # Delete rule #3
-# Disable firewall
-sudo ufw disable
+# Find files taking up space
+du -sh *                         # Size of each item
+find / -type f -size +100M       # Files larger than 100MB
 ```
-### SSH (Remote Access)
+
+## Permission Denied Errors
+
 ```bash
-# Connect to remote server
-ssh user@192.168.1.100
-ssh user@example.com
-# Generate SSH key (do this on your local machine)
-ssh-keygen -t ed25519 -C "your_email@example.com"
-# Keys saved to: ~/.ssh/id_ed25519 (private) and ~/.ssh/id_ed25519.pub (public)
-# Copy key to server (enables passwordless login)
-ssh-copy-id user@server-ip
-# SSH config file (~/.ssh/config)
-Host myserver
-    HostName 192.168.1.100
-    User john
-    Port 22
-    IdentityFile ~/.ssh/id_ed25519
-# Now you can connect with:
-ssh myserver
+# Check file ownership and permissions
+ls -la file.txt
+# Fix ownership
+sudo chown user:user file.txt
+# Fix permissions
+chmod 644 file.txt               # For regular files
+chmod 755 directory/             # For directories
+chmod +x script.sh               # For scripts
+# Add user to group
+sudo usermod -aG groupname username
+# Log out and back in
 ```
-### Test Web Services
+
+## Can't connect via SSH
+
 ```bash
-# Download file
-curl -O https://example.com/img.jpg
-# Test HTTP endpoint
-curl http://localhost:8080               # GET request
-curl -I https://example.com              # Show headers only
-curl -v https://api.example.com          # Verbose output
-# POST request with JSON
-curl -X POST http://localhost:3000/api \
-  -H "Content-Type: application/json" \
-  -d '{"name":"John"}'
-# Test if port is open
-nc -zv localhost 80                      # netcat port check
-telnet localhost 80                      # telnet (old school)
+# 1. Check firewall
+sudo ufw status
+sudo ufw allow 22
+# 2. Check if port is listening
+sudo ss -tulpen | grep :22
+# 3. Test from server itself
+ssh localhost
+# 4. Check logs
+journalctl -u sshd -f
+tail -f /var/log/auth.log
 ```
-### Download Files
+
+## Trace System Calls (Advanced)
+
 ```bash
-# Using curl
-curl -O https://example.com/file.zip     # Save with original name
-curl -o myfile.zip https://example.com/file.zip  # Custom name
-# Using wget
-wget https://example.com/file.zip
-wget -c https://example.com/bigfile.zip  # Resume download
-sudo systemctl enable nginx # Start on boot
-sudo systemctl disable nginx # Don't start on boot
-sudo systemctl enable --now nginx # Enable AND start immediately
+# See what a process is doing
+strace -p <pid>                  # Attach to running process
+strace command                   # Trace command from start
+# Example: why is ls slow?
+strace ls /var/log 2>&1 | grep open
 ```
-### View All Services
-```bash
-systemctl list-units --type=service          # Running services
-systemctl list-unit-files --type=service     # All services
-systemctl list-units --failed                # Failed services
-```
-### Service Logs
-```bash
-# View service logs
-journalctl -u nginx                          # All nginx logs
-journalctl -u nginx --since "1 hour ago"     # Last hour
-journalctl -u nginx --since today            # Today's logs
-journalctl -fu nginx                         # Follow live (-f)
-journalctl -u nginx -n 50                    # Last 50 lines
-# System-wide logs
-journalctl -xe                               # Recent errors
-journalctl -k                                # Kernel messages
-journalctl --since "2024-01-15"              # Specific date
-```
-### Example: Set up a Web Server
-```bash
-# Install nginx
-sudo apt install nginx
-# Start and enable on boot
-sudo systemctl enable --now nginx
-# Check status
-systemctl status nginx
-# View logs
-journalctl -fu nginx
-# Restart after config change
-sudo systemctl restart nginx
-pidof nginx # Same as pgrep
-pstree # Tree view of processes
-```
-### Stop/Kill Processes
-```bash
-# Gentle stop (gives process time to cleanup)
-kill 1234                        # Send SIGTERM to PID 1234
-killall nginx                    # Kill all nginx processes
-pkill -f python                  # Kill by name pattern
-# Force kill (last resort - data may be lost!)
-kill -9 1234                     # Send SIGKILL
-killall -9 nginx
-```
-**Kill Signal Cheat Sheet:**
-- `SIGTERM` (15): Polite "please exit" - default
-- `SIGKILL` (9): Force kill - use when SIGTERM fails
-- `SIGHUP` (1): Reload config without restart
-### Background Jobs
-```bash
-# Run in background
-command &                        # Start in background
-./long-script.sh &
-# Manage jobs
-jobs                             # List background jobs
-fg                               # Bring to foreground
-bg                               # Resume in background
-Ctrl+Z                           # Pause current process
-bg                               # Continue paused process in background
-# Example workflow
-./server.sh                      # Start server
-Ctrl+Z                           # Pause it
-bg                               # Run in background
-jobs                             # See it running
-fg                               # Bring back to foreground
-```
-### Resource Control
-```bash
-# Start process with lower priority (nice = less CPU)
-nice -n 10 ./cpu-heavy-script.sh      # Lower priority
-nice -n -5 ./important-task.sh        # Higher priority (requires sudo)
-# Change priority of running process
-renice 10 -p 1234                     # Make PID 1234 lower priority
-```
-### File Permissions
-```bash
-# Read permissions
-ls -l file.txt         # Shows: -rw-r--r-- (owner, group, others)
-# Change permissions
-chmod 644 file.txt     # rw-r--r-- (owner: read+write, others: read)
-chmod +x script.sh     # Make executable
-chmod 755 script.sh    # rwxr-xr-x (common for scripts)
-# Change owner
-sudo chown user:group file.txt
-```
-**Permission Numbers:**
-- `7` = read + write + execute (rwx)
-- `6` = read + write (rw-)
-- `5` = read + execute (r-x)
-- `4` = read only (r--)
-### Searching Files
+
+## Shell Essentials (Bash/Zsh)
+
+## Searching Files
+
 ```bash
 # Find files by name
 find . -name "*.log"              # Find all .log files
@@ -891,7 +1027,9 @@ grep "error" logfile.txt          # Find "error" in file
 grep -r "TODO" .                  # Search all files recursively
 grep -i "warning" file.txt        # Case-insensitive search
 ```
-### Text Processing
+
+## Text Processing
+
 ```bash
 # Count lines/words
 wc -l file.txt                    # Count lines
@@ -904,7 +1042,9 @@ sort file.txt | uniq              # Remove duplicates
 cat file.txt | grep "error" | wc -l    # Count error lines
 ls -l | grep "\.txt$"                  # List only .txt files
 ```
-### Command History
+
+## Command History
+
 ```bash
 history                # View command history
 !123                   # Run command #123 from history
@@ -912,7 +1052,9 @@ history                # View command history
 !$                     # Use last argument from previous command
 Ctrl+R                 # Search command history (interactive)
 ```
-### Environment Variables
+
+## Environment Variables
+
 ```bash
 # View environment
 echo $HOME             # Your home directory
@@ -924,26 +1066,95 @@ export MY_VAR="value"  # Set for current session
 export PATH="$HOME/bin:$PATH"
 sudo usermod -aG sudo john # Give admin privileges
 ```
+
+## System Information
+
+```bash
+uname -a                         # Kernel version
+lsb_release -a                   # OS version (Ubuntu/Debian)
+hostnamectl                      # System details
+uptime                           # Uptime and load
+```
+
+## File Operations
+
+```bash
+ls -la                           # List all files
+cp file.txt backup.txt           # Copy
+mv old.txt new.txt               # Move/rename
+rm file.txt                      # Delete
+find . -name "*.log"             # Find files
+```
+
+## Processes
+
+```bash
+ps aux                           # List all processes
+top                              # Monitor processes
+kill <pid>                       # Stop process
+pkill nginx                      # Kill by name
+```
+
+## Networking
+
+```bash
+ip a                             # IP addresses
+ping google.com                  # Test connectivity
+ss -tulpen                       # Open ports
+curl https://example.com         # HTTP request
+```
+
+## Services
+
+```bash
+systemctl status nginx           # Check service
+systemctl start nginx            # Start service
+systemctl enable nginx           # Enable on boot
+journalctl -u nginx              # View logs
+```
+
+## Storage
+
+```bash
+df -h                            # Disk space
+du -sh *                         # Directory sizes
+lsblk                            # List disks
+```
+
+---
+
+## Additional Resources
+
+## Getting Help
+
+```bash
+man ls                           # Manual for 'ls' command
+ls --help                        # Quick help
+info ls                          # Detailed info
+tldr ls                          # Simple examples (install tldr first)
+```
+
+## Online Resources
+
+- **Ubuntu Documentation**: https://help.ubuntu.com
+- **Arch Wiki**: https://wiki.archlinux.org (works for all distros)
+- **DigitalOcean Tutorials**: https://digitalocean.com/community/tutorials
+- **Linux Journey**: https://linuxjourney.com (beginner-friendly)
+
+---
+
+## Initial Server Setup
+
+```bash
 # 3. Set your timezone
 timedatectl set-timezone America/New_York
 # 4. Enable firewall
-```bash
-sudo ufw enable # Ubuntu/Debian
-sudo systemctl enable firewalld # Fedora/RHEL
+sudo ufw enable                  # Ubuntu/Debian
+sudo systemctl enable firewalld  # Fedora/RHEL
 ```
-### For Remote Servers (SSH Setup)
-```bash
-# Install SSH server
-sudo apt install openssh-server
-# Generate SSH key on your local machine
-ssh-keygen -t ed25519
-# Copy key to server
-ssh-copy-id user@server-ip
-# Secure SSH: edit /etc/ssh/sshd_config
-PermitRootLogin no
-PasswordAuthentication no
-```
-## Shell Essentials (Bash/Zsh)
+
+## Quick Reference
+
 - Navigation: `pwd`, `ls -la`, `cd -` (previous dir), `pushd`/`popd`.
 - File ops: `cat`, `less`, `head`, `tail -f`, `cp -r`, `mv`, `rm -rf`, `mkdir -p`.
 - Permissions: `chmod 644 file`, `chmod +x script.sh`, `chown user:group file`, `umask`.

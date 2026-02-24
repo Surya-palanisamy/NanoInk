@@ -1,38 +1,58 @@
 # Email Protocols
+
 ## Overview
+
 Email communication works using three main protocols:
-| Protocol | Purpose                                 |
+| Protocol | Purpose |
 | :------- | :-------------------------------------- |
-| SMTP     | Sending emails                          |
-| POP3     | Receiving and downloading emails        |
-| IMAP     | Receiving and managing emails on server |
+| SMTP | Sending emails |
+| POP3 | Receiving and downloading emails |
+| IMAP | Receiving and managing emails on server |
+
 ---
+
 ## SMTP – Simple Mail Transfer Protocol
-### Definition
+
+## Definition
+
 SMTP is a protocol used to SEND emails from a client to a mail server and between mail servers.
-### Layer
+
+## Layer
+
 - Application Layer Protocol
 - Works over TCP
-### Port Numbers
+
+## Port Numbers
+
 | Type             | Port |
 | :--------------- | :--- |
 | Traditional SMTP | 25   |
 | SMTPS (SSL)      | 465  |
 | SMTP with TLS    | 587  |
+
 > Port 587 is recommended for modern email sending.
+
 ---
-### Features of SMTP
+
+## Features of SMTP
+
 - Used only for sending emails
 - Text-based protocol
 - Uses TCP for reliable delivery
 - Works in push model (client pushes mail to server)
+
 ---
-### SMTP Communication Model
+
+## SMTP Communication Model
+
 ```
 User → SMTP Client → SMTP Server → Destination SMTP Server → Receiver
 ```
+
 ---
-### SMTP Commands
+
+## SMTP Commands
+
 | Command   | Meaning                   |
 | :-------- | :------------------------ |
 | HELO      | Identify client to server |
@@ -40,52 +60,82 @@ User → SMTP Client → SMTP Server → Destination SMTP Server → Receiver
 | RCPT TO   | Receiver address          |
 | DATA      | Start message body        |
 | QUIT      | End session               |
+
 ---
-### Limitations of SMTP
+
+## Limitations of SMTP
+
 - Cannot retrieve emails
 - No authentication by default
 - Works only for sending
+
 ---
+
 ## POP3 – Post Office Protocol Version 3
-### Definition
+
+## Definition
+
 POP3 is a protocol used to DOWNLOAD emails from mail server to client device.
-### Port Numbers
+
+## Port Numbers
+
 | Type        | Port |
 | :---------- | :--- |
 | POP3        | 110  |
 | POP3S (SSL) | 995  |
+
 ---
-### Characteristics
+
+## Characteristics
+
 - Downloads emails to local device
 - Usually deletes mail from server after download
 - Works in pull model
 - Simple and lightweight
+
 ---
-### POP3 Modes
+
+## POP3 Modes
+
 1. **Download and Delete** – Email removed from server after download
 2. **Download and Keep Copy** – Email remains on server
+
 ---
-### Disadvantages of POP3
+
+## Disadvantages of POP3
+
 - Not suitable for multiple devices
 - Limited synchronization
 - Emails stored locally only
+
 ---
+
 ## IMAP – Internet Message Access Protocol
-### Definition
+
+## Definition
+
 IMAP is used to ACCESS and MANAGE emails directly on the mail server.
-### Port Numbers
+
+## Port Numbers
+
 | Type        | Port |
 | :---------- | :--- |
 | IMAP        | 143  |
 | IMAPS (SSL) | 993  |
+
 ---
-### Advantages of IMAP
+
+## Advantages of IMAP
+
 - Emails remain on server
 - Supports multiple devices
 - Folder synchronization
 - Better for modern email usage
+
 ---
+
 ## IMAP vs POP3
+
 | Feature      | POP3          | IMAP             |
 | :----------- | :------------ | :--------------- |
 | Storage      | Local device  | Server           |
@@ -93,15 +143,21 @@ IMAP is used to ACCESS and MANAGE emails directly on the mail server.
 | Multi-device | Poor          | Excellent        |
 | Speed        | Faster        | Slightly slower  |
 | Use Case     | Single device | Multiple devices |
+
 ---
+
 ## Protocol Comparison
+
 | Protocol | Function                    | Default Port |
 | :------- | :-------------------------- | :----------- |
 | SMTP     | Send emails                 | 25 / 587     |
 | POP3     | Receive and download emails | 110          |
 | IMAP     | Access and manage emails    | 143          |
+
 ---
+
 ## Quick Revision
+
 - **SMTP** is used ONLY for sending
 - **POP3** downloads emails to local device
 - **IMAP** keeps emails on server (best for multiple devices)

@@ -1,21 +1,30 @@
 # Web Development
-A comprehensive guide to web development technologies, covering frontend and backend concepts.
----
+
+## A comprehensive guide to web development technologies, covering frontend and backend concepts.
+
 ## 📚 Topics
-### Frontend
+
+## Frontend
+
 | File       | Description                                            |
 | :--------- | :----------------------------------------------------- |
 | HTML       | Structure and semantic elements of web pages           |
 | CSS        | Styling, layouts, flexbox, grid, and responsive design |
 | JavaScript | Core JS concepts, DOM manipulation, ES6+ features      |
-### Backend
-| File       | Description                                          |
-| :--------- | :--------------------------------------------------- |
-| Express.js | Node.js web framework, routing, middleware           |
-| REST       | REST API design, HTTP methods, status codes          |
+
+## Backend
+
+| File       | Description                                 |
+| :--------- | :------------------------------------------ |
+| Express.js | Node.js web framework, routing, middleware  |
+| REST       | REST API design, HTTP methods, status codes |
+
 ---
+
 ## 🎯 Quick Reference
-### HTML Document Structure
+
+## HTML Document Structure
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +38,9 @@ A comprehensive guide to web development technologies, covering frontend and bac
   </body>
 </html>
 ```
-### CSS Box Model
+
+## CSS Box Model
+
 ```
 ┌─────────────────────────────────────┐
 │              Margin                 │
@@ -44,11 +55,3 @@ A comprehensive guide to web development technologies, covering frontend and bac
 │   └─────────────────────────────┘   │
 └─────────────────────────────────────┘
 ```
----
-## 📖 Learning Path
-1. Start with **HTML** to understand document structure
-2. Learn **CSS** for styling and layouts
-3. Master **JavaScript** for interactivity
-4. Understand **REST** API design principles
-5. Build backend APIs with **Express.js**
-6. Connect frontend and backend for full-stack development

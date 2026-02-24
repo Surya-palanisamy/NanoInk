@@ -1,36 +1,60 @@
 # Deadlocks
+
 A deadlock is a situation where a set of processes are blocked because each process is holding a resource and waiting for another resource acquired by some other process.
+
 ---
+
 ## What is Deadlock?
+
 In a deadlock, processes never finish executing, and system resources are tied up, preventing other jobs from starting.
-### Real-Life Example
+
+## Real-Life Example
+
 Consider a narrow bridge that can only allow traffic in one direction. If two cars enter from opposite ends, neither can proceed - this is a deadlock.
+
 ---
+
 ## Necessary Conditions for Deadlock
+
 All four conditions must hold simultaneously for a deadlock to occur (Coffman Conditions):
-### 1. Mutual Exclusion
+
+## 1. Mutual Exclusion
+
 - At least one resource must be held in a non-sharable mode
 - Only one process can use the resource at a time
 - If another process requests it, it must wait
-### 2. Hold and Wait
+
+## 2. Hold and Wait
+
 - A process holding at least one resource is waiting to acquire additional resources
 - Resources held by other processes
-### 3. No Preemption
+
+## 3. No Preemption
+
 - Resources cannot be forcibly taken away from a process
 - Resources can only be released voluntarily by the process
-### 4. Circular Wait
+
+## 4. Circular Wait
+
 - A circular chain of processes exists
 - Each process holds a resource needed by the next process in the chain
 - P1 → P2 → P3 → ... → Pn → P1
+
 ---
+
 ## Resource Allocation Graph (RAG)
+
 A directed graph to describe deadlocks:
-### Components
+
+## Components
+
 - **Process nodes**: Circles (P1, P2, ...)
 - **Resource nodes**: Rectangles (R1, R2, ...)
 - **Request edge**: P → R (process requesting resource)
 - **Assignment edge**: R → P (resource assigned to process)
+
 ### Example
+
 ```
      ┌────┐         ┌────┐
      │ P1 │ ───────►│ R1 │
@@ -42,46 +66,74 @@ A directed graph to describe deadlocks:
      │ R2 │◄─────── │ P2 │
      └────┘         └────┘
 ```
-### Deadlock Detection using RAG
+
+## Deadlock Detection using RAG
+
 - **Single instance resources**: Cycle in graph = Deadlock
 - **Multiple instance resources**: Cycle may or may not indicate deadlock
+
 ---
+
 ## Deadlock Handling Strategies
-### 1. Deadlock Prevention
+
+## 1. Deadlock Prevention
+
 Ensure at least one of the four necessary conditions cannot hold.
+
 #### Eliminate Mutual Exclusion
+
 - Make resources sharable (not always possible)
 - Example: Read-only files can be shared
+
 #### Eliminate Hold and Wait
+
 - **Option 1**: Request all resources before execution begins
 - **Option 2**: Request resources only when holding none
 - **Disadvantage**: Low resource utilization, starvation possible
+
 #### Eliminate No Preemption
+
 - If a process cannot get all resources, release what it holds
 - Preempt resources from waiting processes
 - **Applicable to**: CPU registers, memory
 - **Not applicable to**: Printers, tape drives
+
 #### Eliminate Circular Wait
+
 - Impose total ordering on resource types
 - Request resources in increasing order of enumeration
 - Example: If R1 < R2 < R3, must request in that order
+
 ---
-### 2. Deadlock Avoidance
+
+## 2. Deadlock Avoidance
+
 System has advance information about resource needs. Uses this to decide if requests should wait.
+
 #### Safe State
+
 A state is **safe** if system can allocate resources to each process in some order and still avoid deadlock.
+
 ```
 Safe State → No Deadlock (guaranteed)
 Unsafe State → Possible Deadlock (not guaranteed)
 ```
+
 #### Safe Sequence
+
 An ordering of processes <P1, P2, ..., Pn> where for each Pi, the resources that Pi needs can be satisfied by:
+
 - Currently available resources, plus
 - Resources held by all Pj (where j < i)
+
 ---
-### Banker's Algorithm
+
+## Banker's Algorithm
+
 Used for deadlock avoidance with multiple instances of resources.
+
 #### Data Structures
+
 For n processes and m resource types:
 | Structure | Size | Description |
 |-----------|------|-------------|
@@ -89,7 +141,9 @@ For n processes and m resource types:
 | **Max** | n × m | Maximum demand of each process |
 | **Allocation** | n × m | Currently allocated to each process |
 | **Need** | n × m | Remaining need (Max - Allocation) |
+
 #### Safety Algorithm
+
 ```
 1. Initialize:
    Work = Available
@@ -102,8 +156,11 @@ For n processes and m resource types:
    Go to step 2
 4. If Finish[i] = true for all i, system is in safe state
 ```
+
 #### Resource Request Algorithm
+
 When process Pi requests resources Request[i]:
+
 ```
 1. If Request[i] > Need[i], raise error (exceeded max claim)
 2. If Request[i] > Available, Pi must wait
@@ -115,7 +172,9 @@ When process Pi requests resources Request[i]:
    If safe → Allocate resources
    If unsafe → Restore old state, Pi waits
 ```
+
 #### Banker's Algorithm Example
+
 **Given:**
 | Process | Allocation (A,B,C) | Max (A,B,C) | Available (A,B,C) |
 |---------|-------------------|-------------|-------------------|
@@ -133,23 +192,36 @@ When process Pi requests resources Request[i]:
 | P3 | 0,1,1 |
 | P4 | 4,3,1 |
 **Safe Sequence:** P1 → P3 → P4 → P2 → P0
+
 ---
-### 3. Deadlock Detection & Recovery
+
+## 3. Deadlock Detection & Recovery
+
 Allow deadlocks to occur, then detect and recover.
+
 #### Detection Algorithm (Single Instance)
+
 - Maintain wait-for graph
 - Periodically check for cycles
 - Cycle = Deadlock
+
 #### Detection Algorithm (Multiple Instances)
+
 Similar to Banker's Algorithm but:
+
 - Use current requests instead of maximum needs
 - Check if any process can finish
+
 #### When to Invoke Detection?
+
 - On every resource request (expensive)
 - Periodically (e.g., every hour)
 - When CPU utilization drops below threshold
-### Recovery from Deadlock
+
+## Recovery from Deadlock
+
 #### Process Termination
+
 1. **Abort all deadlocked processes**
    - Expensive but simple
 2. **Abort one process at a time**
@@ -161,62 +233,93 @@ Similar to Banker's Algorithm but:
      - Resources process has used
      - Resources process needs to complete
      - Number of processes to terminate
+
 #### Resource Preemption
+
 - **Selecting a victim**: Choose process to preempt resources from
 - **Rollback**: Return process to safe state
 - **Starvation**: Ensure same process isn't always selected (use cost factors)
+
 ---
-### 4. Deadlock Ignorance (Ostrich Algorithm)
+
+## 4. Deadlock Ignorance (Ostrich Algorithm)
+
 - Pretend deadlocks never happen
 - Used when:
   - Deadlocks are rare
   - Cost of prevention/detection is high
   - System can be rebooted if deadlock occurs
 - Used in most general-purpose OS (Windows, Linux)
+
 ---
+
 ## Comparison of Strategies
-| Strategy | Approach | Overhead | Resource Utilization |
-|----------|----------|----------|---------------------|
-| Prevention | Restrict requests | None | Low |
-| Avoidance | Check before allocation | Moderate | Moderate |
-| Detection | Allow, then fix | Periodic check | High |
-| Ignorance | Do nothing | None | High |
+
+| Strategy   | Approach                | Overhead       | Resource Utilization |
+| ---------- | ----------------------- | -------------- | -------------------- |
+| Prevention | Restrict requests       | None           | Low                  |
+| Avoidance  | Check before allocation | Moderate       | Moderate             |
+| Detection  | Allow, then fix         | Periodic check | High                 |
+| Ignorance  | Do nothing              | None           | High                 |
+
 ---
+
 ## Livelock vs Deadlock
-| Deadlock | Livelock |
-|----------|----------|
-| Processes are blocked | Processes are not blocked |
-| No state change | States change continuously |
-| Processes wait indefinitely | Processes keep responding without progress |
+
+| Deadlock                           | Livelock                                                        |
+| ---------------------------------- | --------------------------------------------------------------- |
+| Processes are blocked              | Processes are not blocked                                       |
+| No state change                    | States change continuously                                      |
+| Processes wait indefinitely        | Processes keep responding without progress                      |
 | Example: Two cars on narrow bridge | Example: Two people in hallway stepping aside in same direction |
+
 ---
+
 ## Starvation vs Deadlock
-| Deadlock | Starvation |
-|----------|------------|
-| Multiple processes blocked | Single process may starve |
-| Circular wait exists | No circular wait |
-| Resources are held | Resources may be available but not granted |
-| All four conditions needed | Can occur without all conditions |
+
+| Deadlock                   | Starvation                                 |
+| -------------------------- | ------------------------------------------ |
+| Multiple processes blocked | Single process may starve                  |
+| Circular wait exists       | No circular wait                           |
+| Resources are held         | Resources may be available but not granted |
+| All four conditions needed | Can occur without all conditions           |
+
 ---
+
 ## Important Interview Questions
-### Q1: What are the necessary conditions for deadlock?
+
+## Q1: What are the necessary conditions for deadlock?
+
 **A:** Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait. All four must hold simultaneously.
-### Q2: What is Banker's Algorithm?
+
+## Q2: What is Banker's Algorithm?
+
 **A:** A deadlock avoidance algorithm that checks if granting a resource request will keep the system in a safe state.
-### Q3: Difference between deadlock prevention and avoidance?
-**A:** 
+
+## Q3: Difference between deadlock prevention and avoidance?
+
+**A:**
+
 - Prevention: Ensure one condition never holds (static)
 - Avoidance: Make dynamic decisions to stay in safe state
-### Q4: How to detect deadlock?
-**A:** 
+
+## Q4: How to detect deadlock?
+
+**A:**
+
 - Single instance: Check for cycles in wait-for graph
 - Multiple instances: Use detection algorithm similar to Banker's
-### Q5: Why do operating systems use Ostrich Algorithm?
-**A:** Deadlocks are rare in practice, and the cost of prevention/detection is not justified for general-purpose systems.
-### Q6: What is the difference between safe and unsafe state?
-**A:** Safe state guarantees no deadlock; system can find a sequence to finish all processes. Unsafe state may lead to deadlock but doesn't guarantee it.
----
+
+## Q5: Why do operating systems use Ostrich Algorithm?
+
+A: Deadlocks are rare in practice, and the cost of prevention/detection is not justified for general-purpose systems.
+
+## Q6: What is the difference between safe and unsafe state?
+
+### **A:** Safe state guarantees no deadlock; system can find a sequence to finish all processes. Unsafe state may lead to deadlock but doesn't guarantee it.
+
 ## Quick Reference
+
 ```
 Deadlock occurs when: All 4 conditions hold simultaneously
 Prevention targets:

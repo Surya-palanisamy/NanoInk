@@ -324,8 +324,8 @@ class Solution {
   - Actual sum = 3 + 0 + 1 = 4
   - Missing number = 6 - 4 = 2.
 
-
 ## Can Place Flowers (leetcode 605)
+
 ```java
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
@@ -349,6 +349,3 @@ class Solution {
   - i=3: plot=0, neighbors=1,0 → place flower, count=2
   - i=4: plot=1, neighbors=0,0 → skip
   - Return true since we can place 2 flowers.
-
-
-  

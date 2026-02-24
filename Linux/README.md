@@ -1,16 +1,22 @@
 # Linux
-A comprehensive guide to Linux system administration and command-line usage.
----
+
+## A comprehensive guide to Linux system administration and command-line usage.
+
 ## 📚 Topics
+
 | File        | Description                                        |
 | :---------- | :------------------------------------------------- |
 | Linux Guide | Essential Linux commands and system administration |
 | SSH         | Secure Shell for remote access and file transfer   |
 | Systemd     | Service management with systemd                    |
 | Zshrc       | Zsh shell configuration and customization          |
+
 ---
+
 ## 🎯 Quick Reference
-### Essential Commands
+
+## Essential Commands
+
 | Command | Description              |
 | :------ | :----------------------- |
 | `ls`    | List directory contents  |
@@ -21,7 +27,9 @@ A comprehensive guide to Linux system administration and command-line usage.
 | `rm`    | Remove files/directories |
 | `chmod` | Change file permissions  |
 | `chown` | Change file ownership    |
-### File Permissions
+
+## File Permissions
+
 ```
 rwx rwx rwx
 │   │   └── Others
@@ -31,9 +39,3 @@ r = 4 (read)
 w = 2 (write)
 x = 1 (execute)
 ```
----
-## 📖 Learning Path
-1. Start with **Linux Guide** for fundamental commands
-2. Learn **SSH** for secure remote access
-3. Understand **Systemd** for service management
-4. Customize your shell with **Zshrc**

@@ -1,25 +1,38 @@
 # Inter-Process Communication (IPC)
-Inter-Process Communication (IPC) refers to mechanisms that allow processes to communicate and synchronize their actions.
----
+
+## Inter-Process Communication (IPC) refers to mechanisms that allow processes to communicate and synchronize their actions.
+
 ## Why IPC?
+
 Processes need to communicate for:
+
 1. **Data Sharing** - Exchange information between processes
 2. **Computation Speedup** - Divide task among processes
 3. **Modularity** - Separate concerns into different processes
 4. **Convenience** - Multiple tasks simultaneously
+
 ---
+
 ## Types of Processes
-### Independent Processes
+
+## Independent Processes
+
 - Cannot affect or be affected by other processes
 - No data sharing
 - Deterministic execution
-### Cooperating Processes
+
+## Cooperating Processes
+
 - Can affect or be affected by other processes
 - Share data or messages
 - Need synchronization
+
 ---
+
 ## IPC Models
-### 1. Shared Memory
+
+## 1. Shared Memory
+
 ```
 ┌─────────────┐                    ┌─────────────┐
 │  Process A  │                    │  Process B  │
@@ -37,19 +50,22 @@ Processes need to communicate for:
              │   Region         │
              └──────────────────┘
 ```
+
 **Characteristics:**
+
 - Processes share a region of memory
 - Fastest IPC method (memory speed)
 - Requires synchronization (semaphores, mutex)
 - Set up by system calls, then normal memory access
-**System Calls (POSIX):**
-| Function | Description |
-|----------|-------------|
-| `shmget()` | Create shared memory segment |
-| `shmat()` | Attach segment to address space |
-| `shmdt()` | Detach segment |
-| `shmctl()` | Control operations |
-**Example:**
+  **System Calls (POSIX):**
+  | Function | Description |
+  |----------|-------------|
+  | `shmget()` | Create shared memory segment |
+  | `shmat()` | Attach segment to address space |
+  | `shmdt()` | Detach segment |
+  | `shmctl()` | Control operations |
+  **Example:**
+
 ```c
 #include <sys/shm.h>
 #include <stdio.h>
@@ -69,8 +85,11 @@ int main() {
     return 0;
 }
 ```
+
 ---
-### 2. Message Passing
+
+## 2. Message Passing
+
 ```
 ┌─────────────┐                    ┌─────────────┐
 │  Process A  │                    │  Process B  │
@@ -80,70 +99,99 @@ int main() {
 │             │      Queue         │             │
 └─────────────┘                    └─────────────┘
 ```
+
 **Characteristics:**
+
 - Processes communicate via messages
 - No shared memory required
 - Good for distributed systems
 - OS handles data transfer
-**Operations:**
+  **Operations:**
 - `send(destination, message)`
 - `receive(source, message)`
+
 ---
+
 ## Message Passing Variants
-### Direct vs Indirect Communication
+
+## Direct vs Indirect Communication
+
 #### Direct Communication
+
 - Processes explicitly name each other
 - Symmetric: Both name each other
 - Asymmetric: Sender names receiver only
+
 ```c
 send(P, message);      // Send to process P
 receive(Q, message);   // Receive from process Q
 ```
+
 **Properties:**
+
 - Exactly one link between each pair
 - Link is automatic when processes know each other
+
 #### Indirect Communication (Mailboxes)
+
 - Messages sent to/received from mailboxes (ports)
 - Multiple processes can share a mailbox
+
 ```c
 send(A, message);      // Send to mailbox A
 receive(A, message);   // Receive from mailbox A
 ```
+
 **Properties:**
+
 - Link exists if processes share mailbox
 - Multiple processes can share mailbox
 - Multiple links possible between processes
+
 ---
-### Synchronous vs Asynchronous
-| Type | Send | Receive |
-|------|------|---------|
-| **Synchronous (Blocking)** | Sender blocks until received | Receiver blocks until message available |
-| **Asynchronous (Non-blocking)** | Sender continues immediately | Receiver gets message or null |
-**Rendezvous:** Both send and receive are blocking
+
+## Synchronous vs Asynchronous
+
+| Type                            | Send                         | Receive                                 |
+| ------------------------------- | ---------------------------- | --------------------------------------- |
+| **Synchronous (Blocking)**      | Sender blocks until received | Receiver blocks until message available |
+| **Asynchronous (Non-blocking)** | Sender continues immediately | Receiver gets message or null           |
+
+## **Rendezvous:** Both send and receive are blocking
+
+## Buffering
+
+| Buffer Type            | Description                         |
+| ---------------------- | ----------------------------------- |
+| **Zero Capacity**      | No buffering, sender must wait      |
+| **Bounded Capacity**   | Limited queue, sender waits if full |
+| **Unbounded Capacity** | Infinite queue, sender never waits  |
+
 ---
-### Buffering
-| Buffer Type | Description |
-|-------------|-------------|
-| **Zero Capacity** | No buffering, sender must wait |
-| **Bounded Capacity** | Limited queue, sender waits if full |
-| **Unbounded Capacity** | Infinite queue, sender never waits |
----
+
 ## IPC Mechanisms in Detail
-### 1. Pipes
+
+## 1. Pipes
+
 Unidirectional communication channel between related processes.
+
 #### Ordinary Pipes (Anonymous Pipes)
+
 ```
 ┌──────────┐         ┌──────────┐         ┌──────────┐
 │  Parent  │─write──►│   Pipe   │─read───►│  Child   │
 │          │         │  Buffer  │         │          │
 └──────────┘         └──────────┘         └──────────┘
 ```
+
 **Characteristics:**
+
 - Unidirectional
 - Require parent-child relationship
 - Exist only while processes run
 - FIFO order
-**Example:**
+  **Example:**
+
 ```c
 #include <unistd.h>
 #include <stdio.h>
@@ -168,12 +216,16 @@ int main() {
     return 0;
 }
 ```
+
 #### Named Pipes (FIFOs)
+
 **Characteristics:**
+
 - Bidirectional
 - No parent-child relationship required
 - Persist in file system
 - Accessed by name
+
 ```c
 // Create named pipe
 mkfifo("/tmp/myfifo", 0666);
@@ -182,9 +234,13 @@ int fd = open("/tmp/myfifo", O_WRONLY);
 write(fd, "Hello", 5);
 close(fd);
 ```
+
 ---
-### 2. Message Queues
+
+## 2. Message Queues
+
 Linked list of messages stored in kernel.
+
 ```
 ┌────────────────────────────────────────────┐
 │              Message Queue                 │
@@ -193,19 +249,22 @@ Linked list of messages stored in kernel.
 │ Type:1 │ Type:2 │ Type:1 │ Type:3 │        │
 └────────┴────────┴────────┴────────┴────────┘
 ```
+
 **Characteristics:**
+
 - Messages have type and data
 - Can receive by type (selective receive)
 - Persist until explicitly deleted
 - Multiple processes can send/receive
-**System Calls:**
-| Function | Description |
-|----------|-------------|
-| `msgget()` | Create/access message queue |
-| `msgsnd()` | Send message |
-| `msgrcv()` | Receive message |
-| `msgctl()` | Control operations |
-**Example:**
+  **System Calls:**
+  | Function | Description |
+  |----------|-------------|
+  | `msgget()` | Create/access message queue |
+  | `msgsnd()` | Send message |
+  | `msgrcv()` | Receive message |
+  | `msgctl()` | Control operations |
+  **Example:**
+
 ```c
 #include <sys/msg.h>
 struct message {
@@ -229,9 +288,13 @@ int main() {
     return 0;
 }
 ```
+
 ---
-### 3. Sockets
+
+## 3. Sockets
+
 Endpoint for communication, can be used for network or local communication.
+
 ```
 ┌─────────────┐                      ┌─────────────┐
 │   Client    │                      │   Server    │
@@ -243,6 +306,7 @@ Endpoint for communication, can be used for network or local communication.
 │  close()    │                      │  send/recv  │
 └─────────────┘                      └─────────────┘
 ```
+
 **Socket Types:**
 | Type | Description |
 |------|-------------|
@@ -250,6 +314,7 @@ Endpoint for communication, can be used for network or local communication.
 | **Datagram (UDP)** | Unreliable, connectionless |
 | **Unix Domain** | Local communication |
 **Example (Server):**
+
 ```c
 int sockfd = socket(AF_INET, SOCK_STREAM, 0);
 struct sockaddr_in addr;
@@ -263,8 +328,11 @@ send(client, "Hello!", 6, 0);
 close(client);
 close(sockfd);
 ```
+
 ---
-### 4. Signals
+
+## 4. Signals
+
 Asynchronous notification to process about events.
 **Common Signals:**
 | Signal | Number | Default Action | Description |
@@ -277,6 +345,7 @@ Asynchronous notification to process about events.
 | SIGCONT | 18 | Continue | Continue if stopped |
 | SIGCHLD | 17 | Ignore | Child terminated |
 **Handling Signals:**
+
 ```c
 #include <signal.h>
 #include <stdio.h>
@@ -298,19 +367,25 @@ int main() {
     return 0;
 }
 ```
+
 **Sending Signals:**
+
 ```c
 kill(pid, SIGTERM);   // Send signal to process
 raise(SIGINT);        // Send signal to self
 ```
+
 ---
-### 5. Memory-Mapped Files
+
+## 5. Memory-Mapped Files
+
 Map file directly into virtual address space.
+
 ```c
 #include <sys/mman.h>
 #include <fcntl.h>
 int fd = open("data.txt", O_RDWR);
-char *map = mmap(NULL, 4096, PROT_READ | PROT_WRITE, 
+char *map = mmap(NULL, 4096, PROT_READ | PROT_WRITE,
                  MAP_SHARED, fd, 0);
 // Access file through memory
 printf("First char: %c\n", map[0]);
@@ -318,27 +393,38 @@ map[0] = 'X';  // Write to file
 munmap(map, 4096);
 close(fd);
 ```
+
 **Use Cases:**
+
 - Efficient file I/O
 - Sharing memory between processes
 - Loading executable code
+
 ---
+
 ## Comparison of IPC Methods
-| Method | Speed | Complexity | Use Case |
-|--------|-------|------------|----------|
-| **Shared Memory** | Fastest | Complex (sync needed) | High-speed data sharing |
-| **Pipes** | Fast | Simple | Parent-child communication |
-| **Named Pipes** | Fast | Simple | Unrelated processes |
-| **Message Queues** | Medium | Medium | Structured messages |
-| **Sockets** | Medium | Complex | Network/distributed |
-| **Signals** | Fast | Simple | Event notification |
+
+| Method             | Speed   | Complexity            | Use Case                   |
+| ------------------ | ------- | --------------------- | -------------------------- |
+| **Shared Memory**  | Fastest | Complex (sync needed) | High-speed data sharing    |
+| **Pipes**          | Fast    | Simple                | Parent-child communication |
+| **Named Pipes**    | Fast    | Simple                | Unrelated processes        |
+| **Message Queues** | Medium  | Medium                | Structured messages        |
+| **Sockets**        | Medium  | Complex               | Network/distributed        |
+| **Signals**        | Fast    | Simple                | Event notification         |
+
 ---
+
 ## Producer-Consumer Problem
+
 Classic IPC synchronization problem.
+
 ```
 Producer ──► [Buffer] ──► Consumer
 ```
+
 **Bounded Buffer Solution:**
+
 ```c
 #define BUFFER_SIZE 10
 int buffer[BUFFER_SIZE];
@@ -361,31 +447,47 @@ while (true) {
     consume_item(item);
 }
 ```
+
 ---
+
 ## Important Interview Questions
-### Q1: What is the difference between shared memory and message passing?
-**A:** 
+
+## Q1: What is the difference between shared memory and message passing?
+
+**A:**
+
 - **Shared Memory:** Processes share memory region, faster, needs synchronization
 - **Message Passing:** Explicit send/receive, slower, no sync needed, good for distributed systems
-### Q2: When would you use pipes vs sockets?
-**A:** 
+
+## Q2: When would you use pipes vs sockets?
+
+**A:**
+
 - **Pipes:** Simple, related processes, same machine
 - **Sockets:** Network communication, unrelated processes, bidirectional, more features
-### Q3: What happens if a process tries to read from an empty pipe?
+
+## Q3: What happens if a process tries to read from an empty pipe?
+
 **A:** The process blocks (waits) until data is available or all write ends are closed (returns 0/EOF).
-### Q4: What is the difference between SIGKILL and SIGTERM?
-**A:** 
+
+## Q4: What is the difference between SIGKILL and SIGTERM?
+
+**A:**
+
 - **SIGKILL (9):** Cannot be caught or ignored, forceful termination
 - **SIGTERM (15):** Can be caught, allows graceful shutdown
-### Q5: How does shared memory achieve synchronization?
-**A:** Shared memory itself doesn't provide synchronization. Processes must use additional mechanisms like semaphores, mutexes, or condition variables.
----
+
+## Q5: How does shared memory achieve synchronization?
+
+## **A:** Shared memory itself doesn't provide synchronization. Processes must use additional mechanisms like semaphores, mutexes, or condition variables.
+
 ## Quick Reference
+
 ```
 IPC Methods:
 ├── Shared Memory: Fastest, needs synchronization
 ├── Pipes: Simple, unidirectional, parent-child
-├── Named Pipes: Persist in filesystem, any processes  
+├── Named Pipes: Persist in filesystem, any processes
 ├── Message Queues: Structured messages, type-based
 ├── Sockets: Network capable, bidirectional
 ├── Signals: Async events, limited data

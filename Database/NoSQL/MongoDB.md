@@ -7,7 +7,7 @@ Goal: Go beyond “it’s a JSON database” and understand MongoDB’s internal
 
 ## 1. Philosophy & Document Model 📘
 
-### Why MongoDB? (Significance) 🎯
+## Why MongoDB? (Significance) 🎯
 
 Relational databases normalize data across many tables (e.g., Users, Orders, Payments) and rely on JOINs. At scale, JOINs can be expensive. MongoDB’s guiding principle is:
 
@@ -19,7 +19,7 @@ Relational databases normalize data across many tables (e.g., Users, Orders, Pay
   ![MongoDB guiding principle](images/Pasted%20image%2020260126152000.png)
   ![Document model benefits](images/Pasted%20image%2020260126152059.png)
 
-### BSON (Binary JSON) 🧱
+## BSON (Binary JSON) 🧱
 
 MongoDB stores data as BSON (not plain JSON).
 Why BSON?
@@ -65,7 +65,7 @@ MQl:
 
 ## 2. Core Mechanics & CRUD 🛠️
 
-### CRUD Operations 🔄
+## CRUD Operations 🔄
 
 ![CRUD Operations](images/Pasted%20image%2020260126152411.png)
 Insert ➕
@@ -89,7 +89,7 @@ db.users.save(user);
 db.users.updateOne({ _id: 1 }, { $inc: { visits: 1 } });
 ```
 
-### Schema Design: Embed vs Reference 🧱🔗
+## Schema Design: Embed vs Reference 🧱🔗
 
 Embedding (default) 📚
 
@@ -143,7 +143,7 @@ Note ℹ️
 
 ## 4. Indexing (Performance Core) 🏎️
 
-### The Problem: Collection Scan (COLLSCAN) 🔍
+## The Problem: Collection Scan (COLLSCAN) 🔍
 
 Without indexes, MongoDB scans every document:
 
@@ -151,7 +151,7 @@ Without indexes, MongoDB scans every document:
 - CPU spikes, disk I/O bottlenecks, poor latency at scale
   Analogy: Searching a shuffled phone book page by page.
 
-### The Solution: B-Tree Index (IXSCAN) 🌲
+## The Solution: B-Tree Index (IXSCAN) 🌲
 
 MongoDB uses B-Tree indexes.
 Index stores:
@@ -163,7 +163,7 @@ Index stores:
 - 1M docs ≈ ~20 steps; 1B docs ≈ ~30 steps
 - Scales with minimal performance cost
 
-### Query Execution: COLLSCAN vs IXSCAN 🧪
+## Query Execution: COLLSCAN vs IXSCAN 🧪
 
 1. COLLSCAN (Collection Scan) ❌
 
@@ -243,7 +243,7 @@ Key comparison 📊
 - Aim for `totalDocsExamined == nReturned`
 - If not equal, check indexes and query shape.
 
-### Compound Indexes & ESR Rule 🧩
+## Compound Indexes & ESR Rule 🧩
 
 Field order matters.
 ESR Rule:
@@ -253,7 +253,7 @@ ESR Rule:
 - R – Range: range predicates last
   Correct ordering avoids expensive in-memory sorts and maximizes index utility.
 
-### Index Trade-Offs ⚖️
+## Index Trade-Offs ⚖️
 
 Indexes improve reads but add write overhead.
 Each write must:
@@ -266,7 +266,7 @@ Each write must:
 - Higher RAM usage
 - Disk swapping if index working set exceeds RAM
 
-### Verification with `explain()` 🔎
+## Verification with `explain()` 🔎
 
 Use:
 
@@ -280,7 +280,7 @@ Use:
 
 ## 5. Architecture: Replication & Sharding 🏗️
 
-### Replication (High Availability) 🔁
+## Replication (High Availability) 🔁
 
 Replica set roles:
 
@@ -293,7 +293,7 @@ Replica set roles:
   Read preferences 📖:
 - Reads can be routed to secondaries (with consistency caveats)
 
-### Sharding (Horizontal Scaling) 🧩
+## Sharding (Horizontal Scaling) 🧩
 
 Problem ❗:
 
@@ -317,7 +317,7 @@ Problem ❗:
 
 ![Advanced features](images/Pasted%20image%2020260126152149.png)
 
-### Multi-Document ACID Transactions 🔒
+## Multi-Document ACID Transactions 🔒
 
 - Supported since MongoDB 4.0
 - Snapshot isolation
@@ -325,7 +325,7 @@ Problem ❗:
   Use cases 💼:
 - Financial systems, inventory, multi-document consistency
 
-### Time Series Collections ⏱️
+## Time Series Collections ⏱️
 
 Optimized for:
 
@@ -335,7 +335,7 @@ Optimized for:
 - High write throughput
 - Efficient storage layout
 
-### Atlas Vector Search (GenAI) 🧠
+## Atlas Vector Search (GenAI) 🧠
 
 - Stores vector embeddings
 - Enables semantic similarity search
@@ -367,7 +367,7 @@ Optimized for:
 
 ## Getting Started
 
-### Connect MongoDB Shell
+## Connect MongoDB Shell
 
 ```bash
 mongo # connects to mongodb://127.0.0.1:27017 by default
@@ -385,7 +385,7 @@ mongo "mongodb://192.168.1.1:27017"
 mongo "mongodb+srv://cluster-name.abcde.mongodb.net/<dbname>" --username <username> # MongoDB Atlas
 ```
 
-### Helpers
+## Helpers
 
 Show dbs :
 
@@ -415,7 +415,7 @@ load("myScript.js");
 
 ## Crud
 
-### Create
+## Create
 
 ```javascript
 db.coll.insertOne({ name: "Max" });
@@ -428,7 +428,7 @@ db.coll.insertMany(
 );
 ```
 
-### Delete
+## Delete
 
 ```javascript
 db.coll.deleteOne({ name: "Max" });
@@ -442,7 +442,7 @@ db.coll.deleteMany(
 db.coll.findOneAndDelete({ name: "Max" });
 ```
 
-### Update
+## Update
 
 ```javascript
 db.coll.updateMany({ _id: 1 }, { $set: { year: 2016 } }); // WARNING! Replaces the entire document where "_id" = 1
@@ -456,7 +456,7 @@ db.coll.updateOne({ _id: 1 }, { $max: { imdb: 8 } });
 db.coll.updateMany({ _id: { $lt: 10 } }, { $set: { lastModified: ISODate() } });
 ```
 
-### Array
+## Array
 
 ```javascript
 db.coll.updateOne({ _id: 1 }, { $push: { array: 1 } });
@@ -475,13 +475,13 @@ db.coll.updateMany(
 );
 ```
 
-### Update many
+## Update many
 
 ```javascript
 db.coll.updateMany({ year: 1999 }, { $set: { decade: "90's" } });
 ```
 
-### FindOneAndUpdate
+## FindOneAndUpdate
 
 ```javascript
 db.coll.findOneAndUpdate(
@@ -491,7 +491,7 @@ db.coll.findOneAndUpdate(
 );
 ```
 
-### Upsert
+## Upsert
 
 ```javascript
 db.coll.updateOne(
@@ -501,7 +501,7 @@ db.coll.updateOne(
 );
 ```
 
-### Replace
+## Replace
 
 ```javascript
 db.coll.replaceOne(
@@ -510,7 +510,7 @@ db.coll.replaceOne(
 );
 ```
 
-### Write concern
+## Write concern
 
 ```javascript
 db.coll.updateMany(
@@ -520,7 +520,7 @@ db.coll.updateMany(
 );
 ```
 
-### Find
+## Find
 
 ```javascript
 db.coll.findOne(); // returns a single document
@@ -532,14 +532,14 @@ db.coll.find({ name: "Max", age: 32 }).explain("executionStats"); // or "queryPl
 db.coll.distinct("name");
 ```
 
-### Count
+## Count
 
 ```javascript
 db.coll.estimatedDocumentCount(); // estimation based on collection metadata
 db.coll.countDocuments({ age: 32 }); // alias for an aggregation pipeline - accurate count
 ```
 
-### Comparison
+## Comparison
 
 ```javascript
 db.coll.find({ year: { $gt: 1970 } });
@@ -551,7 +551,7 @@ db.coll.find({ year: { $in: [1958, 1959] } });
 db.coll.find({ year: { $nin: [1958, 1959] } });
 ```
 
-### Logical
+## Logical
 
 ```javascript
 db.coll.find({ name: { $not: { $eq: "Max" } } });
@@ -565,7 +565,7 @@ db.coll.find({
 });
 ```
 
-### Element
+## Element
 
 ```javascript
 db.coll.find({ name: { $exists: true } });
@@ -573,7 +573,7 @@ db.coll.find({ zipCode: { $type: 2 } });
 db.coll.find({ zipCode: { $type: "string" } });
 ```
 
-### Aggregation Pipeline
+## Aggregation Pipeline
 
 ```javascript
 db.coll.aggregate([
@@ -583,7 +583,7 @@ db.coll.aggregate([
 ]);
 ```
 
-### Text search with a "text" index
+## Text search with a "text" index
 
 ```javascript
 db.coll
@@ -591,14 +591,14 @@ db.coll
   .sort({ score: { $meta: "textScore" } });
 ```
 
-### Regex
+## Regex
 
 ```javascript
 db.coll.find({ name: /^Max/ }); // regex: starts by letter "M"
 db.coll.find({ name: /^Max$/i }); // regex case insensitive
 ```
 
-### Array
+## Array
 
 ```javascript
 db.coll.find({ tags: { $all: ["Realm", "Charts"] } });
@@ -608,7 +608,7 @@ db.coll.find({
 });
 ```
 
-### Projections
+## Projections
 
 ```javascript
 db.coll.find({ x: 1 }, { actors: 1 }); // actors + _id
@@ -616,13 +616,13 @@ db.coll.find({ x: 1 }, { actors: 1, _id: 0 }); // actors
 db.coll.find({ x: 1 }, { actors: 0, summary: 0 }); // all but "actors" and "summary"
 ```
 
-### Sort, skip, limit
+## Sort, skip, limit
 
 ```javascript
 db.coll.find({}).sort({ year: 1, rating: -1 }).skip(10).limit(3);
 ```
 
-### Read Concern
+## Read Concern
 
 ```javascript
 db.coll.find().readConcern("majority");
@@ -630,14 +630,14 @@ db.coll.find().readConcern("majority");
 
 ## Databases and Collections
 
-### Drop
+## Drop
 
 ```javascript
 db.coll.drop(); // removes the collection and its index definitions
 db.dropDatabase(); // double check that you are *NOT* on the PROD cluster... :-)
 ```
 
-### Create Collection
+## Create Collection
 
 ```javascript
 db.createCollection("contacts", {
@@ -666,7 +666,7 @@ db.createCollection("contacts", {
 });
 ```
 
-### Other Collection Functions
+## Other Collection Functions
 
 ```javascript
 db.coll.stats();
@@ -679,7 +679,7 @@ db.coll.renameCollection("new_coll", true); // 2nd parameter to drop the target 
 
 ## Indexes
 
-### Basics
+## Basics
 
 #### List
 
@@ -701,7 +701,7 @@ db.coll.hideIndex("name_1");
 db.coll.unhideIndex("name_1");
 ```
 
-### Create Indexes
+## Create Indexes
 
 ```javascript
 // Index Types

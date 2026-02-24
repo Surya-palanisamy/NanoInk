@@ -1,14 +1,20 @@
 # System Calls
-System calls provide the interface between a running program and the operating system. They are the primary way for user programs to request services from the kernel.
----
+
+## System calls provide the interface between a running program and the operating system. They are the primary way for user programs to request services from the kernel.
+
 ## What is a System Call?
+
 - A programmatic way to request services from the OS kernel
 - Provides a controlled entry point into the kernel
 - Allows user programs to access hardware and system resources safely
 - Acts as a bridge between user mode and kernel mode
+
 ---
+
 ## How System Calls Work
-### Execution Flow
+
+## Execution Flow
+
 ```
 User Application
        │
@@ -40,7 +46,9 @@ User Application
          ▼
    User Application (continues)
 ```
-### Steps in Detail
+
+## Steps in Detail
+
 1. **User program invokes system call** (via library function)
 2. **Arguments are placed** in registers or on stack
 3. **Trap instruction executes** (software interrupt)
@@ -49,9 +57,13 @@ User Application
 6. **Kernel executes the appropriate handler**
 7. **Result is placed in register**
 8. **Control returns to user program**
+
 ---
+
 ## System Call Interface
-### System Call Number
+
+## System Call Number
+
 Each system call has a unique number:
 | System Call | Number (Linux x86-64) |
 |-------------|----------------------|
@@ -62,23 +74,31 @@ Each system call has a unique number:
 | fork | 57 |
 | execve | 59 |
 | exit | 60 |
-### Parameter Passing Methods
+
+## Parameter Passing Methods
+
 1. **Registers** - Parameters passed via CPU registers
 2. **Block/Table** - Parameters stored in memory block, address passed in register
 3. **Stack** - Parameters pushed onto stack by program, popped by OS
+
 ---
+
 ## Types of System Calls
-### 1. Process Control
-| System Call | Description |
-|-------------|-------------|
-| `fork()` | Create a new process (child) |
-| `exec()` | Replace process memory with new program |
-| `exit()` | Terminate process |
-| `wait()` | Wait for child process |
-| `kill()` | Send signal to process |
-| `getpid()` | Get process ID |
-| `getppid()` | Get parent process ID |
+
+## 1. Process Control
+
+| System Call | Description                             |
+| ----------- | --------------------------------------- |
+| `fork()`    | Create a new process (child)            |
+| `exec()`    | Replace process memory with new program |
+| `exit()`    | Terminate process                       |
+| `wait()`    | Wait for child process                  |
+| `kill()`    | Send signal to process                  |
+| `getpid()`  | Get process ID                          |
+| `getppid()` | Get parent process ID                   |
+
 #### fork() Example
+
 ```c
 #include <unistd.h>
 #include <stdio.h>
@@ -98,19 +118,24 @@ int main() {
     return 0;
 }
 ```
+
 ---
-### 2. File Management
-| System Call | Description |
-|-------------|-------------|
-| `open()` | Open a file |
-| `close()` | Close a file descriptor |
-| `read()` | Read from file |
-| `write()` | Write to file |
-| `lseek()` | Move file pointer |
-| `stat()` | Get file status |
-| `chmod()` | Change file permissions |
-| `unlink()` | Delete a file |
+
+## 2. File Management
+
+| System Call | Description             |
+| ----------- | ----------------------- |
+| `open()`    | Open a file             |
+| `close()`   | Close a file descriptor |
+| `read()`    | Read from file          |
+| `write()`   | Write to file           |
+| `lseek()`   | Move file pointer       |
+| `stat()`    | Get file status         |
+| `chmod()`   | Change file permissions |
+| `unlink()`  | Delete a file           |
+
 #### File Operations Example
+
 ```c
 #include <fcntl.h>
 #include <unistd.h>
@@ -133,39 +158,50 @@ int main() {
     return 0;
 }
 ```
+
 ---
-### 3. Device Management
-| System Call | Description |
-|-------------|-------------|
-| `ioctl()` | Device-specific operations |
-| `read()` | Read from device |
-| `write()` | Write to device |
-| `mmap()` | Map device memory |
+
+## 3. Device Management
+
+| System Call | Description                |
+| ----------- | -------------------------- |
+| `ioctl()`   | Device-specific operations |
+| `read()`    | Read from device           |
+| `write()`   | Write to device            |
+| `mmap()`    | Map device memory          |
+
 ---
-### 4. Information Maintenance
-| System Call | Description |
-|-------------|-------------|
-| `getpid()` | Get process ID |
-| `alarm()` | Set alarm clock |
-| `sleep()` | Suspend execution |
-| `time()` | Get system time |
+
+## 4. Information Maintenance
+
+| System Call      | Description                |
+| ---------------- | -------------------------- |
+| `getpid()`       | Get process ID             |
+| `alarm()`        | Set alarm clock            |
+| `sleep()`        | Suspend execution          |
+| `time()`         | Get system time            |
 | `gettimeofday()` | Get time with microseconds |
-| `sysinfo()` | Get system information |
+| `sysinfo()`      | Get system information     |
+
 ---
-### 5. Communication
-| System Call | Description |
-|-------------|-------------|
-| `pipe()` | Create a pipe |
-| `shmget()` | Allocate shared memory |
-| `shmat()` | Attach shared memory |
-| `msgget()` | Create message queue |
-| `msgsnd()` | Send message |
-| `msgrcv()` | Receive message |
-| `socket()` | Create socket |
-| `connect()` | Connect to socket |
-| `send()` | Send data via socket |
-| `recv()` | Receive data via socket |
+
+## 5. Communication
+
+| System Call | Description             |
+| ----------- | ----------------------- |
+| `pipe()`    | Create a pipe           |
+| `shmget()`  | Allocate shared memory  |
+| `shmat()`   | Attach shared memory    |
+| `msgget()`  | Create message queue    |
+| `msgsnd()`  | Send message            |
+| `msgrcv()`  | Receive message         |
+| `socket()`  | Create socket           |
+| `connect()` | Connect to socket       |
+| `send()`    | Send data via socket    |
+| `recv()`    | Receive data via socket |
+
 #### Pipe Example
+
 ```c
 #include <unistd.h>
 #include <stdio.h>
@@ -196,92 +232,126 @@ int main() {
     return 0;
 }
 ```
+
 ---
-### 6. Protection
-| System Call | Description |
-|-------------|-------------|
-| `chmod()` | Change file permissions |
-| `chown()` | Change file owner |
-| `umask()` | Set file mode creation mask |
-| `setuid()` | Set user ID |
-| `setgid()` | Set group ID |
+
+## 6. Protection
+
+| System Call | Description                 |
+| ----------- | --------------------------- |
+| `chmod()`   | Change file permissions     |
+| `chown()`   | Change file owner           |
+| `umask()`   | Set file mode creation mask |
+| `setuid()`  | Set user ID                 |
+| `setgid()`  | Set group ID                |
+
 ---
+
 ## User Mode vs Kernel Mode
-| Aspect | User Mode | Kernel Mode |
-|--------|-----------|-------------|
-| **Privilege Level** | Low (Ring 3) | High (Ring 0) |
-| **Access** | Limited resources | Full hardware access |
-| **Instructions** | Restricted set | All instructions |
-| **Memory Access** | User space only | All memory |
-| **Crash Impact** | Only process | Entire system |
-| **Mode Bit** | 1 | 0 |
-### Why Two Modes?
+
+| Aspect              | User Mode         | Kernel Mode          |
+| ------------------- | ----------------- | -------------------- |
+| **Privilege Level** | Low (Ring 3)      | High (Ring 0)        |
+| **Access**          | Limited resources | Full hardware access |
+| **Instructions**    | Restricted set    | All instructions     |
+| **Memory Access**   | User space only   | All memory           |
+| **Crash Impact**    | Only process      | Entire system        |
+| **Mode Bit**        | 1                 | 0                    |
+
+## Why Two Modes?
+
 1. **Protection** - Prevent user programs from damaging system
 2. **Security** - Isolate processes from each other
 3. **Stability** - Bugs in user programs don't crash system
 4. **Resource Control** - OS manages all hardware access
+
 ---
+
 ## Mode Switching
-### User → Kernel Mode (System Call)
+
+## User → Kernel Mode (System Call)
+
 1. Save user context (registers, PC)
 2. Switch to kernel stack
 3. Set mode bit to 0
 4. Jump to kernel code
-### Kernel → User Mode (Return)
+
+## Kernel → User Mode (Return)
+
 1. Restore user context
 2. Switch to user stack
 3. Set mode bit to 1
 4. Jump to user code
-### Overhead
+
+## Overhead
+
 Mode switching is expensive:
+
 - Save and restore registers
 - Flush CPU pipeline
 - Possible cache/TLB effects
 - Typical time: 100s of nanoseconds
+
 ---
+
 ## System Call vs Function Call
-| Aspect | System Call | Function Call |
-|--------|-------------|---------------|
-| **Mode Switch** | Yes (User ↔ Kernel) | No |
-| **Overhead** | High | Low |
-| **Access** | Kernel services | User space code |
-| **Implementation** | OS kernel | User libraries |
-| **Invocation** | Trap/interrupt | CALL instruction |
-| **Examples** | fork(), read() | printf(), strlen() |
+
+| Aspect             | System Call         | Function Call      |
+| ------------------ | ------------------- | ------------------ |
+| **Mode Switch**    | Yes (User ↔ Kernel) | No                 |
+| **Overhead**       | High                | Low                |
+| **Access**         | Kernel services     | User space code    |
+| **Implementation** | OS kernel           | User libraries     |
+| **Invocation**     | Trap/interrupt      | CALL instruction   |
+| **Examples**       | fork(), read()      | printf(), strlen() |
+
 ---
+
 ## System Call vs Interrupt
-| Aspect | System Call | Interrupt |
-|--------|-------------|-----------|
-| **Trigger** | Software (trap) | Hardware/Software |
-| **Synchronous** | Yes | No (usually) |
-| **Initiated By** | User program | External device/signal |
-| **Predictable** | Yes | No |
-| **Examples** | read(), write() | Keyboard, timer |
+
+| Aspect           | System Call     | Interrupt              |
+| ---------------- | --------------- | ---------------------- |
+| **Trigger**      | Software (trap) | Hardware/Software      |
+| **Synchronous**  | Yes             | No (usually)           |
+| **Initiated By** | User program    | External device/signal |
+| **Predictable**  | Yes             | No                     |
+| **Examples**     | read(), write() | Keyboard, timer        |
+
 ---
+
 ## Library Functions vs System Calls
+
 Many C library functions are wrappers around system calls:
+
 ```
 printf()  →  write()  →  sys_write
 fopen()   →  open()   →  sys_open
 malloc()  →  brk()/mmap()  →  sys_brk/sys_mmap
 ```
-### Why Use Library Functions?
+
+## Why Use Library Functions?
+
 1. **Buffering** - printf() buffers output for efficiency
 2. **Portability** - Same interface across different OS
 3. **Convenience** - Higher-level abstraction
 4. **Optimization** - Libraries may batch system calls
+
 ---
+
 ## Common System Call Errors
-| Error Code | Name | Description |
-|------------|------|-------------|
-| -1 | EPERM | Operation not permitted |
-| -2 | ENOENT | No such file or directory |
-| -9 | EBADF | Bad file descriptor |
-| -12 | ENOMEM | Out of memory |
-| -13 | EACCES | Permission denied |
-| -17 | EEXIST | File exists |
-| -22 | EINVAL | Invalid argument |
-### Checking Errors
+
+| Error Code | Name   | Description               |
+| ---------- | ------ | ------------------------- |
+| -1         | EPERM  | Operation not permitted   |
+| -2         | ENOENT | No such file or directory |
+| -9         | EBADF  | Bad file descriptor       |
+| -12        | ENOMEM | Out of memory             |
+| -13        | EACCES | Permission denied         |
+| -17        | EEXIST | File exists               |
+| -22        | EINVAL | Invalid argument          |
+
+## Checking Errors
+
 ```c
 int fd = open("file.txt", O_RDONLY);
 if (fd == -1) {
@@ -289,29 +359,46 @@ if (fd == -1) {
     printf("Error code: %d\n", errno);
 }
 ```
+
 ---
+
 ## Important Interview Questions
-### Q1: What is a system call?
+
+## Q1: What is a system call?
+
 **A:** A system call is a programmatic way for a user process to request services from the operating system kernel. It provides a controlled interface for accessing hardware and protected resources.
-### Q2: What happens during a system call?
-**A:** 
+
+## Q2: What happens during a system call?
+
+**A:**
+
 1. User program triggers trap/software interrupt
 2. CPU switches from user mode to kernel mode
 3. OS identifies system call via number
 4. Kernel executes requested service
 5. Result returned, mode switches back to user
-### Q3: Why do we need both user mode and kernel mode?
+
+## Q3: Why do we need both user mode and kernel mode?
+
 **A:** To protect the system from faulty/malicious programs. User mode restricts access to critical resources, while kernel mode allows full access. This isolation ensures system stability and security.
-### Q4: Difference between system call and library call?
+
+## Q4: Difference between system call and library call?
+
 **A:** System calls involve mode switch to kernel and access OS services. Library calls stay in user mode and don't directly access kernel. Library calls are faster as they don't require mode switching.
-### Q5: What is the overhead of a system call?
+
+## Q5: What is the overhead of a system call?
+
 **A:** System calls have significant overhead due to:
+
 - Mode switching (save/restore context)
 - Stack switching
 - Cache/TLB effects
 - Typical time: 100-1000 nanoseconds
+
 ---
+
 ## Quick Reference
+
 ```
 System Call Categories:
 ├── Process Control: fork, exec, exit, wait, kill

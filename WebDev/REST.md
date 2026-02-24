@@ -1,47 +1,69 @@
 # 🌐 REST API Cheat Sheet
+
 ## 📌 What is REST?
+
 **REST (Representational State Transfer)** is an architectural style for designing networked applications using **HTTP** methods.
+
 - Uses client–server architecture
 - Communication via stateless requests
 - Data usually in JSON format
-### What Does "Stateless" Mean?
+
+## What Does "Stateless" Mean?
+
 Each request is independent and contains all information needed. The server doesn't store client context.
 **Example:**
+
 ```
 Request 1: GET /api/users/5 → Returns user 5
 Request 2: GET /api/users/5 → Returns same user 5 (no session memory)
 Repeat Request 1 → Still works the same way
 ```
+
 The server never says "remember the last user from Request 1" - each request is complete and self-contained.
-### Real-World Analogy
+
+## Real-World Analogy
+
 - **Non-REST (Stateful):** Like a waiter who remembers your preferences
 - **REST (Stateless):** Like a different waiter each time who needs the full order
-### Why is REST Popular?
+
+## Why is REST Popular?
+
 ✅ Simple to understand  
 ✅ Uses standard HTTP—no special protocols  
 ✅ Scalable—servers don't store session data  
 ✅ Cacheable—responses can be reused  
 ✅ Works across different platforms and languages
+
 ---
+
 ## 🔑 Core Principles (REST Constraints)
-### 1. Client–Server
+
+## 1. Client–Server
+
 UI and backend are separate and can be developed independently.
 **Example:**
+
 ```
 Client (Web App)        →  API Server
 Angular App            →  Node.js Backend
 React App              →  Python Django
 Mobile App             →  Java Spring Boot
 ```
+
 Benefits: Frontend team can work independently from backend team.
-### 2. Stateless
+
+## 2. Stateless
+
 Each request must contain all info needed. Server doesn't store client context.
 **Example - Stateful (Bad):**
+
 ```
 Session 1: POST /login → Server: "Remember, you're user 5"
 Session 2: GET /orders   → Server: "Get orders for user 5"
 ```
+
 **Example - Stateless (Good):**
+
 ```
 POST /login
 { "email": "user@email.com", "password": "..." }
@@ -50,18 +72,24 @@ GET /orders
 Header: Authorization: Bearer abc123def456
 → Server knows who you are from token
 ```
-### 3. Cacheable
+
+## 3. Cacheable
+
 Responses can be cached to reduce server load.
 **Example:**
+
 ```
 GET /products/5
 Cache-Control: max-age=3600
 Next request within 1 hour?
 → Browser returns cached version (no server hit!)
 ```
-### 4. Uniform Interface
+
+## 4. Uniform Interface
+
 Standard structure for all APIs.
 **Example - Consistent:**
+
 ```
 POST /users         → Create
 POST /products      → Create
@@ -72,22 +100,31 @@ GET /products/5     → Get single
 GET /orders/5       → Get single
 (Same pattern everywhere)
 ```
-### 5. Layered System
+
+## 5. Layered System
+
 Client doesn't know if connected to final server or middleware.
 **Example:**
+
 ```
 Client → Load Balancer → Web Server → Database
 Client doesn't care about this architecture
 ```
-### 6. Code on Demand (Optional)
+
+## 6. Code on Demand (Optional)
+
 Server can extend client functionality with downloadable code.
 **Example:**
+
 ```
 Response can include JavaScript to execute on client
 Rarely used in modern REST APIs
 ```
+
 ---
+
 ## 📬 HTTP Methods
+
 | Method | Purpose         | Idempotent | Safe |
 | ------ | --------------- | ---------- | ---- |
 | GET    | Retrieve data   | Yes        | Yes  |
@@ -95,17 +132,23 @@ Rarely used in modern REST APIs
 | PUT    | Update/Replace  | Yes        | No   |
 | PATCH  | Partial update  | No         | No   |
 | DELETE | Remove resource | Yes        | No   |
-### Understanding the Terms
+
+## Understanding the Terms
+
 **Idempotent:** Making the same request multiple times gives same result
+
 - ✅ **GET** → Always returns same data
 - ✅ **PUT** → Replacing data multiple times = same result
 - ✅ **DELETE** → Deleting same item twice = already gone
 - ❌ **POST** → Creates new resource each time
-**Safe:** Request doesn't change server data
+  **Safe:** Request doesn't change server data
 - ✅ **GET** → Only reads, never modifies
 - ❌ **POST/PUT/PATCH/DELETE** → Changes server state
-### Real Examples
+
+## Real Examples
+
 **GET (Safe, Idempotent)**
+
 ```bash
 # Retrieve product
 GET /api/products/42
@@ -114,7 +157,9 @@ GET /api/products/42
 GET /api/users/5
 # Data never changes on server ✅
 ```
+
 **POST (NOT Idempotent, NOT Safe)**
+
 ```bash
 # Create new order
 POST /api/orders
@@ -126,7 +171,9 @@ POST /api/orders
 # Response: Order #1002 created (NEW order!)
 # Data changed on server ❌, different results ❌
 ```
+
 **PUT (Idempotent, NOT Safe)**
+
 ```bash
 # Update user (replace all fields)
 PUT /api/users/5
@@ -138,7 +185,9 @@ PUT /api/users/5
 # User 5 has same data, no additional changes ✅
 # Same result, data safe to replace multiple times
 ```
+
 **PATCH (NOT Idempotent, NOT Safe)**
+
 ```bash
 # Partial update user
 PATCH /api/users/5
@@ -150,7 +199,9 @@ PATCH /api/users/5
 # Depends on implementation—might increment or stay same
 # Can lead to different results ❌
 ```
+
 **DELETE (Idempotent, NOT Safe)**
+
 ```bash
 # Delete user
 DELETE /api/users/5
@@ -161,9 +212,13 @@ DELETE /api/users/5
 # Idempotent (already deleted = still deleted)
 # But data changed on server ✅
 ```
+
 ---
+
 ## 📦 HTTP Status Codes
-### Success (2xx)
+
+## Success (2xx)
+
 - **200 OK** – Request successful, response body included
   ```
   GET /users/5 → 200 OK (returns user data)
@@ -183,7 +238,9 @@ DELETE /api/users/5
   PATCH /users/5 → 204 No Content (sometimes)
   (Update done, no response body)
   ```
-### Client Errors (4xx) - You Did Something Wrong
+
+## Client Errors (4xx) - You Did Something Wrong
+
 - **400 Bad Request** – Malformed request (syntax error)
   ```
   POST /users
@@ -220,7 +277,9 @@ DELETE /api/users/5
   → 409 Conflict
   Response: { "error": "User with this email exists" }
   ```
-### Server Errors (5xx) - Server Problem
+
+## Server Errors (5xx) - Server Problem
+
 - **500 Internal Server Error** – Unexpected server error
   ```
   GET /users/5
@@ -233,7 +292,9 @@ DELETE /api/users/5
   → 503 Service Unavailable
   (Server maintenance, overloaded, etc.)
   ```
-### Status Code Cheat Sheet
+
+## Status Code Cheat Sheet
+
 | Code | Meaning      | When to Use                          |
 | ---- | ------------ | ------------------------------------ |
 | 200  | Success      | GET/PUT/PATCH worked                 |
@@ -246,9 +307,13 @@ DELETE /api/users/5
 | 409  | Conflict     | Data conflict (duplicate, etc.)      |
 | 500  | Server error | Unexpected error                     |
 | 503  | Unavailable  | Server down/overloaded               |
+
 ## 🔗 URL Design Rules
-### Good Practices with Real Examples
+
+## Good Practices with Real Examples
+
 **✅ Use nouns, not verbs**
+
 ```
 GOOD:
 GET    /users              # Get all users
@@ -261,7 +326,9 @@ GET    /createUser         # HTTP method already says create
 DELETE /deleteUser/5       # Redundant verb
 GET    /fetchAllProducts   # Verb (fetch) is unnecessary
 ```
+
 **✅ Use plural resources**
+
 ```
 GOOD:
 /users              (plural)
@@ -271,7 +338,9 @@ BAD:
 /user               (singular)
 /product            (singular - inconsistent)
 ```
+
 **✅ Use hierarchy for relationships**
+
 ```
 GOOD:
 GET    /users/5/orders                    # All orders by user 5
@@ -281,7 +350,9 @@ BAD:
 GET    /orders?user=5                     (flatter, less relationships)
 GET    /getUserOrders/5                   (using verbs)
 ```
+
 **✅ Use query params for filtering, not paths**
+
 ```
 GOOD:
 GET    /products?category=laptop          # Filter by category
@@ -293,8 +364,11 @@ BAD:
 GET    /products/laptop                   (category in path)
 GET    /products/30000                    (price in path - ambiguous)
 ```
-### Real-World URL Examples
+
+## Real-World URL Examples
+
 **E-Commerce:**
+
 ```
 GET    /api/products                          # All products
 GET    /api/products?category=electronics     # Products in category
@@ -303,7 +377,9 @@ GET    /api/products/42/reviews               # Reviews of product 42
 GET    /api/products/42/reviews/5             # Specific review
 POST   /api/products/42/reviews               # Add review to product
 ```
+
 **Social Media:**
+
 ```
 GET    /api/users                             # All users
 GET    /api/users/100                         # User 100
@@ -312,7 +388,9 @@ GET    /api/users/100/posts/555               # Specific post
 POST   /api/users/100/posts/555/like          # Like a post
 DELETE /api/users/100/posts/555/like          # Unlike a post
 ```
+
 **Blog:**
+
 ```
 GET    /api/posts                             # All posts
 GET    /api/posts?author=john&status=published
@@ -320,7 +398,9 @@ GET    /api/posts/10                          # Post 10
 GET    /api/posts/10/comments                 # Comments on post 10
 POST   /api/posts/10/comments                 # Add comment to post 10
 ```
+
 **Bank API:**
+
 ```
 GET    /api/accounts                          # All my accounts
 GET    /api/accounts/123                      # Account 123
@@ -329,8 +409,11 @@ POST   /api/accounts/123/transactions         # Create transaction
 GET    /api/accounts/123/transfers            # Transfer history
 POST   /api/accounts/123/transfers            # Make transfer
 ```
+
 ## 📄 Request Structure - Complete Breakdown
-### HTTP Request Format
+
+## HTTP Request Format
+
 ```
 METHOD /endpoint HTTP/1.1
 Host: api.example.com
@@ -338,7 +421,9 @@ Headers: value
 Authorization: type token
 Body (JSON)
 ```
-### Complete GET Request Example
+
+## Complete GET Request Example
+
 ```bash
 GET /api/users/5 HTTP/1.1
 Host: api.example.com
@@ -346,8 +431,11 @@ Authorization: Bearer eyJhbGc...
 Accept: application/json
 User-Agent: PostmanRuntime/7.26.8
 ```
+
 **No body** (GET never has body)
-### Complete POST Request Example
+
+## Complete POST Request Example
+
 ```bash
 POST /api/users HTTP/1.1
 Host: api.example.com
@@ -361,7 +449,9 @@ Content-Length: 52
   "role": "admin"
 }
 ```
-### Common Request Headers Explained
+
+## Common Request Headers Explained
+
 | Header            | Purpose                                 | Example            |
 | ----------------- | --------------------------------------- | ------------------ |
 | **Authorization** | Sends credentials                       | `Bearer token123`  |
@@ -370,7 +460,9 @@ Content-Length: 52
 | **User-Agent**    | Identifies your application             | `MyApp/1.0`        |
 | **X-API-Key**     | API key authentication                  | `sk_live_abc123`   |
 | **X-Request-ID**  | Unique request identifier               | `req-12345`        |
-### Example: User Sign-Up Request
+
+## Example: User Sign-Up Request
+
 ```bash
 POST /api/auth/register HTTP/1.1
 Host: api.example.com
@@ -383,7 +475,9 @@ Content-Type: application/json
   "country": "India"
 }
 ```
+
 **Server Response (201 Created):**
+
 ```json
 {
   "status": "success",
@@ -396,10 +490,15 @@ Content-Type: application/json
   }
 }
 ```
+
 ---
+
 ## 🔐 Authentication Methods - Detailed
-### 1. API Key Authentication
+
+## 1. API Key Authentication
+
 Simple but less secure—like a password key.
+
 ```bash
 # In query parameter
 GET /api/users?api_key=sk_live_abc123def456
@@ -408,16 +507,22 @@ GET /api/users
 X-API-Key: sk_live_abc123def456
 # Use case: Public APIs, internal services
 ```
-### 2. Basic Auth
+
+## 2. Basic Auth
+
 Username and password encoded in header.
+
 ```bash
 GET /api/users HTTP/1.1
 Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
 # dXNlcm5hbWU6cGFzc3dvcmQ= is Base64 encoded "username:password"
 # Simple but requires HTTPS (password exposed)
 ```
-### 3. Bearer Token (JWT - Most Common)
+
+## 3. Bearer Token (JWT - Most Common)
+
 Stateless authentication using signed tokens.
+
 ```bash
 POST /api/auth/login
 {
@@ -432,15 +537,20 @@ Response:
 GET /api/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
+
 **JWT Token Breakdown:**
+
 ```
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 . eyJ1c2VyX2lkIjo1fQ . xpg...
       ↓                                    ↓                  ↓
     Header                            Payload (data)      Signature
   (algorithm)                       (contains user ID)   (verification)
 ```
-### 4. OAuth 2.0
+
+## 4. OAuth 2.0
+
 Delegated authentication—allow third-party login (Google, GitHub, etc.).
+
 ```bash
 # User clicks "Login with Google"
 # → Browser redirects to Google login
@@ -449,14 +559,18 @@ Delegated authentication—allow third-party login (Google, GitHub, etc.).
 # → Your app exchanges code for token
 # Result: Secure, doesn't store passwords
 ```
-### Security Comparison
+
+## Security Comparison
+
 | Method             | Complexity | Security  | Use Case                        |
 | ------------------ | ---------- | --------- | ------------------------------- |
 | API Key            | Low        | Low       | Public APIs, testing            |
 | Basic Auth         | Low        | Medium    | Internal tools (HTTPS required) |
 | Bearer Token (JWT) | Medium     | High      | Modern web apps, mobile         |
 | OAuth 2.0          | High       | Very High | Third-party logins              |
-### Real Example: Login and Get User Data
+
+## Real Example: Login and Get User Data
+
 ```bash
 # Step 1: Login
 POST /api/auth/login
@@ -480,15 +594,20 @@ Response:
   "premium": true
 }
 ```
+
 ## 📊 CRUD Mapping - Detailed Examples
+
 | Operation  | HTTP Method | Endpoint              | Status | Example                                                      |
 | ---------- | ----------- | --------------------- | ------ | ------------------------------------------------------------ |
 | **C**reate | POST        | /users                | 201    | `POST /api/users` → Create new user                          |
 | **R**ead   | GET         | /users or /users/{id} | 200    | `GET /api/users` → List all, `GET /api/users/5` → Get user 5 |
 | **U**pdate | PUT/PATCH   | /users/{id}           | 200    | `PUT /api/users/5` → Replace, `PATCH /api/users/5` → Partial |
 | **D**elete | DELETE      | /users/{id}           | 204    | `DELETE /api/users/5` → Delete user 5                        |
-### PUT vs PATCH Difference - Detailed
+
+## PUT vs PATCH Difference - Detailed
+
 **PUT - Replace Entire Resource**
+
 ```bash
 # Current user data:
 {
@@ -522,7 +641,9 @@ PUT /api/users/5
 }
 # Missing age and phone — they get deleted! ⚠️
 ```
+
 **PATCH - Partial Update**
+
 ```bash
 # Current user data:
 {
@@ -548,7 +669,9 @@ PATCH /api/users/5
 }
 # Safe! Nothing gets accidentally deleted.
 ```
-### Real CRUD Example: Blog
+
+## Real CRUD Example: Blog
+
 ```bash
 # CREATE - Add new blog post
 POST /api/posts
@@ -605,10 +728,15 @@ DELETE /api/posts/42
 Response: 204 No Content
 (No body, post deleted)
 ```
+
 ---
+
 ## ⚡ Idempotency - Understanding with Examples
+
 A request is **idempotent** if repeating it multiple times gives the same safe result.
-### GET - Idempotent & Safe ✅
+
+## GET - Idempotent & Safe ✅
+
 ```bash
 # Request user 5 three times:
 GET /api/users/5  → { "id": 5, "name": "John", "email": "john@email.com" }
@@ -616,7 +744,9 @@ GET /api/users/5  → { "id": 5, "name": "John", "email": "john@email.com" }
 GET /api/users/5  → { "id": 5, "name": "John", "email": "john@email.com" }
 Result: Same data, no changes ✅ Idempotent & Safe
 ```
-### POST - NOT Idempotent, NOT Safe ❌
+
+## POST - NOT Idempotent, NOT Safe ❌
+
 ```bash
 # Request: Create user three times
 POST /api/users { "name": "John", "email": "john@email.com" }
@@ -627,7 +757,9 @@ POST /api/users { "name": "John", "email": "john@email.com" }
 → Creates User #3 (id: 103)  ← Different result!
 Result: Three different users created ❌ NOT Idempotent
 ```
-### PUT - Idempotent, NOT Safe ✅❌
+
+## PUT - Idempotent, NOT Safe ✅❌
+
 ```bash
 # Request: Replace user 5's data three times
 PUT /api/users/5 { "name": "Jane", "email": "jane@email.com" }
@@ -639,7 +771,9 @@ PUT /api/users/5 { "name": "Jane", "email": "jane@email.com" }
 Result: Safe to repeat, same result ✅ Idempotent
 (But data on server changed ❌ Not Safe)
 ```
-### DELETE - Idempotent, NOT Safe ✅❌
+
+## DELETE - Idempotent, NOT Safe ✅❌
+
 ```bash
 # Request: Delete user 5 three times
 DELETE /api/users/5
@@ -651,7 +785,9 @@ DELETE /api/users/5
 Result: Safe to repeat, same end state ✅ Idempotent
 (But data deleted ❌ Not Safe)
 ```
-### PATCH - NOT Idempotent ❌
+
+## PATCH - NOT Idempotent ❌
+
 ```bash
 # Request: Increment age 3 times (depends on server implementation)
 PATCH /api/users/5 { "age_increment": 1 }
@@ -662,8 +798,11 @@ PATCH /api/users/5 { "age_increment": 1 }
 → Age: 32 → 33  ← Different result!
 Result: Different outcomes ❌ NOT Idempotent
 ```
-### Why Does Idempotency Matter?
+
+## Why Does Idempotency Matter?
+
 **Network Issues Example:**
+
 ```bash
 # You send DELETE /api/users/5
 # Server receives and deletes it
@@ -674,16 +813,24 @@ With DELETE (idempotent):
 With POST (not idempotent):
 → Creates duplicate order ❌ Can't safely retry
 ```
+
 ---
+
 ## 📁 Content Types - Detailed Guide
-### What is Content-Type?
+
+## What is Content-Type?
+
 Tells the server what **format** you're sending. Tells client what **format** to expect.
-### Common Request Headers
+
+## Common Request Headers
+
 | Header         | Meaning                       | Example            |
 | -------------- | ----------------------------- | ------------------ |
 | `Content-Type` | Format of data you're SENDING | `application/json` |
 | `Accept`       | Format you WANT back          | `application/json` |
-### JSON - Most Common Format
+
+## JSON - Most Common Format
+
 ```bash
 POST /api/users
 Content-Type: application/json
@@ -700,24 +847,31 @@ Content-Type: application/json
   "email": "john@email.com"
 }
 ```
+
 **Why JSON?**
+
 - Easy for humans to read
 - Easy for computers to parse
 - Compact format
 - Language independent
-### Form Data - HTML Forms
+
+## Form Data - HTML Forms
+
 ```bash
 POST /api/users
 Content-Type: application/x-www-form-urlencoded
 name=John&email=john@email.com&age=30
 # Like URL query params, but in body
 ```
+
 ```bash
 POST /api/users
 Content-Type: multipart/form-data
 (binary format, used for file uploads)
 ```
+
 **Real file upload example:**
+
 ```bash
 POST /api/users/5/avatar
 Content-Type: multipart/form-data
@@ -727,7 +881,9 @@ Content-Type: image/jpeg
 [binary image data here]
 --boundary123--
 ```
-### XML - Older Format (Less Common)
+
+## XML - Older Format (Less Common)
+
 ```bash
 POST /api/users
 Content-Type: application/xml
@@ -744,7 +900,9 @@ Response:
   <email>john@email.com</email>
 </user>
 ```
-### Choosing Content Type
+
+## Choosing Content Type
+
 ```bash
 # API to API (Most common)
 Content-Type: application/json
@@ -759,7 +917,9 @@ Content-Type: text/plain
 # Web page
 Content-Type: text/html
 ```
-### Request vs Response Content-Type
+
+## Request vs Response Content-Type
+
 ```bash
 REQUEST:
 POST /api/users
@@ -771,18 +931,26 @@ HTTP/1.1 201 Created
 Content-Type: application/json           ← What server is sending
 { "id": 5, "name": "John" }
 ```
-### Charset Header
+
+## Charset Header
+
 Specifies character encoding.
+
 ```bash
 Content-Type: application/json; charset=utf-8
 Content-Type: text/html; charset=utf-8
 # Most APIs use UTF-8 (supports all languages ✅)
 ```
+
 ---
+
 ## 🔍 Pagination, Filtering, Sorting
-### Pagination - Load Data in Chunks
+
+## Pagination - Load Data in Chunks
+
 **Why pagination?** Returning 1 million records at once = slow and huge response.
 **Method 1: Page-based (Most Common)**
+
 ```bash
 GET /api/products?page=2&limit=10
 Response:
@@ -804,20 +972,26 @@ Response:
 # Page 2 = items 11-20
 # Page 3 = items 21-30
 ```
+
 **Method 2: Offset-based**
+
 ```bash
 GET /api/products?offset=10&limit=10
 # offset=10 means skip first 10
 # limit=10 means get next 10 items
 # (Items 11-20)
 ```
+
 **Method 3: Cursor-based (Best for huge datasets)**
+
 ```bash
 GET /api/products?cursor=abc123&limit=10
 # Cursor points to a specific position
 # More efficient for large databases
 ```
-### Practical Pagination Example
+
+## Practical Pagination Example
+
 ```bash
 # Get first page
 GET /api/users?page=1&limit=5
@@ -840,14 +1014,19 @@ GET /api/users?page=1&limit=5
 # Get next page
 GET /api/users?page=2&limit=5
 ```
-### Filtering - Search with Conditions
+
+## Filtering - Search with Conditions
+
 **Basic filtering:**
+
 ```bash
 GET /api/products?category=laptop
 GET /api/products?brand=Dell&color=silver
 GET /api/orders?status=pending&user_id=5
 ```
+
 **Advanced filtering:**
+
 ```bash
 # Price range
 GET /api/products?price_gt=30000&price_lt=60000
@@ -860,7 +1039,9 @@ GET /api/products?brand=Dell,HP,Lenovo  (OR condition)
 # Search
 GET /api/products?search=gaming+laptop
 ```
-### Real Product Filter Examples
+
+## Real Product Filter Examples
+
 ```bash
 # Find gaming laptops under 100k rupees
 GET /api/products?category=laptop&tag=gaming&price_lt=100000
@@ -871,15 +1052,20 @@ GET /api/orders?status=pending,processing&delivery_status=not_shipped
 # Search articles by author
 GET /api/articles?author=john&published=true
 ```
-### Sorting - Order Results
+
+## Sorting - Order Results
+
 **Ascending order (default):**
+
 ```bash
 GET /api/products?sort=price:asc
 # Cheapest first: $100, $200, $300...
 GET /api/users?sort=created_at:asc
 # Oldest first
 ```
+
 **Descending order:**
+
 ```bash
 GET /api/products?sort=price:desc
 # Most expensive first: $300, $200, $100...
@@ -888,14 +1074,18 @@ GET /api/users?sort=created_at:desc
 GET /api/products?sort=-price
 # - prefix = descending
 ```
+
 **Multiple sort fields:**
+
 ```bash
 GET /api/products?sort=category:asc,price:desc
 # Sort by category A-Z, then by price high-low within each category
 GET /api/orders?sort=-created_at,customer_name:asc
 # Newest orders first, then by customer name A-Z
 ```
-### Complete Example: Search Products
+
+## Complete Example: Search Products
+
 ```bash
 GET /api/products?
   category=electronics&
@@ -927,7 +1117,9 @@ Response:
   }
 }
 ```
-### Filter Operators Reference
+
+## Filter Operators Reference
+
 | Operator | Meaning          | Example                     |
 | -------- | ---------------- | --------------------------- |
 | `=`      | Equal            | `status=active`             |
@@ -938,16 +1130,23 @@ Response:
 | `ne`     | Not equal        | `status_ne=deleted`         |
 | `,`      | OR               | `status=pending,processing` |
 | `~`      | Contains         | `name~john`                 |
+
 ---
+
 ## 📋 HTTP Methods - Detailed Examples
-### GET - Retrieve Data
+
+## GET - Retrieve Data
+
 **Never sends body, safe, idempotent**
+
 ```bash
 GET /api/users           # Get all users
 GET /api/users/5         # Get user with ID 5
 GET /api/users?role=admin  # Get filtered users
 ```
+
 **Response:**
+
 ```json
 {
   "status": "success",
@@ -959,8 +1158,11 @@ GET /api/users?role=admin  # Get filtered users
   }
 }
 ```
-### POST - Create Resource
+
+## POST - Create Resource
+
 **Creates new resource, not idempotent**
+
 ```bash
 POST /api/users
 Content-Type: application/json
@@ -970,7 +1172,9 @@ Content-Type: application/json
   "password": "secure123"
 }
 ```
+
 **Response (201 Created):**
+
 ```json
 {
   "status": "success",
@@ -982,8 +1186,11 @@ Content-Type: application/json
   }
 }
 ```
-### PUT - Full Update
+
+## PUT - Full Update
+
 **Replaces entire resource, idempotent**
+
 ```bash
 PUT /api/users/5
 Content-Type: application/json
@@ -993,8 +1200,11 @@ Content-Type: application/json
   "role": "user"
 }
 ```
-### PATCH - Partial Update
+
+## PATCH - Partial Update
+
 **Updates only specified fields, not idempotent**
+
 ```bash
 PATCH /api/users/5
 Content-Type: application/json
@@ -1002,21 +1212,30 @@ Content-Type: application/json
   "email": "surya.new@email.com"
 }
 ```
-### DELETE - Remove Resource
+
+## DELETE - Remove Resource
+
 **Deletes resource, idempotent**
+
 ```bash
 DELETE /api/users/5
 ```
+
 **Response (204 No Content or 200 OK):**
+
 ```json
 {
   "status": "success",
   "message": "User deleted successfully"
 }
 ```
+
 ---
+
 ## 🛡️ Error Handling
-### Error Response Structure
+
+## Error Response Structure
+
 ```json
 {
   "status": "error",
@@ -1034,7 +1253,9 @@ DELETE /api/users/5
   ]
 }
 ```
-### Common Error Scenarios
+
+## Common Error Scenarios
+
 | Status | Scenario                         | Response                            |
 | ------ | -------------------------------- | ----------------------------------- |
 | 400    | Invalid request data             | Missing required fields, bad format |
@@ -1045,31 +1266,45 @@ DELETE /api/users/5
 | 422    | Unprocessable entity             | Validation failed                   |
 | 429    | Too many requests                | Rate limit exceeded                 |
 | 500    | Server error                     | Unexpected server issue             |
+
 ---
+
 ## 🔄 API Versioning
-### URL Path Versioning (Most Common)
+
+## URL Path Versioning (Most Common)
+
 ```bash
 GET /api/v1/users
 GET /api/v2/users
 GET /api/v3/users
 ```
-### Header Versioning
+
+## Header Versioning
+
 ```bash
 GET /api/users
 Accept: application/vnd.company.v2+json
 ```
-### Query Parameter Versioning
+
+## Query Parameter Versioning
+
 ```bash
 GET /api/users?version=2
 ```
+
 **When to version:**
+
 - Breaking changes to endpoint behavior
 - Removing or renaming fields
 - Changing response structure
 - New required parameters
+
 ---
+
 ## ⏱️ Rate Limiting
+
 Prevents abuse by limiting request frequency
+
 ```bash
 GET /api/users HTTP/1.1
 Response Headers:
@@ -1077,13 +1312,19 @@ X-RateLimit-Limit: 1000
 X-RateLimit-Remaining: 850
 X-RateLimit-Reset: 1613567890
 ```
+
 **Common limits:**
+
 - Public API: 1,000 requests/hour
 - Authenticated API: 10,000 requests/hour
 - Premium: Unlimited
+
 ---
+
 ## 💾 Caching Strategies
-### Cache Control Headers
+
+## Cache Control Headers
+
 ```bash
 Cache-Control: max-age=3600           # Cache for 1 hour
 Cache-Control: no-cache              # Revalidate before use
@@ -1091,7 +1332,9 @@ Cache-Control: no-store              # Don't cache
 Cache-Control: public                # Shareable cache
 Cache-Control: private               # Browser cache only
 ```
-### Example Response
+
+## Example Response
+
 ```bash
 GET /api/products/5
 Response:
@@ -1099,14 +1342,20 @@ Cache-Control: max-age=300, public
 ETag: "abc123def456"
 Last-Modified: Mon, 15 Feb 2026 10:00:00 GMT
 ```
+
 **Best practices:**
+
 - Cache GET requests extensively
 - Don't cache POST/PUT/DELETE
 - Use ETags for validation
 - Set appropriate max-age values
+
 ---
+
 ## 📚 Real-World REST API Examples
-### Blog API
+
+## Blog API
+
 ```bash
 # Get all posts
 GET /api/v1/posts
@@ -1133,7 +1382,9 @@ POST /api/v1/posts/42/comments
 # Delete post
 DELETE /api/v1/posts/42
 ```
-### E-Commerce API
+
+## E-Commerce API
+
 ```bash
 # Browse products
 GET /api/v1/products?category=electronics&sort=price:asc&limit=20
@@ -1155,9 +1406,13 @@ PATCH /api/v1/orders/789
   "tracking_number": "TRACK123"
 }
 ```
+
 ---
+
 ## 🎯 Common Mistakes to Avoid
+
 ❌ **Bad Practices:**
+
 ```bash
 GET /api/getUser/5          # Use noun, not verb
 GET /api/get-users-list     # Use plural form
@@ -1165,7 +1420,9 @@ GET /api/users?userId=5     # Consistent naming
 POST /api/deleteUser        # Use DELETE method
 /api/user/posts/5           # Singular resource name
 ```
+
 ✅ **Good Practices:**
+
 ```bash
 GET /api/users/5            # Clear, consistent
 GET /api/users              # Plural nouns
@@ -1173,9 +1430,13 @@ GET /api/users/{id}/posts   # Nested relationships
 DELETE /api/users/5         # Correct HTTP method
 GET /api/users?limit=10&page=1  # Query parameters
 ```
+
 ---
+
 ## 🧪 Testing REST APIs
-### Tools Available
+
+## Tools Available
+
 1. **Postman** - Full-featured GUI tool
    - Collections for organizing requests
    - Environment variables
@@ -1194,7 +1455,9 @@ GET /api/users?limit=10&page=1  # Query parameters
    ```
 4. **Thunder Client** - Lightweight VS Code extension
 5. **Insomnia** - User-friendly GUI like Postman
-### Basic cURL Examples
+
+## Basic cURL Examples
+
 ```bash
 # GET request
 curl https://api.example.com/users/5
@@ -1208,9 +1471,13 @@ curl -H "Authorization: Bearer token" \
 # With query parameters
 curl "https://api.example.com/users?page=2&limit=5"
 ```
+
 ---
+
 ## 🚀 Best Practices Summary
+
 ✅ **Do's:**
+
 - Use HTTP methods correctly (GET, POST, PUT, DELETE)
 - Use nouns in endpoints, not verbs
 - Return appropriate status codes
@@ -1221,7 +1488,7 @@ curl "https://api.example.com/users?page=2&limit=5"
 - Use HTTPS always
 - Validate input data
 - Implement proper error responses
-❌ **Don'ts:**
+  ❌ **Don'ts:**
 - Don't mix GET and POST for same operation
 - Don't ignore caching headers
 - Don't leak sensitive info in URLs
@@ -1230,8 +1497,11 @@ curl "https://api.example.com/users?page=2&limit=5"
 - Don't return 200 for errors
 - Don't make breaking changes without versioning
 - Don't ignore pagination for large datasets
+
 ---
+
 ## 📖 Quick Reference
+
 | Need               | Solution                        |
 | ------------------ | ------------------------------- |
 | Get data           | GET /resource                   |
@@ -1244,8 +1514,11 @@ curl "https://api.example.com/users?page=2&limit=5"
 | Paginate           | ?page=1&limit=10                |
 | Cache data         | Cache-Control header            |
 | Identify user      | Authorization header / API Key  |
+
 ---
+
 ## 📚 Additional Resources
+
 - **REST maturity model (Richardson):** Levels 0-3 of REST compliance
 - **OpenAPI/Swagger:** Standard for API documentation
 - **JSON:API:** Specification for building JSON APIs

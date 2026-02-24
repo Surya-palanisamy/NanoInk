@@ -1,40 +1,42 @@
 # Introduction to Operating Systems
 ## What is an Operating System?
-An **Operating System (OS)** is system software that manages computer hardware, software resources, and provides common services for computer programs. It acts as an intermediary between users and computer hardware.
+
+An Operating System (OS) is system software that manages computer hardware, software resources, and provides common services for computer programs. It acts as an intermediary between users and computer hardware.
+
 ---
 ## Functions of an Operating System
-### 1. Process Management
+## 1. Process Management
 - Creation and deletion of processes
 - Scheduling of processes
 - Synchronization and communication between processes
 - Deadlock handling
-### 2. Memory Management
+## 2. Memory Management
 - Allocation and deallocation of memory
 - Keeping track of memory usage
 - Virtual memory management
 - Memory protection
-### 3. File System Management
+## 3. File System Management
 - Creation and deletion of files and directories
 - Mapping files onto secondary storage
 - File access control and permissions
 - Backup and recovery
-### 4. Device Management (I/O Management)
+## 4. Device Management (I/O Management)
 - Managing device drivers
 - Buffering, caching, and spooling
 - Device allocation and deallocation
 - I/O scheduling
-### 5. Security and Protection
+## 5. Security and Protection
 - User authentication
 - Access control mechanisms
 - Protection against unauthorized access
 - Encryption and data integrity
-### 6. User Interface
+## 6. User Interface
 - Command Line Interface (CLI)
 - Graphical User Interface (GUI)
 - Batch interface
 ---
 ## Types of Operating Systems
-### 1. Batch Operating System
+## 1. Batch Operating System
 - Jobs are collected and processed in batches
 - No user interaction during execution
 - Jobs with similar requirements are batched together
@@ -47,7 +49,7 @@ An **Operating System (OS)** is system software that manages computer hardware, 
 - Difficult to debug
 - One job failure can stall entire batch
 ---
-### 2. Multiprogramming Operating System
+## 2. Multiprogramming Operating System
 - Multiple programs loaded in memory simultaneously
 - CPU switches to another program when current one waits (e.g., for I/O)
 - Improves CPU utilization
@@ -56,7 +58,7 @@ An **Operating System (OS)** is system software that manages computer hardware, 
 - When Process A waits for I/O → CPU executes Process B
 - No time slicing (non-preemptive)
 ---
-### 3. Multitasking / Time-Sharing Operating System
+## 3. Multitasking / Time-Sharing Operating System
 - Extension of multiprogramming with time slicing
 - Each process gets a fixed time quantum (time slice)
 - Fast context switching creates illusion of parallel execution
@@ -70,7 +72,7 @@ An **Operating System (OS)** is system software that manages computer hardware, 
 - Context switching overhead
 - Security concerns with multiple users
 ---
-### 4. Multiprocessing Operating System
+## 4. Multiprocessing Operating System
 - Uses multiple CPUs/processors
 - Parallel processing of multiple tasks
 - Increased throughput and reliability
@@ -84,7 +86,7 @@ An **Operating System (OS)** is system software that manages computer hardware, 
 - Fault tolerance (if one CPU fails, others continue)
 - Better performance for parallel tasks
 ---
-### 5. Distributed Operating System
+## 5. Distributed Operating System
 - Multiple independent computers connected via network
 - Appear as a single coherent system to users
 - Resources are shared across the network
@@ -99,7 +101,7 @@ An **Operating System (OS)** is system software that manages computer hardware, 
 - Network dependency
 - Security challenges
 ---
-### 6. Real-Time Operating System (RTOS)
+## 6. Real-Time Operating System (RTOS)
 - Must respond within strict time constraints
 - Used in time-critical applications
 - Deterministic behavior is essential
@@ -113,53 +115,53 @@ An **Operating System (OS)** is system software that manages computer hardware, 
 - Predictable timing
 - Priority-based scheduling
 ---
-### 7. Network Operating System
+## 7. Network Operating System
 - Provides network-related functionality
 - Runs on a server, manages data and users
 - Allows shared access to files, printers, etc.
 **Examples:** Windows Server, Novell NetWare
 ---
-### 8. Mobile Operating System
+## 8. Mobile Operating System
 - Designed for mobile devices (smartphones, tablets)
 - Touch-based interface
 - Battery and resource optimization
 **Examples:** Android, iOS, HarmonyOS
 ---
-### 9. Embedded Operating System
+## 9. Embedded Operating System
 - Designed for embedded systems
 - Limited resources and specific functionality
 - Often real-time
 **Examples:** VxWorks, FreeRTOS, Embedded Linux
 ---
 ## Operating System Structure
-### 1. Monolithic Structure
+## 1. Monolithic Structure
 - All OS services run in kernel space
 - Single large kernel
 - **Example:** Traditional UNIX
 **Pros:** Fast, efficient
 **Cons:** Difficult to maintain, one bug can crash system
-### 2. Layered Structure
+## 2. Layered Structure
 - OS divided into layers, each built on top of lower layers
 - Each layer only uses services of layer below
 **Pros:** Easy to debug, modular
 **Cons:** Difficult to define layers, performance overhead
-### 3. Microkernel Structure
+## 3. Microkernel Structure
 - Minimal kernel with basic functions
 - Other services run in user space
 - **Example:** Minix, QNX
 **Pros:** Extensible, reliable, portable
 **Cons:** Performance overhead due to message passing
-### 4. Hybrid Structure
+## 4. Hybrid Structure
 - Combines monolithic and microkernel approaches
 - **Examples:** Windows NT, macOS
-### 5. Exokernel Structure
+## 5. Exokernel Structure
 - Minimal kernel that provides hardware abstraction
 - Applications manage their own resources
 - Maximum flexibility
 ---
 ## System Calls
 System calls provide the interface between a process and the operating system.
-### Categories of System Calls
+## Categories of System Calls
 | Category | Examples |
 |----------|----------|
 | **Process Control** | fork(), exec(), exit(), wait() |
@@ -168,7 +170,7 @@ System calls provide the interface between a process and the operating system.
 | **Information Maintenance** | getpid(), alarm(), sleep() |
 | **Communication** | pipe(), shmget(), mmap() |
 | **Protection** | chmod(), chown(), umask() |
-### How System Calls Work
+## How System Calls Work
 1. User program invokes system call
 2. Trap/interrupt generated (mode switch: user → kernel)
 3. OS identifies system call via number
@@ -182,7 +184,7 @@ System calls provide the interface between a process and the operating system.
 | **Access** | Limited resources | Full hardware access |
 | **Crash Impact** | Only process crashes | Entire system can crash |
 | **Instructions** | Limited instruction set | All instructions available |
-### Mode Bit
+## Mode Bit
 - **0** = Kernel mode
 - **1** = User mode
 - Hardware provides this mode bit for protection

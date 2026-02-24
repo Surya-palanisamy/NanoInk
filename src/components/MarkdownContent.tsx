@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 interface MarkdownContentProps {
   content: string;
 }
@@ -10,7 +10,13 @@ const COPY_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16
 const CHECK_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
 export function MarkdownContent({ content }: MarkdownContentProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     const container = containerRef.current;
     if (!container) return;
     const handleClick = (event: MouseEvent) => {
@@ -59,12 +65,18 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
     return () => {
       container.removeEventListener("click", handleClick);
     };
-  }, [content]);
+  }, [content, mounted]);
+
+  if (!mounted) {
+    return <div className="prose prose-sm sm:prose md:prose-base max-w-none" dangerouslySetInnerHTML={{ __html: content }} />;
+  }
+
   return (
     <div
       ref={containerRef}
       className="prose prose-sm sm:prose md:prose-base max-w-none"
       dangerouslySetInnerHTML={{ __html: content }}
+      suppressHydrationWarning
     />
   );
 }

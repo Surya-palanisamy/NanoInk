@@ -24,11 +24,11 @@
 - Kubernetes
 - Microservices like Netflix, Uber, Spotify
 - CI/CD pipelines
-### What Is Docker?
+## What Is Docker?
 > Docker is a platform that lets you build, run, and manage applications in lightweight containers.
 > Containers include everything needed to run apps — code, libraries, runtime, and configs.
 ---
-### 1. Install Docker
+## 1. Install Docker
 Check Docker version
 ```bash
 docker --version
@@ -53,7 +53,7 @@ docker run -it -p 8001:8080 --name my-nginx nginx
 - `--name my-nginx` → give name, if not random name is given
 - `nginx` → image name
 ---
-### 2. Basic Docker Commands
+## 2. Basic Docker Commands
 | Command                          | Use                   |
 | -------------------------------- | --------------------- |
 | `docker images`                  | List images           |
@@ -61,7 +61,7 @@ docker run -it -p 8001:8080 --name my-nginx nginx
 | `docker logs <name/id>`          | View logs             |
 | `docker exec -it <name/id> bash` | Enter container shell |
 ---
-### 3. Containers
+## 3. Containers
 - Start a container
 ```docker
 docker start <name/id>
@@ -98,7 +98,7 @@ docker system prune
 docker system prune -a
 ```
 ---
-### 3. Information
+## 3. Information
 | Example                    | Description                            |
 | -------------------------- | -------------------------------------- |
 | `docker ps`                | List running containers                |
@@ -111,7 +111,7 @@ docker system prune -a
 | `docker stats <name/id>`   | Container Resource Usage               |
 | `docker diff <name/id>`    | Lists the changes made to a container. |
 ---
-### 4. Update
+## 4. Update
 1.  **Create Container (without running)**
 ```docker
 docker create --name my_redis --expose 6379 redis
@@ -127,7 +127,7 @@ docker rename oldName newName
 docker update --cpu-shares 512 -m 300M <name/id>
 ```
 ---
-### 5. Manipulating
+## 5. Manipulating
 | `Example`                          | Description                     |
 | ---------------------------------- | ------------------------------- |
 | `docker images`                    | Listing images                  |
@@ -140,7 +140,7 @@ docker update --cpu-shares 512 -m 300M <name/id>
 | `docker tag nginx eon01/nginx`     | Tagging an image                |
 | `docker push eon01/nginx`          | Pushing an image                |
 ---
-### 6. Docker HUB
+## 6. Docker HUB
 ```docker
 docker login
 docker push myrepo/nginx
@@ -161,12 +161,12 @@ docker search nginx
 docker logout
 ```
 ---
-### 7. Build Your Own Image (Dockerfile)
+## 7. Build Your Own Image (Dockerfile)
 ```docker
 docker build -t myapp .
 ```
 ---
-### 8. Docker Networking
+## 8. Docker Networking
 > List Networks
 ```docker
 docker network ls
@@ -202,7 +202,7 @@ docker network disconnect MyNetwork my-nginx
 docker network rm MyNetwork
 ```
 ---
-### 9.Volumes (Persistent Storage)
+## 9.Volumes (Persistent Storage)
 1. Create Volume
 ```docker
 docker volume create myVolume
@@ -223,7 +223,7 @@ docker volume ls
 docker volume prune
 ```
 ---
-### 10.Adding DNS to Docker Containers
+## 10.Adding DNS to Docker Containers
 You can control how containers resolve domain names using Docker DNS options.
 ---
 > Add DNS While Running a Container

@@ -1,4 +1,4 @@
-### DevOps Core Tools — Terraform vs Ansible vs Kubernetes
+## DevOps Core Tools — Terraform vs Ansible vs Kubernetes
 #### 🧭 Big Picture
 These three tools do different jobs. They are not replacements.
 
@@ -9,10 +9,10 @@ These three tools do different jobs. They are not replacements.
 | **Kubernetes** | Runs & manages containers               |
 
 ---
-### 🧱 Terraform — Infrastructure as Code (IaC)
-### 🔹 Purpose
+## 🧱 Terraform — Infrastructure as Code (IaC)
+## Purpose
 - Create and manage cloud infrastructure
-### 🔹 What Terraform Can Create
+## What Terraform Can Create
 - Virtual Machines (EC2, Compute Engine, Azure VM)
 - Networks (VPC, Subnets)
 - Databases
@@ -30,8 +30,8 @@ These three tools do different jobs. They are not replacements.
 - Automate infrastructure creation
 - Version-controlled infrastructure
 ---
-### Ansible — Configuration & Automation
-### Purpose
+## Ansible — Configuration & Automation
+## Purpose
 - Configure systems
 - Automate repetitive admin work
 #### Common Uses
@@ -41,7 +41,7 @@ These three tools do different jobs. They are not replacements.
 - Deploy applications
 - System updates
 - Security configurations
-#### Key Features
+## Key Features
 - Agentless (uses SSH)
 - YAML Playbooks
 - Idempotent (won’t redo same work)
@@ -51,7 +51,7 @@ Instead of configuring 100 servers manually:
 - Write one Ansible Playbook
 - Run once → everything gets configured identically
 ---
-#### Kubernetes — Container Orchestration
+## Kubernetes — Container Orchestration
 #### Purpose
 Run and manage containerized applications at scale.
 #### What Kubernetes Does
@@ -71,7 +71,7 @@ When you have:
 - Cloud native apps
 - Microservices architectures
 ---
-#### 🧠 Simple Analogy
+## 🧠 Simple Analogy
 Imagine building a city:
 - **Terraform** = Builds roads, buildings, power supply (Infrastructure)
 - **Ansible** = Sets up furniture, wiring, and equipment inside buildings (Configuration)
@@ -93,7 +93,7 @@ Yes! In real DevOps pipelines, they are commonly used together.
 - Manages scaling & reliability
 They are **teammates**, not competitors.
 ---
-#### 🏁 Summary Table
+## 🏁 Summary Table
 | Feature  | Terraform             | Ansible              | Kubernetes              |
 | -------- | --------------------- | -------------------- | ----------------------- |
 | Type     | IaC tool              | Config & Automation  | Orchestration           |
