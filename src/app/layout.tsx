@@ -3,6 +3,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { getManifest } from "@/lib/manifest";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 const inter = Inter({
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | Nano Ink",
   },
   description:
-    "Your personal knowledge base for Computer Science",
+    "Nano Ink is a computer science knowledge base with notes on programming, data structures, algorithms, web development and system design.",
   applicationName: "Nano Ink",
   authors: [{ name: "Surya palanisamy" }],
   creator: "Surya palanisamy",
@@ -37,6 +38,14 @@ export const metadata: Metadata = {
     "Coding Notes",
     "Tech Reference",
     "Nano Ink",
+    "computer science notes",
+    "data structures and algorithms notes",
+    "programming tutorials",
+    "web development notes",
+    "system design basics",
+    "coding interview preparation",
+    "Next.js learning notes",
+    "Nano Ink knowledge base",
   ],
   metadataBase: new URL("https://nano-ink.vercel.app"),
   openGraph: {
@@ -44,13 +53,13 @@ export const metadata: Metadata = {
     siteName: "Nano Ink",
     title: "Nano Ink",
     description:
-      "Your personal knowledge base for Computer Science",
+      "Nano Ink is a computer science knowledge base with notes on programming, data structures, algorithms, web development and system design.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Nano Ink",
     description:
-      "Your personal knowledge base for Computer Science",
+      "Nano Ink is a computer science knowledge base with notes on programming, data structures, algorithms, web development and system design.",
   },
   icons: {
     icon: "/favicon.ico",
@@ -76,6 +85,18 @@ export default function RootLayout({
             </div>
           </div>
         </ThemeProvider>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-N1W7WM3PSP"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N1W7WM3PSP');
+    `}
+        </Script>
       </body>
     </html>
   );
