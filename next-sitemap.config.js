@@ -27,6 +27,5 @@ module.exports = {
         allow: "/",
       },
     ],
-    additionalSitemaps: ["https://ink.suryapalanisamy.tech/sitemap.xml"],
   },
 };
