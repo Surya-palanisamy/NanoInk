@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "gray-matter": "4.0.3",
     "highlight.js": "11.11.1",
     "marked": "12.0.2",
     "next": "^16.1.6",
+    "next-sitemap": "^4.2.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },

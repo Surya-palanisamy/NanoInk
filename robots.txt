@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Disallow unnecessary system paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /private/
+Disallow: /admin/
+
+# Allow important assets
+Allow: /favicon.ico
+Allow: /images/
+Allow: /fonts/
+Allow: /assets/ 
+Allow: /docs/*
+
+# Sitemap location
+Sitemap: https://nano-ink.vercel.app/sitemap.xml

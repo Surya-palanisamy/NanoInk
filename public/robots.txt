@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nano-ink.vercel.app
+
+# Sitemaps
+Sitemap: https://nano-ink.vercel.app/sitemap.xml
