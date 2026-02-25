@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     "Next.js learning notes",
     "Nano Ink knowledge base",
   ],
-  metadataBase: new URL("http://ink.suryapalanisamy.tech"),
+  metadataBase: new URL("http://nanoink.suryapalanisamy.tech"),
   openGraph: {
     type: "website",
     siteName: "Nano Ink",

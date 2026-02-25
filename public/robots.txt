@@ -15,8 +15,7 @@ User-agent: Brave
 Allow: /
 
 # Host
-Host: https://ink.suryapalanisamy.tech
+Host: https://nanoink.suryapalanisamy.tech
 
 # Sitemaps
-Sitemap: https://ink.suryapalanisamy.tech/sitemap.xml
-Sitemap: https://nanoink.vercel.app/sitemap.xml
+Sitemap: https://nanoink.suryapalanisamy.tech/sitemap.xml

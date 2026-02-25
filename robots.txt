@@ -22,5 +22,5 @@ Allow: /assets/
 Allow: /docs/*
 
 # Sitemap location
-Sitemap: https://ink.suryapalanisamy.tech/sitemap.xml
+Sitemap: https://nanoink.suryapalanisamy.tech/sitemap.xml
 

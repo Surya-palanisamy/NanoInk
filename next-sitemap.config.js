@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://ink.suryapalanisamy.tech",
+  siteUrl: "https://nanoink.suryapalanisamy.tech",
   generateRobotsTxt: true,
 
   // Optional but good for SEO
