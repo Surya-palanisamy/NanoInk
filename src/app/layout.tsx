@@ -14,7 +14,12 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 });
+export const viewport = {
+  themeColor: "#0a0a0a",
+};
+
 export const metadata: Metadata = {
+  manifest: "/manifest.json",
   title: {
     default: "Nano Ink",
     template: "%s | Nano Ink",
@@ -62,7 +67,7 @@ export const metadata: Metadata = {
       "Nano Ink is a computer science knowledge base with notes on programming, data structures, algorithms, web development and system design.",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
   robots: {
     index: true,
@@ -109,6 +114,15 @@ export default function RootLayout({
       gtag('js', new Date());
       gtag('config', 'G-N1W7WM3PSP');
     `}
+        </Script>
+        <Script id="register-sw" strategy="afterInteractive">
+          {`
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js');
+              });
+            }
+          `}
         </Script>
       </body>
     </html>

@@ -26,15 +26,14 @@ export function Header() {
           <div className="flex items-center gap-3 sm:gap-6 min-w-0">
             <Link
               href="/"
-              className="flex items-center gap-2 text-accent hover:text-accent-hover transition-colors flex-shrink-0"
+              className="flex items-center gap-2 md:gap-3 text-accent hover:text-accent-hover transition-colors flex-shrink-0"
             >
-              <svg
-                className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" />
-              </svg>
+              <img
+                src="/favicon.png"
+                alt="Nano Ink"
+                className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
+              />
+
               <span className="text-[16px] sm:inline text-base sm:text-lg font-semibold text-neutral-100 dark:text-neutral-100 light:text-black">
                 Nano Ink
               </span>
