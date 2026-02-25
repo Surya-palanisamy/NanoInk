@@ -2,8 +2,21 @@
 User-agent: *
 Allow: /
 
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# DuckDuckBot
+User-agent: DuckDuckBot
+Allow: /
+
+# Brave
+User-agent: Brave
+Allow: /
+
 # Host
-Host: https://nano-ink.vercel.app
+Host: https://ink.suryapalanisamy.tech
 
 # Sitemaps
-Sitemap: https://nano-ink.vercel.app/sitemap.xml
+Sitemap: https://ink.suryapalanisamy.tech/sitemap.xml
+Sitemap: https://nanoink.vercel.app/sitemap.xml

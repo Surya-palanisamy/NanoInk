@@ -27,9 +27,6 @@ module.exports = {
         allow: "/",
       },
     ],
-    additionalSitemaps: [
-      "https://ink.suryapalanisamy.tech/sitemap.xml",
-      "https://nanoink.vercel.app/sitemap.xml",
-    ],
+    additionalSitemaps: ["https://ink.suryapalanisamy.tech/sitemap.xml"],
   },
 };
