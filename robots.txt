@@ -23,4 +23,4 @@ Allow: /docs/*
 
 # Sitemap location
 Sitemap: https://ink.suryapalanisamy.tech/sitemap.xml
-Sitemap: https://nanoink.vercel.app/sitemap.xml
+
