@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
+User-agent: Googlebot
+Allow: /
+User-agent: DuckDuckBot
+Allow: /
+User-agent: Brave
+Allow: /
 
 # Disallow unnecessary system paths
 Disallow: /api/
@@ -16,4 +22,5 @@ Allow: /assets/
 Allow: /docs/*
 
 # Sitemap location
-Sitemap: https://nano-ink.vercel.app/sitemap.xml
+Sitemap: https://ink.suryapalanisamy.tech/sitemap.xml
+Sitemap: https://nanoink.vercel.app/sitemap.xml
