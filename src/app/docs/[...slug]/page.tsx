@@ -1,8 +1,7 @@
 import { getMarkdownContent, getAllMarkdownPaths } from "@/lib/markdown";
-import { TableOfContents } from "@/components/TableOfContents";
-import { MarkdownContent } from "@/components/MarkdownContent";
 import { getManifest } from "@/lib/manifest";
 import { notFound } from "next/navigation";
+import { ClientPageWrapper } from "./ClientPageWrapper";
 interface DocPageProps {
   params: Promise<{
     slug: string[];
@@ -47,43 +46,38 @@ export default async function DocPage({ params }: DocPageProps) {
   }
   // Build breadcrumb
   const breadcrumbParts = slug.slice(0, -1);
+  const breadcrumb = (
+    <nav className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-neutral-500 light:text-black mb-4 sm:mb-6 mt-14 lg:mt-0 overflow-x-auto pb-2">
+      {breadcrumbParts.map((part, index) => (
+        <span
+          key={index}
+          className="flex items-center gap-1 sm:gap-2 whitespace-nowrap"
+        >
+          <span className="text-neutral-400 light:text-black text-xs sm:text-sm truncate">
+            {part}
+          </span>
+          <svg
+            className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </span>
+      ))}
+      <span className="text-neutral-200 dark:text-neutral-200 light:text-black text-xs sm:text-sm truncate">
+        {finalSlug[finalSlug.length - 1]}
+      </span>
+    </nav>
+  );
+
   return (
-    <>
-      {/* Table of Contents - NOT affected by page-enter animation */}
-      <TableOfContents headings={headings} />
-      {/* Main article content - with page-enter animation applied only here */}
-      <div className="page-enter flex-1 w-full xl:pr-[var(--toc-width,240px)] mb-20 md:mb-0">
-        <div className="max-w-4xl mx-auto lg:mx-0 px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-neutral-500 light:text-black mb-4 sm:mb-6 mt-14 lg:mt-0 overflow-x-auto pb-2">
-            {breadcrumbParts.map((part, index) => (
-              <span
-                key={index}
-                className="flex items-center gap-1 sm:gap-2 whitespace-nowrap"
-              >
-                <span className="text-neutral-400 light:text-black text-xs sm:text-sm truncate">
-                  {part}
-                </span>
-                <svg
-                  className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </span>
-            ))}
-            <span className="text-neutral-200 dark:text-neutral-200 light:text-black text-xs sm:text-sm truncate">
-              {finalSlug[finalSlug.length - 1]}
-            </span>
-          </nav>
-          {/* Article */}
-          <article>
-            <MarkdownContent content={content} />
-          </article>
-        </div>
-      </div>
-    </>
+    <ClientPageWrapper
+      initialContent={content}
+      initialHeadings={headings}
+      filePath={filePath}
+      breadcrumb={breadcrumb}
+    />
   );
 }
