@@ -1,6 +1,6 @@
 # SQL - Structured Query Language
 
-## A comprehensive guide to SQL covering all commands, queries, joins, subqueries, window functions, and advanced topics.
+A comprehensive guide to SQL covering all commands, queries, joins, subqueries, window functions, and advanced topics.
 
 ## Introduction to SQL
 
@@ -2142,13 +2142,3 @@ SELECT emp_id, 'phone3', phone3 FROM contacts WHERE phone3 IS NOT NULL;
 | AVG() OVER       | Running/partitioned average |
 
 ---
-
-## Further Reading
-
-- [MySQL Documentation](https://dev.mysql.com/doc/)
-- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
-- [SQLite Documentation](https://www.sqlite.org/docs.html)
-- [SQL Server Documentation](https://docs.microsoft.com/en-us/sql/)
-- [Use The Index, Luke](https://use-the-index-luke.com/)
-- [SQL Style Guide](https://www.sqlstyle.guide/)
-- [Modern SQL](https://modern-sql.com/)

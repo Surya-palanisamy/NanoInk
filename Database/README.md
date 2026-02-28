@@ -1,7 +1,6 @@
 # Database
 
 A comprehensive guide to database technologies, covering both relational (SQL) and non-relational (NoSQL) databases.
-
 ## SQL (Relational Databases)
 
 | File | Description                                                         |

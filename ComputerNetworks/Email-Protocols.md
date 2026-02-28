@@ -3,6 +3,7 @@
 ## Overview
 
 Email communication works using three main protocols:
+
 | Protocol | Purpose |
 | :------- | :-------------------------------------- |
 | SMTP | Sending emails |

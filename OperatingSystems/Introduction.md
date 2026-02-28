@@ -189,18 +189,6 @@ System calls provide the interface between a process and the operating system.
 - **1** = User mode
 - Hardware provides this mode bit for protection
 ---
-## Key Interview Questions
-**Q1: What is the difference between multiprogramming and multitasking?**
-> Multiprogramming keeps multiple programs in memory to improve CPU utilization (no time sharing). Multitasking adds time slicing, giving each process a time quantum for interactive user experience.
-**Q2: Why do we need an operating system?**
-> OS manages hardware resources, provides abstraction, enables multitasking, ensures security, and provides a user interface for interaction with the computer.
-**Q3: What is the difference between a program and a process?**
-> A program is a passive entity (executable file on disk). A process is an active entity (program in execution with its own memory, registers, and state).
-**Q4: What is a system call?**
-> A system call is the programmatic way for a process to request a service from the operating system's kernel.
-**Q5: Explain the difference between monolithic and microkernel architecture.**
-> In monolithic architecture, all OS services run in kernel space as a single large executable. In microkernel architecture, only essential services run in kernel space while others run in user space, communicating via message passing.
----
 ## Summary
 | OS Type | Key Feature | Example |
 |---------|-------------|---------|

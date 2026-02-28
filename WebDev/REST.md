@@ -1,6 +1,6 @@
-# 🌐 REST API Cheat Sheet
+# REST API Cheat Sheet
 
-## 📌 What is REST?
+## What is REST?
 
 **REST (Representational State Transfer)** is an architectural style for designing networked applications using **HTTP** methods.
 
@@ -28,11 +28,11 @@ The server never says "remember the last user from Request 1" - each request is 
 
 ## Why is REST Popular?
 
-✅ Simple to understand  
-✅ Uses standard HTTP—no special protocols  
-✅ Scalable—servers don't store session data  
-✅ Cacheable—responses can be reused  
-✅ Works across different platforms and languages
+Simple to understand  
+ Uses standard HTTP—no special protocols  
+ Scalable—servers don't store session data  
+ Cacheable—responses can be reused  
+ Works across different platforms and languages
 
 ---
 
@@ -137,12 +137,12 @@ Rarely used in modern REST APIs
 
 **Idempotent:** Making the same request multiple times gives same result
 
-- ✅ **GET** → Always returns same data
-- ✅ **PUT** → Replacing data multiple times = same result
-- ✅ **DELETE** → Deleting same item twice = already gone
+- **GET** → Always returns same data
+- **PUT** → Replacing data multiple times = same result
+- **DELETE** → Deleting same item twice = already gone
 - ❌ **POST** → Creates new resource each time
   **Safe:** Request doesn't change server data
-- ✅ **GET** → Only reads, never modifies
+- **GET** → Only reads, never modifies
 - ❌ **POST/PUT/PATCH/DELETE** → Changes server state
 
 ## Real Examples
@@ -152,10 +152,10 @@ Rarely used in modern REST APIs
 ```bash
 # Retrieve product
 GET /api/products/42
-# Call 100 times → Same response, no data changed ✅
+# Call 100 times → Same response, no data changed
 # Retrieve user
 GET /api/users/5
-# Data never changes on server ✅
+# Data never changes on server
 ```
 
 **POST (NOT Idempotent, NOT Safe)**
@@ -178,11 +178,11 @@ POST /api/orders
 # Update user (replace all fields)
 PUT /api/users/5
 { "name": "John", "email": "john@email.com", "age": 30 }
-# User 5 updated ✅
+# User 5 updated
 # Run exact same request
 PUT /api/users/5
 { "name": "John", "email": "john@email.com", "age": 30 }
-# User 5 has same data, no additional changes ✅
+# User 5 has same data, no additional changes
 # Same result, data safe to replace multiple times
 ```
 
@@ -192,7 +192,7 @@ PUT /api/users/5
 # Partial update user
 PATCH /api/users/5
 { "age": 31 }
-# User age changed from 30 → 31 ✅
+# User age changed from 30 → 31
 # Run same request
 PATCH /api/users/5
 { "age": 31 }
@@ -205,12 +205,12 @@ PATCH /api/users/5
 ```bash
 # Delete user
 DELETE /api/users/5
-# User 5 deleted ✅
+# User 5 deleted
 # Run same request
 DELETE /api/users/5
-# User already gone, same end result ✅
+# User already gone, same end result
 # Idempotent (already deleted = still deleted)
-# But data changed on server ✅
+# But data changed on server
 ```
 
 ---
@@ -312,7 +312,7 @@ DELETE /api/users/5
 
 ## Good Practices with Real Examples
 
-**✅ Use nouns, not verbs**
+** Use nouns, not verbs**
 
 ```
 GOOD:
@@ -327,7 +327,7 @@ DELETE /deleteUser/5       # Redundant verb
 GET    /fetchAllProducts   # Verb (fetch) is unnecessary
 ```
 
-**✅ Use plural resources**
+** Use plural resources**
 
 ```
 GOOD:
@@ -339,7 +339,7 @@ BAD:
 /product            (singular - inconsistent)
 ```
 
-**✅ Use hierarchy for relationships**
+** Use hierarchy for relationships**
 
 ```
 GOOD:
@@ -351,7 +351,7 @@ GET    /orders?user=5                     (flatter, less relationships)
 GET    /getUserOrders/5                   (using verbs)
 ```
 
-**✅ Use query params for filtering, not paths**
+** Use query params for filtering, not paths**
 
 ```
 GOOD:
@@ -664,8 +664,8 @@ PATCH /api/users/5
   "id": 5,
   "name": "New Name",         ← Changed
   "email": "new@email.com",   ← Changed
-  "age": 30,                  ← Unchanged ✅
-  "phone": "123456"           ← Unchanged ✅
+  "age": 30,                  ← Unchanged
+  "phone": "123456"           ← Unchanged
 }
 # Safe! Nothing gets accidentally deleted.
 ```
@@ -735,14 +735,14 @@ Response: 204 No Content
 
 A request is **idempotent** if repeating it multiple times gives the same safe result.
 
-## GET - Idempotent & Safe ✅
+## GET - Idempotent & Safe
 
 ```bash
 # Request user 5 three times:
 GET /api/users/5  → { "id": 5, "name": "John", "email": "john@email.com" }
 GET /api/users/5  → { "id": 5, "name": "John", "email": "john@email.com" }
 GET /api/users/5  → { "id": 5, "name": "John", "email": "john@email.com" }
-Result: Same data, no changes ✅ Idempotent & Safe
+Result: Same data, no changes  Idempotent & Safe
 ```
 
 ## POST - NOT Idempotent, NOT Safe ❌
@@ -758,31 +758,31 @@ POST /api/users { "name": "John", "email": "john@email.com" }
 Result: Three different users created ❌ NOT Idempotent
 ```
 
-## PUT - Idempotent, NOT Safe ✅❌
+## PUT - Idempotent, NOT Safe ❌
 
 ```bash
 # Request: Replace user 5's data three times
 PUT /api/users/5 { "name": "Jane", "email": "jane@email.com" }
 → User 5 updated
 PUT /api/users/5 { "name": "Jane", "email": "jane@email.com" }
-→ User 5 already has same data ✅
+→ User 5 already has same data
 PUT /api/users/5 { "name": "Jane", "email": "jane@email.com" }
-→ User 5 still has same data ✅
-Result: Safe to repeat, same result ✅ Idempotent
+→ User 5 still has same data
+Result: Safe to repeat, same result  Idempotent
 (But data on server changed ❌ Not Safe)
 ```
 
-## DELETE - Idempotent, NOT Safe ✅❌
+## DELETE - Idempotent, NOT Safe ❌
 
 ```bash
 # Request: Delete user 5 three times
 DELETE /api/users/5
-→ User 5 deleted ✅
+→ User 5 deleted
 DELETE /api/users/5
-→ User already gone (same end state) ✅
+→ User already gone (same end state)
 DELETE /api/users/5
-→ User still gone (same end state) ✅
-Result: Safe to repeat, same end state ✅ Idempotent
+→ User still gone (same end state)
+Result: Safe to repeat, same end state  Idempotent
 (But data deleted ❌ Not Safe)
 ```
 
@@ -809,7 +809,7 @@ Result: Different outcomes ❌ NOT Idempotent
 # But connection drops, you don't get response
 # You retry: DELETE /api/users/5
 With DELETE (idempotent):
-→ Already deleted, nothing happens ✅ Safe to retry
+→ Already deleted, nothing happens  Safe to retry
 With POST (not idempotent):
 → Creates duplicate order ❌ Can't safely retry
 ```
@@ -939,7 +939,7 @@ Specifies character encoding.
 ```bash
 Content-Type: application/json; charset=utf-8
 Content-Type: text/html; charset=utf-8
-# Most APIs use UTF-8 (supports all languages ✅)
+# Most APIs use UTF-8 (supports all languages )
 ```
 
 ---
@@ -1421,7 +1421,7 @@ POST /api/deleteUser        # Use DELETE method
 /api/user/posts/5           # Singular resource name
 ```
 
-✅ **Good Practices:**
+**Good Practices:**
 
 ```bash
 GET /api/users/5            # Clear, consistent
@@ -1476,7 +1476,7 @@ curl "https://api.example.com/users?page=2&limit=5"
 
 ## 🚀 Best Practices Summary
 
-✅ **Do's:**
+**Do's:**
 
 - Use HTTP methods correctly (GET, POST, PUT, DELETE)
 - Use nouns in endpoints, not verbs

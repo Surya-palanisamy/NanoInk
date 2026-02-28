@@ -1,6 +1,6 @@
 # NGINX
 
-![NGINX](images/Nginx.png)
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292320/Nginx_qqcdrk.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292320/Nginx_qqcdrk.png)
 
 ## Install
 ```bash

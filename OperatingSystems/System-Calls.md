@@ -1,6 +1,6 @@
 # System Calls
 
-## System calls provide the interface between a running program and the operating system. They are the primary way for user programs to request services from the kernel.
+System calls provide the interface between a running program and the operating system. They are the primary way for user programs to request services from the kernel.
 
 ## What is a System Call?
 
@@ -361,42 +361,6 @@ if (fd == -1) {
 ```
 
 ---
-
-## Important Interview Questions
-
-## Q1: What is a system call?
-
-**A:** A system call is a programmatic way for a user process to request services from the operating system kernel. It provides a controlled interface for accessing hardware and protected resources.
-
-## Q2: What happens during a system call?
-
-**A:**
-
-1. User program triggers trap/software interrupt
-2. CPU switches from user mode to kernel mode
-3. OS identifies system call via number
-4. Kernel executes requested service
-5. Result returned, mode switches back to user
-
-## Q3: Why do we need both user mode and kernel mode?
-
-**A:** To protect the system from faulty/malicious programs. User mode restricts access to critical resources, while kernel mode allows full access. This isolation ensures system stability and security.
-
-## Q4: Difference between system call and library call?
-
-**A:** System calls involve mode switch to kernel and access OS services. Library calls stay in user mode and don't directly access kernel. Library calls are faster as they don't require mode switching.
-
-## Q5: What is the overhead of a system call?
-
-**A:** System calls have significant overhead due to:
-
-- Mode switching (save/restore context)
-- Stack switching
-- Cache/TLB effects
-- Typical time: 100-1000 nanoseconds
-
----
-
 ## Quick Reference
 
 ```

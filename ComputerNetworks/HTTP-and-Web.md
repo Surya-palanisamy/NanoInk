@@ -13,15 +13,20 @@ Used to transfer web pages.
 
 ---
 
+
 ## Client-Server Architecture
 
 **Client:** Requests data  
 **Server:** Responds with data
+
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292380/Web-browser_efex8a.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292380/Web-browser_efex8a.png)
+
+
 Examples:
 
 - Browser → Client
 - Website → Server
-  ![HTTP Client-Server Communication](images/HTTP-1.gif)
+  ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292322/HTTP-1_qodzfw.gif](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292322/HTTP-1_qodzfw.gif)
 
 ---
 
@@ -74,7 +79,7 @@ Examples:
 | 502  | Bad Gateway           |
 | 503  | Service Unavailable   |
 
-## ![HTTP Status Codes](images/http-status-codes.png)
+ ![HTTP Status Codes](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/osi-layers_iskfmf.png)
 
 ## URL Breakdown
 
@@ -111,8 +116,9 @@ Examples:
 | REST    | Resource-based, uses HTTP methods |
 | GraphQL | Query language for APIs           |
 | SOAP    | XML-based, more structured        |
+|         |                                   |
 
-## ![API Diagram](images/API.png)
+ ![API Diagram](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292395/API_lfyqqh.png)
 
 ## Cookies vs Sessions vs Local Storage
 

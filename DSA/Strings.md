@@ -126,3 +126,5 @@ class Main {
   - A→ 0 → 1
   - S→ 18 → 2
   - Output in alphabetical order: A 1, R 1, S 2, U 1, Y 1
+
+

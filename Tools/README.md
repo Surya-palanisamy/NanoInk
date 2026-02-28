@@ -1,6 +1,6 @@
 # Development Tools
 
-## Essential tools and utilities for developers to improve productivity and workflow.
+Essential tools and utilities for developers to improve productivity and workflow.
 
 ## 📚 Topics
 

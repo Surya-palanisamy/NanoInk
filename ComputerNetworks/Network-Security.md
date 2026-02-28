@@ -1,4 +1,4 @@
-# Network Security
+	# Network Security
 
 ## 1. Firewall
 
@@ -125,3 +125,4 @@ SSH is a secure protocol used to remotely access and manage systems over a netwo
 | VPN           | Encrypted tunnel      | Various |
 | SSH           | Secure remote access  | 22      |
 | SSL/TLS       | Encrypted web traffic | 443     |
+

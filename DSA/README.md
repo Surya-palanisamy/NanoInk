@@ -56,3 +56,5 @@
 3. **Brute force first** - Get a working solution
 4. **Optimize** - Identify bottlenecks, apply patterns
 5. **Edge cases** - Empty input, single element, duplicates
+
+

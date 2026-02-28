@@ -1,6 +1,6 @@
 # Process Synchronization
 
-## Process synchronization is the coordination of concurrent processes to ensure correct execution when accessing shared resources.
+Process synchronization is the coordination of concurrent processes to ensure correct execution when accessing shared resources.
 
 ## Why Synchronization?
 
@@ -416,39 +416,6 @@ monitor ProducerConsumer {
 | Mutex      | OS       | Yes (spinlock) | Low        |
 | Semaphore  | OS       | Optional       | Medium     |
 | Monitor    | Language | No             | High       |
-
----
-
-## Common Interview Questions
-
-## Q1: What is a race condition?
-
-**A:** A race condition occurs when multiple processes access shared data concurrently and the final result depends on the order of execution.
-
-## Q2: Difference between mutex and semaphore?
-
-**A:**
-
-- Mutex is binary (0 or 1), semaphore can be any non-negative integer
-- Mutex must be released by the same process that acquired it
-- Semaphore is used for signaling, mutex for mutual exclusion
-
-## Q3: What is a spinlock?
-
-**A:** A lock that uses busy waiting. The process continuously checks if the lock is available, wasting CPU cycles but avoiding context switch overhead.
-
-## Q4: What is priority inversion?
-
-**A:** When a high-priority process is blocked waiting for a resource held by a low-priority process, which may be preempted by medium-priority processes.
-
-## Q5: How to prevent deadlock in Dining Philosophers?
-
-**A:**
-
-1. Allow max 4 philosophers at table
-2. Pick both forks atomically
-3. Odd/even philosophers pick forks in different order
-4. Use asymmetric solution
 
 ---
 

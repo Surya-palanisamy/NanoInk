@@ -98,7 +98,9 @@ class Cat extends Animal {
 }
 ```
 
-## **Simple Explanation:** If you tell any `Animal` to `makeSound()`, it knows exactly what unique response to give. A `Dog` forms a bark, and a `Cat` forms a meow, even though they were both commanded using the exact same generic `makeSound()` name.
+### Simple Explanation: 
+
+If you tell any `Animal` to `makeSound()`, it knows exactly what unique response to give. A `Dog` forms a bark, and a `Cat` forms a meow, even though they were both commanded using the exact same generic `makeSound()` name.
 
 ## 5. Constructor
 

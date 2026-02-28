@@ -43,7 +43,6 @@ String site = "cheatsheets.zip";
 | `char`    | 2 byte | \\u0000 | 0 ^to^ 65535        |
 | `boolean` | _N/A_  | false   | true / false        |
 
-{.show-header}
 
 ## Strings
 
@@ -538,7 +537,7 @@ for (int i = 0; i < 5; i++) {
 | [LinkedBlockingDeque](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/LinkedBlockingDeque.html)     | Deque       | Y       | _N_    | Y           | Y         | _N_                |
 | [PriorityBlockingQueue](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/PriorityBlockingQueue.html) | Queue       | Y       | _N_    | Y           | Y         | _N_                |
 
-{.show-header .left-text}
+
 
 ## ArrayList
 
@@ -712,25 +711,25 @@ multi-line comment!
 - `native`
 - `super`
 - `while`
-  {.marker-none .cols-6}
+
 
 ## Math methods
 
-| Method                | Description            |
-| --------------------- | :--------------------- |
-| `Math.max(a,b)`       | Maximum of a and b     |
-| `Math.min(a,b)`       | Minimum of a and b     |
-| `Math.abs(a)`         | Absolute value a       |
-| `Math.sqrt(a)`        | Square-root of a       |
-| `Math.pow(a,b)`       | Power of b             |
-| `Math.round(a)`       | Closest integer        |
-| `Math.sin(ang)`       | Sine of ang            |
-| `Math.cos(ang)`       | Cosine of ang          |
-| `Math.tan(ang)`       | Tangent of ang         |
-| `Math.asin(ang)`      | Inverse sine of ang    |
-| `Math.log(a)`         | Natural logarithm of a |
-| `Math.toDegrees(rad)` | Angle rad in degrees   |
-| `Math.toRadians(deg)` | Angle deg in radians   |
+| Description            | Method                |
+| :--------------------- | --------------------- |
+| Maximum of a and b     | `Math.max(a,b)`       |
+| Minimum of a and b     | `Math.min(a,b)`       |
+| Absolute value a       | `Math.abs(a)`         |
+| Square-root of a       | `Math.sqrt(a)`        |
+| Power of b             | `Math.pow(a,b)`       |
+| Closest integer        | `Math.round(a)`       |
+| Sine of ang            | `Math.sin(ang)`       |
+| Cosine of ang          | `Math.cos(ang)`       |
+| Tangent of ang         | `Math.tan(ang)`       |
+| Inverse sine of ang    | `Math.asin(ang)`      |
+| Natural logarithm of a | `Math.log(a)`         |
+| Angle rad in degrees   | `Math.toDegrees(rad)` |
+| Angle deg in radians   | `Math.toRadians(deg)` |
 
 ## Try/Catch/Finally
 

@@ -85,3 +85,4 @@ class Solution {
 
 - Approach: Keep dividing by 2, 3, and 5. If the result is 1, it's an ugly number.
 - Dry run (n=14): 14→7→1 → true
+

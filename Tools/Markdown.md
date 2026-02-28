@@ -1,6 +1,6 @@
 ## Basic Syntax
 
-## Markdown is a lightweight markup language for creating formatted text. Below are examples with common syntax.
+ Markdown is a lightweight markup language for creating formatted text. Below are examples with common syntax.
 
 ## Heading
 

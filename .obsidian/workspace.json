@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA/Algorithms.md",
+                "file": "WebDev/REST.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Algorithms"
+              "title": "REST"
             }
           }
         ]
@@ -179,8 +179,8 @@
             "state": {
               "type": "calendar",
               "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Calendar"
+              "icon": "lucide-ghost",
+              "title": "calendar"
             }
           }
         ]
@@ -203,29 +203,42 @@
   },
   "active": "17ca9508cdd2b532",
   "lastOpenFiles": [
+    "WebDev/Html.md",
+    "WebDev/JavaScript.md",
+    "WebDev/Express.js.md",
+    "Tools/Markdown.md",
+    "Tools/Git-Github.md",
+    "Database/SQL/SQL.md",
+    "Database/SQL/DBMS.md",
+    "Database/NoSQL/MongoDB.md",
+    "DevOps/Docker.md",
+    "DevOps/README.md",
+    "DevOps/Terraform-vs-Ansible-vs-Kubernetes.md",
+    "DevOps/Nginx.md",
+    "DevOps/Ansible.md",
+    "ComputerNetworks/HTTP-and-Web.md",
+    "ComputerNetworks/FTP.md",
+    "ComputerNetworks/IP-Addressing.md",
+    "ComputerNetworks/Network-Security.md",
+    "ComputerNetworks/OSI-TCP-Model.md",
+    "ComputerNetworks/Transport-Protocols.md",
+    "ComputerNetworks/Routing.md",
+    "ComputerNetworks/Quick-QA.md",
+    "ComputerNetworks/Network-Services.md",
+    "ComputerNetworks/Encryption-SSL-TLS.md",
+    "ComputerNetworks/Email-Protocols.md",
+    "ComputerNetworks/DNS.md",
+    "ComputerNetworks/README.md",
     "images/Pasted image 20260209220007.png",
-    "DSA/DSA.md",
-    "DSA/Algorithms.md",
     "images/Algorithm.png",
     "images/Pasted image 20260126152149.png",
     "images/Pasted image 20260126152134.png",
     "images/Pasted image 20260126152112.png",
     "images/Pasted image 20260126152059.png",
     "images/Pasted image 20260126152000.png",
-    "Tech/Nginx.md",
-    "Tech/ComputerNetworks/DNS.md",
-    "DSA/LinkedList.md",
-    "DSA/DynamicProgramming.md",
-    "Tech/Computer-networks.md",
-    "Algorithms.md",
     "images/Pasted image 20260202225457.png",
-    "Tech/Mongodb.md",
     "images/mongoDB.png",
     "images/mongoDB20260126154740.png",
-    "DSA/Arrays.md",
-    "Tech/Express.js.md",
-    "images/Express.png",
-    "Mongodb.md",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.js",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.d.ts",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.js",
@@ -236,20 +249,7 @@
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.d.ts",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.d.ts",
-    "astro/README.md",
-    "shar.md",
-    "2026-01-25.md",
     "Untitled.canvas",
-    "Untitled 1.canvas",
-    "DSA/Math.md",
-    "Tech/systemd linux.md",
-    "Tech/zshrc.md",
-    "Tech/Neovim.md",
-    "Tech/OS.md",
-    "Tech/Ansible.md",
-    "Tech/Css.md",
-    "Tech/Markdown.md",
-    "DSA/Patterns.md",
-    "DSA/Matrix.md"
+    "Untitled 1.canvas"
   ]
 }

@@ -1,6 +1,6 @@
 # Disk Management
 
-## Disk management involves the organization, allocation, and scheduling of disk storage to optimize performance and reliability.
+ Disk management involves the organization, allocation, and scheduling of disk storage to optimize performance and reliability.
 
 ## Disk Structure
 
@@ -363,43 +363,4 @@ dd if=/dev/zero of=/swapfile bs=1G count=4
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-```
-
----
-
-## Important Interview Questions
-
-## Q1: What is the difference between SCAN and C-SCAN?
-
-**A:** SCAN reverses direction at disk ends, servicing requests both ways. C-SCAN only services in one direction, jumping back to start without servicing (provides more uniform wait times).
-
-## Q2: Why is SSTF not always used?
-
-**A:** SSTF can cause starvation for requests far from current head position if new nearby requests keep arriving.
-
-## Q3: What is the purpose of RAID?
-
-**A:** RAID provides data redundancy (protection against disk failure) and/or performance improvement by combining multiple disks.
-
-## Q4: Difference between RAID 0 and RAID 1?
-
-**A:** RAID 0 stripes data for performance but has no redundancy. RAID 1 mirrors data for redundancy with 50% capacity.
-
-## Q5: What is seek time?
-
-## **A:** Seek time is the time required to move the disk head to the correct track/cylinder.
-
-## Quick Reference
-
-```
-Disk Access Time = Seek + Rotational Latency + Transfer
-Algorithm preference:
-├── General: LOOK or C-LOOK
-├── Random access: SSTF
-└── Uniform workload: C-SCAN
-RAID selection:
-├── Performance only: RAID 0
-├── Redundancy only: RAID 1
-├── Balance: RAID 5
-├── Critical data: RAID 6 or RAID 10
 ```

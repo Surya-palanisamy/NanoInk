@@ -1,6 +1,6 @@
 # Memory Management
 
-## Memory management is a crucial function of the operating system that handles the allocation, tracking, and management of computer memory.
+ Memory management is a crucial function of the operating system that handles the allocation, tracking, and management of computer memory.
 
 ## Overview
 
@@ -310,28 +310,6 @@ Combines benefits of both:
 - Only one copy of shared code in memory
 
 ---
-
-## Important Interview Questions
-
-## Q1: What is the difference between internal and external fragmentation?
-
-**A:** Internal fragmentation is wasted space within allocated blocks (fixed partitioning). External fragmentation is free memory scattered across multiple non-contiguous locations (variable partitioning).
-
-## Q2: What is the purpose of TLB?
-
-**A:** TLB is a fast cache that stores recent page table entries, reducing the number of memory accesses needed for address translation from 2 to 1 on a TLB hit.
-
-## Q3: Why is paging preferred over contiguous allocation?
-
-**A:** Paging eliminates external fragmentation, allows non-contiguous allocation, easier memory management, and better memory utilization.
-
-## Q4: What is the page fault?
-
-**A:** A page fault occurs when a process tries to access a page not currently in main memory. The OS must load the page from secondary storage.
-
-## Q5: How does multi-level paging save memory?
-
-## **A:** Multi-level paging only keeps the outer page table in memory, loading inner page tables on demand, reducing memory overhead for sparse address spaces.
 
 ## Quick Reference
 

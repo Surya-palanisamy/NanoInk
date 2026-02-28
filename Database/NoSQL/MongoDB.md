@@ -1,6 +1,7 @@
 # MongoDB: From Documents to Distributed Clusters 🚀
 
-![MongoDB](images/mongoDB.png)
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292325/mongodb_xphokt.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292325/mongodb_xphokt.png)
+
 Goal: Go beyond “it’s a JSON database” and understand MongoDB’s internal mechanics, scaling strategies, indexing, and aggregation. 🧠
 
 ---
@@ -16,8 +17,12 @@ Relational databases normalize data across many tables (e.g., Users, Orders, Pay
 - Aligns naturally with object-oriented models 🧩
 - Reduces impedance mismatch 🔧
 - Fewer JOINs → faster reads ⚡
-  ![MongoDB guiding principle](images/Pasted%20image%2020260126152000.png)
-  ![Document model benefits](images/Pasted%20image%2020260126152059.png)
+
+  ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292325/Pasted_image_20260126152000_p0ddcl.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292325/Pasted_image_20260126152000_p0ddcl.png)
+
+# RDBMS vs MongoDB
+
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292325/Pasted_image_20260126152059_qj0z5c.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/Pasted_image_20260126152059_v9qtxm.png)
 
 ## BSON (Binary JSON) 🧱
 
@@ -67,8 +72,9 @@ MQl:
 
 ## CRUD Operations 🔄
 
-![CRUD Operations](images/Pasted%20image%2020260126152411.png)
-Insert ➕
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292322/mongodb-document_ngpop1.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292322/mongodb-document_ngpop1.png)
+
+insert ➕
 
 - `insertOne()`
 - `insertMany()` (atomic per-document)
@@ -299,10 +305,11 @@ Problem ❗:
 
 - Single server cannot handle massive datasets or throughput.
   Solution ✅:
-  ![Sharding and replication](<../images/Sharding and replication.gif>)
+  ![Sharding and replication](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292337/Pasted_image_20260126153124_my1y5m.png)
 - Split data across shards.
-  ![Sharding components](<../images/Pasted image 20260126152134.png>)
+
   Components 🧰:
+
 - `mongos` → query router
 - Config servers → metadata
 - Shards → data storage
@@ -315,7 +322,7 @@ Problem ❗:
 
 ## 6. Advanced & Modern Features ✨
 
-![Advanced features](images/Pasted%20image%2020260126152149.png)
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292362/Pasted_image_20260126152149_wxqjhq.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292362/Pasted_image_20260126152149_wxqjhq.png)
 
 ## Multi-Document ACID Transactions 🔒
 
@@ -357,11 +364,12 @@ Optimized for:
   SQL still best for 🏦:
 - Strong relational integrity
 - Highly structured financial systems
-  ![SQL vs NoSQL comparison](images/Pasted%20image%2020260126152201.png)
+
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292378/Pasted_image_20260126152201_tncuqe.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292378/Pasted_image_20260126152201_tncuqe.png)
 
 # How MongoDB works
 
-![How MongoDB works](images/mongodb.gif)
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772294793/mongodb_ptzrmv.gif](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772294793/mongodb_ptzrmv.gif)
 
 # MongoDB Queries
 

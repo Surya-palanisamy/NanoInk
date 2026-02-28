@@ -1,6 +1,6 @@
 # DevOps & Infrastructure
 
-## A comprehensive guide to DevOps tools, containerization, and infrastructure automation.
+ A comprehensive guide to DevOps tools, containerization, and infrastructure automation.
 
 ## 📚 Topics
 

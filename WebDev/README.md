@@ -1,6 +1,6 @@
 # Web Development
 
-## A comprehensive guide to web development technologies, covering frontend and backend concepts.
+A comprehensive guide to web development technologies, covering frontend and backend concepts.
 
 ## 📚 Topics
 

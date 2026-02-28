@@ -1,11 +1,12 @@
 # OSI Model & TCP/IP Model
 
-## A comprehensive guide to understanding network layer models.
+A comprehensive guide to understanding network layer models.
 
 ## TCP/IP Model (4 Layers)
 
 The TCP/IP model is the practical model used on the internet.
 **Layers:**
+
 | Layer | Name | Protocols |
 | ----- | -------------- | ---------------------- |
 | 4 | Application | HTTP, HTTPS, FTP, SMTP |
@@ -18,16 +19,17 @@ The TCP/IP model is the practical model used on the internet.
 ## OSI Model (7 Layers)
 
 The OSI (Open Systems Interconnection) model is a conceptual framework for understanding network communications.
-| Layer | Name | Function | Examples |
+
+| Layer | Name         | Function                        | Examples            |
 | ----- | ------------ | ------------------------------- | ------------------- |
-| 7 | Application | What the user sees | HTTP, FTP, SMTP |
-| 6 | Presentation | Encryption, data format | JPEG, MP4, SSL |
-| 5 | Session | Establishing/managing sessions | NetBIOS, RPC |
-| 4 | Transport | Reliable delivery, flow control | TCP, UDP |
-| 3 | Network | IP addressing, routing | IP, ICMP, Routers |
-| 2 | Data Link | MAC addresses, frame handling | Ethernet, Switches |
-| 1 | Physical | Physical transmission | Cables, Fiber, Hubs |
-![OSI Model Layers](images/osi-layers.png)
+| 7     | Application  | What the user sees              | HTTP, FTP, SMTP     |
+| 6     | Presentation | Encryption, data format         | JPEG, MP4, SSL      |
+| 5     | Session      | Establishing/managing sessions  | NetBIOS, RPC        |
+| 4     | Transport    | Reliable delivery, flow control | TCP, UDP            |
+| 3     | Network      | IP addressing, routing          | IP, ICMP, Routers   |
+| 2     | Data Link    | MAC addresses, frame handling   | Ethernet, Switches  |
+| 1     | Physical     | Physical transmission           | Cables, Fiber, Hubs |
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/osi-layers_iskfmf.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/osi-layers_iskfmf.png)
 
 ---
 
@@ -80,8 +82,7 @@ Ensures reliable data delivery between hosts.
 - Port numbers
 - Segmentation
   **Think of it as:** The guarantee of delivery.
-  ![TCP Communication](images/TCP.gif)
-
+  ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292351/TCP_bgxntl.gif](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292351/TCP_bgxntl.gif)
 ---
 
 ## 5. Session Layer

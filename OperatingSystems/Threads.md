@@ -1,6 +1,6 @@
 # Threads
 
-## A thread is the smallest unit of CPU execution within a process. Threads allow a program to perform multiple tasks concurrently.
+ A thread is the smallest unit of CPU execution within a process. Threads allow a program to perform multiple tasks concurrently.
 
 ## What is a Thread?
 
@@ -325,28 +325,6 @@ int main() {
 | Spinlock           | Busy-wait lock                  |
 
 ---
-
-## Important Interview Questions
-
-## Q1: Difference between process and thread?
-
-**A:** Process is an independent program with separate memory space. Thread is a lightweight execution unit within a process that shares memory with other threads of the same process.
-
-## Q2: Why use threads over processes?
-
-**A:** Threads are lighter, share memory (easy communication), faster to create/switch, and more efficient for concurrent tasks within same application.
-
-## Q3: What is thread safety?
-
-**A:** Code is thread-safe when it functions correctly during simultaneous execution by multiple threads, typically achieved through synchronization.
-
-## Q4: User-level vs Kernel-level threads?
-
-**A:** ULT - managed by library, fast but no true parallelism. KLT - managed by OS, slower but enables real parallelism on multiple CPUs.
-
-## Q5: What happens when a thread crashes?
-
-## **A:** The entire process crashes since threads share the same address space. One thread's memory corruption affects all threads.
 
 ## Quick Reference
 

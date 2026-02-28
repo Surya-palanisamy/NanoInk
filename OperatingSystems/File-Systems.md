@@ -1,6 +1,6 @@
 # File Systems
 
-## A file system is the method and data structure an operating system uses to organize and store files on storage devices.
+A file system is the method and data structure an operating system uses to organize and store files on storage devices.
 
 ## What is a File?
 
@@ -439,51 +439,3 @@ A journal (log) records changes before they're applied to main file system.
 4. File system consistent
 
 ---
-
-## Important Interview Questions
-
-## Q1: What is an inode?
-
-**A:** An inode (index node) is a data structure that stores metadata about a file (owner, permissions, timestamps, block pointers) but not the file name or data. Each file has exactly one inode.
-
-## Q2: Difference between hard link and soft link?
-
-**A:**
-
-- **Hard link:** Another directory entry pointing to same inode. File persists until all links removed.
-- **Soft link (symbolic):** Points to file name (path). Becomes dangling if target deleted.
-
-## Q3: What is fragmentation in file systems?
-
-**A:**
-
-- **Internal:** Wasted space within allocated blocks
-- **External:** Free space scattered in non-contiguous blocks
-
-## Q4: Why use journaling file systems?
-
-**A:** To ensure file system consistency after crashes. Journal records changes before applying them, allowing recovery by replaying or rolling back incomplete operations.
-
-## Q5: Explain contiguous vs indexed allocation.
-
-## **A:** Contiguous stores all blocks together (fast access, fragmentation issues). Indexed stores block pointers in index block (flexible, overhead for small files).
-
-## Quick Reference
-
-```
-File Operations:
-    Create → Open → Read/Write/Seek → Close → Delete
-Directory Types:
-    Single-level → Two-level → Tree → Acyclic Graph → General Graph
-Allocation Methods:
-    Contiguous: [start, length]
-    Linked:     block → block → block → null
-    Indexed:    index_block → [pointers to data blocks]
-Free Space:
-    Bitmap:     Simple, efficient search
-    Linked:     No space waste, slow search
-    Grouping:   Batch of free block addresses
-    Counting:   (start, count) pairs
-Unix Inode:
-    12 direct + 1 single + 1 double + 1 triple indirect
-```

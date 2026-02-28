@@ -1,6 +1,6 @@
 # Virtual Memory
 
-## Virtual memory is a memory management technique that provides an abstraction of the storage resources available on a machine, creating the illusion of a very large (virtual) memory.
+Virtual memory is a memory management technique that provides an abstraction of the storage resources available on a machine, creating the illusion of a very large (virtual) memory.
 
 ## What is Virtual Memory?
 
@@ -426,28 +426,6 @@ munmap(addr, length);
 - Easy file sharing between processes
 
 ---
-
-## Important Interview Questions
-
-## Q1: What is the difference between paging and virtual memory?
-
-**A:** Paging is a memory management scheme that divides memory into fixed-size pages. Virtual memory is a technique that uses disk as extension of RAM, implemented using paging or segmentation.
-
-## Q2: What is Belady's anomaly?
-
-**A:** In FIFO page replacement, increasing the number of frames can paradoxically increase page faults for certain reference strings.
-
-## Q3: Why is LRU considered a good algorithm?
-
-**A:** LRU approximates optimal behavior by using past access patterns to predict future access. It doesn't suffer from Belady's anomaly.
-
-## Q4: What is thrashing and how to prevent it?
-
-**A:** Thrashing is when system spends more time paging than executing. Prevent it by using working set model, page fault frequency control, or reducing degree of multiprogramming.
-
-## Q5: What is demand paging?
-
-## **A:** Demand paging loads pages into memory only when they are accessed (page fault), rather than loading entire program at start.
 
 ## Key Formulas
 

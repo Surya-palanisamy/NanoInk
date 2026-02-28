@@ -1,6 +1,6 @@
 # SQL & Relational Databases
 
-## A comprehensive guide to SQL and relational database concepts.
+ A comprehensive guide to SQL and relational database concepts.
 
 ## 📚 Topics
 

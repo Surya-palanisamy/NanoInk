@@ -1,6 +1,6 @@
 # Computer Networks
 
-## A comprehensive guide to computer networking concepts, organized by topic.
+ A comprehensive guide to computer networking concepts, organized by topic.
 
 ## 📚 Topics
 

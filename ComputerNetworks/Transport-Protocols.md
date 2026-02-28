@@ -1,6 +1,6 @@
 # Transport Layer Protocols
 
-## TCP (Transmission Control Protocol)
+TCP (Transmission Control Protocol)
 
 TCP is a **connection-oriented** protocol that ensures reliable data delivery.
 
@@ -56,8 +56,7 @@ UDP is a **connectionless** protocol that prioritizes speed over reliability.
 | Overhead       | High                      | Low                    |
 | Use Case       | Web, Email, File Transfer | Games, Streaming, VoIP |
 
-## ![TCP Connection](images/TCP.gif)
-
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292351/TCP_bgxntl.gif](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292351/TCP_bgxntl.gif)
 ## Default Ports
 
 Ports act as doorways for network communication. Each service uses a specific port number.
@@ -143,13 +142,3 @@ Packets can be lost during transfer due to:
 
 ---
 
-## Quick Q&A
-
-**Q: When should I use TCP over UDP?**
-A: Use TCP when data accuracy is critical (file transfers, web pages, emails).
-**Q: When should I use UDP over TCP?**
-A: Use UDP when speed matters more than reliability (gaming, video calls, streaming).
-**Q: What is a socket?**
-A: A socket is the combination of IP address + Port number that identifies a specific connection endpoint.
-**Q: What is port forwarding?**
-A: Port forwarding exposes an internal service to the internet via router configuration.

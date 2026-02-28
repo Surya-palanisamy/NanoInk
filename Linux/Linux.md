@@ -18,7 +18,7 @@
 
 ## Getting Started
 
-## Choose a Distribution
+### Choose a Distribution
 
 | Distro            | Best For                      | Package Manager |
 | ----------------- | ----------------------------- | --------------- |

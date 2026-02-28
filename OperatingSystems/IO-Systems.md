@@ -1,6 +1,6 @@
 # I/O Systems
 
-## I/O (Input/Output) Systems manage the communication between the computer and external devices. Understanding I/O is crucial for system performance and device management.
+ I/O (Input/Output) Systems manage the communication between the computer and external devices. Understanding I/O is crucial for system performance and device management.
 
 ## Overview
 
@@ -140,7 +140,7 @@ read_data();
 3. DMA transfers data block
 4. DMA sends interrupt when complete
 5. CPU handles completion
-   **DMA Modes:**
+   **DMA Modes:*
    | Mode | Description |
    |------|-------------|
    | **Burst Mode** | DMA holds bus until transfer complete |
@@ -406,34 +406,3 @@ if (n == -1 && errno == EAGAIN) {
 5. Balance between polling and interrupts
 6. Use efficient data structures
 
----
-
-## Important Interview Questions
-
-## Q1: What is the difference between programmed I/O and DMA?
-
-**A:** In programmed I/O, CPU transfers each byte and waits for device. In DMA, a specialized controller transfers data directly to/from memory, freeing the CPU for other work.
-
-## Q2: Why is DMA more efficient than interrupt-driven I/O for large transfers?
-
-**A:** Interrupt-driven I/O generates an interrupt for each byte/word, causing high overhead. DMA transfers entire blocks with only one interrupt at completion.
-
-## Q3: What is the purpose of buffering?
-
-**A:** Buffering handles speed mismatches between producer and consumer, allows asynchronous operation, and provides copy semantics for data consistency.
-
-## Q4: Explain the difference between blocking and non-blocking I/O.
-
-**A:** Blocking I/O suspends the process until operation completes. Non-blocking I/O returns immediately, allowing the process to continue and check for completion later.
-
-## Q5: What is spooling?
-
-## **A:** Spooling is using a disk buffer to hold output for a non-sharable device like a printer, allowing multiple processes to "print" simultaneously by queuing their output.
-
-## Key Takeaways
-
-1. **Three I/O methods**: Polling (simple, wastes CPU), Interrupts (efficient, some overhead), DMA (best for large transfers)
-2. **Layered architecture**: Hardware → Drivers → Device-independent software → User libraries
-3. **Buffering** solves speed mismatch and enables asynchronous operation
-4. **Block devices** support random access; **character devices** are sequential
-5. **Performance** depends on minimizing copying, context switches, and using appropriate I/O method

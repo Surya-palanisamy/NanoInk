@@ -2,7 +2,7 @@
 
 ## Definition
 
-## FTP (File Transfer Protocol) is used to transfer files between a client and server over a network.
+ FTP (File Transfer Protocol) is used to transfer files between a client and server over a network.
 
 ## Port Numbers
 

@@ -1,6 +1,6 @@
 # Routing
 
-## Routing is the process of selecting the best path for data packets to travel from a source device to a destination device across a network.
+Routing is the process of selecting the best path for data packets to travel from a source device to a destination device across a network.
 
 ## Key Components
 

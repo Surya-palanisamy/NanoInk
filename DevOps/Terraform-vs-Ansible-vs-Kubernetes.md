@@ -100,5 +100,6 @@ They are **teammates**, not competitors.
 | Purpose  | Builds infrastructure | Manages systems      | Runs containers         |
 | State    | Maintains state       | Stateless            | Maintains cluster state |
 | Focus    | Cloud resources       | Server configuration | Application runtime     |
-| Works On | Cloud / VMs           | Any servers          | Containers              |
+|Works On | Cloud / VMs| Any servers| Containers|
+
 ---

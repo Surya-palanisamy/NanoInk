@@ -1,22 +1,28 @@
----
 ## 1. SETUP & CONFIGURATION
+
 ```bash
 git config --global user.name "Your Name"
 ```
+
 Sets commit username
+
 ```bash
 git config --global user.email "you@example.com"
 ```
+
 Sets commit email identity
+
 ```bash
 git config --list
 ```
+
 View configuration values
+
 ```bash
 git help <command>
 ```
-Help documentation
----
+
+## Help documentation
 
 ## 2. REPOSITORY BASICS
 
@@ -72,8 +78,7 @@ git commit -am "message"
 
 ## Stage + commit tracked files
 
-![Git Workflow](images/git.png)
-
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292335/git_xam4dg.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292335/git_xam4dg.png)
 ## 5. BRANCHING
 
 ```bash
@@ -170,8 +175,7 @@ git fetch
 
 ## Fetch without merging
 
-![Git and GitHub](images/Git-and-github.png)
-
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/Git-and-github_furclt.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/Git-and-github_furclt.png)
 ## 8. STASH
 
 ```bash

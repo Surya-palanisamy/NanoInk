@@ -1,10 +1,13 @@
 # DNS - Domain Name System
 
 DNS (Domain Name System) converts domain names to IP addresses.
+
 **Example:**
 `google.com → 142.250.183.14`
+
 Without DNS we would need to remember IP addresses for every website.
-![DNS Resolution](images/Basic-website.gif)
+
+![DNS Resolution](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292385/Basic-website_ueolb1.gif)
 
 ---
 

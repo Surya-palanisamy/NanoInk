@@ -1,6 +1,6 @@
 # Quick Q&A - Computer Networks
 
-## A collection of commonly asked networking questions and concise answers.
+A collection of commonly asked networking questions and concise answers.
 
 ## General Concepts
 

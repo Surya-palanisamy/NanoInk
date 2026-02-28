@@ -349,3 +349,5 @@ class Solution {
   - i=3: plot=0, neighbors=1,0 → place flower, count=2
   - i=4: plot=1, neighbors=0,0 → skip
   - Return true since we can place 2 flowers.
+
+

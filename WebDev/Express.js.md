@@ -2,8 +2,7 @@
 
 ---
 
-![Express.js](images/Express.png)
-
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292321/Express_vbewvf.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292321/Express_vbewvf.png)
 ## 1. Hello World
 
 Create project, add package.json
@@ -40,8 +39,7 @@ Run
 node index.js
 ```
 
-![Web Browser](images/Web-browser.png)
-
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292380/Web-browser_efex8a.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292380/Web-browser_efex8a.png)
 ## 2. Express Generator CLI Help
 
 ```bash
@@ -73,8 +71,7 @@ DEBUG=myapp:* npm start
 
 > Features
 
-![Express Features](images/Express-features.png)
-
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292321/Express-features_vcrtse.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292321/Express-features_vcrtse.png)
 ## 3. express() Core Functions
 
 | Functions            |
@@ -552,9 +549,6 @@ console.log(tokenss);
 ---
 
 ## 21.Connect to MongoDB
-
-![MongoDB](images/mongodb.png)
-![MongoDB Document](images/mongodb-document.png)
 
 ---
 

@@ -139,3 +139,5 @@ Data in network travels in small chunks called packets.
 | QoS           | Prioritize traffic       |
 | MPLS          | Fast label-based routing |
 | DHCP          | Auto IP assignment       |
+
+

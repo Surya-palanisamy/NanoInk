@@ -138,3 +138,5 @@ public int[] countBits(int n) {
 ```
 
 - Dry run (n=5): ans=[0,1,1,2,1,2] using recurrence ans[i]=ans[i>>1]+(i&1).
+
+

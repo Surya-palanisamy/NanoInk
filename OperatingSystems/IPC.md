@@ -1,6 +1,6 @@
 # Inter-Process Communication (IPC)
 
-## Inter-Process Communication (IPC) refers to mechanisms that allow processes to communicate and synchronize their actions.
+Inter-Process Communication (IPC) refers to mechanisms that allow processes to communicate and synchronize their actions.
 
 ## Why IPC?
 
@@ -450,36 +450,6 @@ while (true) {
 
 ---
 
-## Important Interview Questions
-
-## Q1: What is the difference between shared memory and message passing?
-
-**A:**
-
-- **Shared Memory:** Processes share memory region, faster, needs synchronization
-- **Message Passing:** Explicit send/receive, slower, no sync needed, good for distributed systems
-
-## Q2: When would you use pipes vs sockets?
-
-**A:**
-
-- **Pipes:** Simple, related processes, same machine
-- **Sockets:** Network communication, unrelated processes, bidirectional, more features
-
-## Q3: What happens if a process tries to read from an empty pipe?
-
-**A:** The process blocks (waits) until data is available or all write ends are closed (returns 0/EOF).
-
-## Q4: What is the difference between SIGKILL and SIGTERM?
-
-**A:**
-
-- **SIGKILL (9):** Cannot be caught or ignored, forceful termination
-- **SIGTERM (15):** Can be caught, allows graceful shutdown
-
-## Q5: How does shared memory achieve synchronization?
-
-## **A:** Shared memory itself doesn't provide synchronization. Processes must use additional mechanisms like semaphores, mutexes, or condition variables.
 
 ## Quick Reference
 

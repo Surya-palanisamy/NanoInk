@@ -1,6 +1,6 @@
 # IP Addressing
 
-## An IP Address is a unique number assigned to every device in a network so it can be identified and communicate.
+An IP Address is a unique number assigned to every device in a network so it can be identified and communicate.
 
 ## 1. IP Address Basics
 
@@ -11,7 +11,7 @@
 - **Versions:**
   - IPv4 → 32-bit (like 192.168.1.1)
   - IPv6 → 128-bit (like fe80::1)
-    ![IPv4 Structure](images/Ipv4.png)
+    ![IPv4 Structure](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292325/Ipv4_b2shyl.png)
 
 ---
 
@@ -69,7 +69,7 @@ Most common in home WiFi
 - `192.168.0.1`
 - `192.168.1.1`
 - `192.168.43.1` (Hotspot)
-  ![Private and Public IP](images/private-and-public-IP.png)
+  ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292339/private-and-public-IP_njikrv.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292339/private-and-public-IP_njikrv.png)
 
 ---
 
@@ -90,6 +90,7 @@ Used on the **internet**. Assigned by ISP.
 ## APIPA (Automatic Private IP)
 
 Assigned when no DHCP / WiFi problem
+
 | Range | `169.254.x.x` |
 | :---- | :------------ |
 **Meaning:**
@@ -148,6 +149,7 @@ Subnetted into:
 
 **CIDR** = Classless Inter-Domain Routing
 Represents network mask.
+
 | CIDR | Subnet Mask | Hosts |
 | :---- | :-------------- | :------------ |
 | `/24` | 255.255.255.0 | 254 |
@@ -175,7 +177,7 @@ NAT converts Private IP ↔ Public IP
 | Dynamic NAT | Pool of public IPs                     |
 | PAT         | Port Address Translation (many-to-one) |
 
-## ![NAT Diagram](images/Pasted%20image%2020260202225457.png)
+ ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292339/Pasted_image_20260202225457_tlm7z1.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292339/Pasted_image_20260202225457_tlm7z1.png)
 
 ## 10. Useful Commands
 

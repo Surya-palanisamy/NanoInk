@@ -1,6 +1,6 @@
 # Process Management
 
-## Process management is one of the core functions of an operating system, responsible for creating, scheduling, and terminating processes.
+ Process management is one of the core functions of an operating system, responsible for creating, scheduling, and terminating processes.
 
 ## What is a Process?
 
@@ -255,34 +255,6 @@ The dispatcher gives control of CPU to the process selected by scheduler.
   **Dispatch Latency** - Time taken by dispatcher to stop one process and start another
 
 ---
-
-## Important Interview Questions
-
-## Q1: What is the difference between process and thread?
-
-**A:** A process is an independent program with its own memory space, while a thread is a lightweight unit of execution within a process that shares memory with other threads of the same process.
-
-## Q2: What happens during a fork() system call?
-
-**A:** Fork creates a new child process that is an exact copy of the parent. Both processes continue execution from the point after fork(). The child gets return value 0, parent gets child's PID.
-
-## Q3: What is a zombie process?
-
-**A:** A process that has completed execution but still has an entry in the process table because its parent hasn't read its exit status using wait().
-
-## Q4: What is an orphan process?
-
-**A:** A process whose parent has terminated. In UNIX, orphan processes are adopted by the init process (PID 1).
-
-## Q5: Explain the difference between preemptive and non-preemptive scheduling.
-
-**A:**
-
-- **Non-preemptive:** Once CPU is allocated, process keeps it until it terminates or switches to waiting state
-- **Preemptive:** OS can forcibly remove CPU from a process (e.g., time quantum expires)
-
----
-
 ## Key Formulas
 
 | Metric                | Formula                             |

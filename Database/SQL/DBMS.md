@@ -1,6 +1,6 @@
 # Database Management Systems (DBMS)
 
-## A comprehensive guide covering DBMS fundamentals, database architecture, and core concepts.
+ A comprehensive guide covering DBMS fundamentals, database architecture, and core concepts.
 
 ## Introduction to DBMS
 
