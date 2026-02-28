@@ -6,34 +6,6 @@ import { useState, useEffect } from "react";
 export function Header() {
   const { theme, toggleTheme } = useTheme();
   const [searchOpen, setSearchOpen] = useState(false);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-
-  const handleRefresh = async () => {
-    setIsRefreshing(true);
-    try {
-      const res = await fetch("/api/pages");
-      const data = await res.json();
-      if (data.pages) {
-        localStorage.setItem("nanoink_pages", JSON.stringify(data.pages));
-        // Dispatch custom event so current page can update
-        const event = new CustomEvent("nanoink_pages_updated", {
-          detail: { pages: data.pages },
-        });
-        window.dispatchEvent(event);
-      }
-    } catch (e) {
-      console.error("Failed to refresh pages:", e);
-    } finally {
-      setIsRefreshing(false);
-    }
-  };
-
-  useEffect(() => {
-    // Check if we need to load pages initially
-    if (!localStorage.getItem("nanoink_pages")) {
-      handleRefresh();
-    }
-  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -88,28 +60,6 @@ export function Header() {
               <kbd className="hidden md:inline px-1.5 py-0.5 text-xs bg-dark-bg dark:bg-dark-bg light:bg-light-bg rounded">
                 ⌘K
               </kbd>
-            </button>
-            {/* Refresh Button */}
-            <button
-              onClick={handleRefresh}
-              disabled={isRefreshing}
-              className="p-2.5 rounded-lg hover:bg-dark-panel-strong dark:hover:bg-dark-panel-strong light:hover:bg-light-panel-strong transition-colors flex-shrink-0 disabled:opacity-50"
-              aria-label="Refresh pages"
-              title="Sync latest local changes"
-            >
-              <svg
-                className={`w-5 h-5 text-neutral-400 light:text-black hover:text-neutral-200 light:hover:text-black ${isRefreshing ? "animate-spin" : ""}`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                />
-              </svg>
             </button>
             {/* Theme Toggle */}
             <button
