@@ -95,6 +95,7 @@ export function getManifest(): ManifestRoot {
           { name: "Patterns", path: "DSA/Patterns.md" },
           { name: "Stack", path: "DSA/Stack.md" },
           { name: "Strings", path: "DSA/Strings.md" },
+          { name: "Trees", path: "DSA/Trees.md" },
         ],
       },
       {
