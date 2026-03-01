@@ -1,14 +1,17 @@
-	# Network Security
+# Network Security
 
 ## 1. Firewall
 
 Firewall controls incoming and outgoing traffic.
+
 **Actions:**
 
 - Allow
 - Block
 - Filter
+
   **Types:**
+
 - Hardware firewall
 - Software firewall
 - Network firewall
@@ -19,6 +22,7 @@ Firewall controls incoming and outgoing traffic.
 ## 2. VPN (Virtual Private Network)
 
 VPN = Virtual Private Network
+
 **What it does:**
 
 - Encrypts internet traffic

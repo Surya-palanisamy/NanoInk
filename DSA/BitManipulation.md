@@ -90,10 +90,10 @@ while (n != 0) {
 System.out.println(count);
 ```
 
-| Type  | Value    |
-| ----- | -------- |
-| Time  | **O(log n)**|
-| Space | **O(1)** |
+| Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(log n)** |
+| Space | **O(1)**     |
 
 - Dry run: 15(1111) → bits: 1+1+1+1=4.
 
@@ -192,16 +192,18 @@ System.out.println(count);
 
 ```
 
-| Type  | Value    |
-| ----- | -------- |
-| Time  | **O(log n)**|
-| Space | **O(1)** |
+| Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(log n)** |
+| Space | **O(1)**     |
 
 - Dry run: 40(101000) → shift until LSB=1 → zeros=3.
 
 ---
 
 ## Count Bits (LeetCode 338)
+
+[338. Counting Bits](https://leetcode.com/problems/counting-bits/)
 
 > Given an integer `n`, return an array `ans` of length `n + 1` such that for each `i` (0 <= i <= n), `ans[i]` is the number of 1's in the binary representation of `i`.
 
@@ -220,5 +222,3 @@ public int[] countBits(int n) {
 | Space | **O(n)** |
 
 - Dry run (n=5): ans=[0,1,1,2,1,2] using recurrence ans[i]=ans[i>>1]+(i&1).
-
-

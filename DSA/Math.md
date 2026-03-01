@@ -1,5 +1,7 @@
 ## Palindrome Number (LeetCode 9)
 
+[9. Palindrome Number](https://leetcode.com/problems/palindrome-number/)
+
 > Given an integer `x`, return `true` if `x` is a palindrome, and `false` otherwise.
 
 ```java
@@ -26,6 +28,8 @@ class Solution {
 ---
 
 ## Happy Number (LeetCode 202)
+
+[202. Happy Number](https://leetcode.com/problems/happy-number/)
 
 > Write an algorithm to determine if a number `n` is happy. A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits. Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy. Return true if `n` is a happy number, and false if not.
 
@@ -62,6 +66,8 @@ class Solution {
 
 ## Add Digits (leetcode 258)
 
+[258. Add Digits](https://leetcode.com/problems/add-digits/)
+
 > Given an integer `num`, repeatedly add all its digits until the result has only one digit, and return it.
 
 ```java
@@ -80,7 +86,9 @@ class Solution {
 - Approach: Use the property of digital root. `(num - 1) % 9 + 1` gives the digital root of the number.
 - Dry run (num=38): (38-1) % 9 + 1 = 4 → Answer is 4.
 
-## ugly number (leetcode 263)
+## Ugly Number (leetcode 263)
+
+[263. Ugly Number](https://leetcode.com/problems/ugly-number/)
 
 > An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5. Given an integer `n`, return `true` if `n` is an ugly number.
 

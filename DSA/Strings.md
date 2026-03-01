@@ -2,6 +2,8 @@
 
 ## Reverse String (LeetCode 344)
 
+[344. Reverse String](https://leetcode.com/problems/reverse-string/)
+
 > Write a function that reverses a string. The input string is given as an array of characters `s`. You must do this by modifying the input array in-place with O(1) extra memory.
 
 ```java
@@ -32,6 +34,8 @@ class Solution {
 
 ## Length of Last Word (LeetCode 58)
 
+[58. Length of Last Word](https://leetcode.com/problems/length-of-last-word/)
+
 > Given a string `s` consisting of words and spaces, return the length of the last word in the string.
 
 ```java
@@ -55,6 +59,8 @@ class Solution {
 ---
 
 ## Roman to Integer (LeetCode 13)
+
+[13. Roman to Integer](https://leetcode.com/problems/roman-to-integer/)
 
 > Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M. Given a roman numeral, convert it to an integer.
 
@@ -97,6 +103,8 @@ class Solution {
 ---
 
 ## Anagram (LeetCode 242)
+
+[242. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
 
 > Given two strings `s` and `t`, return `true` if `t` is an anagram of `s`, and `false` otherwise.
 

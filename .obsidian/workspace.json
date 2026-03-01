@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WebDev/REST.md",
+                "file": "DSA/LinkedList.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "REST"
+              "title": "LinkedList"
             }
           }
         ]
@@ -203,6 +203,8 @@
   },
   "active": "17ca9508cdd2b532",
   "lastOpenFiles": [
+    "DSA/Trees.md",
+    "WebDev/REST.md",
     "WebDev/Html.md",
     "WebDev/JavaScript.md",
     "WebDev/Express.js.md",
@@ -227,8 +229,6 @@
     "ComputerNetworks/Network-Services.md",
     "ComputerNetworks/Encryption-SSL-TLS.md",
     "ComputerNetworks/Email-Protocols.md",
-    "ComputerNetworks/DNS.md",
-    "ComputerNetworks/README.md",
     "images/Pasted image 20260209220007.png",
     "images/Algorithm.png",
     "images/Pasted image 20260126152149.png",

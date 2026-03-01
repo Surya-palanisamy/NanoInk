@@ -1,9 +1,14 @@
 # Linked List
 
+## Detect cycle in linked list (leetcode 141)
+
+
+[141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+
 ![Cycle](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772339718/circularlinkedlist_oggopt.png)
-## detect cycle in linked list (leetcode 141)
 
 > Given `head`, the head of a linked list, determine if the linked list has a cycle in it.
+
 
 ```java
 class Solution {
@@ -24,6 +29,7 @@ class Solution {
     }
 }
 ```
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772347011/Image-3_t2fcxt.gif](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772347011/Image-3_t2fcxt.gif)
 
 | Type  | Value    |
 | ----- | -------- |
@@ -38,7 +44,9 @@ class Solution {
   - slow=0, fast=2
   - slow=-4, fast=-4 → cycle detected → true
 
-## middle of linked list (leetcode 876)
+## Middle of linked list (leetcode 876)
+
+[876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
 
 > Given the `head` of a singly linked list, return the middle node of the linked list. If there are two middle nodes, return the second middle node.
 
@@ -72,7 +80,9 @@ class Solution {
   - slow=3, fast=5
   - fast.next=null → stop → middle = 3
 
-## remove nth node from end of linked list (leetcode 19)
+## Remove nth node from end of linked list (leetcode 19)
+
+[19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
 
 > Given the `head` of a linked list, remove the `nth` node from the end of the list and return its head.
 
@@ -115,6 +125,8 @@ class Solution {
 
 ## Find Start of Cycle (LeetCode 142)
 
+[142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
+
 > Given the `head` of a linked list, return the node where the cycle begins. If there is no cycle, return `null`.
 
 ```java
@@ -152,7 +164,7 @@ class Solution {
   - slow=0, fast=2
   - slow=-4, fast=-4 → cycle detected → true
 
-## remove cycle from linked list
+## Remove cycle from linked list
 
 > Given the `head` of a linked list that may contain a cycle, remove the cycle if it exists by setting the `next` pointer of the last node in the cycle to `null`.
 
@@ -202,3 +214,108 @@ class Solution {
   - slow=3 fast=3 → start of cycle
 - prev is node 5 → set prev.next = null
   final list: 1 → 2 → 3 → 4 → 5 → null
+
+## Merge Two Sorted Lists (leetcode 21)
+
+[21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+
+> You are given the heads of two sorted linked lists `list1` and `list2`.
+
+> Merge the two lists into one **sorted** list. The list should be made by splicing together the nodes of the first two lists.
+
+> Return *the head of the merged linked list*.
+
+Example 1:
+
+**Input:** list1 = [1,2,4], list2 = [1,3,4]
+**Output:** [1,1,2,3,4,4]
+
+**Example 2:**
+
+**Input:** list1 = [], list2 = []
+**Output:** []
+
+**Example 3:**
+
+**Input:** list1 = [], list2 = [0]
+**Output:** [0]
+
+```java
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode current = dummy;
+
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                current.next = list1;
+                list1 = list1.next;
+            } else {
+                current.next = list2;
+                list2 = list2.next;
+            }
+            current = current.next;
+        }
+        if (list1 != null) {
+            current.next = list1;
+        } else {
+            current.next = list2;
+        }
+        return dummy.next;
+    }
+}
+```
+
+| Type             | Value               |
+| ---------------- | ------------------- |
+| Time Complexity  | **O(n + m)**        |
+| Space Complexity | **O(1)** (in-place) |
+
+---
+
+## Reverse Bits (leetcode 190)
+
+[190. Reverse Bits](https://leetcode.com/problems/reverse-bits/)
+
+> Reverse bits of a given 32 bits signed integer.
+
+**Example 1:**
+
+**Input:** n = 43261596
+**Output:** 964176192
+
+**Explanation:**
+
+| Integer   | Binary                           |
+| --------- | -------------------------------- |
+| 43261596  | 00000010100101000001111010011100 |
+| 964176192 | 00111001011110000010100101000000 |
+
+**Example 2:**
+
+**Input:** n = 2147483644
+
+**Output:** 1073741822
+
+**Explanation:**
+
+| Integer    | Binary                           |
+| ---------- | -------------------------------- |
+| 2147483644 | 01111111111111111111111111111100 |
+| 1073741822 | 00111111111111111111111111111110 |
+
+```java
+public class Solution {
+    public int reverseBits(int n) {
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            result <<= 1;        
+            result |= (n & 1);    
+            n >>>= 1;              
+        }
+        return result;
+
+    }
+
+}
+```

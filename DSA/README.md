@@ -1,8 +1,8 @@
 # Data Structures & Algorithms
 
-## A comprehensive guide to DSA concepts for coding interviews and competitive programming.
+ A comprehensive guide to DSA concepts for coding interviews and competitive programming.
 
-## 📚 Topics
+### 📚 Topics
 
 ## Data Structures
 
@@ -14,7 +14,7 @@
 | Stack       | Stack operations and applications                 |
 | Matrix      | 2D array operations and traversals                |
 
-## Algorithms & Techniques
+## Algorithms and Techniques
 
 | File                | Description                             |
 | :------------------ | :-------------------------------------- |
@@ -26,7 +26,7 @@
 
 ---
 
-## 🎯 Key Concepts
+### 🎯 Key Concepts
 
 ## Time Complexity Cheat Sheet
 
@@ -46,15 +46,5 @@
 | In-place  | O(1) extra space |
 | Linear    | O(n) extra space |
 | Recursive | O(n) call stack  |
-
----
-
-## 💡 Problem-Solving Tips
-
-1. **Understand the problem** - Read carefully, identify constraints
-2. **Think of examples** - Work through small test cases
-3. **Brute force first** - Get a working solution
-4. **Optimize** - Identify bottlenecks, apply patterns
-5. **Edge cases** - Empty input, single element, duplicates
 
 

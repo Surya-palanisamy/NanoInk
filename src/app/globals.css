@@ -369,6 +369,29 @@
 .prose a {
   @apply text-accent hover:text-accent-hover underline underline-offset-2;
 }
+/* LeetCode problem links - blue color, green when active */
+.prose a[href*="leetcode.com"] {
+  color: #3b82f6;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose a[href*="leetcode.com"]:hover {
+  color: #60a5fa;
+}
+.prose a[href*="leetcode.com"]:active,
+.prose a[href*="leetcode.com"]:focus {
+  color: #22c55e;
+}
+.light .prose a[href*="leetcode.com"] {
+  color: #2563eb;
+}
+.light .prose a[href*="leetcode.com"]:hover {
+  color: #3b82f6;
+}
+.light .prose a[href*="leetcode.com"]:active,
+.light .prose a[href*="leetcode.com"]:focus {
+  color: #16a34a;
+}
 .prose ul,
 .prose ol {
   @apply pl-7 my-4 text-neutral-300;
@@ -388,7 +411,10 @@
   }
 }
 .prose blockquote {
-  @apply border-l-[3px] border-accent pl-5 py-4 my-5 bg-accent-soft rounded-r-lg text-neutral-400;
+  @apply border-l-[3px] pl-5 py-4 my-5 rounded-r-lg;
+  border-color: #a78bfa;
+  background-color: rgba(139, 92, 246, 0.08);
+  color: #c4b5fd;
 }
 @media (max-width: 640px) {
   .prose blockquote {
@@ -507,7 +533,9 @@ td {
   @apply text-black;
 }
 .light .prose blockquote {
-  @apply text-black;
+  color: #5b21b6;
+  border-color: #8b5cf6;
+  background-color: rgba(139, 92, 246, 0.06);
 }
 .light .prose th {
   @apply bg-neutral-100 text-black border-neutral-200;

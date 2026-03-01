@@ -1,4 +1,6 @@
-## Rotate Matrix 90° Clockwise
+## Rotate Matrix 90° Clockwise (leetcode 48)
+
+[48. Rotate Image](https://leetcode.com/problems/rotate-image/)
 
 > You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise). You have to rotate the image in-place.
 
@@ -50,6 +52,8 @@ public class Main {
     9 6 3
 
 ## Spiral Matrix 1 (leetcode 54)
+
+[54. Spiral Matrix](https://leetcode.com/problems/spiral-matrix/)
 
 > Given an `m x n` matrix, return all elements of the matrix in spiral order.
 

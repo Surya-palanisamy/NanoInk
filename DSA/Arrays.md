@@ -2,6 +2,8 @@
 
 ## Two Sum (LeetCode 1)
 
+[1. Two Sum](https://leetcode.com/problems/two-sum/)
+
 > Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
 > You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -43,6 +45,8 @@ class Solution {
 ---
 
 ## Remove Duplicates from Sorted Array (LeetCode 26)
+
+[26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
 > Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
 
@@ -87,6 +91,8 @@ class Solution {
 
 ## Search Insert Position (LeetCode 35)
 
+[35. Search Insert Position](https://leetcode.com/problems/search-insert-position/)
+
 > Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
 
 > You must write an algorithm with O(log n) runtime complexity.
@@ -129,6 +135,8 @@ class Solution {
 ---
 
 ## Plus One (LeetCode 66)
+
+[66. Plus One](https://leetcode.com/problems/plus-one/)
 
 > you are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
 
@@ -188,6 +196,8 @@ class Solution {
 
 ## Move Zeroes (LeetCode 283)
 
+[283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
+
 > Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
 > Note that you must do this in-place without making a copy of the array.
@@ -230,6 +240,8 @@ class Solution {
 ---
 
 ## Majority Element (LeetCode 169)
+
+[169. Majority Element](https://leetcode.com/problems/majority-element/)
 
 > Given an array nums of size n, return the majority element.
 
@@ -307,6 +319,8 @@ public class Main {
 
 ## Largest Perimeter Triangle (LeetCode 976)
 
+[976. Largest Perimeter Triangle](https://leetcode.com/problems/largest-perimeter-triangle/)
+
 > Given an integer array nums, return the largest perimeter of a triangle with a non-zero area, formed from three of these lengths. If it is impossible to form any triangle of a non-zero area, return 0.
 
 Example 1:
@@ -347,7 +361,9 @@ class Solution {
 - Approach: Sort; check triangle inequality from largest side.
 - Dry run (nums=[2,1,2]): sort→[1,2,2], check 2+1>2 → true → perimeter=5
 
-## Jump game (leetcode 55)
+## Jump Game (leetcode 55)
+
+[55. Jump Game](https://leetcode.com/problems/jump-game/)
 
 ```java
 class Solution {
@@ -374,7 +390,9 @@ class Solution {
   - i=1, val=3 → m=max(2, 1+3)=4
   - Return true since we can reach the end.
 
-## maximum subarray (leetcode 53)
+## Maximum Subarray (leetcode 53)
+
+[53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 
 ```java
 class Solution {
@@ -405,7 +423,9 @@ class Solution {
   - i=3, num=4, s=max(4,2)=4, max=4
   - Returns max=6 for subarray [4,-1,2,1].
 
-## longest Consecutive Sequence (leetcode 128)
+## Longest Consecutive Sequence (leetcode 128)
+
+[128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
 
 > Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
 
@@ -466,6 +486,8 @@ class Solution {
 
 ## Single Number (leetcode 136)
 
+[136. Single Number](https://leetcode.com/problems/single-number/)
+
 > Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 
 > You must implement a solution with a linear runtime complexity and use only constant extra space.
@@ -506,7 +528,9 @@ class Solution {
   - r = 7 ^ 1 = 6
   - r = 6 ^ 2 = 4 → Answer is 4.
 
-## missing numbers (leetcode 268)
+## Missing Number (leetcode 268)
+
+[268. Missing Number](https://leetcode.com/problems/missing-number/)
 
 Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 
@@ -561,6 +585,8 @@ class Solution {
 
 ## Can Place Flowers (leetcode 605)
 
+[605. Can Place Flowers](https://leetcode.com/problems/can-place-flowers/)
+
 > You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.
 
 > Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
@@ -607,7 +633,9 @@ class Solution {
   - i=4: plot=1, neighbors=0,0 → skip
   - Return true since we can place 2 flowers.
 
-## product except self (leetcode 238)
+## Product of Array Except Self (leetcode 238)
+
+[238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
 
 > Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 
@@ -654,3 +682,100 @@ class Solution {
   - Left products: [1, 1, 2, 6]
   - Right products: [24, 12, 4, 1]
   - Result: [24, 12, 8, 6]
+
+## Coin Change Ways
+
+> Given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money, return the number of combinations that make up that amount.
+
+```java
+public class CoinChangeWays {
+    public static int countWays(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        dp[0] = 1;
+        for (int coin : coins) {
+            for (int i = coin; i <= amount; i++) {
+                dp[i] += dp[i - coin];
+            }
+        }
+        return dp[amount];
+    }
+}
+
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n * amount)** |
+| Space | **O(amount)** |
+
+- Dry run (coins={1,2,5}, amount=5):
+  - start: [1,0,0,0,0,0]
+  - coin=1 → [1,1,1,1,1,1]
+  - coin=2 → [1,1,2,2,3,3]
+  - coin=5 → [1,1,2,2,3,4] → ways=4
+
+
+## Best Time to Buy and Sell Stock (leetcode 121)
+
+[121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+
+> You are given an array `prices` where `prices[i]` is the price of a given stock on the `ith` day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int p=prices[0],sell=0;
+        for(int i:prices){
+            if(i<p) p=i;
+            else if (i-p>sell) sell=i-p;
+        }
+     return sell;
+}}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Track min price and max profit.
+- Dry run (prices = [7,1,5,3,6,4]):
+  - p=7, sell=0
+  - i=1: p=1, sell=0
+  - i=2: p=1, sell=4
+  - i=3: p=1, sell=4
+  - i=4: p=1, sell=5
+  - i=5: p=1, sell=5 → Answer is 5.
+
+## Distribute Candies (leetcode 575)
+
+[575. Distribute Candies](https://leetcode.com/problems/distribute-candies/)
+
+> Alice has `n` candies, where the `ith` candy is of type `candyType[i]`. Alice noticed that she started to gain weight, so she visited a doctor. The doctor advised Alice to only eat `n / 2` of the candies she has (`n` is always even). Return the maximum number of different types of candies she can eat if she only eats `n / 2` of them.
+
+```java
+import java.util.HashSet;
+
+class Solution {
+    public int distributeCandies(int[] candyType) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int c : candyType) {
+            set.add(c);
+        }
+        int uniqueTypes = set.size();
+        int canEat = candyType.length / 2;
+        return Math.min(uniqueTypes, canEat);
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(n)** |
+
+- Approach: Use a HashSet to count unique candy types and return the minimum of unique types or `n/2`.
+- Dry run (candyType = [1,1,2,3]):
+  - n = 4, canEat = 2
+  - set = {1, 2, 3}, uniqueTypes = 3
+  - Math.min(3, 2) → Answer is 2.
