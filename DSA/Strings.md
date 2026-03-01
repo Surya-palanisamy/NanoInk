@@ -2,6 +2,8 @@
 
 ## Reverse String (LeetCode 344)
 
+> Write a function that reverses a string. The input string is given as an array of characters `s`. You must do this by modifying the input array in-place with O(1) extra memory.
+
 ```java
 class Solution {
     public void reverseString(char[] s) {
@@ -16,6 +18,11 @@ class Solution {
 }
 ```
 
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
 - Dry run (s = [h,e,l,l,o]):
   - swap 0↔4 → [o,e,l,l,h]
   - swap 1↔3 → [o,l,l,e,h]
@@ -24,6 +31,8 @@ class Solution {
 ---
 
 ## Length of Last Word (LeetCode 58)
+
+> Given a string `s` consisting of words and spaces, return the length of the last word in the string.
 
 ```java
 class Solution {
@@ -34,6 +43,11 @@ class Solution {
 }
 ```
 
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(n)** |
+
 - Dry run ("Hello World "):
   - trim → "Hello World"
   - split → ["Hello","World"] → last="World" → len=5
@@ -41,6 +55,8 @@ class Solution {
 ---
 
 ## Roman to Integer (LeetCode 13)
+
+> Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M. Given a roman numeral, convert it to an integer.
 
 ```java
 class Solution {
@@ -64,6 +80,11 @@ class Solution {
 }
 ```
 
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
 - Dry run ("MCMXCIV") from right:
   - V(5) → sum=5
   - I(1): 1\*4<5 → sum=4
@@ -76,6 +97,8 @@ class Solution {
 ---
 
 ## Anagram (LeetCode 242)
+
+> Given two strings `s` and `t`, return `true` if `t` is an anagram of `s`, and `false` otherwise.
 
 ```java
 class Solution {
@@ -92,6 +115,11 @@ class Solution {
 }
 ```
 
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
 - Dry run (s="ab", t="ba"):
   - i=0: freq[a]++ →1; freq[b]-- →-1
   - i=1: freq[b]++ →0; freq[a]-- →0
@@ -100,6 +128,8 @@ class Solution {
 ---
 
 ## Frequency of Character (uppercase)
+
+> Given a string `s` consisting of uppercase alphabetic characters, print the frequency of each character in alphabetical order.
 
 ```java
 class Main {
@@ -118,6 +148,11 @@ class Main {
 }
 ```
 
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
 - Dry run:
   - S→ index 18 → freq[18]=1
   - U→ 20 → 1
@@ -126,5 +161,3 @@ class Main {
   - A→ 0 → 1
   - S→ 18 → 2
   - Output in alphabetical order: A 1, R 1, S 2, U 1, Y 1
-
-

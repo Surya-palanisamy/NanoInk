@@ -2,6 +2,8 @@
 
 ## Valid Parentheses (LeetCode 20)
 
+> Given a string `s` containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
 ```java
 import java.util.*;
 public class Main {
@@ -20,4 +22,13 @@ public class Main {
 }
 ```
 
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(n)** |
 
+- Dry run (s = "()[]{}"):
+  - Push ')' for '('
+  - Push ']' for '['
+  - Push '}' for '{'
+  - Match and pop everything → return true

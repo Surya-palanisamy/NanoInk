@@ -1,4 +1,7 @@
 ## Coin Change Ways
+
+> Given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money, return the number of combinations that make up that amount.
+
 ```java
 public class CoinChangeWays {
     public static int countWays(int[] coins, int amount) {
@@ -12,7 +15,14 @@ public class CoinChangeWays {
         return dp[amount];
     }
 }
+
 ```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n * amount)** |
+| Space | **O(amount)** |
+
 - Dry run (coins={1,2,5}, amount=5):
   - start: [1,0,0,0,0,0]
   - coin=1 → [1,1,1,1,1,1]
