@@ -359,6 +359,72 @@ obj = null;
 
 ---
 
+# Instance Variable vs  Local Variable
+
+---
+##  1. Instance Variable (Class Level)
+
+###  Example
+```java
+class Student {  
+    int rno;      // instance variable  
+    String name;  // instance variable  
+    void display() {  
+        System.out.println(rno + " " + name);  
+    }  
+}  
+  
+public class Main {  
+    public static void main(String[] args) {  
+        Student s = new Student();  
+        s.display();  
+    }  
+}
+```
+###  Output :
+> 0 null
+###  Why?
+
+- `rno` → default value of `int` is `0`
+- `name` → default value of `String` is `null`
+- Instance variables automatically get default values.
+---
+##  2. Local Variable (Inside Method)
+###  Example
+```java
+public class Main {  
+    public static void main(String[] args) {  
+        int a;   // local variable  
+        System.out.println(a);  
+    }  
+}
+```
+
+###  Output
+
+> Error: variable a might not have been initialized
+
+###  Why?
+
+- Local variables do NOT get default values.
+- Java forces you to initialize them before use.
+
+---
+## Correct Version of Local Variable
+
+```java
+public class Main {  
+    public static void main(String[] args) {  
+        int a = 10;   // initialized  
+        System.out.println(a);  
+    }  
+}
+```
+###  Output
+
+> 10
+
+---
 # Final Summary
 
 OOP includes:
@@ -366,6 +432,5 @@ OOP includes:
 - Constructors
 - Overloading & Overriding
 - Interfaces & Abstract Classes
-- HAS-A and IS-A relationships
 - Memory management
 - Access control

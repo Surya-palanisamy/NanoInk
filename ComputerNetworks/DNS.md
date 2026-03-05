@@ -11,7 +11,7 @@ Without DNS we would need to remember IP addresses for every website.
 
 ---
 
-## How DNS Works
+## 1. How DNS Works
 
 1. You type `google.com` in your browser
 2. Browser checks local cache
@@ -22,7 +22,7 @@ Without DNS we would need to remember IP addresses for every website.
 
 ---
 
-## DNS Record Types
+## 2. DNS Record Types
 
 | Record Type | Purpose                          | Example                        |
 | :---------- | :------------------------------- | :----------------------------- |
@@ -36,7 +36,7 @@ Without DNS we would need to remember IP addresses for every website.
 
 ---
 
-## CNAME Records
+## 3. CNAME Records
 
 CNAME = Canonical Name
 Maps one domain name to another domain.
@@ -56,7 +56,7 @@ www.example.com → example.com
 
 ---
 
-## DNS Caching
+## 4. DNS Caching
 
 DNS stores resolved results so next time lookup is faster.
 **Caching exists at:**
@@ -72,7 +72,7 @@ DNS stores resolved results so next time lookup is faster.
 
 ---
 
-## DNS Commands
+## 5. DNS Commands
 
 **Lookup domain:**
 
@@ -107,7 +107,7 @@ ipconfig /flushdns
 
 ---
 
-## DNS Security
+## 6. DNS Security
 
 | Threat          | Description                        | Solution   |
 | :-------------- | :--------------------------------- | :--------- |
@@ -123,7 +123,7 @@ ipconfig /flushdns
 
 ---
 
-## Popular DNS Servers
+## 7. Popular DNS Servers
 
 | Provider   | Primary DNS    | Secondary DNS   |
 | :--------- | :------------- | :-------------- |
@@ -134,7 +134,7 @@ ipconfig /flushdns
 
 ---
 
-## Quick Reference
+## 8. Quick Reference
 
 - **DNS Port:** 53 (TCP/UDP)
 - **Purpose:** Domain to IP translation

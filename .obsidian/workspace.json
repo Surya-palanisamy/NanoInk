@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA/LinkedList.md",
+                "file": "Java/Java.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,21 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "LinkedList"
+              "title": "Java"
+            }
+          },
+          {
+            "id": "726a1cf61b95f6e9",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://leetcode.com/problems/maximum-subarray/description/",
+                "title": "Maximum Subarray - LeetCode",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "Maximum Subarray - LeetCode"
             }
           }
         ]
@@ -203,6 +217,11 @@
   },
   "active": "17ca9508cdd2b532",
   "lastOpenFiles": [
+    "Java/README.md",
+    "Java/OOP.md",
+    "DSA/Arrays.md",
+    "DSA/Strings.md",
+    "DSA/LinkedList.md",
     "DSA/Trees.md",
     "WebDev/REST.md",
     "WebDev/Html.md",
@@ -224,11 +243,6 @@
     "ComputerNetworks/Network-Security.md",
     "ComputerNetworks/OSI-TCP-Model.md",
     "ComputerNetworks/Transport-Protocols.md",
-    "ComputerNetworks/Routing.md",
-    "ComputerNetworks/Quick-QA.md",
-    "ComputerNetworks/Network-Services.md",
-    "ComputerNetworks/Encryption-SSL-TLS.md",
-    "ComputerNetworks/Email-Protocols.md",
     "images/Pasted image 20260209220007.png",
     "images/Algorithm.png",
     "images/Pasted image 20260126152149.png",

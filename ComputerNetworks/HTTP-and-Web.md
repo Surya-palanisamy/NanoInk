@@ -1,6 +1,6 @@
 # HTTP and Web
 
-## What is HTTP?
+## 1. What is HTTP?
 
 HTTP = Hyper Text Transfer Protocol  
 Used to transfer web pages.
@@ -13,14 +13,12 @@ Used to transfer web pages.
 
 ---
 
-
-## Client-Server Architecture
+## 2. Client-Server Architecture
 
 **Client:** Requests data  
 **Server:** Responds with data
 
 ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292380/Web-browser_efex8a.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292380/Web-browser_efex8a.png)
-
 
 Examples:
 
@@ -30,7 +28,7 @@ Examples:
 
 ---
 
-## HTTP Methods
+## 3. HTTP Methods
 
 | Method  | Use                     |
 | ------- | ----------------------- |
@@ -44,9 +42,9 @@ Examples:
 
 ---
 
-## HTTP Status Codes
+## 4. HTTP Status Codes
 
-## Success (2xx)
+### Success (2xx)
 
 | Code | Meaning         |
 | ---- | --------------- |
@@ -54,7 +52,7 @@ Examples:
 | 201  | Created         |
 | 204  | No Content      |
 
-## Redirect (3xx)
+### Redirect (3xx)
 
 | Code | Meaning           |
 | ---- | ----------------- |
@@ -62,7 +60,7 @@ Examples:
 | 302  | Found             |
 | 304  | Not Modified      |
 
-## Client Errors (4xx)
+### Client Errors (4xx)
 
 | Code | Meaning      |
 | ---- | ------------ |
@@ -71,7 +69,7 @@ Examples:
 | 403  | Forbidden    |
 | 404  | Not Found    |
 
-## Server Errors (5xx)
+### Server Errors (5xx)
 
 | Code | Meaning               |
 | ---- | --------------------- |
@@ -79,9 +77,9 @@ Examples:
 | 502  | Bad Gateway           |
 | 503  | Service Unavailable   |
 
- ![HTTP Status Codes](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/osi-layers_iskfmf.png)
+![HTTP Status Codes](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/osi-layers_iskfmf.png)
 
-## URL Breakdown
+## 5. URL Breakdown
 
 Example:
 
@@ -100,7 +98,7 @@ https://www.example.com:443/home/index.html?user=1
 
 ---
 
-## APIs
+## 6. APIs
 
 API = Application Programming Interface  
 Allows communication between applications.
@@ -109,7 +107,7 @@ Examples:
 - Mobile app talking to server
 - Weather app fetching weather data
 
-## Types of APIs
+### Types of APIs
 
 | Type    | Description                       |
 | ------- | --------------------------------- |
@@ -118,9 +116,9 @@ Examples:
 | SOAP    | XML-based, more structured        |
 |         |                                   |
 
- ![API Diagram](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292395/API_lfyqqh.png)
+![API Diagram](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292395/API_lfyqqh.png)
 
-## Cookies vs Sessions vs Local Storage
+## 7. Cookies vs Sessions vs Local Storage
 
 | Feature                       | Cookies                            | Sessions                      | Local Storage                      |
 | ----------------------------- | ---------------------------------- | ----------------------------- | ---------------------------------- |
@@ -135,7 +133,7 @@ Examples:
 
 ---
 
-## What Happens When You Type google.com in Browser?
+## 8. What Happens When You Type google.com in Browser?
 
 1. **DNS Resolution** — Domain resolves to IP
 2. **TCP Connection** — Browser connects to server
@@ -146,7 +144,7 @@ Examples:
 
 ---
 
-## WebSocket
+## 9. WebSocket
 
 Allows **real-time two-way communication**.
 Unlike HTTP which is request-response only, WebSocket keeps a persistent connection.
@@ -160,7 +158,7 @@ Unlike HTTP which is request-response only, WebSocket keeps a persistent connect
 
 ---
 
-## Quick Reference
+## 10. Quick Reference
 
 | Protocol | Port | Encrypted |
 | -------- | ---- | --------- |

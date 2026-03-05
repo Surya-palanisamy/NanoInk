@@ -5,10 +5,8 @@
 [1. Two Sum](https://leetcode.com/problems/two-sum/)
 
 > Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-
-> You may assume that each input would have exactly one solution, and you may not use the same element twice.
-
-> You can return the answer in any order.
+	You may assume that each input would have exactly one solution, and you may not use the same element twice.
+	 You can return the answer in any order.
 
 Example 1:
 
@@ -49,10 +47,8 @@ class Solution {
 [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
 > Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
-
-> Consider the number of unique elements in nums to be k​​​​​​​​​​​​​​. After removing duplicates, return the number of unique elements k.
-
-> The first k elements of nums should contain the unique numbers in sorted order. The remaining elements beyond index k - 1 can be ignored.
+	 Consider the number of unique elements in nums to be k​​​​​​​​​​​​​​. After removing duplicates, return the number of unique elements k.
+	The first k elements of nums should contain the unique numbers in sorted order. The remaining elements beyond index k - 1 can be ignored.
 
 Example 1:
 
@@ -94,8 +90,7 @@ class Solution {
 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/)
 
 > Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
-
-> You must write an algorithm with O(log n) runtime complexity.
+	You must write an algorithm with O(log n) runtime complexity.
 
 Example 1:
 
@@ -139,8 +134,7 @@ class Solution {
 [66. Plus One](https://leetcode.com/problems/plus-one/)
 
 > you are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
-
-> Increment the large integer by one and return the resulting array of digits.
+	Increment the large integer by one and return the resulting array of digits.
 
 Example 1:
 
@@ -199,8 +193,7 @@ class Solution {
 [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
 
 > Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
-
-> Note that you must do this in-place without making a copy of the array.
+	Note that you must do this in-place without making a copy of the array.
 
 Example 1:
 
@@ -244,8 +237,7 @@ class Solution {
 [169. Majority Element](https://leetcode.com/problems/majority-element/)
 
 > Given an array nums of size n, return the majority element.
-
-> The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+	The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
 
 Example 1:
 
@@ -365,6 +357,21 @@ class Solution {
 
 [55. Jump Game](https://leetcode.com/problems/jump-game/)
 
+> You are given an integer array `nums`. You are initially positioned at the array's **first index**, and each element in the array represents your maximum jump length at that position.
+	Return `true` _if you can reach the last index, or_ `false` _otherwise_.
+
+**Example 1:**
+
+**Input:** nums = [2,3,1,1,4]
+**Output:** true
+**Explanation:** Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+**Example 2:**
+
+**Input:** nums = [3,2,1,0,4]
+**Output:** false
+**Explanation:** You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
+
 ```java
 class Solution {
     public boolean canJump(int[] nums) {
@@ -391,8 +398,29 @@ class Solution {
   - Return true since we can reach the end.
 
 ## Maximum Subarray (leetcode 53)
-
 [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+
+> Given an integer array `nums`, find the subarray with the largest sum, and return _its sum_.
+
+**Example 1:**
+
+**Input:** nums = [-2,1,-3,4,-1,2,1,-5,4]
+**Output:** 6
+**Explanation:** The subarray [4,-1,2,1] has the largest sum 6.
+
+**Example 2:**
+
+**Input:** nums = [1]
+**Output:** 1
+**Explanation:** The subarray [1] has the largest sum 1.
+
+**Example 3:**
+
+**Input:** nums = [5,4,-1,7,8]
+**Output:** 23
+**Explanation:** The subarray [5,4,-1,7,8] has the largest sum 23.
+
+
 
 ```java
 class Solution {
@@ -428,8 +456,7 @@ class Solution {
 [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
 
 > Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
-
-> You must write an algorithm that runs in O(n) time.
+	You must write an algorithm that runs in O(n) time.
 
 Example 1:
 
@@ -489,8 +516,7 @@ class Solution {
 [136. Single Number](https://leetcode.com/problems/single-number/)
 
 > Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
-
-> You must implement a solution with a linear runtime complexity and use only constant extra space.
+	 You must implement a solution with a linear runtime complexity and use only constant extra space.
 
 Example 1:
 
@@ -588,8 +614,7 @@ class Solution {
 [605. Can Place Flowers](https://leetcode.com/problems/can-place-flowers/)
 
 > You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.
-
-> Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
+	Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
 
 Example 1:
 
@@ -638,10 +663,8 @@ class Solution {
 [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
 
 > Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
-
-> The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
-
-> You must write an algorithm that runs in O(n) time and without using the division operation.
+	The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+	You must write an algorithm that runs in O(n) time and without using the division operation.
 
 Example 1:
 
@@ -779,3 +802,37 @@ class Solution {
   - n = 4, canEat = 2
   - set = {1, 2, 3}, uniqueTypes = 3
   - Math.min(3, 2) → Answer is 2.
+
+---
+[215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+
+> Given an integer array `nums` and an integer `k`, return _the_ `kth` _largest element in the array_.
+    Note that it is the `kth` largest element in the sorted order, not the `kth` distinct element.
+	Can you solve it without sorting?
+
+**Example 1:**
+
+**Input:** nums = [3,2,1,5,6,4], k = 2
+**Output:** 5
+
+**Example 2:**
+
+**Input:** nums = [3,2,3,1,2,4,5,5,6], k = 4
+**Output:** 4
+
+```java
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> h=new PriorityQueue<>();
+        for(int i=0;i<nums.length;i++){
+            if(h.size()<k || nums[i]>h.peek()){
+                h.add(nums[i]);
+            }
+            if(h.size()>k){
+                h.poll();
+            }
+        }
+        return h.peek();
+    }
+}
+```

@@ -1,10 +1,10 @@
 # FTP - File Transfer Protocol
 
-## Definition
+## 1. Definition
 
- FTP (File Transfer Protocol) is used to transfer files between a client and server over a network.
+FTP (File Transfer Protocol) is used to transfer files between a client and server over a network.
 
-## Port Numbers
+## 2. Port Numbers
 
 | Mode        | Port |
 | :---------- | :--- |
@@ -13,9 +13,9 @@
 
 ---
 
-## Modes of FTP
+## 3. Modes of FTP
 
-## Active Mode vs Passive Mode
+### Active Mode vs Passive Mode
 
 | Feature                   | Active Mode | Passive Mode |
 | :------------------------ | :---------- | :----------- |
@@ -27,7 +27,7 @@
 
 ---
 
-## Characteristics
+## 4. Characteristics
 
 - Client-server model
 - Supports upload and download
@@ -36,7 +36,7 @@
 
 ---
 
-## FTP Commands
+## 5. FTP Commands
 
 | Command | Purpose                 |
 | :------ | :---------------------- |
@@ -52,7 +52,7 @@
 
 ---
 
-## Limitations of FTP
+## 6. Limitations of FTP
 
 - No encryption
 - Credentials sent in plain text
@@ -60,7 +60,7 @@
 
 ---
 
-## Secure Alternatives to FTP
+## 7. Secure Alternatives to FTP
 
 Because FTP is insecure, modern replacements are:
 | Protocol | Meaning |
@@ -70,7 +70,7 @@ Because FTP is insecure, modern replacements are:
 
 ---
 
-## FTP vs SFTP Comparison
+## 8. FTP vs SFTP Comparison
 
 | Feature        | FTP               | SFTP                 |
 | :------------- | :---------------- | :------------------- |
@@ -83,7 +83,7 @@ Because FTP is insecure, modern replacements are:
 
 ---
 
-## Common FTP Clients
+## 9. Common FTP Clients
 
 - FileZilla
 - WinSCP
@@ -92,21 +92,21 @@ Because FTP is insecure, modern replacements are:
 
 ---
 
-## Command Line Usage
+## 10. Command Line Usage
 
-## Connect to FTP Server
+### Connect to FTP Server
 
 ```bash
 ftp hostname
 ```
 
-## Using SFTP
+### Using SFTP
 
 ```bash
 sftp user@hostname
 ```
 
-## Copy file with SCP
+### Copy file with SCP
 
 ```bash
 scp file.txt user@host:/path/
@@ -114,7 +114,7 @@ scp file.txt user@host:/path/
 
 ---
 
-## Quick Reference
+## 11. Quick Reference
 
 | Protocol | Port | Encryption | Use Case       |
 | :------- | :--- | :--------- | :------------- |
@@ -124,7 +124,7 @@ scp file.txt user@host:/path/
 
 ---
 
-## GATE Exam Points
+## 12. GATE Exam Points
 
 - FTP is insecure by default
 - SFTP is NOT FTP – it is part of SSH

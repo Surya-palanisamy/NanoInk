@@ -2,21 +2,21 @@
 
 A comprehensive guide to understanding network layer models.
 
-## TCP/IP Model (4 Layers)
+## 1. TCP/IP Model (4 Layers)
 
 The TCP/IP model is the practical model used on the internet.
 **Layers:**
 
-| Layer | Name | Protocols |
+| Layer | Name           | Protocols              |
 | ----- | -------------- | ---------------------- |
-| 4 | Application | HTTP, HTTPS, FTP, SMTP |
-| 3 | Transport | TCP, UDP |
-| 2 | Internet | IP, ICMP, ARP |
-| 1 | Network Access | Ethernet, WiFi |
+| 4     | Application    | HTTP, HTTPS, FTP, SMTP |
+| 3     | Transport      | TCP, UDP               |
+| 2     | Internet       | IP, ICMP, ARP          |
+| 1     | Network Access | Ethernet, WiFi         |
 
 ---
 
-## OSI Model (7 Layers)
+## 2. OSI Model (7 Layers)
 
 The OSI (Open Systems Interconnection) model is a conceptual framework for understanding network communications.
 
@@ -29,13 +29,14 @@ The OSI (Open Systems Interconnection) model is a conceptual framework for under
 | 3     | Network      | IP addressing, routing          | IP, ICMP, Routers   |
 | 2     | Data Link    | MAC addresses, frame handling   | Ethernet, Switches  |
 | 1     | Physical     | Physical transmission           | Cables, Fiber, Hubs |
+
 ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/osi-layers_iskfmf.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292324/osi-layers_iskfmf.png)
 
 ---
 
-## Layer Details
+## 3. Layer Details
 
-## 1. Physical Layer
+### 1. Physical Layer
 
 The physical transmission of raw bits over a medium.
 **Components:**
@@ -48,7 +49,7 @@ The physical transmission of raw bits over a medium.
 
 ---
 
-## 2. Data Link Layer
+### 2. Data Link Layer
 
 Handles node-to-node data transfer and error detection.
 **Key Concepts:**
@@ -60,7 +61,7 @@ Handles node-to-node data transfer and error detection.
 
 ---
 
-## 3. Network Layer
+### 3. Network Layer
 
 Handles routing and logical addressing.
 **Key Concepts:**
@@ -72,7 +73,7 @@ Handles routing and logical addressing.
 
 ---
 
-## 4. Transport Layer
+### 4. Transport Layer
 
 Ensures reliable data delivery between hosts.
 **Key Concepts:**
@@ -83,9 +84,10 @@ Ensures reliable data delivery between hosts.
 - Segmentation
   **Think of it as:** The guarantee of delivery.
   ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292351/TCP_bgxntl.gif](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292351/TCP_bgxntl.gif)
+
 ---
 
-## 5. Session Layer
+### 5. Session Layer
 
 Manages sessions between applications.
 **Functions:**
@@ -96,7 +98,7 @@ Manages sessions between applications.
 
 ---
 
-## 6. Presentation Layer
+### 6. Presentation Layer
 
 Translates data between application and network formats.
 **Functions:**
@@ -107,7 +109,7 @@ Translates data between application and network formats.
 
 ---
 
-## 7. Application Layer
+### 7. Application Layer
 
 The interface between the user and the network.
 **Common Protocols:**
@@ -119,7 +121,7 @@ The interface between the user and the network.
 
 ---
 
-## OSI vs TCP/IP Comparison
+## 4. OSI vs TCP/IP Comparison
 
 | Feature          | OSI Model       | TCP/IP Model      |
 | ---------------- | --------------- | ----------------- |
@@ -129,7 +131,7 @@ The interface between the user and the network.
 | Layer Separation | Strict          | Flexible          |
 | Usage            | Reference model | Internet standard |
 
-## Layer Mapping
+### Layer Mapping
 
 | OSI Layers   | TCP/IP Layer   |
 | ------------ | -------------- |
@@ -143,7 +145,7 @@ The interface between the user and the network.
 
 ---
 
-## Data Flow Through Layers
+## 5. Data Flow Through Layers
 
 When data travels from sender to receiver:
 **Sender Side (Encapsulation):**
@@ -162,7 +164,7 @@ When data travels from sender to receiver:
 
 ---
 
-## Key Takeaways
+## 6. Key Takeaways
 
 - **OSI Model** is theoretical (7 layers)
 - **TCP/IP Model** is practical (4 layers)

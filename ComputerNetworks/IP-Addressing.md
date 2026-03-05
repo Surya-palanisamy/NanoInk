@@ -32,7 +32,7 @@ Used to refer to **your own computer**
 
 Used inside homes, offices, LAN networks. Not accessible directly from internet.
 
-## Class A Private Range
+### Class A Private Range
 
 Used in big networks
 | Range | `10.0.0.0 – 10.255.255.255` |
@@ -45,7 +45,7 @@ Used in big networks
 
 ---
 
-## Class B Private Range
+### Class B Private Range
 
 Used in medium networks
 | Range | `172.16.0.0 – 172.31.255.255` |
@@ -59,7 +59,7 @@ Used in medium networks
 
 ---
 
-## Class C Private Range
+### Class C Private Range
 
 Most common in home WiFi
 | Range | `192.168.0.0 – 192.168.255.255` |
@@ -87,12 +87,13 @@ Used on the **internet**. Assigned by ISP.
 
 ## 5. Special IP Ranges
 
-## APIPA (Automatic Private IP)
+### APIPA (Automatic Private IP)
 
 Assigned when no DHCP / WiFi problem
 
 | Range | `169.254.x.x` |
 | :---- | :------------ |
+
 **Meaning:**
 
 - Network problem
@@ -112,7 +113,7 @@ A MAC Address is a **hardware identifier** burned into the network card by the m
 
 > **Remember:** MAC = Physical identity, IP = Logical identity
 
-## IP vs MAC
+### IP vs MAC
 
 | Feature     | IP Address         | MAC Address         |
 | :---------- | :----------------- | :------------------ |
@@ -127,13 +128,13 @@ A MAC Address is a **hardware identifier** burned into the network card by the m
 
 Subnetting divides a large network into smaller networks.
 
-## Why Subnet?
+### Why Subnet?
 
 - Better performance
 - Improved security
 - Efficient IP usage
 
-## Example
+### Example
 
 Network: `192.168.1.0/24`
 Subnetted into:
@@ -150,12 +151,12 @@ Subnetted into:
 **CIDR** = Classless Inter-Domain Routing
 Represents network mask.
 
-| CIDR | Subnet Mask | Hosts |
+| CIDR  | Subnet Mask     | Hosts         |
 | :---- | :-------------- | :------------ |
-| `/24` | 255.255.255.0 | 254 |
-| `/16` | 255.255.0.0 | 65,534 |
+| `/24` | 255.255.255.0   | 254           |
+| `/16` | 255.255.0.0     | 65,534        |
 | `/32` | 255.255.255.255 | 1 (single IP) |
-| `/8` | 255.0.0.0 | 16,777,214 |
+| `/8`  | 255.0.0.0       | 16,777,214    |
 
 ---
 
@@ -163,13 +164,13 @@ Represents network mask.
 
 NAT converts Private IP ↔ Public IP
 
-## Uses
+### Uses
 
 - Security
 - Limited IPv4 saving
 - Home routers
 
-## Types of NAT
+### Types of NAT
 
 | Type        | Description                            |
 | :---------- | :------------------------------------- |
@@ -177,35 +178,35 @@ NAT converts Private IP ↔ Public IP
 | Dynamic NAT | Pool of public IPs                     |
 | PAT         | Port Address Translation (many-to-one) |
 
- ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292339/Pasted_image_20260202225457_tlm7z1.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292339/Pasted_image_20260202225457_tlm7z1.png)
+![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292339/Pasted_image_20260202225457_tlm7z1.png](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772292339/Pasted_image_20260202225457_tlm7z1.png)
 
 ## 10. Useful Commands
 
-## Show IP Addresses
+### Show IP Addresses
 
 ```bash
 ip addr
 ```
 
-## Show Neighbors (ARP Table)
+### Show Neighbors (ARP Table)
 
 ```bash
 ip neigh
 ```
 
-## Show Routing Table
+### Show Routing Table
 
 ```bash
 ip route
 ```
 
-## Find Public IP
+### Find Public IP
 
 ```bash
 curl ifconfig.me
 ```
 
-## Force IPv4 or IPv6
+### Force IPv4 or IPv6
 
 ```bash
 curl -4 ifconfig.me
@@ -214,7 +215,7 @@ curl -6 ifconfig.me
 
 ---
 
-## Quick Reference
+## 11. Quick Reference
 
 | IP Type         | Range          | Use Case            |
 | :-------------- | :------------- | :------------------ |

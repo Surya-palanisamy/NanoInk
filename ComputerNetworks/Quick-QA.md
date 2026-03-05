@@ -2,9 +2,9 @@
 
 A collection of commonly asked networking questions and concise answers.
 
-## General Concepts
+## 1. General Concepts
 
-## Q1: Difference between HTTP and HTTPS?
+### Q1: Difference between HTTP and HTTPS?
 
 | Protocol | Security                     |
 | :------- | :--------------------------- |
@@ -13,7 +13,7 @@ A collection of commonly asked networking questions and concise answers.
 
 ---
 
-## Q2: TCP vs UDP?
+### Q2: TCP vs UDP?
 
 **TCP:**
 
@@ -29,7 +29,7 @@ A collection of commonly asked networking questions and concise answers.
 
 ---
 
-## Q3: What happens when you type google.com in browser?
+### Q3: What happens when you type google.com in browser?
 
 1. DNS resolves domain to IP
 2. Browser connects to server (TCP handshake)
@@ -40,7 +40,7 @@ A collection of commonly asked networking questions and concise answers.
 
 ---
 
-## Q4: Difference between IP and MAC?
+### Q4: Difference between IP and MAC?
 
 | Type | Description                    |
 | :--- | :----------------------------- |
@@ -49,7 +49,7 @@ A collection of commonly asked networking questions and concise answers.
 
 ---
 
-## Q5: Latency vs Bandwidth?
+### Q5: Latency vs Bandwidth?
 
 | Concept   | Meaning                      |
 | :-------- | :--------------------------- |
@@ -58,7 +58,7 @@ A collection of commonly asked networking questions and concise answers.
 
 ---
 
-## Q6: DNS Caching?
+### Q6: DNS Caching?
 
 DNS stores resolved results so next time lookup is faster.
 **Exists at:**
@@ -70,7 +70,7 @@ DNS stores resolved results so next time lookup is faster.
 
 ---
 
-## Q7: Difference between Router and Switch?
+### Q7: Difference between Router and Switch?
 
 **Router:**
 
@@ -84,21 +84,21 @@ DNS stores resolved results so next time lookup is faster.
 
 ---
 
-## Q8: What is DHCP?
+### Q8: What is DHCP?
 
 DHCP = Dynamic Host Configuration Protocol
 Assigns IP addresses automatically to devices on a network.
 
 ---
 
-## Q9: What is ARP?
+### Q9: What is ARP?
 
 ARP = Address Resolution Protocol
 Maps IP address → MAC address
 
 ---
 
-## Q10: What is Packet Loss?
+### Q10: What is Packet Loss?
 
 Packets lost during transfer due to:
 
@@ -108,18 +108,18 @@ Packets lost during transfer due to:
 
 ---
 
-## Q11: What is Port Forwarding?
+### Q11: What is Port Forwarding?
 
 Expose internal service to internet via router configuration.
 Example: Making a home server accessible from outside.
 
 ---
 
-## Q12: VPN in simple words?
+### Q12: VPN in simple words?
 
-## Creates secure encrypted tunnel between you and internet.
+Creates secure encrypted tunnel between you and internet.
 
-## Q13: Proxy vs VPN?
+### Q13: Proxy vs VPN?
 
 | Feature          | Proxy | VPN |
 | :--------------- | :---- | :-- |
@@ -128,28 +128,28 @@ Example: Making a home server accessible from outside.
 
 ---
 
-## Protocol Questions
+## 2. Protocol Questions
 
-## Q14: What protocol is used for sending emails?
+### Q14: What protocol is used for sending emails?
 
-## SMTP (Simple Mail Transfer Protocol)
+SMTP (Simple Mail Transfer Protocol)
 
-## Q15: What protocol is used for receiving emails?
+### Q15: What protocol is used for receiving emails?
 
 - POP3 (downloads to device)
 - IMAP (keeps on server)
 
 ---
 
-## Q16: Default port for SSH?
+### Q16: Default port for SSH?
 
-## **Port 22**
+**Port 22**
 
-## Q17: Which protocol keeps mail on server?
+### Q17: Which protocol keeps mail on server?
 
-## IMAP
+IMAP
 
-## Q18: FTP vs SFTP?
+### Q18: FTP vs SFTP?
 
 | Feature       | FTP | SFTP |
 | :------------ | :-- | :--- |
@@ -160,9 +160,9 @@ Example: Making a home server accessible from outside.
 
 ---
 
-## Routing Questions
+## 3. Routing Questions
 
-## Q19: OSPF vs BGP?
+### Q19: OSPF vs BGP?
 
 | Feature   | OSPF             | BGP              |
 | :-------- | :--------------- | :--------------- |
@@ -172,11 +172,11 @@ Example: Making a home server accessible from outside.
 
 ---
 
-## Q20: What runs the internet?
+### Q20: What runs the internet?
 
-## **BGP (Border Gateway Protocol)**
+**BGP (Border Gateway Protocol)**
 
-## Quick Port Reference
+## 4. Quick Port Reference
 
 | Service | Port  |
 | :------ | :---- |

@@ -82,17 +82,17 @@ SSL (Secure Sockets Layer) and its successor TLS (Transport Layer Security) are 
 | Direction      | Lock / Encrypt                         | Unlock / Decrypt                     |
 | If Leaked?     | Usually okay                           | Severe security risk                 |
 
-## Simple Understanding
+### Simple Understanding
 
 - **Public Key = Lock** — Anyone can lock (encrypt) data for you
 - **Private Key = Key** — Only you can unlock (decrypt) and access it
 
-## Encryption Flow
+### Encryption Flow
 
 - Sender: Encrypts with **Public Key**
 - Receiver: Decrypts with **Private Key**
 
-## Digital Signature Flow
+### Digital Signature Flow
 
 - Sender: Signs with **Private Key**
 - Receiver: Verifies with **Public Key**
@@ -121,7 +121,7 @@ SSH is a secure protocol used to remotely access and manage systems over a netwo
 
 ---
 
-## Quick Reference
+## 9. Quick Reference
 
 | Security Tool | Purpose               | Port    |
 | :------------ | :-------------------- | :------ |
@@ -129,4 +129,3 @@ SSH is a secure protocol used to remotely access and manage systems over a netwo
 | VPN           | Encrypted tunnel      | Various |
 | SSH           | Secure remote access  | 22      |
 | SSL/TLS       | Encrypted web traffic | 443     |
-

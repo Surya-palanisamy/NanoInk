@@ -1,29 +1,29 @@
 # Email Protocols
 
-## Overview
+## 1. Overview
 
 Email communication works using three main protocols:
 
-| Protocol | Purpose |
+| Protocol | Purpose                                 |
 | :------- | :-------------------------------------- |
-| SMTP | Sending emails |
-| POP3 | Receiving and downloading emails |
-| IMAP | Receiving and managing emails on server |
+| SMTP     | Sending emails                          |
+| POP3     | Receiving and downloading emails        |
+| IMAP     | Receiving and managing emails on server |
 
 ---
 
-## SMTP – Simple Mail Transfer Protocol
+## 2. SMTP – Simple Mail Transfer Protocol
 
-## Definition
+### Definition
 
 SMTP is a protocol used to SEND emails from a client to a mail server and between mail servers.
 
-## Layer
+### Layer
 
 - Application Layer Protocol
 - Works over TCP
 
-## Port Numbers
+### Port Numbers
 
 | Type             | Port |
 | :--------------- | :--- |
@@ -35,7 +35,7 @@ SMTP is a protocol used to SEND emails from a client to a mail server and betwee
 
 ---
 
-## Features of SMTP
+### Features of SMTP
 
 - Used only for sending emails
 - Text-based protocol
@@ -44,7 +44,7 @@ SMTP is a protocol used to SEND emails from a client to a mail server and betwee
 
 ---
 
-## SMTP Communication Model
+### SMTP Communication Model
 
 ```
 User → SMTP Client → SMTP Server → Destination SMTP Server → Receiver
@@ -52,7 +52,7 @@ User → SMTP Client → SMTP Server → Destination SMTP Server → Receiver
 
 ---
 
-## SMTP Commands
+### SMTP Commands
 
 | Command   | Meaning                   |
 | :-------- | :------------------------ |
@@ -64,7 +64,7 @@ User → SMTP Client → SMTP Server → Destination SMTP Server → Receiver
 
 ---
 
-## Limitations of SMTP
+### Limitations of SMTP
 
 - Cannot retrieve emails
 - No authentication by default
@@ -72,13 +72,13 @@ User → SMTP Client → SMTP Server → Destination SMTP Server → Receiver
 
 ---
 
-## POP3 – Post Office Protocol Version 3
+## 3. POP3 – Post Office Protocol Version 3
 
-## Definition
+### Definition
 
 POP3 is a protocol used to DOWNLOAD emails from mail server to client device.
 
-## Port Numbers
+### Port Numbers
 
 | Type        | Port |
 | :---------- | :--- |
@@ -87,7 +87,7 @@ POP3 is a protocol used to DOWNLOAD emails from mail server to client device.
 
 ---
 
-## Characteristics
+### Characteristics
 
 - Downloads emails to local device
 - Usually deletes mail from server after download
@@ -96,14 +96,14 @@ POP3 is a protocol used to DOWNLOAD emails from mail server to client device.
 
 ---
 
-## POP3 Modes
+### POP3 Modes
 
 1. **Download and Delete** – Email removed from server after download
 2. **Download and Keep Copy** – Email remains on server
 
 ---
 
-## Disadvantages of POP3
+### Disadvantages of POP3
 
 - Not suitable for multiple devices
 - Limited synchronization
@@ -111,13 +111,13 @@ POP3 is a protocol used to DOWNLOAD emails from mail server to client device.
 
 ---
 
-## IMAP – Internet Message Access Protocol
+## 4. IMAP – Internet Message Access Protocol
 
-## Definition
+### Definition
 
 IMAP is used to ACCESS and MANAGE emails directly on the mail server.
 
-## Port Numbers
+### Port Numbers
 
 | Type        | Port |
 | :---------- | :--- |
@@ -126,7 +126,7 @@ IMAP is used to ACCESS and MANAGE emails directly on the mail server.
 
 ---
 
-## Advantages of IMAP
+### Advantages of IMAP
 
 - Emails remain on server
 - Supports multiple devices
@@ -135,7 +135,7 @@ IMAP is used to ACCESS and MANAGE emails directly on the mail server.
 
 ---
 
-## IMAP vs POP3
+### IMAP vs POP3
 
 | Feature      | POP3          | IMAP             |
 | :----------- | :------------ | :--------------- |
@@ -147,7 +147,7 @@ IMAP is used to ACCESS and MANAGE emails directly on the mail server.
 
 ---
 
-## Protocol Comparison
+## 5. Protocol Comparison
 
 | Protocol | Function                    | Default Port |
 | :------- | :-------------------------- | :----------- |
@@ -157,7 +157,7 @@ IMAP is used to ACCESS and MANAGE emails directly on the mail server.
 
 ---
 
-## Quick Revision
+## 6. Quick Revision
 
 - **SMTP** is used ONLY for sending
 - **POP3** downloads emails to local device

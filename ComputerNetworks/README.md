@@ -2,7 +2,7 @@
 
  A comprehensive guide to computer networking concepts, organized by topic.
 
-## 📚 Topics
+### 📚 Topics
 
 ## Core Concepts
 
@@ -43,7 +43,7 @@
 
 ---
 
-## 🎯 Quick Reference
+### 🎯 Quick Reference
 
 ## Default Ports
 

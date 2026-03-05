@@ -1,6 +1,6 @@
 # Encryption & SSL/TLS
 
-## SSL/TLS Overview
+## 1. SSL/TLS Overview
 
 **SSL** (Secure Sockets Layer) and its successor **TLS** (Transport Layer Security) are the technology behind the Lock Icon in your browser.
 
@@ -9,7 +9,7 @@
 
 ---
 
-## Public Key vs Private Key
+## 2. Public Key vs Private Key
 
 | Feature        | Public Key                             | Private Key                          |
 | :------------- | :------------------------------------- | :----------------------------------- |
@@ -23,7 +23,7 @@
 
 ---
 
-## Simple Understanding
+### Simple Understanding
 
 - **Public Key = Lock**  
   Anyone can lock (encrypt) data for you.
@@ -32,21 +32,21 @@
 
 ---
 
-## Encryption Flow
+### Encryption Flow
 
 **Sender:** Encrypts with **Public Key**  
 **Receiver:** Decrypts with **Private Key**
 
 ---
 
-## Digital Signature Flow
+### Digital Signature Flow
 
 **Sender:** Signs with **Private Key**  
 **Receiver:** Verifies with **Public Key**
 
 ---
 
-## HTTP vs HTTPS
+## 3. HTTP vs HTTPS
 
 | Protocol | Security                 |
 | :------- | :----------------------- |
@@ -55,7 +55,7 @@
 
 ---
 
-## TLS Handshake Steps
+## 4. TLS Handshake Steps
 
 1. **Client Hello** - Client sends supported cipher suites
 2. **Server Hello** - Server chooses cipher suite, sends certificate
@@ -64,7 +64,7 @@
 
 ---
 
-## Common Use Cases
+## 5. Common Use Cases
 
 - Website security (HTTPS)
 - Email encryption
@@ -74,8 +74,7 @@
 
 ---
 
-## Related Topics
+## 6. Related Topics
 
 - [SSH](../Ssh.md)
 - [HTTP and Web](./HTTP-and-Web.md)
-
