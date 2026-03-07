@@ -4,6 +4,14 @@
 
 > Given an integer `x`, return `true` if `x` is a palindrome, and `false` otherwise.
 
+**Example 1:**
+**Input:** `x = 121`
+**Output:** `true`
+
+**Example 2:**
+**Input:** `x = -121`
+**Output:** `false`
+
 ```java
 class Solution {
     public boolean isPalindrome(int x) {
@@ -32,6 +40,14 @@ class Solution {
 [202. Happy Number](https://leetcode.com/problems/happy-number/)
 
 > Write an algorithm to determine if a number `n` is happy. A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits. Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy. Return true if `n` is a happy number, and false if not.
+
+**Example 1:**
+**Input:** `n = 19`
+**Output:** `true`
+
+**Example 2:**
+**Input:** `n = 2`
+**Output:** `false`
 
 ```java
 class Solution {
@@ -70,6 +86,15 @@ class Solution {
 
 > Given an integer `num`, repeatedly add all its digits until the result has only one digit, and return it.
 
+**Example 1:**
+**Input:** `num = 38`
+**Output:** `2`
+**Explanation:** The process is 38 --> 3 + 8 --> 11 --> 1 + 1 --> 2. Since 2 has only one digit, return it.
+
+**Example 2:**
+**Input:** `num = 0`
+**Output:** `0`
+
 ```java
 class Solution {
     public int addDigits(int num) {
@@ -91,6 +116,16 @@ class Solution {
 [263. Ugly Number](https://leetcode.com/problems/ugly-number/)
 
 > An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5. Given an integer `n`, return `true` if `n` is an ugly number.
+
+**Example 1:**
+**Input:** `n = 6`
+**Output:** `true`
+**Explanation:** 6 = 2 × 3
+
+**Example 2:**
+**Input:** `n = 14`
+**Output:** `false`
+**Explanation:** 14 includes the prime factor 7.
 
 ```java
 class Solution {

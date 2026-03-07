@@ -207,6 +207,15 @@ System.out.println(count);
 
 > Given an integer `n`, return an array `ans` of length `n + 1` such that for each `i` (0 <= i <= n), `ans[i]` is the number of 1's in the binary representation of `i`.
 
+**Example 1:**
+**Input:** `n = 2`
+**Output:** `[0,1,1]`
+**Explanation:** `0 --> 0`, `1 --> 1`, `2 --> 10`
+
+**Example 2:**
+**Input:** `n = 5`
+**Output:** `[0,1,1,2,1,2]`
+
 ```java
 public int[] countBits(int n) {
     int[] ans = new int[n + 1];
@@ -222,3 +231,57 @@ public int[] countBits(int n) {
 | Space | **O(n)** |
 
 - Dry run (n=5): ans=[0,1,1,2,1,2] using recurrence ans[i]=ans[i>>1]+(i&1).
+
+---
+
+[1758. Minimum Changes To Make Alternating Binary String](https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/)
+
+> You are given a string `s` consisting only of the characters `'0'` and `'1'`. In one operation, you can change any `'0'` to `'1'` or vice versa.
+> The string is called alternating if no two adjacent characters are equal. For example, the string `"010"` is alternating, while the string `"0100"` is not.
+> Return *the **minimum** number of operations needed to make* `s` *alternating*.
+
+**Example 1:**
+
+**Input:** s = "0100"
+**Output:** 1
+**Explanation:** If you change the last character to '1', s will be "0101", which is alternating.
+
+**Example 2:**
+
+**Input:** s = "10"
+**Output:** 0
+**Explanation:** s is already alternating.
+
+**Example 3:**
+
+**Input:** s = "1111"
+**Output:** 2
+**Explanation:** You need two operations to reach "0101" or "1010".
+
+```java
+class Solution {
+    public int minOperations(String s) {
+        int p1 = 0, p2 = 0;
+        char e1, e2;
+        for (int i = 0; i < s.length(); i++) {
+            e1 = (i % 2 == 0) ? '0' : '1';
+            e2 = (i % 2 == 0) ? '1' : '0';
+            if (e1 != s.charAt(i))
+                p1++;
+            if (e2 != s.charAt(i))
+                p2++;
+        }
+        return Math.min(p1, p2);
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Dry run (s = "0100"):
+  - Expect 1: `0101` (start with '0'). Differs at index 3 -> error count = 1.
+  - Expect 2: `1010` (start with '1'). Differs at indices 0, 1, 2, 3 -> error count = 4.
+  - Return `Math.min(1, 4)` = 1.

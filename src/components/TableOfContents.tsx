@@ -187,8 +187,8 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       >
         <div className="p-3">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs font-semibold text-neutral-400 light:text-black uppercase tracking-[0.18em]">
-              Contents
+            <h3 className="text-xs font-semibold text-red-500 uppercase tracking-[0.18em]">
+              Contents 
             </h3>
             <button
               onClick={() => setIsMobileOpen(false)}
@@ -222,8 +222,8 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
         <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
           <div className="flex-1 overflow-y-auto toc-scrollbar p-3 xl:p-4 pb-8">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-xs font-semibold text-neutral-400 light:text-black uppercase tracking-[0.18em]">
-                Contents
+              <h3 className="text-xs font-semibold text-red-500 uppercase tracking-[0.18em]">
+                Contents 
               </h3>
             </div>
             {renderItems("desktop")}

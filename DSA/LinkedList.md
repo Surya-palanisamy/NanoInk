@@ -2,13 +2,19 @@
 
 ## Detect cycle in linked list (leetcode 141)
 
-
 [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
 
 ![Cycle](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772339718/circularlinkedlist_oggopt.png)
 
 > Given `head`, the head of a linked list, determine if the linked list has a cycle in it.
 
+**Example 1:**
+**Input:** `head = [3,2,0,-4], pos = 1`
+**Output:** `true`
+
+**Example 2:**
+**Input:** `head = [1], pos = -1`
+**Output:** `false`
 
 ```java
 class Solution {
@@ -29,6 +35,7 @@ class Solution {
     }
 }
 ```
+
 ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772347011/Image-3_t2fcxt.gif](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772347011/Image-3_t2fcxt.gif)
 
 | Type  | Value    |
@@ -49,6 +56,14 @@ class Solution {
 [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
 
 > Given the `head` of a singly linked list, return the middle node of the linked list. If there are two middle nodes, return the second middle node.
+
+**Example 1:**
+**Input:** `head = [1,2,3,4,5]`
+**Output:** `[3,4,5]`
+
+**Example 2:**
+**Input:** `head = [1,2,3,4,5,6]`
+**Output:** `[4,5,6]`
 
 ```java
 class Solution {
@@ -85,6 +100,14 @@ class Solution {
 [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
 
 > Given the `head` of a linked list, remove the `nth` node from the end of the list and return its head.
+
+**Example 1:**
+**Input:** `head = [1,2,3,4,5], n = 2`
+**Output:** `[1,2,3,5]`
+
+**Example 2:**
+**Input:** `head = [1], n = 1`
+**Output:** `[]`
 
 ```java
 class Solution {
@@ -129,6 +152,14 @@ class Solution {
 
 > Given the `head` of a linked list, return the node where the cycle begins. If there is no cycle, return `null`.
 
+**Example 1:**
+**Input:** `head = [3,2,0,-4], pos = 1`
+**Output:** `tail connects to node index 1`
+
+**Example 2:**
+**Input:** `head = [1,2], pos = 0`
+**Output:** `tail connects to node index 0`
+
 ```java
 class Solution {
     public ListNode detectCycle(ListNode head) {
@@ -167,6 +198,10 @@ class Solution {
 ## Remove cycle from linked list
 
 > Given the `head` of a linked list that may contain a cycle, remove the cycle if it exists by setting the `next` pointer of the last node in the cycle to `null`.
+
+**Example 1:**
+**Input:** `head = [1,2,3,4,5], pos=2 (cycle on 3)`
+**Output:** `[1,2,3,4,5]`
 
 ```java
 class Solution {
@@ -271,6 +306,12 @@ class Solution {
 | Time Complexity  | **O(n + m)**        |
 | Space Complexity | **O(1)** (in-place) |
 
+- Dry run (list1=[1,2,4], list2=[1,3,4]):
+  - `dummy` points to -1. `current = dummy`.
+  - 1 <= 1 -> current.next = list1, list1=2. current=1.
+  - 2 > 1 -> current.next = list2, list2=3. current=1.
+  - Returns merged.
+
 ---
 
 ## Reverse Bits (leetcode 190)
@@ -319,3 +360,14 @@ public class Solution {
 
 }
 ```
+
+| Type             | Value    |
+| ---------------- | -------- |
+| Time Complexity  | **O(1)** |
+| Space Complexity | **O(1)** |
+
+- Dry run (n=43261596 -> 0000..001...):
+  - loop 32 times: shift result left by 1.
+  - append LSB of n to result.
+  - shift n right (unsigned).
+  - Returns reversed integer.

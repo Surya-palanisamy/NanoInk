@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Java.md",
+                "file": "DSA/Trees.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,21 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Java"
-            }
-          },
-          {
-            "id": "726a1cf61b95f6e9",
-            "type": "leaf",
-            "state": {
-              "type": "webviewer",
-              "state": {
-                "url": "https://leetcode.com/problems/maximum-subarray/description/",
-                "title": "Maximum Subarray - LeetCode",
-                "mode": "webview"
-              },
-              "icon": "globe-2",
-              "title": "Maximum Subarray - LeetCode"
+              "title": "Trees"
             }
           }
         ]
@@ -217,10 +203,15 @@
   },
   "active": "17ca9508cdd2b532",
   "lastOpenFiles": [
+    "DSA/Strings.md",
+    "DSA/Arrays.md",
+    "images/Pasted image 20260306163842.png",
+    "images",
+    "DSA/Matrix.md",
+    "DSA/BitManipulation.md",
+    "Java/Java.md",
     "Java/README.md",
     "Java/OOP.md",
-    "DSA/Arrays.md",
-    "DSA/Strings.md",
     "DSA/LinkedList.md",
     "DSA/Trees.md",
     "WebDev/REST.md",
@@ -239,10 +230,6 @@
     "DevOps/Ansible.md",
     "ComputerNetworks/HTTP-and-Web.md",
     "ComputerNetworks/FTP.md",
-    "ComputerNetworks/IP-Addressing.md",
-    "ComputerNetworks/Network-Security.md",
-    "ComputerNetworks/OSI-TCP-Model.md",
-    "ComputerNetworks/Transport-Protocols.md",
     "images/Pasted image 20260209220007.png",
     "images/Algorithm.png",
     "images/Pasted image 20260126152149.png",
@@ -252,7 +239,6 @@
     "images/Pasted image 20260126152000.png",
     "images/Pasted image 20260202225457.png",
     "images/mongoDB.png",
-    "images/mongoDB20260126154740.png",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.js",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.d.ts",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.js",
@@ -262,7 +248,6 @@
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.js",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.d.ts",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js",
-    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.d.ts",
     "Untitled.canvas",
     "Untitled 1.canvas"
   ]

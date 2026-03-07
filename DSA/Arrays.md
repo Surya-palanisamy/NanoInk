@@ -41,13 +41,75 @@ class Solution {
   - i=1, num=7, diff=2, map has 2 → return [0,1]
 
 ---
+## 3SUM (leetcode 15) 
+[15. 3Sum](https://leetcode.com/problems/3sum/)
 
+> Given an integer array nums, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
+
+> Notice that the solution set must not contain duplicate triplets.
+
+**Example 1:**
+
+**Input:** nums = [-1,0,1,2,-1,-4]
+**Output:** [[-1,-1,2],[-1,0,1]]
+**Explanation:** 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+**Example 2:**
+
+**Input:** nums = [0,1,1]
+**Output:** []
+**Explanation:** The only possible triplet does not sum up to 0.
+
+**Example 3:**
+
+**Input:** nums = [0,0,0]
+**Output:** [[0,0,0]]
+**Explanation:** The only possible triplet sums up to 0.
+
+```java
+import java.util.*;
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
+            int l = i + 1, r = nums.length - 1;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum == 0) {
+                    res.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    while (l < r && nums[l] == nums[l + 1])
+                        l++;
+                    while (l < r && nums[r] == nums[r - 1])
+                        r--;
+                    l++;
+                    r--;
+                } else if (sum < 0)
+                    l++;
+                else
+                    r--;
+            }
+        }
+        return res;
+    }
+}
+```
+
+---
 ## Remove Duplicates from Sorted Array (LeetCode 26)
 
 [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
 > Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
 	 Consider the number of unique elements in nums to be k​​​​​​​​​​​​​​. After removing duplicates, return the number of unique elements k.
+
 	The first k elements of nums should contain the unique numbers in sorted order. The remaining elements beyond index k - 1 can be ignored.
 
 Example 1:
@@ -836,3 +898,42 @@ class Solution {
     }
 }
 ```
+
+---
+Container With Most Water (Leetcode 11)
+
+[11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+
+> You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `ith` line are `(i, 0)` and `(i, height[i])`.
+
+> Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+> Return _the maximum amount of water a container can store_.
+  **Notice** that you may not slant the container.
+  
+  ![water container](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg)
+
+**Input:** height = [1,8,6,2,5,4,8,3,7]
+**Output:** 49
+
+**Explanation:** The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+```java
+class Solution {
+    public int maxArea(int[] h) {
+        int left = 0;
+        int right = h.length - 1;
+        int mx = 0;
+        while (left < right) {
+            int hi = Math.min(h[left], h[right]);
+            int w = right - left;
+            mx = Math.max(mx, hi * w);
+            if (h[left] < h[right]) {
+                left++;
+            } else
+                right--;
+        }
+        return mx;
+    }
+}
+```
+

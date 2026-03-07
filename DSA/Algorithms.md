@@ -1,6 +1,6 @@
 # Algorithms & Complexity
 
-![Algorithm Comparison](../images/Algorithm.png)
+![Algorithm Comparison](https://storage.googleapis.com/images-article/TimeComplexityGrapg.jpg)
 
 ## 1. Sorting Algorithms Comparison
 

@@ -6,6 +6,18 @@
 
 > Given a string `s` containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
+**Example 1:**
+**Input:** `s = "()"`
+**Output:** `true`
+
+**Example 2:**
+**Input:** `s = "()[]{}"`
+**Output:** `true`
+
+**Example 3:**
+**Input:** `s = "(]"`
+**Output:** `false`
+
 ```java
 import java.util.*;
 public class Main {
