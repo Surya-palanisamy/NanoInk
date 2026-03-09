@@ -128,11 +128,11 @@ class Solution {
 
 [1582. Special Positions in a Binary Matrix](https://leetcode.com/problems/special-positions-in-a-binary-matrix/)
 
-> Given an `m x n` binary matrix `mat`, return *the number of special positions in* `mat`_._
+> Given an `m x n` binary matrix `mat`, return _the number of special positions in_ `mat`_._
 
-> A position `(i, j)` is called **special** if `mat[i][j] == 1` and all other elements in row `i` and column `j` are `0` (rows and columns are **0-indexed**).
+> A position `(i, j)` is called **special** if `mat[i][j] == 1` and all other elements in row `i` and column `j` are `0` (rows and columns are **0-indexed**).
 
-**Example 1:**
+**Example 1:** 
 
 ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772731033/special1_j2j0em.jpg](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772731033/special1_j2j0em.jpg)
 

@@ -314,3 +314,57 @@ class Solution {
   - Returns `false` as expected because 1s are not one segment.
 
 ---
+
+## String to Integer (Leetcode 8)
+
+[8. String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/)
+
+Implement the `myAtoi(string s)` function, which converts a string to a 32-bit signed integer.
+
+The algorithm for `myAtoi(string s)` is as follows:
+
+1. **Whitespace**: Ignore any leading whitespace (`" "`).
+2. **Signedness**: Determine the sign by checking if the next character is `'-'` or `'+'`, assuming positivity if neither present.
+3. **Conversion**: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. If no digits were read, then the result is 0.
+4. **Rounding**: If the integer is out of the 32-bit signed integer range `[-231, 231 - 1]`, then round the integer to remain in the range. Specifically, integers less than `-231` should be rounded to `-231`, and integers greater than `231 - 1` should be rounded to `231 - 1`.
+
+Return the integer as the final result.
+
+```java
+class Solution {
+    public int myAtoi(String s) {
+        s = s.trim();
+        int sign = 1;
+        int i = 0;
+        long n = 0;
+        if (s.isEmpty())
+            return 0;
+        if (s.charAt(i) == '+' || s.charAt(i) == '-') {
+            sign = (s.charAt(i) == '-' ? -1 : 1);
+            i++;
+        }
+        while (i < s.length() && Character.isDigit(s.charAt(i))) {
+            n = n * 10 + (s.charAt(i) - '0');
+            i++;
+            if (sign * n > Integer.MAX_VALUE)
+                return Integer.MAX_VALUE;
+            if (sign * n < Integer.MIN_VALUE)
+                return Integer.MIN_VALUE;
+        }
+        return (int) (sign * n);
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Iteratively clean up whitespace, determine the sign, and read characters as long as they are digits. Accumulate the number step by step, and check for 32-bit integer overflow or underflow constraints to clamp the result if necessary.
+- Dry run (s = " -42"):
+  - `s.trim()` -> "-42"
+  - First char is '-', set sign=-1, i=1
+  - i=1, char='4', n=0 \* 10 + 4 = 4
+  - i=2, char='2', n=4 \* 10 + 2 = 42
+  - return sign \* n = -42

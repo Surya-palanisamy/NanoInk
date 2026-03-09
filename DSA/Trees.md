@@ -53,6 +53,16 @@ public void preOrder(Node root) {
 | Space | **O(n)** |
 
 - Approach: Visit Root → Traverse Left → Traverse Right
+- Dry run (root=[1,null,2,3]):
+  - Visit root (1) → print 1
+  - Traverse left of 1 (null)
+  - Traverse right of 1 (node 2)
+    - Visit node 2 → print 2
+    - Traverse left of 2 (node 3)
+      - Visit node 3 → print 3
+      - Traverse left & right of 3 (both null)
+    - Traverse right of 2 (null)
+  - Output is 1 2 3
 
 ---
 
@@ -89,6 +99,17 @@ class Solution {
 | Space | **O(n)** |
 
 - Approach: Traverse Left → Visit Root → Traverse Right
+- Dry run (root=[1,null,2,3]):
+  - Traverse left of 1 (null)
+  - Visit root (1) → print 1
+  - Traverse right of 1 (node 2)
+    - Traverse left of 2 (node 3)
+      - Traverse left of 3 (null)
+      - Visit node 3 → print 3
+      - Traverse right of 3 (null)
+    - Visit node 2 → print 2
+    - Traverse right of 2 (null)
+  - Output is 1 3 2
 
 ---
 
@@ -115,6 +136,16 @@ public void postOrder(Node root) {
 | Space | **O(n)** |
 
 - Approach: Traverse Left → Traverse Right → Visit Root
+- Dry run (root=[1,null,2,3]):
+  - Traverse left of 1 (null)
+  - Traverse right of 1 (node 2)
+    - Traverse left of 2 (node 3)
+      - Traverse left & right of 3 (null)
+      - Visit node 3 → print 3
+    - Traverse right of 2 (null)
+    - Visit node 2 → print 2
+  - Visit root (1) → print 1
+  - Output is 3 2 1
 
 ---
 

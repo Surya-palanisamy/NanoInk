@@ -98,6 +98,7 @@
   }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 24px);
     color-scheme: dark;
     background-color: var(--color-dark-bg);
   }
@@ -179,14 +180,30 @@
   opacity: 0;
   animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.stagger-1 { animation-delay: 100ms; }
-.stagger-2 { animation-delay: 200ms; }
-.stagger-3 { animation-delay: 300ms; }
-.stagger-4 { animation-delay: 400ms; }
-.stagger-5 { animation-delay: 500ms; }
-.stagger-6 { animation-delay: 600ms; }
-.stagger-7 { animation-delay: 700ms; }
-.stagger-8 { animation-delay: 800ms; }
+.stagger-1 {
+  animation-delay: 100ms;
+}
+.stagger-2 {
+  animation-delay: 200ms;
+}
+.stagger-3 {
+  animation-delay: 300ms;
+}
+.stagger-4 {
+  animation-delay: 400ms;
+}
+.stagger-5 {
+  animation-delay: 500ms;
+}
+.stagger-6 {
+  animation-delay: 600ms;
+}
+.stagger-7 {
+  animation-delay: 700ms;
+}
+.stagger-8 {
+  animation-delay: 800ms;
+}
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);
@@ -328,6 +345,7 @@
 /* Prose styles for markdown content */
 .prose h1 {
   @apply text-2xl font-bold text-neutral-100 mt-12 mb-5 pb-3 border-b border-neutral-700;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
 }
 @media (max-width: 640px) {
   .prose h1 {
@@ -336,6 +354,7 @@
 }
 .prose h2 {
   @apply text-xl font-semibold text-neutral-100 mt-10 mb-4;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
 }
 @media (max-width: 640px) {
   .prose h2 {
@@ -344,6 +363,7 @@
 }
 .prose h3 {
   @apply text-xl font-semibold text-neutral-200 mt-8 mb-3;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
 }
 @media (max-width: 640px) {
   .prose h3 {
@@ -352,6 +372,7 @@
 }
 .prose h4 {
   @apply text-lg font-medium text-neutral-200 mt-6 mb-2;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
 }
 @media (max-width: 640px) {
   .prose h4 {

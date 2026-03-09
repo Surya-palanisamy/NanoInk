@@ -80,6 +80,8 @@ class Solution {
 - Dry run (n=19):
   - 19→82→4→16→37→58→89→145→42→20→4 → cycle detected → false
 
+---
+
 ## Add Digits (leetcode 258)
 
 [258. Add Digits](https://leetcode.com/problems/add-digits/)
@@ -110,6 +112,8 @@ class Solution {
 
 - Approach: Use the property of digital root. `(num - 1) % 9 + 1` gives the digital root of the number.
 - Dry run (num=38): (38-1) % 9 + 1 = 4 → Answer is 4.
+
+---
 
 ## Ugly Number (leetcode 263)
 
@@ -146,3 +150,59 @@ class Solution {
 
 - Approach: Keep dividing by 2, 3, and 5. If the result is 1, it's an ugly number.
 - Dry run (n=14): 14→7→1 → true
+
+---
+
+## Add Binary (leetcode 67)
+
+[67. Add Binary](https://leetcode.com/problems/add-binary/)
+
+> Given two binary strings `a` and `b`, return *their sum as a binary string*.
+
+**Example 1:**
+
+**Input:** a = "11", b = "1"
+**Output:** "100"
+
+**Example 2:**
+
+**Input:** a = "1010", b = "1011"
+**Output:** "10101"
+
+```java
+class Solution {
+    public String addBinary(String a, String b) {
+        StringBuilder r = new StringBuilder();
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
+        while (i >= 0 || j >= 0 || carry == 1) {
+            int s = carry;
+            if (i >= 0)
+                s += a.charAt(i--) - '0';
+            if (j >= 0)
+                s += b.charAt(j--) - '0';
+            r.append(s % 2);
+            carry = s / 2;
+        }
+        return r.reverse().toString();
+    }
+}
+```
+
+| Type  | Value            |
+| ----- | ---------------- |
+| Time  | **O(max(N, M))** |
+| Space | **O(max(N, M))** |
+
+- Approach: Iterate from right to left, adding corresponding digits and a carry, and appending the remainder of `sum % 2`. Reverse the string builder at the end to get the correct binary string.
+- Dry run (a = "11", b = "1"):
+  - i=1, j=0, carry=0
+  - s = 0 + a[1](1) + b[0](1) = 2. append 0, carry=1
+  - i=0, j=-1, carry=1
+  - s = 1 + a[0](1) = 2. append 0, carry=1
+  - i=-1, j=-1, carry=1
+  - s = 1. append 1, carry=0
+  - loops ends. return reverse("001") -> "100"
+
+---

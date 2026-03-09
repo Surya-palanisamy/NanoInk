@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA/Trees.md",
+                "file": "DSA/Arrays.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Trees"
+              "title": "Arrays"
             }
           }
         ]
@@ -204,6 +204,8 @@
   "active": "17ca9508cdd2b532",
   "lastOpenFiles": [
     "DSA/Strings.md",
+    "DSA/Math.md",
+    "DSA/Trees.md",
     "DSA/Arrays.md",
     "images/Pasted image 20260306163842.png",
     "images",
@@ -213,7 +215,6 @@
     "Java/README.md",
     "Java/OOP.md",
     "DSA/LinkedList.md",
-    "DSA/Trees.md",
     "WebDev/REST.md",
     "WebDev/Html.md",
     "WebDev/JavaScript.md",

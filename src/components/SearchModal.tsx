@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { getManifest, getAllEntries } from "@/lib/manifest";
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -9,11 +8,17 @@ interface SearchModalProps {
 export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<
-    { name: string; path: string; parentPath: string }[]
+    {
+      name: string;
+      path: string;
+      parentPath: string;
+      excerpt?: string;
+      anchor?: string;
+    }[]
   >([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
-  const entries = useMemo(() => getAllEntries(getManifest()), []);
   useEffect(() => {
     if (isOpen) {
       setQuery("");
@@ -24,19 +29,31 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   useEffect(() => {
     if (!query.trim()) {
       setResults([]);
+      setIsLoading(false);
       return;
     }
-    const q = query.toLowerCase();
-    const filtered = entries
-      .filter(
-        (entry) =>
-          entry.name.toLowerCase().includes(q) ||
-          entry.path.toLowerCase().includes(q),
-      )
-      .slice(0, 10);
-    setResults(filtered);
-    setSelectedIndex(0);
-  }, [query, entries]);
+
+    const fetchResults = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `/api/search?q=${encodeURIComponent(query)}`,
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setResults(data);
+          setSelectedIndex(0);
+        }
+      } catch (error) {
+        console.error("Search error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    const timeoutId = setTimeout(fetchResults, 300);
+    return () => clearTimeout(timeoutId);
+  }, [query]);
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -57,17 +74,21 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         setSelectedIndex((prev) => Math.max(prev - 1, 0));
       } else if (e.key === "Enter" && results[selectedIndex]) {
         e.preventDefault();
-        navigateToResult(results[selectedIndex].path);
+        navigateToResult(results[selectedIndex]);
       }
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, results, selectedIndex, onClose]);
   const navigateToResult = useCallback(
-    (filePath: string) => {
+    (result: { path: string; anchor?: string }) => {
       // Convert file path to URL path
-      const slug = filePath.replace(".md", "").split("/");
-      router.push(`/docs/${slug.join("/")}`);
+      const slug = result.path.replace(".md", "").split("/");
+      let url = `/docs/${slug.join("/")}`;
+      if (result.anchor) {
+        url += result.anchor;
+      }
+      router.push(url);
       onClose();
     },
     [router, onClose],
@@ -104,9 +125,14 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         </div>
         {/* Results */}
         <div className="max-h-64 sm:max-h-80 overflow-y-auto">
-          {results.length === 0 && query && (
+          {results.length === 0 && query && !isLoading && (
             <div className="p-4 text-center text-sm text-neutral-500 light:text-black">
               No results found
+            </div>
+          )}
+          {isLoading && query && (
+            <div className="p-4 text-center text-sm text-neutral-500 light:text-black">
+              Searching...
             </div>
           )}
           {results.length === 0 && !query && (
@@ -116,8 +142,8 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
           )}
           {results.map((result, index) => (
             <button
-              key={result.path}
-              onClick={() => navigateToResult(result.path)}
+              key={`${result.path}-${index}`}
+              onClick={() => navigateToResult(result)}
               className={`w-full flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 text-left transition-colors ${
                 index === selectedIndex
                   ? "bg-accent/20 text-accent"
@@ -144,6 +170,11 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 <div className="text-xs text-neutral-500 light:text-black truncate">
                   {result.parentPath}
                 </div>
+                {result.excerpt && (
+                  <div className="text-xs text-neutral-400 dark:text-neutral-400 light:text-neutral-600 mt-1 line-clamp-2 italic">
+                    {result.excerpt}
+                  </div>
+                )}
               </div>
             </button>
           ))}

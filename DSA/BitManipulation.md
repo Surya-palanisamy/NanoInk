@@ -234,6 +234,8 @@ public int[] countBits(int n) {
 
 ---
 
+## Minimum Changes To Make Alternating Binary String (LeetCode 1758)
+
 [1758. Minimum Changes To Make Alternating Binary String](https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/)
 
 > You are given a string `s` consisting only of the characters `'0'` and `'1'`. In one operation, you can change any `'0'` to `'1'` or vice versa.

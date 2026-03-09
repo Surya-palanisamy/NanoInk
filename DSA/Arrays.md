@@ -5,8 +5,9 @@
 [1. Two Sum](https://leetcode.com/problems/two-sum/)
 
 > Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-	You may assume that each input would have exactly one solution, and you may not use the same element twice.
-	 You can return the answer in any order.
+
+        You may assume that each input would have exactly one solution, and you may not use the same element twie    .
+     You can return the answer in any order.
 
 Example 1:
 
@@ -38,10 +39,14 @@ class Solution {
 - Approach: Use a HashMap to store seen values and check for complement in O(n).
 - Dry run (nums = [2,7,11,15], target = 9):
   - i=0, num=2, diff=7, map={}, not found → put 2:0
-  - i=1, num=7, diff=2, map has 2 → return [0,1]
+  - i=1, num=7, diff=2, map has 2 → return [0,1
+]
 
 ---
-## 3SUM (leetcode 15) 
+
+## 3SUM (leeto
+de 15)
+
 [15. 3Sum](https://leetcode.com/problems/3sum/)
 
 > Given an integer array nums, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
@@ -52,7 +57,7 @@ class Solution {
 
 **Input:** nums = [-1,0,1,2,-1,-4]
 **Output:** [[-1,-1,2],[-1,0,1]]
-**Explanation:** 
+**Explantion:**
 nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
 nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
 nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
@@ -100,17 +105,21 @@ class Solution {
         return res;
     }
 }
-```
+``
+`
 
 ---
+
 ## Remove Duplicates from Sorted Array (LeetCode 26)
 
 [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
-> Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
-	 Consider the number of unique elements in nums to be k​​​​​​​​​​​​​​. After removing duplicates, return the number of unique elements k.
+> Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept th
+     same.
 
-	The first k elements of nums should contain the unique numbers in sorted order. The remaining elements beyond index k - 1 can be ignored.
+     Consider the number of unique elements in nums to be k​​​​​​​​​​​​​​. After removing duplicates, return the number of unique e    ements k.
+
+    The first k elements of nums should contain the unique numbers in sorted order. The remaining elements beyond index k - 1 can be ignored.
 
 Example 1:
 
@@ -151,8 +160,10 @@ class Solution {
 
 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/)
 
-> Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
-	You must write an algorithm with O(log n) runtime complexity.
+> Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inse
+    ted in order.
+
+    You must write an algorithm with O(log n) runtime complexity.
 
 Example 1:
 
@@ -195,8 +206,10 @@ class Solution {
 
 [66. Plus One](https://leetcode.com/problems/plus-one/)
 
-> you are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
-	Increment the large integer by one and return the resulting array of digits.
+> you are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contai
+     any leading 0's.
+
+    Increment the large integer by one and return the resulting array of digits.
 
 Example 1:
 
@@ -254,8 +267,10 @@ class Solution {
 
 [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
 
-> Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
-	Note that you must do this in-place without making a copy of the array.
+> Given an integer array nums, move all 0's to the end of it while maintaining the relative order of 
+> he non-zero elements.
+
+> Note that you must do this in-place without making a copy of the array.
 
 Example 1:
 
@@ -298,8 +313,10 @@ class Solution {
 
 [169. Majority Element](https://leetcode.com/problems/majority-element/)
 
-> Given an array nums of size n, return the majority element.
-	The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+> Given an array nums of size n, ret
+u> n the majority element.
+
+> The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
 
 Example 1:
 
@@ -419,8 +436,10 @@ class Solution {
 
 [55. Jump Game](https://leetcode.com/problems/jump-game/)
 
-> You are given an integer array `nums`. You are initially positioned at the array's **first index**, and each element in the array represents your maximum jump length at that position.
-	Return `true` _if you can reach the last index, or_ `false` _otherwise_.
+> You are given an integer array `nums`. You are initially positioned at the array's **first index**, and each element in the array represents your maximum ju
+m     length at that position.
+
+    Return `true` _if you can reach the last index, or_ `false` _otherwise_.
 
 **Example 1:**
 
@@ -459,10 +478,12 @@ class Solution {
   - i=1, val=3 → m=max(2, 1+3)=4
   - Return true since we can reach the end.
 
-## Maximum Subarray (leetcode 53)
+##
+ Maximum Subarray (leetcode 53)
+
 [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 
-> Given an integer array `nums`, find the subarray with the largest sum, and return _its sum_.
+> Given an integer array `nums`, find the subarray w*th the *argest sum, and return *its sum*.
 
 **Example 1:**
 
@@ -480,9 +501,7 @@ class Solution {
 
 **Input:** nums = [5,4,-1,7,8]
 **Output:** 23
-**Explanation:** The subarray [5,4,-1,7,8] has the largest sum 23.
-
-
+**Explanation:** The subarray [5,41,7,8] has the largest sum 23.
 
 ```java
 class Solution {
@@ -517,8 +536,10 @@ class Solution {
 
 [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
 
-> Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
-	You must write an algorithm that runs in O(n) time.
+> Given an unsorted array of integers nums, return the length of the longest 
+c    nsecutive elements sequence.
+
+    You must write an algorithm that runs in O(n) time.
 
 Example 1:
 
@@ -577,8 +598,10 @@ class Solution {
 
 [136. Single Number](https://leetcode.com/problems/single-number/)
 
-> Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
-	 You must implement a solution with a linear runtime complexity and use only constant extra space.
+> Given a non-empty array of integers nums, every element appears twice exc
+e    t for one. Find that single one.
+
+     You must implement a solution with a linear runtime complexity and use only constant extra space.
 
 Example 1:
 
@@ -675,8 +698,10 @@ class Solution {
 
 [605. Can Place Flowers](https://leetcode.com/problems/can-place-flowers/)
 
-> You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.
-	Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
+> You have a long flowerbed in which some of the plots are planted, and some are not. However, flower
+s    cannot be planted in adjacent plots.
+
+    Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
 
 Example 1:
 
@@ -724,9 +749,11 @@ class Solution {
 
 [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
 
-> Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
-	The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
-	You must write an algorithm that runs in O(n) time and without using the division operation.
+> Given an integer array nums, return an array answer such that answer[i] is equal to the product of
+    all the elements of nums except nums[i].
+
+    The product of any prefix or suffix of n    ms is guaranteed to fit in a 32-bit integer.
+    You must write an algorithm that runs in O(n) time and without using the division operation.
 
 Example 1:
 
@@ -782,23 +809,22 @@ public class CoinChangeWays {
                 dp[i] += dp[i - coin];
             }
         }
-        return dp[amount];
-    }
+        ret          urn dp[amount];
+    ----------}
 }
 
 ```
 
-| Type  | Value    |
-| ----- | -------- |
-| Time  | **O(n * amount)** |
-| Space | **O(amount)** |
+| Type  |\ Value              |
+| ----- | ------     ------------ |
+| Time  | **O(n \* amount)** |
+| Space | **O(amount)**      |
 
 - Dry run (coins={1,2,5}, amount=5):
   - start: [1,0,0,0,0,0]
-  - coin=1 → [1,1,1,1,1,1]
+  - coin=1 → [1,,1,1,1,1]
   - coin=2 → [1,1,2,2,3,3]
   - coin=5 → [1,1,2,2,3,4] → ways=4
-
 
 ## Best Time to Buy and Sell Stock (leetcode 121)
 
@@ -862,15 +888,23 @@ class Solution {
 - Approach: Use a HashSet to count unique candy types and return the minimum of unique types or `n/2`.
 - Dry run (candyType = [1,1,2,3]):
   - n = 4, canEat = 2
-  - set = {1, 2, 3}, uniqueTypes = 3
+  
+## Kth Largest Element in an Array (LeetCode 215)
+
+- set = {1, 2, 3}, uniqueTypes = 3
   - Math.min(3, 2) → Answer is 2.
 
 ---
-[215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
-> Given an integer array `nums` and an integer `k`, return _the_ `kth` _largest element in the array_.
+## Kth Largest Element in an Array (LeetCode 215)
+
+[215. Kth Largest Element in an Array*(ht*ps://le*tcode.com/problems/kth-large*t
+-element-in-an-array/)
+
+> Given an integer array `nums` and an integer `k`, return *the* `kth` *larg    st element in the array*.
+
     Note that it is the `kth` largest element in the sorted order, not the `kth` distinct element.
-	Can you solve it without sorting?
+    Can you solve it without sorting?
 
 **Example 1:**
 
@@ -888,8 +922,24 @@ class Solution {
         PriorityQueue<Integer> h=new PriorityQueue<>();
         for(int i=0;i<nums.length;i++){
             if(h.size()<k || nums[i]>h.peek()){
-                h.add(nums[i]);
-            }
+                h.add(nums[i])
+
+| Type  | Value          |
+| ----- | -------------- |
+| Time  | **O(n log k)** |
+| Space | **O(k)**       |
+
+- Approach: Use a Min-Heap of size `k`. We maintain the `k` largest elements in the heap, and the root is the $k^{th}$ largest element overall.
+- Dry run (nums = [3,2,1,5,6,4], k = 2):
+  - i=0, num=3: heap=[3]
+  - i=1, num=2: heap=[2, 3]
+  - i=2, num=1: heap=[1, 2, 3] → size > 2 (poll) → heap=[2, 3]
+  - i=3, num=5: heap=[2, 3, 5] → pool → heap=[3, 5];  - i=4, num=6: heap=[3, 5, 6] → pool → heap=[5, 6]
+    i=5, num=4: heap=[4, 5, 6] → pool → heap=[5, 6]
+    Return heap.peek() = 5
+
+ --
+         }
             if(h.size()>k){
                 h.poll();
             }
@@ -899,24 +949,56 @@ class Solution {
 }
 ```
 
+| Type  | Value          |
+| ----- | -------------- |
+| Time  | **O(n log k)** |
+| Space | **O(k)**       |
+
+- Approach: Use a Min-Heap of size `k`. We maintain the `k` largest elements in the heap, and the root is the $k^{th}$ largest element overall.
+- Dry run (nums = [3,2,1,5,6,4], k = 2):
+  - i=0, num=*: heap=[3]
+  - i=1, num=2: heap=[2, 3]
+  - i=2, n*m=>: heap=[1, 2, 3] → size > 2 (poll) → heap=[2, 3]
+  3, num=5: heap=[2, 3, 5] → pool → heap=[3, 5]
+  - i=4, num=6: heap=[3, 5, 6] → pool → heap=[5, 6]
+  - i=5, num=4: heap=[4, 5, 6] → pool → heap=[5, 6]
+  - Return heap.peek() = 5
+
 ---
-Container With Most Water (Leetcode 11)
+
+## Container With Most Water (Leetcode 11)
 
 [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
 
-> You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `ith` line are `(i, 0)` and `(i, height[i])`.
+> Y
+ou are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `ith` line are `(i, 0)` and `(i, height[i])`.
 
 > Find two lines that together with the x-axis form a container, such that the container contains the most water.
 
-> Return _the maximum amount of water a container can store_.
-  **Notice** that you may not slant the container.
-  
-  ![water container](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg)
+> Return *the maximum amount of water a container can store*.
+> **Notice** that you may not slant the container.
+
+![water container](https://s3-lc-upl
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Two pointers strategy (left and right). At each step, calculate the area and move the pointer that points to the shorter line, trying to find a taller line to maximize the area.
+- Dry run (height = [1,8,6,2,5,4,8,3,7]):
+  - left=0 (val 1), right=8 (val 7) → w=8, h=1, area=8, max=8. Move left.o  - left=1 (val 8), right=8 (val 7) → w=7, h=7, area=49, max=49. Move right.a  d Continues until pointers meet... returns max area 49.
+
+.s-
+3## Search in Rotated Sorted Array (LeetCode 33)
+
+.amazonaws.com/uploads/2018/07/17/question_11.jpg)
 
 **Input:** height = [1,8,6,2,5,4,8,3,7]
 **Output:** 49
 
 **Explanation:** The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
 ```java
 class Solution {
     public int maxArea(int[] h) {
@@ -928,12 +1010,109 @@ class Solution {
             int w = right - left;
             mx = Math.max(mx, hi * w);
             if (h[left] < h[right]) {
-                left++;
-            } else
-                right--;
-        }
-        return mx;
+                left+*;
+          * } else
+  *           * right-*;
+  *     }*        return *x;
     }
 }
 ```
 
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Two pointers strategy (left and right). At each step, calculate the area and move the pointer that points to the shorter line, trying to find a taller line to maximize the area.
+- Dry run (height = [1,8,6,2,5,4,8,3,7]):
+  - left=0 (val 1), right=8 (val 7) → w=8, h=1, area=8, max=8. Move left.
+  - left=1 (val 8), right=8 (val 7) → w=7, h=7, area=49, max=49. Move right.
+  - Continues until pointers meet... returns max area 49.
+
+---
+
+## Search in Rotated Sorted Array (LeetCode 33)
+
+[33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+> There is an integer array `nums` sorted in ascending order (with **distinct** values).
+
+> Prior to being passed to your function, `nums` is **possibly left rotated** at an unknown index `k` (`1 <= k < nums.length`) such that the resulting array is `[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]` (**0-indexed**). For example, `[0,1,2,4,5,6
+```
+
+
+| Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(log n)** |
+| Space | **O(1)**     |
+
+- Approach: Binary search. Identify which half of the array is sorted (`left` to `mid`, or `mid` to `right`). If the target falls into the sorted half's range, move onto that half; otherwise, search the other half.
+- Dry run (nums = [4,5,6,7,0,1,2], target = 0):
+  - left=0, right=6: mid=3 (val 7). Target 0 != 7.
+  - Left half 7[4,5,6,7]` is sorted. Target 0 is NOT between 4 and 7. Thus move to right half: left = mid + 1 = 4.
+  - left=4, right=6: mid=5 (val 1). Target 0 != 1.
+  - Right half ][1,2]` is sorted. Target 0 is NOT between 1 and 2. Thus move to left half: right = mid - 1 = 4.
+  - left=4, right=4: mid=4 (val 0). Target 0 == 0. Return 4. might be left rotated by `3` indices and become `[4,5,6,7,0,1,2]`.
+
+> Given the array `nums` **after** the possible rotation and an integer `target`, return *the index of* `target` *if it is in* `nums`*, or* `-1` *if it is not in* `nums`.
+
+> You must write an algorithm with `O(log n)` runtime complexity.
+
+**Example 1:**
+
+**Input:** nums = [4,5,6,7,0,1,2], target = 0
+**Output:** 4
+
+**Example 2:**
+
+**Input:** nums = [4,5,6,7,0,1,2], target = 3
+**Output:** -1
+
+**Example 3:**
+
+**Input:** nums = [1], target = 0
+**Output:** -1
+
+```java
+class Solution {
+    public int search(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            }
+            if (nums[left] <= nums[mid]) {
+                if (nums[left] <= target && target < nums[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            } else {
+                if (nums[mid] < target && target <= nums[right]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+}
+```
+
+| Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(log n)** |
+| Space | **O(1)**     |
+
+- Approach: Binary search. Identify which half of the array is sorted (`left` to `mid`, or `mid` to `right`). If the target falls into the sorted half's range, move onto that half; otherwise, search the other half.
+- Dry run (nums = [4,5,6,7,0,1,2], target = 0):
+  - left=0, right=6: mid=3 (val 7). Target 0 != 7.
+  - Left half `[4,5,6,7]` is sorted. Target 0 is NOT between 4 and 7. Thus move to right half: left = mid + 1 = 4.
+  - left=4, right=6: mid=5 (val 1). Target 0 != 1.
+  - Right half `[1,2]` is sorted. Target 0 is NOT between 1 and 2. Thus move to left half: right = mid - 1 = 4.
+  - left=4, right=4: mid=4 (val 0). Target 0 == 0. Return 4.
+
+---
