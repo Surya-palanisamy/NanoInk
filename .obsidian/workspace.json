@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA/Arrays.md",
+                "file": "DSA/DSA_Questions.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Arrays"
+              "title": "DSA_Questions"
             }
           }
         ]
@@ -201,15 +201,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "17ca9508cdd2b532",
+  "active": "fa9f6c9a5edb738f",
   "lastOpenFiles": [
+    "DSA/Matrix.md",
+    "DSA/DSA_Questions.md",
+    "DSA/Arrays.md",
     "DSA/Strings.md",
     "DSA/Math.md",
     "DSA/Trees.md",
-    "DSA/Arrays.md",
     "images/Pasted image 20260306163842.png",
     "images",
-    "DSA/Matrix.md",
     "DSA/BitManipulation.md",
     "Java/Java.md",
     "Java/README.md",
@@ -230,7 +231,6 @@
     "DevOps/Nginx.md",
     "DevOps/Ansible.md",
     "ComputerNetworks/HTTP-and-Web.md",
-    "ComputerNetworks/FTP.md",
     "images/Pasted image 20260209220007.png",
     "images/Algorithm.png",
     "images/Pasted image 20260126152149.png",

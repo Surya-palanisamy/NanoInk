@@ -44,8 +44,7 @@ class Solution {
 
 ---
 
-## 3SUM (leeto
-de 15)
+## 3Sum (LeetCode 15)
 
 [15. 3Sum](https://leetcode.com/problems/3sum/)
 
@@ -478,8 +477,7 @@ class Solution {
   - i=1, val=3 → m=max(2, 1+3)=4
   - Return true since we can reach the end.
 
-##
- Maximum Subarray (leetcode 53)
+## Maximum Subarray (LeetCode 53)
 
 [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 
@@ -1116,3 +1114,4 @@ class Solution {
   - left=4, right=4: mid=4 (val 0). Target 0 == 0. Return 4.
 
 ---
+
