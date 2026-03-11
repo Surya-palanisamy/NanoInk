@@ -122,13 +122,13 @@
 
 ## String
 
-| Topic  | Difficulty | Problem                       | Pattern         | Link                                                                 | Solution                                      |
-| ------ | ---------- | ----------------------------- | --------------- | -------------------------------------------------------------------- | --------------------------------------------- |
-| String | Easy       | Valid Anagram                 | Hash Map        | [Link](https://leetcode.com/problems/valid-anagram/)                 | [Solution](./Strings.md#anagram-leetcode-242) |
-| String | Medium     | Group Anagrams                | Hash Map        | [Link](https://leetcode.com/problems/group-anagrams/)                | Coming Soon                                   |
-| String | Medium     | Longest Palindromic Substring | DP/Two Pointers | [Link](https://leetcode.com/problems/longest-palindromic-substring/) | Coming Soon                                   |
-| String | Medium     | Palindromic Substrings        | DP/Two Pointers | [Link](https://leetcode.com/problems/palindromic-substrings/)        | Coming Soon                                   |
-| String | Medium     | Encode and Decode Strings     | String          | [Link](https://leetcode.com/problems/encode-and-decode-strings/)     | Coming Soon                                   |
+| Topic  | Difficulty | Problem                       | Pattern         | Link                                                                 | Solution                                                     |
+| ------ | ---------- | ----------------------------- | --------------- | -------------------------------------------------------------------- | ------------------------------------------------------------ |
+| String | Easy       | Valid Anagram                 | Hash Map        | [Link](https://leetcode.com/problems/valid-anagram/)                 | [Solution](./Strings.md#anagram-leetcode-242)                |
+| String | Medium     | Group Anagrams                | Hash Map        | [Link](https://leetcode.com/problems/group-anagrams/)                | Coming Soon                                                  |
+| String | Medium     | Longest Palindromic Substring | DP/Two Pointers | [Link](https://leetcode.com/problems/longest-palindromic-substring/) | Coming Soon                                                  |
+| String | Medium     | Palindromic Substrings        | DP/Two Pointers | [Link](https://leetcode.com/problems/palindromic-substrings/)        | [Solution](./Strings.md#palindromic-substrings-leetcode-647) |
+| String | Medium     | Encode and Decode Strings     | String          | [Link](https://leetcode.com/problems/encode-and-decode-strings/)     | Coming Soon                                                  |
 
 ## Trie
 

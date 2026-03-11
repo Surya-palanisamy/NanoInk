@@ -201,17 +201,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "fa9f6c9a5edb738f",
+  "active": "17ca9508cdd2b532",
   "lastOpenFiles": [
-    "DSA/Matrix.md",
-    "DSA/DSA_Questions.md",
     "DSA/Arrays.md",
-    "DSA/Strings.md",
+    "DSA/BitManipulation.md",
     "DSA/Math.md",
+    "DSA/Strings.md",
+    "DSA/DSA_Questions.md",
+    "DSA/Matrix.md",
     "DSA/Trees.md",
     "images/Pasted image 20260306163842.png",
     "images",
-    "DSA/BitManipulation.md",
     "Java/Java.md",
     "Java/README.md",
     "Java/OOP.md",

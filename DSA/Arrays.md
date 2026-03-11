@@ -104,8 +104,7 @@ class Solution {
         return res;
     }
 }
-``
-`
+```
 
 ---
 
@@ -886,18 +885,12 @@ class Solution {
 - Approach: Use a HashSet to count unique candy types and return the minimum of unique types or `n/2`.
 - Dry run (candyType = [1,1,2,3]):
   - n = 4, canEat = 2
-  
-## Kth Largest Element in an Array (LeetCode 215)
-
-- set = {1, 2, 3}, uniqueTypes = 3
+  - set = {1, 2, 3}, uniqueTypes = 3
   - Math.min(3, 2) → Answer is 2.
 
----
-
 ## Kth Largest Element in an Array (LeetCode 215)
 
-[215. Kth Largest Element in an Array*(ht*ps://le*tcode.com/problems/kth-large*t
--element-in-an-array/)
+[215. Kth Largest Element in an Array](htpps://leetcode.com/problems/kth-largert-element-in-an-array/)
 
 > Given an integer array `nums` and an integer `k`, return *the* `kth` *larg    st element in the array*.
 
@@ -922,21 +915,6 @@ class Solution {
             if(h.size()<k || nums[i]>h.peek()){
                 h.add(nums[i])
 
-| Type  | Value          |
-| ----- | -------------- |
-| Time  | **O(n log k)** |
-| Space | **O(k)**       |
-
-- Approach: Use a Min-Heap of size `k`. We maintain the `k` largest elements in the heap, and the root is the $k^{th}$ largest element overall.
-- Dry run (nums = [3,2,1,5,6,4], k = 2):
-  - i=0, num=3: heap=[3]
-  - i=1, num=2: heap=[2, 3]
-  - i=2, num=1: heap=[1, 2, 3] → size > 2 (poll) → heap=[2, 3]
-  - i=3, num=5: heap=[2, 3, 5] → pool → heap=[3, 5];  - i=4, num=6: heap=[3, 5, 6] → pool → heap=[5, 6]
-    i=5, num=4: heap=[4, 5, 6] → pool → heap=[5, 6]
-    Return heap.peek() = 5
-
- --
          }
             if(h.size()>k){
                 h.poll();
@@ -946,7 +924,6 @@ class Solution {
     }
 }
 ```
-
 | Type  | Value          |
 | ----- | -------------- |
 | Time  | **O(n log k)** |
