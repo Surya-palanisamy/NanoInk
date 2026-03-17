@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA/DSA_Questions.md",
+                "file": "DSA/Arrays.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "DSA_Questions"
+              "title": "Arrays"
             }
           }
         ]
@@ -203,19 +203,19 @@
   },
   "active": "17ca9508cdd2b532",
   "lastOpenFiles": [
+    "DSA/Strings.md",
     "DSA/Arrays.md",
+    "DSA/Trees.md",
+    "DSA/LinkedList.md",
+    "DSA/DSA_Questions.md",
     "DSA/BitManipulation.md",
     "DSA/Math.md",
-    "DSA/Strings.md",
-    "DSA/DSA_Questions.md",
     "DSA/Matrix.md",
-    "DSA/Trees.md",
     "images/Pasted image 20260306163842.png",
     "images",
     "Java/Java.md",
     "Java/README.md",
     "Java/OOP.md",
-    "DSA/LinkedList.md",
     "WebDev/REST.md",
     "WebDev/Html.md",
     "WebDev/JavaScript.md",

@@ -1,3 +1,5 @@
+# Matrix
+
 ## Rotate Matrix 90° Clockwise (leetcode 48)
 
 [48. Rotate Image](https://leetcode.com/problems/rotate-image/)
@@ -21,10 +23,10 @@ Corrected approach: transpose the matrix (swap `a[i][j]` with `a[j][i]` for `j>i
 ```java
 public class Main {
     public static void main(String[] args) {
-    
+
         int[][] a = {{1,2,3},{4,5,6},{7,8,9}};
         int n = a.length;
-        
+
         // Transpose
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
@@ -33,7 +35,7 @@ public class Main {
                 a[j][i] = t;
             }
         }
-        
+
         // Reverse each row
         for (int i = 0; i < n; i++) {
             int s = 0, e = n - 1;
@@ -44,7 +46,7 @@ public class Main {
                 s++; e--;
             }
         }
-        
+
     }
 }
 ```
@@ -82,42 +84,42 @@ public class Main {
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> res = new ArrayList<>();
-        
+
         int top = 0;
         int bottom = matrix.length - 1;
-        
+
         int left = 0;
         int right = matrix[0].length - 1;
-        
+
         while(top <= bottom && left <= right){
             for(int i = left; i <= right; i++){
                 res.add(matrix[top][i]);
             }
-            
+
             top++;
-            
+
             for(int i = top; i <= bottom; i++){
                 res.add(matrix[i][right]);
             }
-            
+
             right--;
-            
+
             if(top <= bottom){
                 for(int i = right; i >= left; i--){
                     res.add(matrix[bottom][i]);
                 }
                 bottom--;
             }
-            
+
             if(left <= right){
                 for(int i = bottom; i >= top; i--){
                     res.add(matrix[i][left]);
                 }
-                
+
                 left++;
             }
         }
-        
+
         return res;
     }
 }
@@ -145,7 +147,7 @@ class Solution {
 
 > A position `(i, j)` is called **special** if `mat[i][j] == 1` and all other elements in row `i` and column `j` are `0` (rows and columns are **0-indexed**).
 
-**Example 1:** 
+**Example 1:**
 
 ![https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772731033/special1_j2j0em.jpg](https://res.cloudinary.com/dwdbp4qpe/image/upload/v1772731033/special1_j2j0em.jpg)
 
@@ -166,10 +168,10 @@ class Solution {
     public int numSpecial(int[][] mat) {
         int m = mat.length;
         int n = mat[0].length;
-        
+       
         int[] r = new int[m];
         int[] c = new int[n];
-        
+       
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (mat[i][j] == 1) {
@@ -178,9 +180,9 @@ class Solution {
                 }
             }
         }
-        
+       
         int cp = 0;
-        
+       
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (mat[i][j] == 1 && r[i] == 1 && c[j] == 1) {
@@ -188,7 +190,7 @@ class Solution {
                 }
             }
         }
-        
+       
         return cp;
     }
 }
@@ -210,7 +212,9 @@ class Solution {
   - Final count = 1
 
 ---
+
 ## Set Matrix Zeros (Leetcode 73)
+
 [73. Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/)
 
 Given an `m x n` integer matrix `matrix`, if an element is `0`, set its entire row and column to `0`'s.
@@ -281,12 +285,25 @@ class Solution {
 }
 ```
 
+| Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(m × n)** |
+| Space | **O(1)**     |
+
+- Approach: Use first row and first column as markers. First, check if the first row/column themselves contain zeros. Then, iterate through the rest of the matrix, marking zeros in the first row/column. Finally, fill zeros based on markers and handle first row/column.
+- Dry run (matrix = [[1,1,1],[1,0,1],[1,1,1]]):
+  - firstRow=false, firstCol=false
+  - matrix[1][1]=0 → mark matrix[1][0]=0, matrix[0][1]=0
+  - Fill: row 1 all zeros (matrix[1][0]=0), col 1 all zeros (matrix[0][1]=0)
+  - Result: [[1,0,1],[0,0,0],[1,0,1]]
+
 ---
+
+## Flipping an Image (LeetCode 832)
 
 [832. Flipping an Image](https://leetcode.com/problems/flipping-an-image/)
 
-
-> Given an `n x n` binary matrix `image`, flip the image **horizontally**, then invert it, and return _the resulting image_.
+> Given an `n x n` binary matrix `image`, flip the image **horizontally**, then invert it, and return *the resulting image*.
 
 > To flip an image horizontally means that each row of the image is reversed.
 
@@ -313,7 +330,7 @@ Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
 ```java
 class Solution {
     public int[][] flipAndInvertImage(int[][] image) {
-        
+
         int m = image.length;
         int n = image[0].length;
 
@@ -336,3 +353,95 @@ class Solution {
 }
 ```
 
+| Type  | Value     |
+| ----- | --------- |
+| Time  | **O(n²)** |
+| Space | **O(1)**  |
+
+- Approach: For each row, use two pointers from both ends. Swap and invert simultaneously using XOR with 1.
+- Dry run (image = [[1,1,0],[1,0,1],[0,0,0]]):
+  - Row 0: swap+invert (0,2): [1,1,0] → s=0,e=2: temp=1^1=0, img[0]=0^1=1, img[2]=0 → [1,1,0]. s=1,e=1: temp=1^1=0, img[1]=1^1=0, img[1]=0 → [1,0,0]
+  - Row 1: s=0,e=2: temp=1^1=0, img[0]=1^1=0, img[2]=0 → [0,0,0]. s=1,e=1: 0^1=1 → [0,1,0]
+  - Row 2: s=0,e=2: temp=0^1=1, img[0]=0^1=1, img[2]=1 → [1,0,1]. s=1,e=1: 0^1=1 → [1,1,1]
+  - Result: [[1,0,0],[0,1,0],[1,1,1]]
+
+---
+
+
+## Number of Islands (LeetCode 200)
+
+[200. Number of Islands](https://leetcode.com/problems/number-of-islands/)
+
+> Given an `m x n` 2D binary grid `grid` which represents a map of `'1'`s (land) and `'0'`s (water), return *the number of islands*.
+
+> An **island** is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+**Example 1:**
+
+**Input:** grid = [
+["1","1","1","1","0"],
+["1","1","0","1","0"],
+["1","1","0","0","0"],
+["0","0","0","0","0"]
+]
+**Output:** 1
+
+**Example 2:**
+
+**Input:** grid = [
+["1","1","0","0","0"],
+["1","1","0","0","0"],
+["0","0","1","0","0"],
+["0","0","0","1","1"]
+]
+**Output:** 3
+
+```java
+class Solution {
+
+    public int numIslands(char[][] grid) {
+
+        int m = grid.length;
+        int n = grid[0].length;
+        int count = 0;
+       
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+           
+                if(grid[i][j] == '1') {
+                    count++;
+                    dfs(grid, i, j);
+                }
+            }
+        }
+        return count;
+    }
+    private void dfs(char[][] grid, int i, int j) {
+        int m = grid.length;
+        int n = grid[0].length;
+       
+        if(i < 0 || j < 0 || i >= m || j >= n || grid[i][j] == '0')
+            return;
+           
+        grid[i][j] = '0';
+        dfs(grid, i+1, j);
+       
+        dfs(grid, i-1, j);
+        dfs(grid, i, j+1);
+        dfs(grid, i, j-1);
+    }
+}
+```
+
+| Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(m × n)** |
+| Space | **O(m × n)** |
+
+- Approach: Iterate through the grid. When a '1' is found, increment count and DFS to mark all connected '1's as '0' (visited).
+- Dry run (grid = [["1","1","0"],["0","1","0"],["0","0","1"]]):
+  - (0,0)='1' → count=1, DFS marks (0,0),(0,1),(1,1) as '0'
+  - (2,2)='1' → count=2, DFS marks (2,2) as '0'
+  - Result: 2
+
+---

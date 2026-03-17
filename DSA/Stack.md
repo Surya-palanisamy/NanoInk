@@ -41,6 +41,8 @@ public class Main {
 | Time  | **O(n)** |
 | Space | **O(n)** |
 
+- Approach: Push expected closing brackets onto a stack. For each closing bracket, check if it matches the stack top.
+
 - Dry run (s = "()[]{}"):
   - Push ')' for '('
   - Push ']' for '['

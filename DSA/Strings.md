@@ -130,6 +130,84 @@ class Solution {
 
 ---
 
+## Integer to Roman (Leetcode 12)
+
+[12. Integer to Roman](https://leetcode.com/problems/integer-to-roman/)
+
+> Seven different symbols represent Roman numerals with the following values:
+
+| Symbol | Value |
+| ------ | ----- |
+| I      | 1     |
+| V      | 5     |
+| X      | 10    |
+| L      | 50    |
+| C      | 100   |
+| D      | 500   |
+| M      | 1000  |
+
+> Roman numerals are formed by appending the conversions of decimal place values from highest to lowest. Converting a decimal place value into a Roman numeral has the following rules:
+
+> Given an integer, convert it to a Roman numeral.
+
+**Example 1:**
+
+**Input:** num = 58
+
+**Output:** "LVIII"
+
+**Explanation:**
+
+50 = L
+8 = VIII
+
+**Example 3:**
+
+**Input:** num = 1994
+
+**Output:** "MCMXCIV"
+
+**Explanation:**
+
+1000 = M
+900 = CM
+90 = XC
+4 = IV
+
+```java
+class Solution {
+
+    public String intToRoman(int num) {
+        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] symbols = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < values.length; i++) {
+            while (num >= values[i]) {
+                result.append(symbols[i]);
+                num -= values[i];
+            }
+        }
+        return result.toString();
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Use greedy matching. Iterate through value-symbol pairs from largest to smallest, appending symbols while the number allows.
+- Dry run (num = 1994):
+  - 1994 >= 1000 → "M", num=994
+  - 994 >= 900 → "MCM", num=94
+  - 94 >= 90 → "MCMXC", num=4
+  - 4 >= 4 → "MCMXCIV", num=0
+  - Result: "MCMXCIV"
+
+---
+
 ## Anagram (LeetCode 242)
 
 [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
@@ -370,12 +448,14 @@ class Solution {
   - return sign \* n = -42
 
 ---
-##  Palindromic Substrings (Leetcode 647)
+
+## Palindromic Substrings (Leetcode 647)
+
 [647. Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/)
 
->Given a string `s`, return _the number of **palindromic substrings** in it_.
-A string is a **palindrome** when it reads the same backward as forward.
-A **substring** is a contiguous sequence of characters within the string.
+> Given a string `s`, return *the number of **palindromic substrings** in it*.
+> A string is a **palindrome** when it reads the same backward as forward.
+> A **substring** is a contiguous sequence of characters within the string.
 
 **Example 1:**
 
@@ -409,4 +489,75 @@ class Solution {
     }
 }
 ```
-o(n^2)
+
+| Type  | Value     |
+| ----- | --------- |
+| Time  | **O(n²)** |
+| Space | **O(1)**  |
+
+- Approach: Expand Around Center. For each index, expand outward for both odd-length (center=i) and even-length (center=i,i+1) palindromes.
+- Dry run (s = "aaa"):
+  - i=0: odd expand(0,0) → "a" (count=1). even expand(0,1) → "aa" (count=2).
+  - i=1: odd expand(1,1) → "a","aaa" (count=4). even expand(1,2) → "aa" (count=5).
+  - i=2: odd expand(2,2) → "a" (count=6). even expand(2,3) → stop.
+  - Total = 6.
+
+---
+
+## Word Break (LeetCode 139)
+
+[139. Word Break](https://leetcode.com/problems/word-break/)
+
+> Given a string `s` and a dictionary of strings `wordDict`, return `true` if `s` can be segmented into a space-separated sequence of one or more dictionary words.
+
+**Example 1:**
+
+**Input:** s = "leetcode", wordDict = ["leet","code"]
+**Output:** true
+**Explanation:** "leetcode" can be segmented as "leet code".
+
+**Example 2:**
+
+**Input:** s = "applepenapple", wordDict = ["apple","pen"]
+**Output:** true
+
+**Example 3:**
+
+**Input:** s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
+**Output:** false
+
+```java
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+
+        HashSet<String> set = new HashSet<>(wordDict);
+        boolean[] dp = new boolean[s.length() + 1];
+
+        dp[0] = true;
+
+        for(int i = 1; i <= s.length(); i++){
+            for(int j = 0; j < i; j++){
+
+                if(dp[j] && set.contains(s.substring(j, i))){
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+
+        return dp[s.length()];
+    }
+}
+```
+
+| Type  | Value     |
+| ----- | --------- |
+| Time  | **O(n²)** |
+| Space | **O(n)**  |
+
+- Approach: Use DP. `dp[i]` is true if `s[0..i-1]` can be segmented. For each position `i`, check all substrings `s[j..i]` — if `dp[j]` is true and substring is in dict, set `dp[i] = true`.
+- Dry run (s = "leetcode", wordDict = ["leet","code"]):
+  - dp[0]=true
+  - i=4: j=0, dp[0]=true, s[0..4]="leet" in dict → dp[4]=true
+  - i=8: j=4, dp[4]=true, s[4..8]="code" in dict → dp[8]=true
+  - Return dp[8] = true

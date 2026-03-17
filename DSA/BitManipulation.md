@@ -1,6 +1,16 @@
+# Bit Manipulation
+
 ## Even or Odd
 
 > Given an integer `n`, determine if it is even or odd using bitwise operators.
+
+**Example 1:**
+**Input:** `n = 13`
+**Output:** `Odd`
+
+**Example 2:**
+**Input:** `n = 8`
+**Output:** `Even`
 
 ```java
 int n = 13;
@@ -22,6 +32,10 @@ else System.out.println("Odd");
 
 > Given an integer `n`, multiply it by 2 using bitwise shift operators.
 
+**Example:**
+**Input:** `n = 7`
+**Output:** `14`
+
 ```java
 int n = 7;
 int result = n << 1;
@@ -41,6 +55,10 @@ System.out.println(result);
 
 > Given an integer `n`, divide it by 2 using bitwise shift operators.
 
+**Example:**
+**Input:** `n = 14`
+**Output:** `7`
+
 ```java
 int n = 14;
 int result = n >> 1;
@@ -59,6 +77,14 @@ System.out.println(result);
 ## Power of 2
 
 > Given an integer `n`, check if it is a power of 2 using bitwise operators.
+
+**Example 1:**
+**Input:** `n = 16`
+**Output:** `Power of 2`
+
+**Example 2:**
+**Input:** `n = 13`
+**Output:** `Not power of 2`
 
 ```java
 int n = 16;
@@ -80,6 +106,11 @@ else
 ## Count Number of 1s
 
 > Given an integer `n`, count the number of set bits (1s) in its binary representation.
+
+**Example:**
+**Input:** `n = 15`
+**Output:** `4`
+**Explanation:** 15 in binary is 1111, which has 4 set bits.
 
 ```java
 int n = 15, count = 0;
@@ -103,6 +134,10 @@ System.out.println(count);
 
 > Given an integer `n`, print all powers of 2 from $2^0$ to $2^n$.
 
+**Example:**
+**Input:** `n = 5`
+**Output:** `1, 2, 4, 8, 16, 32`
+
 ```java
 int n = 5;
 for (int i = 0; i <= n; i++) {
@@ -123,6 +158,11 @@ for (int i = 0; i <= n; i++) {
 
 > Given an integer `n` and a zero-indexed position `k`, set the `k`-th bit of `n` to 1.
 
+**Example:**
+**Input:** `n = 10, k = 2`
+**Output:** `14`
+**Explanation:** 10(1010) | 4(0100) = 14(1110)
+
 ```java
 int n = 10, k = 2;
 n = n | (1 << k);
@@ -141,6 +181,11 @@ System.out.println(n);
 ## Clear a Specific Bit
 
 > Given an integer `n` and a zero-indexed position `k`, clear the `k`-th bit of `n` (set it to 0).
+
+**Example:**
+**Input:** `n = 14, k = 1`
+**Output:** `12`
+**Explanation:** 14(1110) & ~(0010) = 12(1100)
 
 ```java
 int n = 14, k = 1;
@@ -162,6 +207,11 @@ System.out.println(n);
 
 > Given an integer `n` and a zero-indexed position `k`, toggle the `k`-th bit of `n`.
 
+**Example:**
+**Input:** `n = 12, k = 2`
+**Output:** `8`
+**Explanation:** 12(1100) ^ 4(0100) = 8(1000)
+
 ```java
 int n = 12, k = 2;
 n = n ^ (1 << k);
@@ -181,6 +231,11 @@ System.out.println(n);
 ## Count Trailing Zeros
 
 > Given an integer `n`, count the number of trailing zeros in its binary representation.
+
+**Example:**
+**Input:** `n = 40`
+**Output:** `3`
+**Explanation:** 40 in binary is 101000, which has 3 trailing zeros.
 
 ```java
 int n = 40, count = 0;
@@ -285,10 +340,11 @@ class Solution {
 
 - Dry run (s = "0100"):
   - Expect 1: `0101` (start with '0'). Differs at index 3 -> error count = 1.
-  - Expect 2: `1010` (start with '1'). Differs at indices 0, 1, 2, 3 -> error count = 4.
-  - Return `Math.min(1, 4)` = 1.
+  - Expect 2: `1010` (start with '1'). Differs at indices 0, 1, 2 -> error count = 3.
+  - Return `Math.min(1, 3)` = 1.
 
 ---
+
 ## Add Binary (leetcode 67)
 
 [67. Add Binary](https://leetcode.com/problems/add-binary/)

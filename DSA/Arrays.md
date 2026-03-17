@@ -1,5 +1,64 @@
 # Arrays
 
+## EquilibriumPoint
+
+> Given an array `arr`, find the first index where the sum of elements on its left equals the sum on its right. Return `-1` if no such index exists.
+
+**Example 1:**
+
+**Input:** arr = [1,7,3,6,5,6]
+**Output:** 3
+**Explanation:** Left sum = 1+7+3 = 11, Right sum = 5+6 = 11.
+
+**Example 2:**
+
+**Input:** arr = [1,2,3]
+**Output:** -1
+**Explanation:** No index has equal left and right sums.
+
+```java
+class Main {
+    static int equilibriumPoint(int[] arr) {
+        int prefSum = 0, total = 0;
+
+        // Calculate the array sum
+        for (int ele : arr) {
+            total += ele;
+        }
+
+        for (int pivot = 0; pivot < arr.length; pivot++) {
+            int suffSum = total - prefSum - arr[pivot];
+            if (prefSum == suffSum) {
+                return pivot;
+            }
+            prefSum += arr[pivot];
+        }
+
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 7, 3, 6, 5, 6};
+
+        System.out.println(equilibriumPoint(arr));
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Calculate total sum first. Then iterate through the array, maintaining a running prefix sum. At each index, the suffix sum is `total - prefSum - arr[pivot]`. If prefix equals suffix, return that index.
+- Dry run (arr = [1,7,3,6,5,6]):
+  - total = 28
+  - pivot=0: prefSum=0, suffSum=28-0-1=27. Not equal. prefSum=1.
+  - pivot=1: prefSum=1, suffSum=28-1-7=20. Not equal. prefSum=8.
+  - pivot=2: prefSum=8, suffSum=28-8-3=17. Not equal. prefSum=11.
+  - pivot=3: prefSum=11, suffSum=28-11-6=11. Equal! Return 3.
+
+---
 ## Two Sum (LeetCode 1)
 
 [1. Two Sum](https://leetcode.com/problems/two-sum/)
@@ -105,6 +164,20 @@ class Solution {
     }
 }
 ```
+
+| Type  | Value                          |
+| ----- | ------------------------------ |
+| Time  | **O(n²)**                     |
+| Space | **O(1)** (excluding output)    |
+
+- Approach: Sort the array first. Fix one element with index `i`, then use two pointers (`l` and `r`) to find pairs that sum to `-nums[i]`. Skip duplicates at all three levels to avoid repeated triplets.
+- Dry run (nums = [-1,0,1,2,-1,-4]):
+  - Sort → [-4,-1,-1,0,1,2]
+  - i=0, nums[i]=-4: l=1, r=5. sum=-4+(-1)+2=-3 < 0 → l++. sum=-4+(-1)+2=-3 < 0 → l++. sum=-4+0+2=-2 < 0 → l++. sum=-4+1+2=-1 < 0 → l++. l >= r, stop.
+  - i=1, nums[i]=-1: l=2, r=5. sum=-1+(-1)+2=0 → found [-1,-1,2]. Skip dups. l=3, r=4. sum=-1+0+1=0 → found [-1,0,1]. Skip dups. l=4, r=3, stop.
+  - i=2, nums[i]=-1: same as nums[1], skip duplicate.
+  - i=3, nums[i]=0: l=4, r=5. sum=0+1+2=3 > 0 → r--. l >= r, stop.
+  - Result: [[-1,-1,2], [-1,0,1]]
 
 ---
 
@@ -261,6 +334,63 @@ class Solution {
 
 ---
 
+##  Merge Sorted Array (leetcode 88)
+
+[88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)
+
+> You are given two integer arrays `nums1` and `nums2`, sorted in **non-decreasing order**, and two integers `m` and `n`, representing the number of elements in `nums1` and `nums2` respectively.
+
+> **Merge** `nums1` and `nums2` into a single array sorted in **non-decreasing order**.
+
+> The final sorted array should not be returned by the function, but instead be _stored inside the array_ `nums1`. To accommodate this, `nums1` has a length of `m + n`, where the first `m` elements denote the elements that should be merged, and the last `n` elements are set to `0` and should be ignored. `nums2` has a length of `n`.
+
+**Example 1:**
+
+**Input:** nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+**Output:** [1,2,2,3,5,6]
+**Explanation:** The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
+**Example 2:**
+
+**Input:** nums1 = [1], m = 1, nums2 = [], n = 0
+**Output:** [1]
+**Explanation:** The arrays we are merging are [1] and [].
+The result of the merge is [1].
+```java
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = n + m - 1;
+        while (j >= 0) {
+            if (i < 0) {
+                nums1[k--] = nums2[j--];
+            } else if (nums1[i] >= nums2[j]) {
+                nums1[k--] = nums1[i--];
+            } else {
+                nums1[k--] = nums2[j--];
+            }
+        }
+    }
+}
+```
+
+| Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(m+n)**   |
+| Space | **O(1)**     |
+
+- Approach: Use three pointers starting from the end. `i` points to the last real element in `nums1`, `j` points to the last element in `nums2`, and `k` points to the last position in `nums1`. Compare elements from the ends of both arrays and place the larger one at position `k`, moving backwards. This avoids overwriting elements that haven't been processed yet.
+- Dry run (nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3):
+  - i=2, j=2, k=5: nums1[2]=3 < nums2[2]=6 → nums1[5]=6, j=1, k=4. nums1=[1,2,3,0,0,6]
+  - i=2, j=1, k=4: nums1[2]=3 < nums2[1]=5 → nums1[4]=5, j=0, k=3. nums1=[1,2,3,0,5,6]
+  - i=2, j=0, k=3: nums1[2]=3 >= nums2[0]=2 → nums1[3]=3, i=1, k=2. nums1=[1,2,3,3,5,6]
+  - i=1, j=0, k=2: nums1[1]=2 >= nums2[0]=2 → nums1[2]=2, i=0, k=1. nums1=[1,2,2,3,5,6]
+  - i=0, j=0, k=1: nums1[0]=1 < nums2[0]=2 → nums1[1]=2, j=-1, k=0. nums1=[1,2,2,3,5,6]
+  - j < 0, loop ends. Result: [1,2,2,3,5,6]
+
+---
 ## Move Zeroes (LeetCode 283)
 
 [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
@@ -352,6 +482,19 @@ class Solution {
 ---
 
 ## Neighbors Are Greater (Circular)
+
+> Given a circular array `A` of `N` integers, for each element count how many of its two neighbors (left and right, wrapping around) are strictly greater than it. Print the count for each element.
+
+**Example:**
+
+**Input:** N = 5, A = [3, 6, 1, 4, 2]
+**Output:** 1 0 2 0 2
+**Explanation:**
+- A[0]=3: left neighbor A[4]=2 (not greater), right neighbor A[1]=6 (greater) → 1
+- A[1]=6: left neighbor A[0]=3 (not greater), right neighbor A[2]=1 (not greater) → 0
+- A[2]=1: left neighbor A[1]=6 (greater), right neighbor A[3]=4 (greater) → 2
+- A[3]=4: left neighbor A[2]=1 (not greater), right neighbor A[4]=2 (not greater) → 0
+- A[4]=2: left neighbor A[3]=4 (greater), right neighbor A[0]=3 (greater) → 2
 
 ```java
 import java.util.*;
@@ -735,12 +878,10 @@ class Solution {
 
 - Approach: Iterate through the flowerbed. Place a flower if the current plot is empty and its neighbors are also empty. Count the number of flowers placed.
 - Dry run (flowerbed = [1,0,0,0,1], n=1):
-  - i=0: plot=1, neighbors=0,0 → skip
-  - i=1: plot=0, neighbors=1,0 → place flower, count=1
-  - i=2: plot=0, neighbors=0,1 → skip
-  - i=3: plot=0, neighbors=1,0 → place flower, count=2
-  - i=4: plot=1, neighbors=0,0 → skip
-  - Return true since we can place 2 flowers.
+  - i=0: flowerbed[0]=1, not 0 → skip. (i becomes 2 via i+=2)
+  - i=2: flowerbed[2]=0. i==len-1? No. flowerbed[2]==flowerbed[3]? 0==0 → Yes → n-- → n=0. (i becomes 4 via i+=2)
+  - i=4: flowerbed[4]=1, not 0 → skip. (i becomes 6, loop ends since 6 >= 5)
+  - n=0 ≤ 0 → return true.
 
 ## Product of Array Except Self (leetcode 238)
 
@@ -796,6 +937,12 @@ class Solution {
 
 > Given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money, return the number of combinations that make up that amount.
 
+**Example:**
+
+**Input:** coins = [1, 2, 5], amount = 5
+**Output:** 4
+**Explanation:** There are 4 ways to make up amount 5: [5], [2,2,1], [2,1,1,1], [1,1,1,1,1].
+
 ```java
 public class CoinChangeWays {
     public static int countWays(int[] coins, int amount) {
@@ -806,20 +953,20 @@ public class CoinChangeWays {
                 dp[i] += dp[i - coin];
             }
         }
-        ret          urn dp[amount];
-    ----------}
+        return dp[amount];
+    }
 }
 
 ```
 
-| Type  |\ Value              |
-| ----- | ------     ------------ |
+| Type  | Value              |
+| ----- | ------------------ |
 | Time  | **O(n \* amount)** |
 | Space | **O(amount)**      |
 
 - Dry run (coins={1,2,5}, amount=5):
   - start: [1,0,0,0,0,0]
-  - coin=1 → [1,,1,1,1,1]
+  - coin=1 → [1,1,1,1,1,1]
   - coin=2 → [1,1,2,2,3,3]
   - coin=5 → [1,1,2,2,3,4] → ways=4
 
@@ -828,6 +975,18 @@ public class CoinChangeWays {
 [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 
 > You are given an array `prices` where `prices[i]` is the price of a given stock on the `ith` day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+**Example 1:**
+
+**Input:** prices = [7,1,5,3,6,4]
+**Output:** 5
+**Explanation:** Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6 - 1 = 5.
+
+**Example 2:**
+
+**Input:** prices = [7,6,4,3,1]
+**Output:** 0
+**Explanation:** No transaction yields a positive profit, so max profit = 0.
 
 ```java
 class Solution {
@@ -931,12 +1090,12 @@ class Solution {
 
 - Approach: Use a Min-Heap of size `k`. We maintain the `k` largest elements in the heap, and the root is the $k^{th}$ largest element overall.
 - Dry run (nums = [3,2,1,5,6,4], k = 2):
-  - i=0, num=*: heap=[3]
+  - i=0, num=3: heap=[3]
   - i=1, num=2: heap=[2, 3]
-  - i=2, n*m=>: heap=[1, 2, 3] → size > 2 (poll) → heap=[2, 3]
-  3, num=5: heap=[2, 3, 5] → pool → heap=[3, 5]
-  - i=4, num=6: heap=[3, 5, 6] → pool → heap=[5, 6]
-  - i=5, num=4: heap=[4, 5, 6] → pool → heap=[5, 6]
+  - i=2, num=1: heap=[1, 2, 3] → size > 2, poll → heap=[2, 3]
+  - i=3, num=5: heap=[2, 3, 5] → size > 2, poll → heap=[3, 5]
+  - i=4, num=6: heap=[3, 5, 6] → size > 2, poll → heap=[5, 6]
+  - i=5, num=4: 4 < heap.peek()=5, skip
   - Return heap.peek() = 5
 
 ---
@@ -945,34 +1104,23 @@ class Solution {
 
 [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
 
-> Y
-ou are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `ith` line are `(i, 0)` and `(i, height[i])`.
+> You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `ith` line are `(i, 0)` and `(i, height[i])`.
 
 > Find two lines that together with the x-axis form a container, such that the container contains the most water.
 
 > Return *the maximum amount of water a container can store*.
 > **Notice** that you may not slant the container.
 
-![water container](https://s3-lc-upl
-
-| Type  | Value    |
-| ----- | -------- |
-| Time  | **O(n)** |
-| Space | **O(1)** |
-
-- Approach: Two pointers strategy (left and right). At each step, calculate the area and move the pointer that points to the shorter line, trying to find a taller line to maximize the area.
-- Dry run (height = [1,8,6,2,5,4,8,3,7]):
-  - left=0 (val 1), right=8 (val 7) → w=8, h=1, area=8, max=8. Move left.o  - left=1 (val 8), right=8 (val 7) → w=7, h=7, area=49, max=49. Move right.a  d Continues until pointers meet... returns max area 49.
-
-.s-
-3## Search in Rotated Sorted Array (LeetCode 33)
-
-.amazonaws.com/uploads/2018/07/17/question_11.jpg)
+**Example 1:**
 
 **Input:** height = [1,8,6,2,5,4,8,3,7]
 **Output:** 49
+**Explanation:** The max area of water the container can contain is 49.
 
-**Explanation:** The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+**Example 2:**
+
+**Input:** height = [1,1]
+**Output:** 1
 
 ```java
 class Solution {
@@ -1091,4 +1239,36 @@ class Solution {
   - left=4, right=4: mid=4 (val 0). Target 0 == 0. Return 4.
 
 ---
+## Level order
+```java
+class Solution {
+    public List<List<Integer>> levelOrder(Node root) {
 
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null) return res;
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while(!q.isEmpty()){
+
+            int size = q.size();
+            List<Integer> level = new ArrayList<>();
+
+            for(int i = 0; i < size; i++){
+
+                Node node = q.poll();
+                level.add(node.val);
+
+                for(Node child : node.children){
+                    q.add(child);
+                }
+            }
+
+            res.add(level);
+        }
+
+        return res;
+    }
+}
+```

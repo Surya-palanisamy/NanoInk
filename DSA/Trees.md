@@ -1,3 +1,5 @@
+# Trees
+
 ## Depth of Binary Tree (leetcode 104)
 
 [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
@@ -176,6 +178,9 @@ public boolean search(Node root, int key) {
 | Space | **O(h)** |
 
 - Approach: Recursively search left or right subtree based on whether the key is smaller or greater than current node. Time and space bounds depend on tree height `h` (worst case `O(n)`).
+- Dry run (root=[4,2,7,1,3], key=2):
+  - root=4, key=2 < 4 → go left
+  - root=2, key==2 → return true
 
 ## Validate Binary Search Tree (leetcode 98)
 
@@ -379,3 +384,73 @@ class Solution {
   - Returns true.
 
 ---
+
+
+## Binary Tree Level Order Traversal (LeetCode 102)
+
+[102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+
+> Given the `root` of a binary tree, return *the level order traversal of its nodes' values*. (i.e., from left to right, level by level).
+
+**Example 1:**
+
+![](https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg)
+
+**Input:** root = [3,9,20,null,null,15,7]
+**Output:** [[3],[9,20],[15,7]]
+
+**Example 2:**
+
+**Input:** root = [1]
+**Output:** [[1]]
+
+**Example 3:**
+
+**Input:** root = []
+**Output:** []
+
+```java
+class Solution {
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+       
+        if (root == null)
+            return res;
+       
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+       
+        while (!q.isEmpty()) {
+            int size = q.size();
+       
+    List<Integer> level = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = q.poll();
+                level.add(node.val);
+               
+                if (node.left != null)
+                    q.offer(node.left);
+                if (node.right != null)
+                   q.offer(node.right);
+            }
+           
+            res.add(level);
+        }
+        return res;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(n)** |
+
+- Approach: BFS using a queue. Process nodes level by level, adding children to the queue.
+- Dry run (root=[3,9,20,null,null,15,7]):
+  - Queue: [3]. Level 1: [3]. Add 9, 20.
+  - Queue: [9,20]. Level 2: [9,20]. Add 15, 7.
+  - Queue: [15,7]. Level 3: [15,7].
+  - Result: [[3],[9,20],[15,7]]
+

@@ -1,3 +1,5 @@
+# Math
+
 ## Palindrome Number (LeetCode 9)
 
 [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/)
@@ -77,8 +79,7 @@ class Solution {
 | Space | **O(log(n))** |
 
 - Approach: Use a HashSet to detect cycles. Keep summing digits until 1 or cycle detected.
-- Dry run (n=19):
-  - 19→82→4→16→37→58→89→145→42→20→4 → cycle detected → false
+- Dry run (n=19): 19 → 1²+9²=82 → 8²+2²=68 → 6²+8²=100 → 1²+0²+0²=1 → return true
 
 ---
 
@@ -111,7 +112,7 @@ class Solution {
 | Space | **O(1)** |
 
 - Approach: Use the property of digital root. `(num - 1) % 9 + 1` gives the digital root of the number.
-- Dry run (num=38): (38-1) % 9 + 1 = 4 → Answer is 4.
+- Dry run (num=38): (38-1) % 9 + 1 = 37 % 9 + 1 = 1 + 1 = 2 → Answer is 2.
 
 ---
 
@@ -149,7 +150,6 @@ class Solution {
 | Space | **O(1)**      |
 
 - Approach: Keep dividing by 2, 3, and 5. If the result is 1, it's an ugly number.
-- Dry run (n=14): 14→7→1 → true
+- Dry run (n=14): 14/2=7. 7 is not divisible by 2, 3, or 5. n=7 ≠ 1 → return false.
 
 ---
-

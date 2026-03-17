@@ -1,6 +1,6 @@
 # Data Structures & Algorithms
 
- A comprehensive guide to DSA concepts for coding interviews and competitive programming.
+A comprehensive guide to DSA concepts for coding interviews and competitive programming.
 
 ### 📚 Topics
 
@@ -13,18 +13,17 @@
 | Linked List | Singly, doubly linked lists and operations        |
 | Stack       | Stack operations and applications                 |
 | Matrix      | 2D array operations and traversals                |
+| Trees       | Binary trees, BSTs, and tree traversals           |
 
 ## Algorithms and Techniques
 
-| File                | Description                             |
-| :------------------ | :-------------------------------------- |
-| Algorithms          | Sorting, searching, and core algorithms |
-| Dynamic Programming | DP patterns, memoization, tabulation    |
-| Bit Manipulation    | Bitwise operations and tricks           |
-| Math                | Mathematical concepts and number theory |
-| Patterns            | Star patterns and printing problems     |
+| File             | Description                             |
+| :--------------- | :-------------------------------------- |
+| Algorithms       | Sorting, searching, and core algorithms |
+| Bit Manipulation | Bitwise operations and tricks           |
+| Math             | Mathematical concepts and number theory |
+| Patterns         | Star patterns and printing problems     |
 
----
 
 ### 🎯 Key Concepts
 
@@ -46,5 +45,3 @@
 | In-place  | O(1) extra space |
 | Linear    | O(n) extra space |
 | Recursive | O(n) call stack  |
-
-

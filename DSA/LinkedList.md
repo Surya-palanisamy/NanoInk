@@ -112,19 +112,18 @@ class Solution {
 ```java
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy=new ListNode(0);
-        dummy.next=head;
-        ListNode slow=dummy;
-        ListNode fast=dummy;
+        ListNode slow=head;
+        ListNode fast=head;
         for(int i=0;i<=n;i++){
             fast=fast.next;
         }
+        if(fast==null) return head.next;
         while(fast!=null){
             slow=slow.next;
             fast=fast.next;
         }
         slow.next=slow.next.next;
-        return dummy.next;
+        return head;
     }
 }
 ```
@@ -187,13 +186,10 @@ class Solution {
 | Time  | **O(n)** |
 | Space | **O(1)** |
 
-- Approach: Use Floyd's Tortoise and Hare algorithm. Move slow pointer
-  by 1 and fast by 2. If they meet, there's a cycle.
-- Dry run (head=[3,2,0,-4], tail connects to index 1):
-  - slow=3, fast=3
-  - slow=2, fast=0
-  - slow=0, fast=2
-  - slow=-4, fast=-4 → cycle detected → true
+- Approach: Phase 1: Detect cycle with Floyd's algorithm. Phase 2: Reset slow to head, move both one step at a time until they meet at cycle start.
+- Dry run (head=[3,2,0,-4], tail→node 1):
+  - Phase 1: slow=3,fast=3 → slow=2,fast=0 → slow=0,fast=2 → slow=-4,fast=-4 → meet!
+  - Phase 2: slow=head=3, fast=-4. Move both by 1: slow=2, fast=0 → slow=0, fast=2 → slow=2, fast=-4... eventually both meet at node 2 (cycle start).
 
 ## Remove cycle from linked list
 
@@ -240,15 +236,13 @@ class Solution {
 | Time  | **O(n)** |
 | Space | **O(1)** |
 
-- head = [1,2,3,4,5] with 5 pointing back to node 3
-- detect meeting at node 4 (example)
-- move slow to head, fast stays at meeting
-- both move:
-  - slow=1 fast=4
-  - slow=2 fast=5
-  - slow=3 fast=3 → start of cycle
-- prev is node 5 → set prev.next = null
-  final list: 1 → 2 → 3 → 4 → 5 → null
+- Approach: Detect cycle with Floyd's algorithm. Once cycle start is found, track the previous node. When slow and fast meet at cycle start, set prev.next = null to break the cycle.
+- Dry run (head = [1,2,3,4,5], 5 → node 3):
+  - Phase 1: Detect meeting point at node 4
+  - Phase 2: Move slow to head, fast stays at meeting
+  - slow=1 fast=4 → slow=2 fast=5 → slow=3 fast=3 → cycle start found
+  - prev=5 (tracked during Phase 2) → prev.next = null
+  - Result: 1 → 2 → 3 → 4 → 5 → null
 
 ## Merge Two Sorted Lists (leetcode 21)
 
@@ -307,10 +301,13 @@ class Solution {
 | Space Complexity | **O(1)** (in-place) |
 
 - Dry run (list1=[1,2,4], list2=[1,3,4]):
-  - `dummy` points to -1. `current = dummy`.
-  - 1 <= 1 -> current.next = list1, list1=2. current=1.
-  - 2 > 1 -> current.next = list2, list2=3. current=1.
-  - Returns merged.
+  - Compare 1<=1 → pick list1(1), list1→2
+  - Compare 2>1 → pick list2(1), list2→3
+  - Compare 2<=3 → pick list1(2), list1→4
+  - Compare 4>3 → pick list2(3), list2→4
+  - Compare 4<=4 → pick list1(4), list1→null
+  - list1 null → attach list2(4)
+  - Result: [1,1,2,3,4,4]
 
 ---
 
@@ -366,8 +363,8 @@ public class Solution {
 | Time Complexity  | **O(1)** |
 | Space Complexity | **O(1)** |
 
-- Dry run (n=43261596 -> 0000..001...):
-  - loop 32 times: shift result left by 1.
-  - append LSB of n to result.
-  - shift n right (unsigned).
-  - Returns reversed integer.
+- Approach: Iterate 32 times. In each iteration, shift result left by 1, append the LSB of n to result using OR, then right-shift n (unsigned).
+- Dry run (n=43261596):
+  - Loop 32 times: shift result left, append LSB of n, shift n right (unsigned).
+  - After 32 iterations, all bits are reversed.
+  - Returns 964176192.
