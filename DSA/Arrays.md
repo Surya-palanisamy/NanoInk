@@ -1216,7 +1216,17 @@ class Solution {
   - left=4, right=4: mid=4 (val 0). Target 0 == 0. Return 4.
 
 ---
-## Level order
+## N-ary Tree Level Order Traversal (LeetCode 429)
+
+[429. N-ary Tree Level Order Traversal](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)
+
+> Given an n-ary tree, return the level order traversal of its nodes' values.
+
+**Example 1:**
+
+**Input:** root = [1,null,3,2,4,null,5,6]
+**Output:** [[1],[3,2,4],[5,6]]
+
 ```java
 class Solution {
     public List<List<Integer>> levelOrder(Node root) {
@@ -1249,3 +1259,84 @@ class Solution {
     }
 }
 ```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(n)** |
+
+- Approach: Standard BFS using a Queue. For each level, find queue size, poll that many elements, add their values to target level list, and add all their children to the queue.
+- Dry run (root=[1,null,3,2,4,null,5,6]):
+  - Queue: [1]. size=1. poll 1. children: 3,2,4 -> queue=[3,2,4]. level=[1]
+  - Queue: [3,2,4]. size=3. poll 3 (children 5,6), poll 2, poll 4. queue=[5,6]. level=[3,2,4].
+  - Queue: [5,6]. size=2. poll 5, poll 6. level=[5,6].
+  - Returns [[1],[3,2,4],[5,6]].
+
+---
+
+## Trapping Rain Water (LeetCode 42)
+
+[42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
+
+> Given `n` non-negative integers representing an elevation map where the width of each bar is `1`, compute how much water it can trap after raining.
+
+**Example 1:**
+
+![](https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png)
+
+**Input:** height = [0,1,0,2,1,0,1,3,2,1,2,1]
+**Output:** 6
+**Explanation:** The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+**Example 2:**
+
+**Input:** height = [4,2,0,3,2,5]
+**Output:** 9
+
+```java
+class Solution {
+
+    public int trap(int[] height) {
+        int[] left = new int[height.length];
+        int[] right = new int[height.length];
+        int max = -1;
+        for(int i = 0;i<height.length;i++)
+        {
+           if(height[i] >= max )
+           {
+              max = height[i];
+           }
+            left[i] = max;
+        }
+        max = -1;
+        for(int i = height.length - 1;i>=0;i--)
+        {
+           if(height[i] >= max )
+           {
+              max = height[i];
+           }
+            right[i] = max;
+        }
+        int total = 0;
+        for(int i =0;i<height.length;i++)
+        {
+            total += Math.min(left[i],right[i]) - height[i];
+        }
+        return total;
+
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(n)** |
+
+- Approach: Precompute arrays for the maximum height to the left and to the right of every index. The water trapped at any index is the minimum of `leftMax` and `rightMax` minus the `height` at that index.
+- Dry run (height = [0,1,0,2,1,0,1,3,2,1,2,1]):
+  - left = [0, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3]
+  - right = [3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 1]
+  - min arrays = [0, 1, 1, 2, 2, 2, 2, 3, 2, 2, 2, 1]
+  - Using difference: total = +0 +0 +1 +0 +1 +2 +1 +0 +0 +1 +0 +0 = 6
+  - Returns 6.

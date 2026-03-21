@@ -1,5 +1,3 @@
-# Ultimate DSA Interview Database
-
 ## Array
 
 | Topic | Difficulty | Problem                              | Pattern             | Link                                                                        | Solution                                                             |
@@ -47,7 +45,7 @@
 | Dynamic Programming | Easy       | Climbing Stairs                | DP                 | [Link](https://leetcode.com/problems/climbing-stairs/)                | Coming Soon                                   |
 | Dynamic Programming | Medium     | Coin Change                    | DP                 | [Link](https://leetcode.com/problems/coin-change/)                    | Coming Soon                                   |
 | Dynamic Programming | Medium     | Longest Increasing Subsequence | DP + Binary Search | [Link](https://leetcode.com/problems/longest-increasing-subsequence/) | Coming Soon                                   |
-| Dynamic Programming | Medium     | Word Break                     | DP                 | [Link](https://leetcode.com/problems/word-break/)                     | Coming Soon                                   |
+| Dynamic Programming | Medium     | Word Break                     | DP                 | [Link](https://leetcode.com/problems/word-break/)                     | [Solution](./Strings.md#word-break-leetcode-139) |
 | Dynamic Programming | Medium     | Longest Common Subsequence     | 2D DP              | [Link](https://leetcode.com/problems/longest-common-subsequence/)     | Coming Soon                                   |
 | Dynamic Programming | Medium     | House Robber                   | DP                 | [Link](https://leetcode.com/problems/house-robber/)                   | Coming Soon                                   |
 | Dynamic Programming | Medium     | House Robber II                | DP                 | [Link](https://leetcode.com/problems/house-robber-ii/)                | Coming Soon                                   |
@@ -59,7 +57,7 @@
 
 | Topic | Difficulty | Problem                        | Pattern            | Link                                                                                         | Solution                                                          |
 | ----- | ---------- | ------------------------------ | ------------------ | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Graph | Medium     | Number of Islands              | DFS/BFS            | [Link](https://leetcode.com/problems/number-of-islands/)                                     | Coming Soon                                                       |
+| Graph | Medium     | Number of Islands              | DFS/BFS            | [Link](https://leetcode.com/problems/number-of-islands/)                                     | [Solution](./Matrix.md#number-of-islands-leetcode-200)            |
 | Graph | Medium     | Clone Graph                    | DFS                | [Link](https://leetcode.com/problems/clone-graph/)                                           | Coming Soon                                                       |
 | Graph | Medium     | Course Schedule                | Topological Sort   | [Link](https://leetcode.com/problems/course-schedule/)                                       | Coming Soon                                                       |
 | Graph | Medium     | Pacific Atlantic Water Flow    | DFS/BFS            | [Link](https://leetcode.com/problems/pacific-atlantic-water-flow/)                           | Coming Soon                                                       |
@@ -145,11 +143,11 @@
 | Tree  | Easy       | Maximum Depth of Binary Tree                              | DFS     | [Link](https://leetcode.com/problems/maximum-depth-of-binary-tree/)                              | [Solution](./Trees.md#depth-of-binary-tree-leetcode-104)       |
 | Tree  | Easy       | Invert Binary Tree                                        | DFS     | [Link](https://leetcode.com/problems/invert-binary-tree/)                                        | [Solution](./Trees.md#invert-binary-tree-leetcode-226)         |
 | Tree  | Easy       | Same Tree                                                 | DFS     | [Link](https://leetcode.com/problems/same-tree/)                                                 | [Solution](./Trees.md#same-tree-leetcode-100)                  |
-| Tree  | Medium     | Binary Tree Level Order Traversal                         | BFS     | [Link](https://leetcode.com/problems/binary-tree-level-order-traversal/)                         | Coming Soon                                                    |
+| Tree  | Medium     | Binary Tree Level Order Traversal                         | BFS     | [Link](https://leetcode.com/problems/binary-tree-level-order-traversal/)                         | [Solution](./Trees.md#binary-tree-level-order-traversal-leetcode-102) |
 | Tree  | Medium     | Validate Binary Search Tree                               | DFS     | [Link](https://leetcode.com/problems/validate-binary-search-tree/)                               | [Solution](./Trees.md#validate-binary-search-tree-leetcode-98) |
 | Tree  | Medium     | Lowest Common Ancestor of BST                             | Tree    | [Link](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)            | Coming Soon                                                    |
 | Tree  | Medium     | Subtree of Another Tree                                   | DFS     | [Link](https://leetcode.com/problems/subtree-of-another-tree/)                                   | [Solution](./Trees.md#subtree-of-another-tree-leetcode-571)    |
 | Tree  | Medium     | Construct Binary Tree from Preorder and Inorder Traversal | Tree    | [Link](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | Coming Soon                                                    |
-| Tree  | Medium     | Kth Smallest Element in a BST                             | DFS     | [Link](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)                             | Coming Soon                                                    |
+| Tree  | Medium     | Kth Smallest Element in a BST                             | DFS     | [Link](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)                             | [Solution](./Trees.md#kth-smallest-element-in-a-bst-leetcode-230) |
 | Tree  | Hard       | Binary Tree Maximum Path Sum                              | DFS     | [Link](https://leetcode.com/problems/binary-tree-maximum-path-sum/)                              | Coming Soon                                                    |
 | Tree  | Hard       | Serialize and Deserialize Binary Tree                     | BFS/DFS | [Link](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)                     | Coming Soon                                                    |

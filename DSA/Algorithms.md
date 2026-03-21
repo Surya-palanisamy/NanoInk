@@ -2,6 +2,195 @@
 
 ![Algorithm Comparison](https://storage.googleapis.com/images-article/TimeComplexityGrapg.jpg)
 
+
+# 📘 DSA Notes: Master’s Theorem & Recurrence Relations
+
+---
+
+## 🌳 Master’s Theorem
+
+Used for solving recurrences of the form:
+
+```
+T(n) = aT(n/b) + f(n)
+```
+
+### 🔑 Parameters
+
+- `a` → number of subproblems
+- `b` → factor of size reduction
+- `f(n)` → extra work
+
+---
+
+## 🧠 Core Idea
+
+Compare:
+
+```
+f(n)  vs  n^(log_b a)
+```
+
+---
+
+## 📦 Case 1: f(n) is Smaller
+
+```
+f(n) = O(n^(log_b a - ε))
+```
+
+👉 Result:
+
+```
+T(n) = Θ(n^(log_b a))
+```
+
+### 🔥 Example
+
+```
+T(n) = 2T(n/2) + n^0.5
+```
+
+- n^(log₂2) = n
+    
+- f(n) < n
+    
+
+✅ Answer:
+
+```
+Θ(n)
+```
+
+---
+
+## 🟡 Case 2: f(n) is Equal
+
+```
+f(n) = Θ(n^(log_b a))
+```
+
+👉 Result:
+
+```
+T(n) = Θ(n^(log_b a) log n)
+```
+
+### 🔥 Example (Merge Sort)
+
+```
+T(n) = 2T(n/2) + n
+```
+
+- n^(log₂2) = n
+    
+
+✅ Answer:
+
+```
+Θ(n log n)
+```
+
+---
+
+## 🔴 Case 3: f(n) is Larger
+
+```
+f(n) = Ω(n^(log_b a + ε))
+```
+
+👉 Result:
+
+```
+T(n) = Θ(f(n))
+```
+
+### 🔥 Example
+
+```
+T(n) = 2T(n/2) + n^2
+```
+
+- n^(log₂2) = n
+    
+- f(n) > n
+    
+
+✅ Answer:
+
+```
+Θ(n^2)
+```
+
+---
+
+## ⚠️ When Master’s Theorem Fails
+
+- Not in form `T(n/b)`
+    
+
+### ❌ Examples
+
+```
+T(n) = T(n-1) + n
+T(n) = T(n-1) + 1
+```
+
+---
+
+# 🔁 Linear Recurrence Pattern
+
+## Example:
+
+```
+T(n) = T(n-1) + n
+```
+
+### 🔍 Expansion
+
+```
+T(n) = T(n-1) + n
+     = T(n-2) + (n-1) + n
+     = T(n-3) + (n-2) + (n-1) + n
+     ...
+     = T(1) + 2 + 3 + ... + n
+```
+
+### 📊 Sum
+
+```
+2 + 3 + ... + n = n(n+1)/2 - 1
+```
+
+### 🎯 Final Answer
+
+```
+T(n) = Θ(n^2)
+```
+
+---
+
+## ⚡ Quick Patterns (Must Remember)
+
+|Recurrence|Time Complexity|
+|---|---|
+|T(n) = T(n-1) + 1|O(n)|
+|T(n) = T(n-1) + n|O(n^2)|
+|T(n) = T(n-1) + n^2|O(n^3)|
+
+👉 General Pattern:
+
+```
+T(n) = T(n-1) + n^k → O(n^(k+1))
+```
+
+---
+
+## 💡 Pro Tip
+
+- Master’s theorem = fast shortcut
+    
+- Recursion tree
 ## 1. Sorting Algorithms Comparison
 
 | Algorithm      | Best Case | Average Case | Worst Case | Space   | Stable |

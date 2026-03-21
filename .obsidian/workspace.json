@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "2a3e7917df41f0d9",
+        "id": "99607bb27d2e543f",
         "type": "tabs",
         "children": [
           {
-            "id": "17ca9508cdd2b532",
+            "id": "1005f46b815121ad",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA/Arrays.md",
+                "file": "DSA/BitManipulation.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Arrays"
+              "title": "BitManipulation"
             }
           }
         ]
@@ -201,15 +201,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "17ca9508cdd2b532",
+  "active": "1005f46b815121ad",
   "lastOpenFiles": [
+    "DSA/found_links.txt",
+    "DSA/Blind75.md",
     "DSA/Strings.md",
     "DSA/Arrays.md",
-    "DSA/Trees.md",
     "DSA/LinkedList.md",
-    "DSA/DSA_Questions.md",
-    "DSA/BitManipulation.md",
     "DSA/Math.md",
+    "DSA/BitManipulation.md",
+    "DSA/Trees.md",
+    "DSA/Algorithms.md",
+    "DSA/DSA_Questions.md",
     "DSA/Matrix.md",
     "images/Pasted image 20260306163842.png",
     "images",
@@ -228,9 +231,6 @@
     "DevOps/Docker.md",
     "DevOps/README.md",
     "DevOps/Terraform-vs-Ansible-vs-Kubernetes.md",
-    "DevOps/Nginx.md",
-    "DevOps/Ansible.md",
-    "ComputerNetworks/HTTP-and-Web.md",
     "images/Pasted image 20260209220007.png",
     "images/Algorithm.png",
     "images/Pasted image 20260126152149.png",

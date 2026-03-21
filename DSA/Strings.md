@@ -561,3 +561,108 @@ class Solution {
   - i=4: j=0, dp[0]=true, s[0..4]="leet" in dict → dp[4]=true
   - i=8: j=4, dp[4]=true, s[4..8]="code" in dict → dp[8]=true
   - Return dp[8] = true
+
+---
+
+---
+
+## Isomorphic Strings (LeetCode 205)
+
+[205. Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/)
+
+>Given two strings `s` and `t`, *determine if they are isomorphic*.
+Two strings `s` and `t` are isomorphic if the characters in `s` can be replaced to get `t`.
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+
+**Example 1:**
+
+**Input:** s = "egg", t = "add"
+
+**Output:** true
+
+**Explanation:**
+
+The strings `s` and `t` can be made identical by:
+
+- Mapping `'e'` to `'a'`.
+- Mapping `'g'` to `'d'`.
+
+**Example 2:**
+
+**Input:** s = "f11", t = "b23"
+
+**Output:** false
+
+**Explanation:**
+
+The strings `s` and `t` can not be made identical as `'1'` needs to be mapped to both `'2'` and `'3'`.
+
+```java
+class Solution {
+
+    public boolean isIsomorphic(String s, String t) {
+        int[] mapS = new int[256];
+        int[] mapT = new int[256];
+        for (int i = 0; i < s.length(); i++) {
+            char charS = s.charAt(i);
+            char charT = t.charAt(i);
+            if (mapS[charS] != mapT[charT]) {
+                return false;
+            }
+            mapS[charS] = i + 1;
+            mapT[charT] = i + 1;
+        }
+        return true;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Use two arrays to map characters to their most recent positions (1-indexed). If a mismatched previous mapping is found, they are not isomorphic.
+- Dry run (s="egg", t="add"):
+  - i=0 ('e', 'a'): mapS['e']=mapT['a']=0. Both become 1.
+  - i=1 ('g', 'd'): mapS['g']=mapT['d']=0. Both become 2.
+  - i=2 ('g', 'd'): mapS['g']=mapT['d']=2 (match). Both become 3.
+  - Returns true.
+
+---
+
+## Word Break (LeetCode 139) - Alternative format
+
+[139. Word Break](https://leetcode.com/problems/word-break/)
+
+```java
+class Solution {
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        HashSet<String> set = new HashSet<>(wordDict);
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && set.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    }
+}
+```
+
+| Type  | Value     |
+| ----- | --------- |
+| Time  | **O(n²)** |
+| Space | **O(n)**  |
+
+- Approach: Use DP array where `dp[i]` indicates if substring `0..i` can be broken down.
+- Dry run (s = "leetcode", wordDict = ["leet","code"]):
+  - dp[0]=true. 
+  - i=4, j=0: s[0..4] is "leet", in dict. dp[4]=true.
+  - i=8, j=4: s[4..8] is "code", in dict. dp[8]=true.
+  - Return dp[8] = true.

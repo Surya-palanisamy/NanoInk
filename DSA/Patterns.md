@@ -438,43 +438,30 @@ public class ButterflyPattern {
         int n = scanner.nextInt();
         scanner.close();
 
-        // Upper half of the butterfly pattern
         for (int i = 1; i <= n; i++) {
-            // First set of stars (left wing)
             for (int j = 1; j <= i; j++) {
                 System.out.print("*");
             }
-
-            // Spaces in between
             for (int j = 1; j <= 2 * (n - i); j++) {
                 System.out.print(" ");
             }
-
-            // Second set of stars (right wing)
             for (int j = 1; j <= i; j++) {
                 System.out.print("*");
             }
-            System.out.println(); // Move to the next line
+            System.out.println();
         }
 
-        // Lower half of the butterfly pattern
-        // Start the second half from n-1 to avoid duplicating the middle row
         for (int i = n - 1; i >= 1; i--) {
-            // First set of stars (left wing)
             for (int j = 1; j <= i; j++) {
                 System.out.print("*");
             }
-
-            // Spaces in between
             for (int j = 1; j <= 2 * (n - i); j++) {
                 System.out.print(" ");
             }
-
-            // Second set of stars (right wing)
             for (int j = 1; j <= i; j++) {
                 System.out.print("*");
             }
-            System.out.println(); // Move to the next line
+            System.out.println();
         }
     }
 }

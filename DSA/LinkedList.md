@@ -311,60 +311,112 @@ class Solution {
 
 ---
 
-## Reverse Bits (leetcode 190)
+## Remove Linked List Elements (LeetCode 203)
 
-[190. Reverse Bits](https://leetcode.com/problems/reverse-bits/)
+[203. Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/)
 
-> Reverse bits of a given 32 bits signed integer.
+> Given the `head` of a linked list and an integer `val`, remove all the nodes of the linked list that has `Node.val == val`, and return _the new head_.
 
 **Example 1:**
 
-**Input:** n = 43261596
-**Output:** 964176192
+![](https://assets.leetcode.com/uploads/2021/03/06/removelinked-list.jpg)
 
-**Explanation:**
-
-| Integer   | Binary                           |
-| --------- | -------------------------------- |
-| 43261596  | 00000010100101000001111010011100 |
-| 964176192 | 00111001011110000010100101000000 |
+**Input:** head = [1,2,6,3,4,5,6], val = 6
+**Output:** [1,2,3,4,5]
 
 **Example 2:**
 
-**Input:** n = 2147483644
+**Input:** head = [], val = 1
+**Output:** []
 
-**Output:** 1073741822
+**Example 3:**
 
-**Explanation:**
-
-| Integer    | Binary                           |
-| ---------- | -------------------------------- |
-| 2147483644 | 01111111111111111111111111111100 |
-| 1073741822 | 00111111111111111111111111111110 |
+**Input:** head = [7,7,7,7], val = 7
+**Output:** []
 
 ```java
-public class Solution {
-    public int reverseBits(int n) {
-        int result = 0;
-        for (int i = 0; i < 32; i++) {
-            result <<= 1;        
-            result |= (n & 1);    
-            n >>>= 1;              
-        }
-        return result;
+class Solution {
 
-    }
-
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode curr = dummy;
+        while (curr.next != null) {
+            if (curr.next.val == val) {
+                curr.next = curr.next.next;
+            } else {
+                curr = curr.next;
+            }
+        }
+        return dummy.next;
+    }
 }
 ```
 
-| Type             | Value    |
-| ---------------- | -------- |
-| Time Complexity  | **O(1)** |
-| Space Complexity | **O(1)** |
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
 
-- Approach: Iterate 32 times. In each iteration, shift result left by 1, append the LSB of n to result using OR, then right-shift n (unsigned).
-- Dry run (n=43261596):
-  - Loop 32 times: shift result left, append LSB of n, shift n right (unsigned).
-  - After 32 iterations, all bits are reversed.
-  - Returns 964176192.
+- Approach: Use a dummy node to easily handle cases where the head itself needs to be removed. Iterate through the list using a `curr` pointer and skip over nodes that match `val`.
+- Dry run (head=[1,2,6,3,4,5,6], val=6):
+  - dummy=[-1], curr=dummy, curr.next=[1]
+  - Iterates past 1, 2. curr at 2. curr.next is 6.
+  - curr.next.val == 6. Skip 6 -> curr.next = [3].
+  - Iterates past 3, 4, 5. curr at 5. curr.next is 6.
+  - curr.next.val == 6. Skip 6 -> curr.next = null.
+  - Returns dummy.next -> [1,2,3,4,5].
+
+---
+
+## Remove Duplicates from Sorted List (LeetCode 83)
+
+[83. Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/)
+
+> Given the `head` of a sorted linked list, _delete all duplicates such that each element appears only once_. Return _the linked list **sorted** as well_.
+
+**Example 1:**
+
+![](https://assets.leetcode.com/uploads/2021/01/04/list1.jpg)
+
+**Input:** head = [1,1,2]
+**Output:** [1,2]
+
+**Example 2:**
+
+![](https://assets.leetcode.com/uploads/2021/01/04/list2.jpg)
+
+**Input:** head = [1,1,2,3,3]
+**Output:** [1,2,3]
+
+```java
+class Solution {
+
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode curr = head;
+        while (curr != null && curr.next != null) {
+            if (curr.val == curr.next.val) {
+                curr.next = curr.next.next;
+            } else {
+                curr = curr.next;
+            }
+        }
+        return head;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Since the linked list is sorted, duplicates are grouped together. Iterate with a `curr` pointer and if it's identical to the next node's value, skip the next node.
+- Dry run (head=[1,1,2,3,3]):
+  - curr=1. curr.next is 1. Match -> skip the next 1 -> curr.next=[2...].
+  - curr=1. curr.next is 2. No match -> curr=2.
+  - curr=2. curr.next is 3. No match -> curr=3.
+  - curr=3. curr.next is 3. Match -> skip the next 3 -> curr.next=null.
+  - curr=3. curr.next is null -> loop ends.
+  - Returns [1,2,3].
+

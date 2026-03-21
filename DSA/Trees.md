@@ -454,3 +454,60 @@ class Solution {
   - Queue: [15,7]. Level 3: [15,7].
   - Result: [[3],[9,20],[15,7]]
 
+---
+
+## Kth Smallest Element in a BST (LeetCode 230)
+
+[230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
+
+> Given the `root` of a binary search tree, and an integer `k`, return _the_ `kth` _smallest value (**1-indexed**) of all the values of the nodes in the tree_.
+
+**Example 1:**
+
+![](https://assets.leetcode.com/uploads/2021/01/28/kthtree1.jpg)
+
+**Input:** root = [3,1,4,null,2], k = 1
+**Output:** 1
+
+**Example 2:**
+
+![](https://assets.leetcode.com/uploads/2021/01/28/kthtree2.jpg)
+
+**Input:** root = [5,3,6,2,4,null,null,1], k = 3
+**Output:** 3
+
+```java
+class Solution {
+
+    int count = 0;
+    int result = 0;
+    public int kthSmallest(TreeNode root, int k) {
+        inorder(root, k);
+        return result;
+    }
+    private void inorder(TreeNode node, int k) {
+        if (node == null)
+            return;
+        inorder(node.left, k);
+        count++;
+        if (count == k) {
+            result = node.val;
+            return;
+        }
+        inorder(node.right, k);
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(h)** |
+
+- Approach: Inorder traversal of a BST yields values in sorted order. We traverse left, increment count, and when count matches `k`, we record the result.
+- Dry run (root=[3,1,4,null,2], k=1):
+  - inorder(3). left: inorder(1). left: null.
+  - count++ -> 1.
+  - count==1 -> result=1. Return.
+  - Returns 1.
+

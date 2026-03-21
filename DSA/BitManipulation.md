@@ -274,11 +274,21 @@ System.out.println(count);
 ```java
 public int[] countBits(int n) {
     int[] ans = new int[n + 1];
-    for (int i = 1; i <= n; i++) ans[i] = ans[i >> 1] + (i & 1);
+    for (int i = 1; i <= n; i++) {
+        ans[i] = ans[i >> 1] + (i & 1);
+    }
     return ans;
 }
 
 ```
+| i | Binary | i>>1 | ans[i>>1] | (i&1) | ans[i] |
+| - | ------ | ---- | --------- | ----- | ------ |
+| 1 | 001    | 0    | 0         | 1     | 1      |
+| 2 | 010    | 1    | 1         | 0     | 1      |
+| 3 | 011    | 1    | 1         | 1     | 2      |
+| 4 | 100    | 2    | 1         | 0     | 1      |
+| 5 | 101    | 2    | 1         | 1     | 2      |
+
 
 | Type  | Value    |
 | ----- | -------- |
@@ -398,3 +408,163 @@ class Solution {
   - loops ends. return reverse("001") -> "100"
 
 ---
+
+## Reverse Bits (leetcode 190)
+
+[190. Reverse Bits](https://leetcode.com/problems/reverse-bits/)
+
+> Reverse bits of a given 32 bits signed integer.
+
+**Example 1:**
+
+**Input:** n = 43261596
+**Output:** 964176192
+
+**Explanation:**
+
+| Integer   | Binary                           |
+| --------- | -------------------------------- |
+| 43261596  | 00000010100101000001111010011100 |
+| 964176192 | 00111001011110000010100101000000 |
+
+**Example 2:**
+
+**Input:** n = 2147483644
+
+**Output:** 1073741822
+
+**Explanation:**
+
+| Integer    | Binary                           |
+| ---------- | -------------------------------- |
+| 2147483644 | 01111111111111111111111111111100 |
+| 1073741822 | 00111111111111111111111111111110 |
+
+```java
+public class Solution {
+    public int reverseBits(int n) {
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            result <<= 1;        
+            result |= (n & 1);    
+            n >>>= 1;              
+        }
+        return result;
+
+    }
+
+}
+```
+
+| Type             | Value    |
+| ---------------- | -------- |
+| Time Complexity  | **O(1)** |
+| Space Complexity | **O(1)** |
+
+- Approach: Iterate 32 times. In each iteration, shift result left by 1, append the LSB of n to result using OR, then right-shift n (unsigned).
+- Dry run (n=43261596):
+  - Loop 32 times: shift result left, append LSB of n, shift n right (unsigned).
+  - After 32 iterations, all bits are reversed.
+  - Returns 964176192.
+
+## power of 4 (leetcode 342)
+
+[342. Power of Four](https://leetcode.com/problems/power-of-four/)
+
+> Given an integer n, return true if it is a power of four. Otherwise, return false.
+
+**Example 1:**
+
+**Input:** n = 16
+**Output:** true
+
+**Example 2:**
+
+**Input:** n = 5
+**Output:** false
+
+**Example 3:**
+
+**Input:** n = 1
+**Output:** true
+
+```java
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        return n > 0 &&
+               (n & (n - 1)) == 0 &&
+               (n - 1) % 3 == 0;
+    }
+}   
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(1)** |
+| Space | **O(1)** |
+
+- Approach: Check if n is positive, has only one bit set (power of 2), and the single set bit is at an odd position (0-indexed) which makes it a power of 4.
+- Dry run (n=16):
+  - 16 > 0 → true
+  - 16 & 15 = 0 → true
+  - (16 - 1) % 3 = 15 % 3 = 0 → true
+  - Returns true
+
+--- 
+
+## Complement of Base 10 Integer (LeetCode 1009)
+
+[1009. Complement of Base 10 Integer](https://leetcode.com/problems/complement-of-base-10-integer/)
+
+The **complement** of an integer is the integer you get when you flip all the `0`'s to `1`'s and all the `1`'s to `0`'s in its binary representation.
+
+- For example, The integer `5` is `"101"` in binary and its **complement** is `"010"` which is the integer `2`.
+
+Given an integer `n`, return *its complement*.
+
+**Example 1:**
+
+**Input:** n = 5
+**Output:** 2
+**Explanation:** 5 is "101" in binary, with complement "010" in binary, which is 2 in base-10.
+
+**Example 2:**
+
+**Input:** n = 7
+**Output:** 0
+**Explanation:** 7 is "111" in binary, with complement "000" in binary, which is 0 in base-10.
+
+**Example 3:**
+
+**Input:** n = 10
+**Output:** 5
+**Explanation:** 10 is "1010" in binary, with complement "0101" in binary, which is 5 in base-10.
+```java
+class Solution {
+
+    public int bitwiseComplement(int n) {
+        if (n == 0)
+            return 1;
+        int mask = 1;
+        while (mask <= n) {
+            mask <<= 1;
+        }
+        return ((mask - 1) ^ n);
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(log(n))** |
+| Space | **O(1)** |
+
+- Approach: Find a mask with all 1s of the same length as the binary representation of n. Then XOR the mask with n to get the complement.
+- Dry run (n=5):
+  - n=5 (binary 101)
+  - mask=1. Loop: mask becomes 2, 4, 8. Stops at 8.
+  - mask - 1 = 7 (binary 111)
+  - 7 ^ 5 = 111 ^ 101 = 010 (2)
+  - Returns 2.
+
+ 

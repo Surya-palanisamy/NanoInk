@@ -153,3 +153,60 @@ class Solution {
 - Dry run (n=14): 14/2=7. 7 is not divisible by 2, 3, or 5. n=7 ≠ 1 → return false.
 
 ---
+
+## Reverse Integer (LeetCode 7)
+
+[7. Reverse Integer](https://leetcode.com/problems/reverse-integer/)
+
+
+Given a signed 32-bit integer `x`, return `x` *with its digits reversed*. If reversing `x` causes the value to go outside the signed 32-bit integer range `[-2^31, 2^31 - 1]`, then return `0`.
+
+**Assume the environment does not allow you to store 64-bit integers (signed or unsigned).**
+
+**Example 1:**
+
+**Input:** x = 123
+**Output:** 321
+
+**Example 2:**
+
+**Input:** x = -123
+**Output:** -321
+
+**Example 3:**
+
+**Input:** x = 120
+**Output:** 21
+
+```java
+class Solution {
+
+    public int reverse(int x) {
+        int rev = 0;
+        while(x != 0){
+            int digit = x % 10;
+            x = x / 10;
+            if(rev > Integer.MAX_VALUE/10 || rev < Integer.MIN_VALUE/10){
+                return 0;
+            }
+            rev = rev * 10 + digit;
+        }
+        return rev;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(log(x))** |
+| Space | **O(1)** |
+
+- Approach: Repeatedly extract the last digit with `% 10` and build the reversed number. Check for overflow before appending the digit.
+- Dry run (x = 123):
+  - digit=3, rev=3, x=12
+  - digit=2, rev=32, x=1
+  - digit=1, rev=321, x=0
+  - Returns 321.
+
+---
+
