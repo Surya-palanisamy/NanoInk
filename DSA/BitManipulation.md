@@ -1,6 +1,8 @@
 # Bit Manipulation
 
-## Even or Odd
+## Even or Odd (GeeksforGeeks)
+
+[Check whether a given number is even or odd](https://www.geeksforgeeks.org/check-if-a-number-is-odd-or-even-using-bitwise-operators/)
 
 > Given an integer `n`, determine if it is even or odd using bitwise operators.
 
@@ -28,7 +30,38 @@ else System.out.println("Odd");
 
 ---
 
+## Digital Root (LeetCode 258)
+
+[258. Add Digits](https://leetcode.com/problems/add-digits/)
+
+> Given an integer `num`, repeatedly add all its digits until the result has only one digit, and return it.
+
+**Example 1**
+**Input:** `n = 13`
+**Output:** `4`
+**Explanation:** 1 + 3 = 4.
+
+```java
+class Solution {
+    public int addDigits(int n) {
+        if (n == 0) return 0;
+        return 1 + (n - 1) % 9;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(1)** |
+| Space | **O(1)** |
+
+- Approach: Math/Digital Root formula `1 + (n - 1) % 9`.
+- Dry run (n = 13): 1 + (13 - 1) % 9 = 1 + 12 % 9 = 1 + 3 = 4.
+
+
 ## Multiply by 2
+
+[Multiply with 2 using Bitwise Operators](https://www.geeksforgeeks.org/multiply-an-integer-with-2-using-bitwise-operators/)
 
 > Given an integer `n`, multiply it by 2 using bitwise shift operators.
 
@@ -53,6 +86,8 @@ System.out.println(result);
 
 ## Divide by 2
 
+[Divide by 2 using Bitwise Operators](https://www.geeksforgeeks.org/)
+
 > Given an integer `n`, divide it by 2 using bitwise shift operators.
 
 **Example:**
@@ -74,7 +109,9 @@ System.out.println(result);
 
 ---
 
-## Power of 2
+## Power of 2 (LeetCode 231)
+
+[231. Power of Two](https://leetcode.com/problems/power-of-two/)
 
 > Given an integer `n`, check if it is a power of 2 using bitwise operators.
 
@@ -103,7 +140,9 @@ else
 
 ---
 
-## Count Number of 1s
+## Count Number of 1s (LeetCode 191)
+
+[191. Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/)
 
 > Given an integer `n`, count the number of set bits (1s) in its binary representation.
 
@@ -132,6 +171,8 @@ System.out.println(count);
 
 ## Print Powers of 2
 
+[GeeksforGeeks](https://www.geeksforgeeks.org/)
+
 > Given an integer `n`, print all powers of 2 from $2^0$ to $2^n$.
 
 **Example:**
@@ -154,7 +195,9 @@ for (int i = 0; i <= n; i++) {
 
 ---
 
-## Set a Specific Bit
+## Set a Specific Bit (GeeksforGeeks)
+
+[GeeksforGeeks](https://www.geeksforgeeks.org/set-k-th-bit-given-number/)
 
 > Given an integer `n` and a zero-indexed position `k`, set the `k`-th bit of `n` to 1.
 
@@ -178,7 +221,9 @@ System.out.println(n);
 
 ---
 
-## Clear a Specific Bit
+## Clear a Specific Bit (GeeksforGeeks)
+
+[GeeksforGeeks](https://www.geeksforgeeks.org/)
 
 > Given an integer `n` and a zero-indexed position `k`, clear the `k`-th bit of `n` (set it to 0).
 
@@ -203,7 +248,9 @@ System.out.println(n);
 
 ---
 
-## Toggle a Specific Bit
+## Toggle a Specific Bit (GeeksforGeeks)
+
+[GeeksforGeeks](https://www.geeksforgeeks.org/)
 
 > Given an integer `n` and a zero-indexed position `k`, toggle the `k`-th bit of `n`.
 
@@ -228,7 +275,9 @@ System.out.println(n);
 
 ---
 
-## Count Trailing Zeros
+## Count Trailing Zeros (GeeksforGeeks)
+
+[GeeksforGeeks](https://www.geeksforgeeks.org/)
 
 > Given an integer `n`, count the number of trailing zeros in its binary representation.
 

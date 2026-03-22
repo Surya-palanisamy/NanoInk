@@ -32,7 +32,9 @@ class Solution {
   - Right depth = 1 + max(1,1) = 2
   - Return max(1,2) = 2
 
-## Preorder Traversal
+## Preorder Traversal (LeetCode 144)
+
+[144. Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/)
 
 > Given the `root` of a binary tree, print the preorder traversal of its nodes' values.
 
@@ -115,7 +117,9 @@ class Solution {
 
 ---
 
-## Postorder Traversal
+## Postorder Traversal (LeetCode 145)
+
+[145. Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/)
 
 > Given the `root` of a binary tree, print the postorder traversal of its nodes' values.
 
@@ -511,3 +515,159 @@ class Solution {
   - count==1 -> result=1. Return.
   - Returns 1.
 
+---
+
+## Convert Sorted Array to Binary Search Tree (LeetCode 108)
+
+[108. Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/)
+
+> Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+
+**Example 1:**
+**Input:** nums = [-10,-3,0,5,9]
+**Output:** [0,-3,9,-10,null,5]
+
+**Example 2:**
+**Input:** nums = [1,3]
+**Output:** [3,1]
+
+```java
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return build(nums, 0, nums.length - 1);
+    }
+
+    private TreeNode build(int[] nums, int l, int r) {
+        if (l > r)
+            return null;
+
+        int mid = (l + r) / 2;
+        TreeNode root = new TreeNode(nums[mid]);
+
+        root.left = build(nums, l, mid - 1);
+        root.right = build(nums, mid + 1, r);
+
+        return root;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(log n)** |
+
+- Approach: Divide and conquer. Select the middle element as the root and recursively build the left and right subtrees from the left and right halves of the array.
+- Dry run (nums=[-10,-3,0,5,9]):
+  - mid=2, root=0. Left: build([-10,-3]). Right: build([5,9]).
+  - Left mid=0, root=-10. Right sub of -10 is -3.
+  - Right mid=0, root=5. Right sub of 5 is 9.
+  - Returns tree: [0,-10,5,null,-3,null,9].
+
+---
+
+## Binary Tree Maximum Path Sum (LeetCode 124)
+
+[124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+
+Solved
+
+Hard
+
+Topics
+
+![premium lock icon](https://leetcode.com/_next/static/images/lock-a6627e2c7fa0ce8bc117c109fb4e567d.svg)Companies
+
+A **path** in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence **at most once**. Note that the path does not need to pass through the root.
+
+The **path sum** of a path is the sum of the node's values in the path.
+
+Given the `root` of a binary tree, return _the maximum **path sum** of any **non-empty** path_.
+
+**Example 1:**
+
+![](https://assets.leetcode.com/uploads/2020/10/13/exx1.jpg)
+
+**Input:** root = [1,2,3]
+**Output:** 6
+**Explanation:** The optimal path is 2 -> 1 -> 3 with a path sum of 2 + 1 + 3 = 6.
+
+**Example 2:**
+
+![](https://assets.leetcode.com/uploads/2020/10/13/exx2.jpg)
+
+**Input:** root = [-10,9,20,null,null,15,7]
+**Output:** 42
+**Explanation:** The optimal path is 15 -> 20 -> 7 with a path sum of 15 + 20 + 7 = 42.
+
+```java
+class Solution {
+    int maxSum = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        dfs(root);
+        return maxSum;
+    }
+    private int dfs(TreeNode node) {
+        if (node == null)
+            return 0;
+
+        int left = Math.max(0, dfs(node.left));
+        int right = Math.max(0, dfs(node.right));
+        maxSum = Math.max(maxSum, left + right + node.val);
+
+        return node.val + Math.max(left, right);
+    }
+}
+
+```
+---
+[543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)
+
+
+Given the `root` of a binary tree, return _the length of the **diameter** of the tree_.
+
+The **diameter** of a binary tree is the **length** of the longest path between any two nodes in a tree. This path may or may not pass through the `root`.
+
+The **length** of a path between two nodes is represented by the number of edges between them.
+
+**Example 1:**
+
+![](https://assets.leetcode.com/uploads/2021/03/06/diamtree.jpg)
+
+**Input:** root = [1,2,3,4,5]
+**Output:** 3
+**Explanation:** 3 is the length of the path [4,2,1,3] or [5,2,1,3].
+
+**Example 2:**
+
+**Input:** root = [1,2]
+**Output:** 1
+
+```java
+class Solution {
+    int max = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        dfs(root);
+        return max;
+    }
+
+int dfs(TreeNode node) {
+    if (node == null) return 0;
+    int left = dfs(node.left);
+    int right = dfs(node.right);
+    max = Math.max(max, left + right); 
+    return 1 + Math.max(left, right); 
+}
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(h)** |
+
+- Approach: DFS post-order. For each node, compute depth of left and right subtrees. Diameter through this node is `left + right`. Update max diameter, and return max depth `1 + max(left, right)`.
+- Dry run (root=[1,2]):
+  - dfs(2) -> left=0, right=0, max=0. returns 1.
+  - dfs(1) -> left=1, right=0. max=max(0, 1+0)=1. returns 2.
+  - Global max is 1.

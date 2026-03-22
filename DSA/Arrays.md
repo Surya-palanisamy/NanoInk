@@ -1,6 +1,8 @@
 # Arrays
 
-## EquilibriumPoint
+## Equilibrium Point (GeeksforGeeks)
+
+[Equilibrium Point](https://www.geeksforgeeks.org/equilibrium-index-of-an-array/)
 
 > Given an array `arr`, find the first index where the sum of elements on its left equals the sum on its right. Return `-1` if no such index exists.
 
@@ -59,6 +61,7 @@ class Main {
   - pivot=3: prefSum=11, suffSum=28-11-6=11. Equal! Return 3.
 
 ---
+
 ## Two Sum (LeetCode 1)
 
 [1. Two Sum](https://leetcode.com/problems/two-sum/)
@@ -164,10 +167,10 @@ class Solution {
 }
 ```
 
-| Type  | Value                          |
-| ----- | ------------------------------ |
-| Time  | **O(n²)**                     |
-| Space | **O(1)** (excluding output)    |
+| Type  | Value                       |
+| ----- | --------------------------- |
+| Time  | **O(n²)**                   |
+| Space | **O(1)** (excluding output) |
 
 - Approach: Sort the array first. Fix one element with index `i`, then use two pointers (`l` and `r`) to find pairs that sum to `-nums[i]`. Skip duplicates at all three levels to avoid repeated triplets.
 - Dry run (nums = [-1,0,1,2,-1,-4]):
@@ -180,14 +183,74 @@ class Solution {
 
 ---
 
+## Find Pairs with Sum 0 (GeeksforGeeks)
+
+[Find Pairs with Sum 0](https://www.geeksforgeeks.org/find-all-pairs-with-sum-0-in-an-array/)
+
+**Example 1:**
+
+**Input:** arr = [1, -1, 2, -2, 3, -3, 1]
+**Output:** [[-3, 3], [-2, 2], [-1, 1]]
+
+```java
+import java.util.*;
+class Solution {
+    public List<List<Integer>> findPairs(int[] arr) {
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(arr);
+        int left = 0, right = arr.length - 1;
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+            if (sum == 0) {
+                res.add(Arrays.asList(arr[left], arr[right]));
+                int lVal = arr[left];
+                int rVal = arr[right];
+                while (left < right && arr[left] == lVal) left++;
+                while (left < right && arr[right] == rVal) right--;
+            } else if (sum < 0) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        int[] arr = {1, -1, 2, -2, 3, -3, 1};
+
+        List<List<Integer>> ans = sol.findPairs(arr);
+
+        for (List<Integer> pair : ans) {
+            System.out.println(pair);
+        }
+    }
+}
+```
+
+| Type  | Value          |
+| ----- | -------------- |
+| Time  | **O(n log n)** |
+| Space | **O(1)**       |
+
+- Approach: Sort the array first. Use two pointers to find pairs that sum to 0. Skip duplicates to avoid repeated pairs.
+- Dry run (arr = [1, -1, 2, -2, 3, -3, 1]):
+  - Sort → [-3,-2,-1,1,1,2,3]
+  - left=0, right=6. sum=-3+3=0 → found [-3,3]. Skip dups. left=1, right=5. sum=-2+2=0 → found [-2,2]. Skip dups. left=2, right=4. sum=-1+1=0 → found [-1,1]. Skip dups. left=3, right=3. stop.
+  - Result: [[-3,3], [-2,2], [-1,1]]
+
+---
+
 ## Remove Duplicates from Sorted Array (LeetCode 26)
 
 [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
 > Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
-> 
+>
 > Consider the number of unique elements in nums to be k. After removing duplicates, return the number of unique elements k.
-> 
+>
 > The first k elements of nums should contain the unique numbers in sorted order. The remaining elements beyond index k - 1 can be ignored.
 
 Example 1:
@@ -230,7 +293,7 @@ class Solution {
 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/)
 
 > Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
-> 
+>
 > You must write an algorithm with O(log n) runtime complexity.
 
 Example 1:
@@ -275,7 +338,7 @@ class Solution {
 [66. Plus One](https://leetcode.com/problems/plus-one/)
 
 > You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
-> 
+>
 > Increment the large integer by one and return the resulting array of digits.
 
 Example 1:
@@ -330,7 +393,7 @@ class Solution {
 
 ---
 
-##  Merge Sorted Array (leetcode 88)
+## Merge Sorted Array (leetcode 88)
 
 [88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)
 
@@ -338,7 +401,7 @@ class Solution {
 
 > **Merge** `nums1` and `nums2` into a single array sorted in **non-decreasing order**.
 
-> The final sorted array should not be returned by the function, but instead be _stored inside the array_ `nums1`. To accommodate this, `nums1` has a length of `m + n`, where the first `m` elements denote the elements that should be merged, and the last `n` elements are set to `0` and should be ignored. `nums2` has a length of `n`.
+> The final sorted array should not be returned by the function, but instead be *stored inside the array* `nums1`. To accommodate this, `nums1` has a length of `m + n`, where the first `m` elements denote the elements that should be merged, and the last `n` elements are set to `0` and should be ignored. `nums2` has a length of `n`.
 
 **Example 1:**
 
@@ -353,6 +416,7 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
 **Output:** [1]
 **Explanation:** The arrays we are merging are [1] and [].
 The result of the merge is [1].
+
 ```java
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
@@ -372,10 +436,10 @@ class Solution {
 }
 ```
 
-| Type  | Value        |
-| ----- | ------------ |
-| Time  | **O(m+n)**   |
-| Space | **O(1)**     |
+| Type  | Value      |
+| ----- | ---------- |
+| Time  | **O(m+n)** |
+| Space | **O(1)**   |
 
 - Approach: Use three pointers starting from the end. `i` points to the last real element in `nums1`, `j` points to the last element in `nums2`, and `k` points to the last position in `nums1`. Compare elements from the ends of both arrays and place the larger one at position `k`, moving backwards. This avoids overwriting elements that haven't been processed yet.
 - Dry run (nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3):
@@ -387,12 +451,13 @@ class Solution {
   - j < 0, loop ends. Result: [1,2,2,3,5,6]
 
 ---
+
 ## Move Zeroes (LeetCode 283)
 
 [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
 
 > Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
-> 
+>
 > Note that you must do this in-place without making a copy of the array.
 
 Example 1:
@@ -452,12 +517,24 @@ Output: 2
 ```java
 class Solution {
     public int majorityElement(int[] nums) {
+          int n = arr.length;
         int count = 0, candidate = 0;
-        for (int num : nums) {
-            if (count == 0) candidate = num;
+        for (int num : arr) {
+            if (count == 0) {
+                candidate = num;
+            }
             count += (num == candidate) ? 1 : -1;
         }
-        return candidate;
+        count = 0;
+        for (int num : arr) {
+            if (num == candidate) {
+                count++;
+            }
+        }
+        if (count > n / 2) {
+            return candidate;
+        }
+        return -1;
     }
 }
 ```
@@ -477,6 +554,8 @@ class Solution {
 
 ## Neighbors Are Greater (Circular)
 
+[Neighbors Are Greater (Circular)](https://www.geeksforgeeks.org/)
+
 > Given a circular array `A` of `N` integers, for each element count how many of its two neighbors (left and right, wrapping around) are strictly greater than it. Print the count for each element.
 
 **Example:**
@@ -484,6 +563,7 @@ class Solution {
 **Input:** N = 5, A = [3, 6, 1, 4, 2]
 **Output:** 1 0 2 0 2
 **Explanation:**
+
 - A[0]=3: left neighbor A[4]=2 (not greater), right neighbor A[1]=6 (greater) → 1
 - A[1]=6: left neighbor A[0]=3 (not greater), right neighbor A[2]=1 (not greater) → 0
 - A[2]=1: left neighbor A[1]=6 (greater), right neighbor A[3]=4 (greater) → 2
@@ -572,8 +652,8 @@ class Solution {
 [55. Jump Game](https://leetcode.com/problems/jump-game/)
 
 > You are given an integer array `nums`. You are initially positioned at the array's **first index**, and each element in the array represents your maximum jump length at that position.
-> 
-> Return `true` *if you can reach the last index, or* `false` *otherwise*.
+>
+> Return `true` _if you can reach the last index, or_ `false` _otherwise_.
 
 **Example 1:**
 
@@ -670,7 +750,7 @@ class Solution {
 [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
 
 > Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
-> 
+>
 > You must write an algorithm that runs in O(n) time.
 
 Example 1:
@@ -731,7 +811,7 @@ class Solution {
 [136. Single Number](https://leetcode.com/problems/single-number/)
 
 > Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
-> 
+>
 > You must implement a solution with a linear runtime complexity and use only constant extra space.
 
 Example 1:
@@ -830,7 +910,7 @@ class Solution {
 [605. Can Place Flowers](https://leetcode.com/problems/can-place-flowers/)
 
 > You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.
-> 
+>
 > Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
 
 Example 1:
@@ -878,7 +958,7 @@ class Solution {
 [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
 
 > Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
-> 
+>
 > The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 > You must write an algorithm that runs in O(n) time and without using the division operation.
 
@@ -922,7 +1002,9 @@ class Solution {
   - Right products: [24, 12, 4, 1]
   - Result: [24, 12, 8, 6]
 
-## Coin Change Ways
+## Coin Change Ways (LeetCode 518)
+
+[518. Coin Change II](https://leetcode.com/problems/coin-change-ii/)
 
 > Given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money, return the number of combinations that make up that amount.
 
@@ -1041,7 +1123,7 @@ class Solution {
 [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
 > Given an integer array `nums` and an integer `k`, return the `kth` largest element in the array.
-> 
+>
 > Note that it is the `kth` largest element in the sorted order, not the `kth` distinct element.
 > Can you solve it without sorting?
 
@@ -1071,6 +1153,7 @@ class Solution {
     }
 }
 ```
+
 | Type  | Value          |
 | ----- | -------------- |
 | Time  | **O(n log k)** |
@@ -1216,6 +1299,7 @@ class Solution {
   - left=4, right=4: mid=4 (val 0). Target 0 == 0. Return 4.
 
 ---
+
 ## N-ary Tree Level Order Traversal (LeetCode 429)
 
 [429. N-ary Tree Level Order Traversal](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)
@@ -1340,3 +1424,188 @@ class Solution {
   - min arrays = [0, 1, 1, 2, 2, 2, 2, 3, 2, 2, 2, 1]
   - Using difference: total = +0 +0 +1 +0 +1 +2 +1 +0 +0 +1 +0 +0 = 6
   - Returns 6.
+---
+## Replace with Index (GeeksforGeeks)
+
+[Replace every array element with its index](https://www.geeksforgeeks.org/)
+
+> You are given a list of N unique positive numbers ranging from 0 to (N -1). Write an algorithm to replace the value of each number with its corresponding index value in the list.
+
+**Example 1:**
+**Input:** number = [1,3,0,2]
+**Output:** [2,0,3,1]
+
+```java
+public class Solution {
+    public static int[] replaceWithIndex(int[] arr) {
+        int n = arr.length;
+        int[] res = new int[n];
+        for (int i = 0; i < n; i++) {
+            res[arr[i]] = i;
+        }
+        return res;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(n)** |
+
+- Approach: Create a result array, and use the value of the current element as the index for the new array.
+- Dry run (arr = [1,3,0,2]):
+  - i=0, arr[0]=1, res[1]=0
+  - i=1, arr[1]=3, res[3]=1
+  - i=2, arr[2]=0, res[0]=2
+  - i=3, arr[3]=2, res[2]=3
+  - Result: [2,0,3,1]
+
+---
+
+## Frequency Count (GeeksforGeeks)
+
+[Frequencies of Limited Range Array Elements](https://www.geeksforgeeks.org/count-frequencies-elements-array-o1-extra-space-time/)
+
+> Given an array, output the frequency of each element.
+
+**Example 1:**
+**Input:** arr = [1, 2, 1, 3]
+**Output:** [[1,2], [2,1], [3,1]]
+
+```java
+import java.util.*;
+
+class Solution {
+    public ArrayList<ArrayList<Integer>> frequencyCount(int[] arr) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : arr) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        for (int key : map.keySet()) {
+            ArrayList<Integer> temp = new ArrayList<>();
+            temp.add(key);
+            temp.add(map.get(key));
+            res.add(temp);
+        }
+        return res;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(n)** |
+
+- Approach: Use a HashMap to count occurrences and then convert to a list of lists.
+- Dry run (arr=[1,2,1,3]):
+  - map: {1:2, 2:1, 3:1}
+  - res: [[1,2], [2,1], [3,1]]
+
+---
+
+## Binary Search Return First Index (GeeksforGeeks)
+
+[Find first and last positions of an element in a sorted array](https://www.geeksforgeeks.org/find-first-and-last-positions-of-an-element-in-a-sorted-array/)
+
+> Given a sorted array, do a binary search to find the very first index of the target. Return -1 if not found.
+
+**Example 1:**
+**Input:** arr = [1,2,2,2,3], t = 2
+**Output:** 1
+
+```java
+class Solution {
+    public int binarysearch(int[] arr, int t) {
+        int l = 0, r = arr.length - 1;
+        int ans = -1;
+
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+
+            if (arr[m] == t) {
+                ans = m;      
+                r = m - 1;    
+            } 
+            else if (arr[m] < t) {
+                l = m + 1;
+            } 
+            else {
+                r = m - 1;
+            }
+        }
+
+        return ans;
+    }
+}
+```
+
+| Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(log n)** |
+| Space | **O(1)**     |
+
+- Approach: Standard binary search, but when the target is found, update the answer and continue searching in the left half to find an earlier occurrence.
+- Dry run (arr=[1,2,2,2,3], t=2):
+  - l=0, r=4. m=2. arr[2]=2 == 2 -> ans=2, r=1.
+  - l=0, r=1. m=0. arr[0]=1 < 2 -> l=1.
+  - l=1, r=1. m=1. arr[1]=2 == 2 -> ans=1, r=0.
+  - loops ends. Answer is 1.
+```
+
+---
+
+2149. Rearrange Array Elements by Sign
+
+You are given a 0-indexed integer array nums of even length consisting of an equal number of positive and negative integers.
+
+You should return the array of nums such that the array follows the given conditions:
+
+Every consecutive pair of integers have opposite signs.
+For all integers with the same sign, the order in which they were present in nums is preserved.
+The rearranged array begins with a positive integer.
+Return the modified array after rearranging the elements to satisfy the aforementioned conditions.
+
+ 
+
+Example 1:
+
+Input: nums = [3,1,-2,-5,2,-4]
+Output: [3,-2,1,-5,2,-4]
+Explanation:
+The positive integers in nums are [3,1,2]. The negative integers are [-2,-5,-4].
+The only possible way to rearrange them such that they satisfy all conditions is [3,-2,1,-5,2,-4].
+Other ways such as [1,-2,2,-5,3,-4], [3,1,2,-2,-5,-4], [-2,3,-5,1,-4,2] are incorrect because they do not satisfy one or more conditions.  
+Example 2:
+
+Input: nums = [-1,1]
+Output: [1,-1]
+Explanation:
+1 is the only positive integer and -1 the only negative integer in nums.
+So nums is rearranged to [1,-1].
+ 
+```java
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int arr[] = new int[nums.length];
+        int postitiveIDX = -2, negativeIDX = -1;
+        for (int i : nums) {
+            if (i >= 0)
+                arr[postitiveIDX += 2] = i;
+            else
+                a[negativeIDX += 2] = i;
+        }
+        return arr;
+    }
+}
+```
+
+ Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(n)** |
+| Space | **O(1)**     |
+
+ - Dry run (nums = [3,1,-2,-5,2,-4])
+    

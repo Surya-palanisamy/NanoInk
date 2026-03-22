@@ -84,7 +84,7 @@ export function getManifest(): ManifestRoot {
         name: "DSA",
         children: [
           { name: "README", path: "DSA/README.md" },
-          { name: "Blind 75", path: "DSA/blind75.md" },
+          { name: "Blind 75", path: "DSA/Blind75.md" },
           { name: "Algorithms", path: "DSA/Algorithms.md" },
           { name: "Arrays", path: "DSA/Arrays.md" },
           { name: "BitManipulation", path: "DSA/BitManipulation.md" },

@@ -446,3 +446,110 @@ class Solution {
 
 ---
 
+## Determine Whether Matrix Can Be Obtained By Rotation (LeetCode 1886)
+
+[1886. Determine Whether Matrix Can Be Obtained By Rotation](https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation/)
+
+> Given two n x n binary matrices mat and target, return true if it is possible to make mat equal to target by rotating mat in 90-degree increments, or false otherwise.
+
+Example 1: Input: mat = [[0,1],[1,0]], target = [[1,0],[0,1]] Output: true Explanation: We can rotate mat 90 degrees clockwise to make mat equal target. Example 2:
+
+```java
+class Solution {
+    public boolean findRotation(int[][] mat, int[][] target) {
+        for (int i = 0; i < 4; i++) {
+            if (isEqual(mat, target)) return true;
+            rotate(mat);
+        }
+        return false;
+    }
+
+    private boolean isEqual(int[][] a, int[][] b) {
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (a[i][j] != b[i][j]) return false;
+            }
+        }
+        return true;
+    }
+
+    private void rotate(int[][] mat) {
+        int n = mat.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                int temp = mat[i][j];
+                mat[i][j] = mat[j][i];
+                mat[j][i] = temp;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            int left = 0, right = n - 1;
+            while (left < right) {
+                int temp = mat[i][left];
+                mat[i][left] = mat[i][right];
+                mat[i][right] = temp;
+                left++;
+                right--;
+            }
+        }
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n²)** |
+| Space | **O(1)** |
+
+- Approach: Check equality with target, then rotate `mat` 90 degrees clockwise up to 4 times. If it matches, return true.
+- Dry run (mat=[[0,1],[1,0]], target=[[1,0],[0,1]]):
+  - i=0: not equal. Rotate: transpose -> [[0,1],[1,0]], reverse rows -> [[1,0],[0,1]].
+  - i=1: equal! return true.
+
+---
+
+## Matrix Multiplication (GeeksforGeeks)
+
+[GeeksforGeeks](https://www.geeksforgeeks.org/c-program-multiply-two-matrices/)
+
+> Given two n x n matrices A and B, compute their product matrix C.
+
+**Example:**
+**Input:** A = [[1,2],[3,4]], B = [[5,6],[7,8]]
+**Output:** [[19,22],[43,50]]
+
+```java
+class Solution {
+    public static int[][] multiply(int A[][], int B[][]) {
+        int n = A.length;
+        int[][] C = new int[n][n];
+
+        for (int i = 0; i < n; i++) {          
+            for (int k = 0; k < n; k++) { 
+                for (int j = 0; j < n; j++) {    
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+
+        return C;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n³)** |
+| Space | **O(n²)** |
+
+- Approach: Standard matrix multiplication. For each cell (i, j) in C, compute the dot product of the i-th row of A and the j-th column of B.
+- Dry run (A=[[1,2],[3,4]], B=[[5,6],[7,8]]):
+  - C[0][0] = 1*5 + 2*7 = 19
+  - C[0][1] = 1*6 + 2*8 = 22
+  - C[1][0] = 3*5 + 4*7 = 43
+  - C[1][1] = 3*6 + 4*8 = 50
+  - Returns C.
+
+---

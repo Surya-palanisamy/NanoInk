@@ -210,3 +210,65 @@ class Solution {
 
 ---
 
+## Prime Sum (GeeksforGeeks)
+
+[Prime Sum](https://www.geeksforgeeks.org/sum-of-all-the-prime-numbers-in-a-given-range/)
+
+**Example 1:**
+
+**Input:** n = 10
+**Output:** 17
+**Explanation:** The prime numbers less than or equal to 10 are 2, 3, 5, and 7. Their sum is 2 + 3 + 5 + 7 = 17.
+
+```java
+class Solution {
+    public int prime_Sum(int n) {
+        if (n < 2) return 0;
+
+        boolean[] isPrime = new boolean[n + 1];
+        Arrays.fill(isPrime, true);
+
+        isPrime[0] = false;
+        isPrime[1] = false;
+
+        for (int i = 2; i * i <= n; i++) {
+            if (isPrime[i]) {
+                for (int j = i * i; j <= n; j +=i) {
+                    isPrime[j] = false;
+                }
+            }
+        }
+
+        int sum = 0;
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                sum += i;
+            }
+        }
+
+        return sum;
+    
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n log log n)** |
+| Space | **O(n)** |
+
+- Approach: Use Sieve of Eratosthenes to find all primes up to n and sum them.
+- Dry run (n=10):
+  - isPrime = [T,T,T,T,T,T,T,T,T,T,T]
+  - i=2: isPrime[2]=T → isPrime[4]=F, isPrime[6]=F, isPrime[8]=F, isPrime[10]=F
+  - i=3: isPrime[3]=T → isPrime[9]=F
+  - i=4: isPrime[4]=F → skip
+  - i=5: isPrime[5]=T → isPrime[10]=F
+  - i=6: isPrime[6]=F → skip
+  - i=7: isPrime[7]=T → isPrime[14]=F
+  - i=8: isPrime[8]=F → skip
+  - i=9: isPrime[9]=F → skip
+  - i=10: isPrime[10]=F → skip
+  - sum = 2+3+5+7 = 17
+
+--- 

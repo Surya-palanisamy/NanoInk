@@ -191,7 +191,9 @@ class Solution {
   - Phase 1: slow=3,fast=3 → slow=2,fast=0 → slow=0,fast=2 → slow=-4,fast=-4 → meet!
   - Phase 2: slow=head=3, fast=-4. Move both by 1: slow=2, fast=0 → slow=0, fast=2 → slow=2, fast=-4... eventually both meet at node 2 (cycle start).
 
-## Remove cycle from linked list
+## Remove cycle from linked list (GeeksforGeeks)
+
+[Remove loop in Linked List](https://www.geeksforgeeks.org/remove-loop-in-linked-list/)
 
 > Given the `head` of a linked list that may contain a cycle, remove the cycle if it exists by setting the `next` pointer of the last node in the cycle to `null`.
 
@@ -420,3 +422,137 @@ class Solution {
   - curr=3. curr.next is null -> loop ends.
   - Returns [1,2,3].
 
+---
+
+## Reorder List (LeetCode 143)
+
+[143. Reorder List](https://leetcode.com/problems/reorder-list/)
+
+> You are given the head of a singly linked-list. The list can be represented as:
+
+L0 → L1 → … → Ln - 1 → Ln
+
+_Reorder the list to be on the following form:_
+
+L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+
+You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+**Example 1:**
+
+![](https://assets.leetcode.com/uploads/2021/03/04/reorder1linked-list.jpg)
+
+**Input:** head = [1,2,3,4]
+**Output:** [1,4,2,3]
+
+**Example 2:**
+
+![](https://assets.leetcode.com/uploads/2021/03/09/reorder2-linked-list.jpg)
+
+**Input:** head = [1,2,3,4,5]
+**Output:** [1,5,2,4,3]
+
+```java
+class Solution {
+    public void reorderList(ListNode head) {
+        if (head == null || head.next == null)
+            return;
+
+        ListNode slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode second = slow.next;
+        slow.next = null;
+        ListNode prev = null;
+
+        while (second != null) {
+            ListNode next = second.next;
+            second.next = prev;
+            prev = second;
+            second = next;
+        }
+        second = prev;
+        ListNode first = head;
+        while (second != null) {
+            ListNode fNext = first.next;
+            ListNode sNext = second.next;
+
+            first.next = second;
+            second.next = fNext;
+
+            first = fNext;
+            second = sNext;
+        }
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Find the middle node using slow and fast pointers. Reverse the second half of the list. Then, merge the two halves alternately.
+- Dry run (head=[1,2,3,4]):
+  - Middle: slow stops at 2 (so left half is [1,2], right half starts at 3).
+  - Reverse second half: [3,4] becomes [4,3].
+  - Merge: 1 -> 4 -> 2 -> 3 -> null. Result: [1,4,2,3].
+
+---
+
+## Convert Sorted List to Binary Search Tree (LeetCode 109)
+
+[109. Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)
+
+> Given the `head` of a singly linked list where elements are sorted in **ascending order**, convert _it to a_ **_height-balanced_** _binary search tree_.
+
+**Example 1:**
+
+![](https://assets.leetcode.com/uploads/2020/08/17/linked.jpg)
+
+**Input:** head = [-10,-3,0,5,9]
+**Output:** [0,-3,9,-10,null,5]
+**Explanation:** One possible answer is [0,-3,9,-10,null,5], which represents the shown height balanced BST.
+
+**Example 2:**
+
+**Input:** head = []
+**Output:** []
+
+```java
+class Solution {
+    public TreeNode sortedListToBST(ListNode head) {
+        if (head == null)
+            return null;
+        if (head.next == null)
+            return new TreeNode(head.val);
+        ListNode slow = head, fast = head, prev = null;
+        while (fast != null && fast.next != null) {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        if (prev != null)
+            prev.next = null;
+        TreeNode root = new TreeNode(slow.val);
+        root.left = sortedListToBST(head == slow ? null : head);
+        root.right = sortedListToBST(slow.next);
+        return root;
+    }
+}
+```
+
+| Type  | Value        |
+| ----- | ------------ |
+| Time  | **O(n log n)** |
+| Space | **O(log n)**   |
+
+- Approach: Find the middle element to be the root. Set previous node's next to null to sever the list. Then recursively build the left and right subtrees.
+- Dry run (head=[-10,-3,0,5,9]):
+  - Middle is 0. Root = 0.
+  - Left list turns into [-10,-3], mid is -3 -> root.left=-3.
+  - Right list turns into [5,9], mid is 9 -> root.right=9.
+  - End result: [0,-3,9,-10,null,5].

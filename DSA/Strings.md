@@ -251,6 +251,8 @@ class Solution {
 
 ## Frequency of Character (uppercase)
 
+[GeeksforGeeks](https://www.geeksforgeeks.org/print-characters-frequencies-order-occurrence/)
+
 > Given a string `s` consisting of uppercase alphabetic characters, print the frequency of each character in alphabetical order.
 
 **Example 1:**
@@ -353,7 +355,7 @@ class Solution {
 
 ---
 
-## Check if Binary String Has at Most One Segment of Ones
+## Check if Binary String Has at Most One Segment of Ones (LeetCode 1784)
 
 [1784. Check if Binary String Has at Most One Segment of Ones](https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/)
 
@@ -666,3 +668,41 @@ class Solution {
   - i=4, j=0: s[0..4] is "leet", in dict. dp[4]=true.
   - i=8, j=4: s[4..8] is "code", in dict. dp[8]=true.
   - Return dp[8] = true.
+
+---
+## String Reverse (GeeksforGeeks)
+
+[Reverse a String](https://www.geeksforgeeks.org/reverse-a-string-in-java/)
+
+> Given a string, print it in reverse order.
+
+**Example 1:**
+**Input:** `s = "surya"`
+**Output:** `ayrus`
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String s = "surya";
+        int n = s.length();
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(s.charAt(n - i - 1));
+        }
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Loop from 0 to n-1 and print characters starting from the end of the string.
+- Dry run (s="surya"):
+  - i=0: print s.charAt(4) -> 'a'
+  - i=1: print s.charAt(3) -> 'y'
+  - i=2: print s.charAt(2) -> 'r'
+  - i=3: print s.charAt(1) -> 'u'
+  - i=4: print s.charAt(0) -> 's'
+  - Result: ayrus

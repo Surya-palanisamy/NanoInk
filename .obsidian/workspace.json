@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA/BitManipulation.md",
+                "file": "DSA/Trees.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "BitManipulation"
+              "title": "Trees"
             }
           }
         ]
@@ -203,14 +203,14 @@
   },
   "active": "1005f46b815121ad",
   "lastOpenFiles": [
+    "DSA/LinkedList.md",
+    "DSA/Trees.md",
+    "DSA/BitManipulation.md",
     "DSA/found_links.txt",
     "DSA/Blind75.md",
     "DSA/Strings.md",
     "DSA/Arrays.md",
-    "DSA/LinkedList.md",
     "DSA/Math.md",
-    "DSA/BitManipulation.md",
-    "DSA/Trees.md",
     "DSA/Algorithms.md",
     "DSA/DSA_Questions.md",
     "DSA/Matrix.md",
@@ -248,7 +248,6 @@
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-item.d.ts",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.js",
     "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.d.ts",
-    "astro/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js",
     "Untitled.canvas",
     "Untitled 1.canvas"
   ]
