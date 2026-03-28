@@ -1,5 +1,3 @@
-# Bit Manipulation
-
 ## Even or Odd (GeeksforGeeks)
 
 [Check whether a given number is even or odd](https://www.geeksforgeeks.org/check-if-a-number-is-odd-or-even-using-bitwise-operators/)
@@ -58,7 +56,6 @@ class Solution {
 - Approach: Math/Digital Root formula `1 + (n - 1) % 9`.
 - Dry run (n = 13): 1 + (13 - 1) % 9 = 1 + 12 % 9 = 1 + 3 = 4.
 
-
 ## Multiply by 2
 
 [Multiply with 2 using Bitwise Operators](https://www.geeksforgeeks.org/multiply-an-integer-with-2-using-bitwise-operators/)
@@ -102,7 +99,6 @@ System.out.println(result);
 
 | Type  | Value    |
 | ----- | -------- |
-| Time  | **O(1)** |
 | Space | **O(1)** |
 
 - Dry run: 14(1110) >> 1 → 0111(7).
@@ -186,10 +182,9 @@ for (int i = 0; i <= n; i++) {
 }
 ```
 
-| Type  | Value    |
-| ----- | -------- |
-| Time  | **O(n)** |
-| Space | **O(1)** |
+| Type | Value    |
+| ---- | -------- |
+| Time | **O(n)** |
 
 - Dry run: i=0→1, i=1→2, i=2→4, i=3→8, i=4→16, i=5→32.
 
@@ -236,9 +231,9 @@ System.out.println(n);
 int n = 14, k = 1;
 n = n & ~(1 << k);
 System.out.println(n);
-
 ```
 
+````
 | Type  | Value    |
 | ----- | -------- |
 | Time  | **O(1)** |
@@ -264,7 +259,7 @@ int n = 12, k = 2;
 n = n ^ (1 << k);
 System.out.println(n);
 
-```
+````
 
 | Type  | Value    |
 | ----- | -------- |
@@ -330,14 +325,14 @@ public int[] countBits(int n) {
 }
 
 ```
-| i | Binary | i>>1 | ans[i>>1] | (i&1) | ans[i] |
-| - | ------ | ---- | --------- | ----- | ------ |
-| 1 | 001    | 0    | 0         | 1     | 1      |
-| 2 | 010    | 1    | 1         | 0     | 1      |
-| 3 | 011    | 1    | 1         | 1     | 2      |
-| 4 | 100    | 2    | 1         | 0     | 1      |
-| 5 | 101    | 2    | 1         | 1     | 2      |
 
+| i   | Binary | i>>1 | ans[i>>1] | (i&1) | ans[i] |
+| --- | ------ | ---- | --------- | ----- | ------ |
+| 1   | 001    | 0    | 0         | 1     | 1      |
+| 2   | 010    | 1    | 1         | 0     | 1      |
+| 3   | 011    | 1    | 1         | 1     | 2      |
+| 4   | 100    | 2    | 1         | 0     | 1      |
+| 5   | 101    | 2    | 1         | 1     | 2      |
 
 | Type  | Value    |
 | ----- | -------- |
@@ -458,6 +453,37 @@ class Solution {
 
 ---
 
+## Sum of Two Integers (LeetCode 371)
+
+[371. Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/)
+
+Given two integers `a` and `b`, return *the sum of the two integers without using the operators* `+` *and* `-`.
+
+**Example 1:**
+
+**Input:** a = 1, b = 2
+**Output:** 3
+
+**Example 2:**
+
+**Input:** a = 2, b = 3
+**Output:** 5
+
+```java
+class Solution {
+    public int getSum(int a, int b) {
+        while (b != 0) {
+            int c = (a & b) << 1;
+            a = a ^ b;
+            b = c;
+        }
+        return a;
+    }
+}
+```
+
+---
+
 ## Reverse Bits (leetcode 190)
 
 [190. Reverse Bits](https://leetcode.com/problems/reverse-bits/)
@@ -544,7 +570,7 @@ class Solution {
                (n & (n - 1)) == 0 &&
                (n - 1) % 3 == 0;
     }
-}   
+}
 ```
 
 | Type  | Value    |
@@ -559,7 +585,7 @@ class Solution {
   - (16 - 1) % 3 = 15 % 3 = 0 → true
   - Returns true
 
---- 
+---
 
 ## Complement of Base 10 Integer (LeetCode 1009)
 
@@ -569,7 +595,7 @@ The **complement** of an integer is the integer you get when you flip all the `0
 
 - For example, The integer `5` is `"101"` in binary and its **complement** is `"010"` which is the integer `2`.
 
-Given an integer `n`, return *its complement*.
+Given an integer `n`, return _its complement_.
 
 **Example 1:**
 
@@ -588,6 +614,7 @@ Given an integer `n`, return *its complement*.
 **Input:** n = 10
 **Output:** 5
 **Explanation:** 10 is "1010" in binary, with complement "0101" in binary, which is 5 in base-10.
+
 ```java
 class Solution {
 
@@ -603,10 +630,10 @@ class Solution {
 }
 ```
 
-| Type  | Value    |
-| ----- | -------- |
+| Type  | Value         |
+| ----- | ------------- |
 | Time  | **O(log(n))** |
-| Space | **O(1)** |
+| Space | **O(1)**      |
 
 - Approach: Find a mask with all 1s of the same length as the binary representation of n. Then XOR the mask with n to get the complement.
 - Dry run (n=5):
@@ -615,5 +642,3 @@ class Solution {
   - mask - 1 = 7 (binary 111)
   - 7 ^ 5 = 111 ^ 101 = 010 (2)
   - Returns 2.
-
- 

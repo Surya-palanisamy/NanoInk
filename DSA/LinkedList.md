@@ -1,5 +1,48 @@
 # Linked List
 
+## Reverse Linked List (LeetCode 206)
+
+[206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
+
+> Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+**Example 1:**
+**Input:** `head = [1,2,3,4,5]`
+**Output:** `[5,4,3,2,1]`
+
+```java
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        return prev;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Iteratively reverse pointers using three references: `prev`, `curr`, and `next`.
+- Dry run (head=[1,2,3]):
+  - prev=null, curr=1
+  - reverse 1 -> null; move prev=1, curr=2
+  - reverse 2 -> 1; move prev=2, curr=3
+  - reverse 3 -> 2; move prev=3, curr=null
+  - return prev -> [3,2,1]
+
+---
+
 ## Detect cycle in linked list (leetcode 141)
 
 [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
@@ -56,10 +99,8 @@ class Solution {
 [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
 
 > Given the `head` of a singly linked list, return the middle node of the linked list. If there are two middle nodes, return the second middle node.
-
-**Example 1:**
-**Input:** `head = [1,2,3,4,5]`
-**Output:** `[3,4,5]`
+> **Input:** `head = [1,2,3,4,5]`
+> **Output:** `[3,4,5]`
 
 **Example 2:**
 **Input:** `head = [1,2,3,4,5,6]`
@@ -107,26 +148,25 @@ class Solution {
 
 **Example 2:**
 **Input:** `head = [1], n = 1`
-**Output:** `[]`
 
-```java
 class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode slow=head;
-        ListNode fast=head;
-        for(int i=0;i<=n;i++){
-            fast=fast.next;
-        }
-        if(fast==null) return head.next;
-        while(fast!=null){
-            slow=slow.next;
-            fast=fast.next;
-        }
-        slow.next=slow.next.next;
-        return head;
-    }
+public ListNode removeNthFromEnd(ListNode head, int n) {
+ListNode slow=head;
+ListNode fast=head;
+for(int i=0;i<=n;i++){
+fast=fast.next;
 }
-```
+if(fast==null) return head.next;
+while(fast!=null){
+slow=slow.next;
+fast=fast.next;
+}
+slow.next=slow.next.next;
+return head;
+}
+}
+
+````
 
 | Type  | Value    |
 | ----- | -------- |
@@ -179,7 +219,7 @@ class Solution {
         return null;
     }
 }
-```
+````
 
 | Type  | Value    |
 | ----- | -------- |
@@ -507,7 +547,7 @@ class Solution {
 
 [109. Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)
 
-> Given the `head` of a singly linked list where elements are sorted in **ascending order**, convert _it to a_ **_height-balanced_** _binary search tree_.
+> Given the `head` of a singly linked list where elements are sorted in **ascending order**, convert *it to a* ***height-balanced*** *binary search tree*.
 
 **Example 1:**
 
@@ -545,8 +585,8 @@ class Solution {
 }
 ```
 
-| Type  | Value        |
-| ----- | ------------ |
+| Type  | Value          |
+| ----- | -------------- |
 | Time  | **O(n log n)** |
 | Space | **O(log n)**   |
 

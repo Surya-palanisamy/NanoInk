@@ -1,4 +1,3 @@
-# Matrix
 
 ## Rotate Matrix 90° Clockwise (leetcode 48)
 

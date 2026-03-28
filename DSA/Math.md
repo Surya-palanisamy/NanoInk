@@ -1,4 +1,3 @@
-# Math
 
 ## Palindrome Number (LeetCode 9)
 

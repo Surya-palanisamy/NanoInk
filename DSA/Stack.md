@@ -1,4 +1,3 @@
-# Stack
 
 ## Valid Parentheses (LeetCode 20)
 

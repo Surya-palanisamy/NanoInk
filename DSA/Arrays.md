@@ -1,5 +1,3 @@
-# Arrays
-
 ## Equilibrium Point (GeeksforGeeks)
 
 [Equilibrium Point](https://www.geeksforgeeks.org/equilibrium-index-of-an-array/)
@@ -288,6 +286,50 @@ class Solution {
 
 ---
 
+## 217. Contains Duplicate (LeetCode 217)
+
+[217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+
+> Given an integer array `nums`, return `true` if any value appears **at least twice** in the array, and return `false` if every element is distinct.
+
+**Example 1:**
+
+**Input:** nums = [1,2,3,1]
+
+**Output:** true
+
+**Explanation:**
+
+The element 1 occurs at the indices 0 and 3.
+
+**Example 2:**
+
+**Input:** nums = [1,2,3,4]
+
+**Output:** false
+
+**Explanation:**
+
+All elements are distinct.
+
+```java
+import java.util.*;
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int n : nums) {
+            if (set.contains(n)) {
+                return true;
+            }
+            set.add(n);
+        }
+        return false;
+    }
+}
+```
+
+---
+
 ## Search Insert Position (LeetCode 35)
 
 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/)
@@ -517,24 +559,14 @@ Output: 2
 ```java
 class Solution {
     public int majorityElement(int[] nums) {
-          int n = arr.length;
         int count = 0, candidate = 0;
-        for (int num : arr) {
+        for (int num : nums) {
             if (count == 0) {
                 candidate = num;
             }
             count += (num == candidate) ? 1 : -1;
         }
-        count = 0;
-        for (int num : arr) {
-            if (num == candidate) {
-                count++;
-            }
-        }
-        if (count > n / 2) {
-            return candidate;
-        }
-        return -1;
+        return candidate;
     }
 }
 ```
@@ -1424,7 +1456,9 @@ class Solution {
   - min arrays = [0, 1, 1, 2, 2, 2, 2, 3, 2, 2, 2, 1]
   - Using difference: total = +0 +0 +1 +0 +1 +2 +1 +0 +0 +1 +0 +0 = 6
   - Returns 6.
+
 ---
+
 ## Replace with Index (GeeksforGeeks)
 
 [Replace every array element with its index](https://www.geeksforgeeks.org/)
@@ -1526,12 +1560,12 @@ class Solution {
             int m = l + (r - l) / 2;
 
             if (arr[m] == t) {
-                ans = m;      
-                r = m - 1;    
-            } 
+                ans = m;
+                r = m - 1;
+            }
             else if (arr[m] < t) {
                 l = m + 1;
-            } 
+            }
             else {
                 r = m - 1;
             }
@@ -1553,11 +1587,14 @@ class Solution {
   - l=0, r=1. m=0. arr[0]=1 < 2 -> l=1.
   - l=1, r=1. m=1. arr[1]=2 == 2 -> ans=1, r=0.
   - loops ends. Answer is 1.
-```
+
+````
 
 ---
 
-2149. Rearrange Array Elements by Sign
+## Rearrange Array Elements by Sign (LeetCode 2149)
+
+[2149. Rearrange Array Elements by Sign](https://leetcode.com/problems/rearrange-array-elements-by-sign/)
 
 You are given a 0-indexed integer array nums of even length consisting of an equal number of positive and negative integers.
 
@@ -1568,7 +1605,7 @@ For all integers with the same sign, the order in which they were present in num
 The rearranged array begins with a positive integer.
 Return the modified array after rearranging the elements to satisfy the aforementioned conditions.
 
- 
+
 
 Example 1:
 
@@ -1577,7 +1614,7 @@ Output: [3,-2,1,-5,2,-4]
 Explanation:
 The positive integers in nums are [3,1,2]. The negative integers are [-2,-5,-4].
 The only possible way to rearrange them such that they satisfy all conditions is [3,-2,1,-5,2,-4].
-Other ways such as [1,-2,2,-5,3,-4], [3,1,2,-2,-5,-4], [-2,3,-5,1,-4,2] are incorrect because they do not satisfy one or more conditions.  
+Other ways such as [1,-2,2,-5,3,-4], [3,1,2,-2,-5,-4], [-2,3,-5,1,-4,2] are incorrect because they do not satisfy one or more conditions.
 Example 2:
 
 Input: nums = [-1,1]
@@ -1585,27 +1622,38 @@ Output: [1,-1]
 Explanation:
 1 is the only positive integer and -1 the only negative integer in nums.
 So nums is rearranged to [1,-1].
- 
+
 ```java
 class Solution {
     public int[] rearrangeArray(int[] nums) {
-        int arr[] = new int[nums.length];
-        int postitiveIDX = -2, negativeIDX = -1;
-        for (int i : nums) {
-            if (i >= 0)
-                arr[postitiveIDX += 2] = i;
-            else
-                a[negativeIDX += 2] = i;
+        int[] arr = new int[nums.length];
+        int positiveIdx = 0, negativeIdx = 1;
+        for (int n : nums) {
+            if (n >= 0) {
+                arr[positiveIdx] = n;
+                positiveIdx += 2;
+            } else {
+                arr[negativeIdx] = n;
+                negativeIdx += 2;
+            }
         }
         return arr;
     }
 }
-```
+````
 
- Type  | Value        |
-| ----- | ------------ |
+| Type  | Value    |
+| ----- | -------- |
 | Time  | **O(n)** |
-| Space | **O(1)**     |
+| Space | **O(n)** |
 
- - Dry run (nums = [3,1,-2,-5,2,-4])
-    
+- Approach: Place positives at even indices (0,2,4,...) and negatives at odd indices (1,3,5,...) while preserving relative order.
+- Dry run (nums = [3,1,-2,-5,2,-4]):
+  - Start arr=[_,_,_,_,_,_], positiveIdx=0, negativeIdx=1
+  - n=3 -> arr[0]=3, positiveIdx=2
+  - n=1 -> arr[2]=1, positiveIdx=4
+  - n=-2 -> arr[1]=-2, negativeIdx=3
+  - n=-5 -> arr[3]=-5, negativeIdx=5
+  - n=2 -> arr[4]=2, positiveIdx=6
+  - n=-4 -> arr[5]=-4, negativeIdx=7
+  - Result: [3,-2,1,-5,2,-4]

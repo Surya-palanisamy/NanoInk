@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA/Trees.md",
+                "file": "DSA/BitManipulation.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Trees"
+              "title": "BitManipulation"
             }
           }
         ]
@@ -203,13 +203,13 @@
   },
   "active": "1005f46b815121ad",
   "lastOpenFiles": [
-    "DSA/LinkedList.md",
+    "DSA/Arrays.md",
+    "DSA/Strings.md",
     "DSA/Trees.md",
+    "DSA/LinkedList.md",
     "DSA/BitManipulation.md",
     "DSA/found_links.txt",
     "DSA/Blind75.md",
-    "DSA/Strings.md",
-    "DSA/Arrays.md",
     "DSA/Math.md",
     "DSA/Algorithms.md",
     "DSA/DSA_Questions.md",

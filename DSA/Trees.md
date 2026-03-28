@@ -1,4 +1,3 @@
-# Trees
 
 ## Depth of Binary Tree (leetcode 104)
 

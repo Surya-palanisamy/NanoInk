@@ -1,4 +1,3 @@
-# Strings
 
 ## Reverse String (LeetCode 344)
 
@@ -71,6 +70,107 @@ class Solution {
 - Dry run ("Hello World "):
   - trim → "Hello World"
   - split → ["Hello","World"] → last="World" → len=5
+
+---
+
+## Longest Substring Without Repeating Characters (LeetCode 3)
+
+[3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+> Given a string `s`, find the length of the **longest** **substring** without duplicate characters.
+> **Example 1:**
+
+**Input:** s = "abcabcbb"
+**Output:** 3
+**Explanation:** The answer is "abc", with the length of 3. Note that `"bca"` and `"cab"` are also correct answers.
+
+**Example 2:**
+
+**Input:** s = "bbbbb"
+**Output:** 1
+**Explanation:** The answer is "b", with the length of 1.
+
+**Example 3:**
+
+**Input:** s = "pwwkew"
+**Output:** 3
+**Explanation:** The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+```java
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int l = 0, r = 0;
+        int n = s.length() ;
+        int m = 0;
+        HashSet<Character> set = new HashSet<>();
+        while (r < n) {
+            char c = s.charAt(r);
+            while (set.contains(c)) {
+                set.remove(s.charAt(l));
+                l++;
+            }
+            set.add(c);
+            m = Math.max(m, r - l + 1);
+            r++;
+        }
+        return m;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(k)** |
+
+- Approach: Sliding window with HashSet. Expand right pointer, shrink left when duplicate found. k = size of character set.
+- Dry run (s = "abcabcbb"):
+  - r=0: add 'a', set={a}, m=1
+  - r=1: add 'b', set={a,b}, m=2
+  - r=2: add 'c', set={a,b,c}, m=3
+  - r=3: 'a' in set, remove 'a', l=1, add 'a', set={b,c,a}, m=3
+  - r=4: 'b' in set, remove 'b', l=2, add 'b', set={c,a,b}, m=3
+  - Continue... final m=3
+
+---
+
+### Variant: Return the Actual Substring
+
+```java
+class Solution {
+    public String longestSubstring(String s) {
+        int l = 0, r = 0;
+        int n = s.length();
+        int maxLen = 0;
+        int start = 0;  // track start of best substring
+        HashSet<Character> set = new HashSet<>();
+        while (r < n) {
+            char c = s.charAt(r);
+            while (set.contains(c)) {
+                set.remove(s.charAt(l));
+                l++;
+            }
+            set.add(c);
+            if (r - l + 1 > maxLen) {
+                maxLen = r - l + 1;
+                start = l;   // store start index
+            }
+            r++;
+        }
+        return s.substring(start, start + maxLen);
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(k)** |
+
+- Dry run (s = "abcabcbb"):
+  - Same as above, but tracks `start` index when maxLen updates
+  - Final: start=0, maxLen=3 → return "abc"
 
 ---
 
@@ -355,6 +455,122 @@ class Solution {
 
 ---
 
+## Valid Palindrome II (LeetCode 680)
+
+[680. Valid Palindrome II](https://leetcode.com/problems/valid-palindrome-ii/)
+
+> Given a string `s`, return `true` *if the* `s` *can be palindrome after deleting **at most one** character from it*.
+
+**Example 1:**
+
+**Input:** s = "aba"
+**Output:** true
+
+**Example 2:**
+
+**Input:** s = "abca"
+**Output:** true
+**Explanation:** You could delete the character 'c'.
+
+**Example 3:**
+
+**Input:** s = "abc"
+**Output:** false
+
+```java
+class Solution {
+    public boolean validPalindrome(String s) {
+        int left = 0, right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return isPalindrome(s, left + 1, right) ||
+                        isPalindrome(s, left, right - 1);
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+    private static boolean isPalindrome(String s, int l, int r) {
+        while (l < r) {
+            if (s.charAt(l++) != s.charAt(r--)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(1)** |
+
+- Approach: Two pointers from both ends. When mismatch found, try skipping either left or right character and check if remaining is palindrome.
+- Dry run (s = "abca"):
+  - left=0 ('a'), right=3 ('a') → match, move inward
+  - left=1 ('b'), right=2 ('c') → mismatch
+  - Try isPalindrome(s, 2, 2) "c" → true
+  - Return true (can delete 'b')
+
+---
+
+### Variant: Return the Palindrome String
+
+```java
+public class PalindromeFix {
+
+    public static String makePalindrome(String s) {
+        int left = 0, right = s.length() - 1;
+
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                if (isPalindrome(s, left + 1, right)) {
+                    return s.substring(0, left) + s.substring(left + 1);
+                }
+
+                if (isPalindrome(s, left, right - 1)) {
+                    return s.substring(0, right) + s.substring(right + 1);
+                }
+
+                return "Not possible";
+            }
+            left++;
+            right--;
+        }
+
+        return s;
+    }
+
+    public static boolean isPalindrome(String s, int l, int r) {
+        while (l < r) {
+            if (s.charAt(l++) != s.charAt(r--)) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(makePalindrome("malayala")); // malayalam
+        System.out.println(makePalindrome("abcddcb"));  // abcddc
+        System.out.println(makePalindrome("racecar"));  // racecar
+    }
+}
+```
+
+| Type  | Value    |
+| ----- | -------- |
+| Time  | **O(n)** |
+| Space | **O(n)** |
+
+- Approach: Similar to Valid Palindrome II, but returns the actual palindrome string after removing one character.
+- Dry run (s = "abcddcb"):
+  - left=0 ('a'), right=6 ('b') → mismatch
+  - isPalindrome(s, 1, 6) "bcddcb" → true
+  - Return s[0..0] + s[1..] = "" + "bcddcb" = "bcddcb"
+
+---
+
 ## Check if Binary String Has at Most One Segment of Ones (LeetCode 1784)
 
 [1784. Check if Binary String Has at Most One Segment of Ones](https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/)
@@ -572,9 +788,9 @@ class Solution {
 
 [205. Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/)
 
->Given two strings `s` and `t`, *determine if they are isomorphic*.
-Two strings `s` and `t` are isomorphic if the characters in `s` can be replaced to get `t`.
-All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+> Given two strings `s` and `t`, _determine if they are isomorphic_.
+> Two strings `s` and `t` are isomorphic if the characters in `s` can be replaced to get `t`.
+> All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
 
 **Example 1:**
 
@@ -664,12 +880,13 @@ class Solution {
 
 - Approach: Use DP array where `dp[i]` indicates if substring `0..i` can be broken down.
 - Dry run (s = "leetcode", wordDict = ["leet","code"]):
-  - dp[0]=true. 
+  - dp[0]=true.
   - i=4, j=0: s[0..4] is "leet", in dict. dp[4]=true.
   - i=8, j=4: s[4..8] is "code", in dict. dp[8]=true.
   - Return dp[8] = true.
 
 ---
+
 ## String Reverse (GeeksforGeeks)
 
 [Reverse a String](https://www.geeksforgeeks.org/reverse-a-string-in-java/)

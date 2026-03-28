@@ -4,7 +4,7 @@
 | ----- | ---------- | ------------------------------------ | ------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | Array | Easy       | Two Sum                              | Hash Map            | [Link](https://leetcode.com/problems/two-sum/)                              | [Solution](./Arrays.md#two-sum-leetcode-1)                           |
 | Array | Easy       | Best Time to Buy and Sell Stock      | Two Pointers        | [Link](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)      | [Solution](./Arrays.md#best-time-to-buy-and-sell-stock-leetcode-121) |
-| Array | Easy       | Contains Duplicate                   | Hash Set            | [Link](https://leetcode.com/problems/contains-duplicate/)                   | Coming Soon                                                          |
+| Array | Easy       | Contains Duplicate                   | Hash Set            | [Link](https://leetcode.com/problems/contains-duplicate/)                   | [Solution](./Arrays.md#217-contains-duplicate-leetcode-217)          |
 | Array | Medium     | Product of Array Except Self         | Prefix/Suffix       | [Link](https://leetcode.com/problems/product-of-array-except-self/)         | [Solution](./Arrays.md#product-of-array-except-self-leetcode-238)    |
 | Array | Medium     | Maximum Subarray                     | Kadane              | [Link](https://leetcode.com/problems/maximum-subarray/)                     | [Solution](./Arrays.md#maximum-subarray-leetcode-53)                 |
 | Array | Medium     | Maximum Product Subarray             | Dynamic Programming | [Link](https://leetcode.com/problems/maximum-product-subarray/)             | Coming Soon                                                          |
@@ -21,13 +21,13 @@
 
 ## Binary / Bit Manipulation
 
-| Topic | Difficulty | Problem             | Pattern          | Link                                                       | Solution                                                 |
-| ----- | ---------- | ------------------- | ---------------- | ---------------------------------------------------------- | -------------------------------------------------------- |
-| Bit   | Medium     | Sum of Two Integers | Bit Manipulation | [Link](https://leetcode.com/problems/sum-of-two-integers/) | Coming Soon                                              |
-| Bit   | Easy       | Number of 1 Bits    | Bit Manipulation | [Link](https://leetcode.com/problems/number-of-1-bits/)    | Coming Soon                                              |
-| Bit   | Easy       | Counting Bits       | Bit Manipulation | [Link](https://leetcode.com/problems/counting-bits/)       | [Solution](./BitManipulation.md#count-bits-leetcode-338) |
-| Bit   | Easy       | Missing Number      | Bit Manipulation | [Link](https://leetcode.com/problems/missing-number/)      | [Solution](./Arrays.md#missing-number-leetcode-268)      |
-| Bit   | Easy       | Reverse Bits        | Bit Manipulation | [Link](https://leetcode.com/problems/reverse-bits/)        | [Solution](./LinkedList.md#reverse-bits-leetcode-190)    |
+| Topic | Difficulty | Problem             | Pattern          | Link                                                       | Solution                                                          |
+| ----- | ---------- | ------------------- | ---------------- | ---------------------------------------------------------- | ----------------------------------------------------------------- |
+| Bit   | Medium     | Sum of Two Integers | Bit Manipulation | [Link](https://leetcode.com/problems/sum-of-two-integers/) | [Solution](./BitManipulation.md#sum-of-two-integers-leetcode-371) |
+| Bit   | Easy       | Number of 1 Bits    | Bit Manipulation | [Link](https://leetcode.com/problems/number-of-1-bits/)    | [Solution](./BitManipulation.md#count-number-of-1s-leetcode-191)  |
+| Bit   | Easy       | Counting Bits       | Bit Manipulation | [Link](https://leetcode.com/problems/counting-bits/)       | [Solution](./BitManipulation.md#count-bits-leetcode-338)          |
+| Bit   | Easy       | Missing Number      | Bit Manipulation | [Link](https://leetcode.com/problems/missing-number/)      | [Solution](./Arrays.md#missing-number-leetcode-268)               |
+| Bit   | Easy       | Reverse Bits        | Bit Manipulation | [Link](https://leetcode.com/problems/reverse-bits/)        | [Solution](./LinkedList.md#reverse-bits-leetcode-190)             |
 
 ## Backtracking
 
@@ -40,18 +40,18 @@
 
 ## Dynamic Programming
 
-| Topic               | Difficulty | Problem                        | Pattern            | Link                                                                  | Solution                                      |
-| ------------------- | ---------- | ------------------------------ | ------------------ | --------------------------------------------------------------------- | --------------------------------------------- |
-| Dynamic Programming | Easy       | Climbing Stairs                | DP                 | [Link](https://leetcode.com/problems/climbing-stairs/)                | Coming Soon                                   |
-| Dynamic Programming | Medium     | Coin Change                    | DP                 | [Link](https://leetcode.com/problems/coin-change/)                    | Coming Soon                                   |
-| Dynamic Programming | Medium     | Longest Increasing Subsequence | DP + Binary Search | [Link](https://leetcode.com/problems/longest-increasing-subsequence/) | Coming Soon                                   |
+| Topic               | Difficulty | Problem                        | Pattern            | Link                                                                  | Solution                                         |
+| ------------------- | ---------- | ------------------------------ | ------------------ | --------------------------------------------------------------------- | ------------------------------------------------ |
+| Dynamic Programming | Easy       | Climbing Stairs                | DP                 | [Link](https://leetcode.com/problems/climbing-stairs/)                | Coming Soon                                      |
+| Dynamic Programming | Medium     | Coin Change                    | DP                 | [Link](https://leetcode.com/problems/coin-change/)                    | Coming Soon                                      |
+| Dynamic Programming | Medium     | Longest Increasing Subsequence | DP + Binary Search | [Link](https://leetcode.com/problems/longest-increasing-subsequence/) | Coming Soon                                      |
 | Dynamic Programming | Medium     | Word Break                     | DP                 | [Link](https://leetcode.com/problems/word-break/)                     | [Solution](./Strings.md#word-break-leetcode-139) |
-| Dynamic Programming | Medium     | Longest Common Subsequence     | 2D DP              | [Link](https://leetcode.com/problems/longest-common-subsequence/)     | Coming Soon                                   |
-| Dynamic Programming | Medium     | House Robber                   | DP                 | [Link](https://leetcode.com/problems/house-robber/)                   | Coming Soon                                   |
-| Dynamic Programming | Medium     | House Robber II                | DP                 | [Link](https://leetcode.com/problems/house-robber-ii/)                | Coming Soon                                   |
-| Dynamic Programming | Medium     | Decode Ways                    | DP                 | [Link](https://leetcode.com/problems/decode-ways/)                    | Coming Soon                                   |
-| Dynamic Programming | Medium     | Unique Paths                   | 2D DP              | [Link](https://leetcode.com/problems/unique-paths/)                   | Coming Soon                                   |
-| Dynamic Programming | Medium     | Jump Game                      | Greedy / DP        | [Link](https://leetcode.com/problems/jump-game/)                      | [Solution](./Arrays.md#jump-game-leetcode-55) |
+| Dynamic Programming | Medium     | Longest Common Subsequence     | 2D DP              | [Link](https://leetcode.com/problems/longest-common-subsequence/)     | Coming Soon                                      |
+| Dynamic Programming | Medium     | House Robber                   | DP                 | [Link](https://leetcode.com/problems/house-robber/)                   | Coming Soon                                      |
+| Dynamic Programming | Medium     | House Robber II                | DP                 | [Link](https://leetcode.com/problems/house-robber-ii/)                | Coming Soon                                      |
+| Dynamic Programming | Medium     | Decode Ways                    | DP                 | [Link](https://leetcode.com/problems/decode-ways/)                    | Coming Soon                                      |
+| Dynamic Programming | Medium     | Unique Paths                   | 2D DP              | [Link](https://leetcode.com/problems/unique-paths/)                   | Coming Soon                                      |
+| Dynamic Programming | Medium     | Jump Game                      | Greedy / DP        | [Link](https://leetcode.com/problems/jump-game/)                      | [Solution](./Arrays.md#jump-game-leetcode-55)    |
 
 ## Graph
 
@@ -88,7 +88,7 @@
 
 | Topic       | Difficulty | Problem                          | Pattern             | Link                                                                    | Solution                                                                        |
 | ----------- | ---------- | -------------------------------- | ------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| Linked List | Easy       | Reverse Linked List              | Linked List         | [Link](https://leetcode.com/problems/reverse-linked-list/)              | Coming Soon                                                                     |
+| Linked List | Easy       | Reverse Linked List              | Linked List         | [Link](https://leetcode.com/problems/reverse-linked-list/)              | [Solution](./LinkedList.md#reverse-linked-list-leetcode-206)                    |
 | Linked List | Easy       | Merge Two Sorted Lists           | Linked List         | [Link](https://leetcode.com/problems/merge-two-sorted-lists/)           | [Solution](./LinkedList.md#merge-two-sorted-lists-leetcode-21)                  |
 | Linked List | Easy       | Linked List Cycle                | Fast & Slow Pointer | [Link](https://leetcode.com/problems/linked-list-cycle/)                | [Solution](./LinkedList.md#detect-cycle-in-linked-list-leetcode-141)            |
 | Linked List | Medium     | Remove Nth Node From End of List | Two Pointers        | [Link](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) | [Solution](./LinkedList.md#remove-nth-node-from-end-of-linked-list-leetcode-19) |
@@ -104,11 +104,11 @@
 
 ## Sliding Window
 
-| Topic          | Difficulty | Problem                                        | Pattern        | Link                                                                                  | Solution    |
-| -------------- | ---------- | ---------------------------------------------- | -------------- | ------------------------------------------------------------------------------------- | ----------- |
-| Sliding Window | Medium     | Longest Substring Without Repeating Characters | Sliding Window | [Link](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Coming Soon |
-| Sliding Window | Medium     | Longest Repeating Character Replacement        | Sliding Window | [Link](https://leetcode.com/problems/longest-repeating-character-replacement/)        | Coming Soon |
-| Sliding Window | Hard       | Minimum Window Substring                       | Sliding Window | [Link](https://leetcode.com/problems/minimum-window-substring/)                       | Coming Soon |
+| Topic          | Difficulty | Problem                                        | Pattern        | Link                                                                                  | Solution                                                                           |
+| -------------- | ---------- | ---------------------------------------------- | -------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Sliding Window | Medium     | Longest Substring Without Repeating Characters | Sliding Window | [Link](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | [Solution](./Strings.md#longest-substring-without-repeating-characters-leetcode-3) |
+| Sliding Window | Medium     | Longest Repeating Character Replacement        | Sliding Window | [Link](https://leetcode.com/problems/longest-repeating-character-replacement/)        | Coming Soon                                                                        |
+| Sliding Window | Hard       | Minimum Window Substring                       | Sliding Window | [Link](https://leetcode.com/problems/minimum-window-substring/)                       | Coming Soon                                                                        |
 
 ## Stack
 
@@ -138,16 +138,16 @@
 
 ## Tree
 
-| Topic | Difficulty | Problem                                                   | Pattern | Link                                                                                             | Solution                                                       |
-| ----- | ---------- | --------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| Tree  | Easy       | Maximum Depth of Binary Tree                              | DFS     | [Link](https://leetcode.com/problems/maximum-depth-of-binary-tree/)                              | [Solution](./Trees.md#depth-of-binary-tree-leetcode-104)       |
-| Tree  | Easy       | Invert Binary Tree                                        | DFS     | [Link](https://leetcode.com/problems/invert-binary-tree/)                                        | [Solution](./Trees.md#invert-binary-tree-leetcode-226)         |
-| Tree  | Easy       | Same Tree                                                 | DFS     | [Link](https://leetcode.com/problems/same-tree/)                                                 | [Solution](./Trees.md#same-tree-leetcode-100)                  |
+| Topic | Difficulty | Problem                                                   | Pattern | Link                                                                                             | Solution                                                              |
+| ----- | ---------- | --------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
+| Tree  | Easy       | Maximum Depth of Binary Tree                              | DFS     | [Link](https://leetcode.com/problems/maximum-depth-of-binary-tree/)                              | [Solution](./Trees.md#depth-of-binary-tree-leetcode-104)              |
+| Tree  | Easy       | Invert Binary Tree                                        | DFS     | [Link](https://leetcode.com/problems/invert-binary-tree/)                                        | [Solution](./Trees.md#invert-binary-tree-leetcode-226)                |
+| Tree  | Easy       | Same Tree                                                 | DFS     | [Link](https://leetcode.com/problems/same-tree/)                                                 | [Solution](./Trees.md#same-tree-leetcode-100)                         |
 | Tree  | Medium     | Binary Tree Level Order Traversal                         | BFS     | [Link](https://leetcode.com/problems/binary-tree-level-order-traversal/)                         | [Solution](./Trees.md#binary-tree-level-order-traversal-leetcode-102) |
-| Tree  | Medium     | Validate Binary Search Tree                               | DFS     | [Link](https://leetcode.com/problems/validate-binary-search-tree/)                               | [Solution](./Trees.md#validate-binary-search-tree-leetcode-98) |
-| Tree  | Medium     | Lowest Common Ancestor of BST                             | Tree    | [Link](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)            | Coming Soon                                                    |
-| Tree  | Medium     | Subtree of Another Tree                                   | DFS     | [Link](https://leetcode.com/problems/subtree-of-another-tree/)                                   | [Solution](./Trees.md#subtree-of-another-tree-leetcode-571)    |
-| Tree  | Medium     | Construct Binary Tree from Preorder and Inorder Traversal | Tree    | [Link](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | Coming Soon                                                    |
-| Tree  | Medium     | Kth Smallest Element in a BST                             | DFS     | [Link](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)                             | [Solution](./Trees.md#kth-smallest-element-in-a-bst-leetcode-230) |
-| Tree  | Hard       | Binary Tree Maximum Path Sum                              | DFS     | [Link](https://leetcode.com/problems/binary-tree-maximum-path-sum/)                              | Coming Soon                                                    |
-| Tree  | Hard       | Serialize and Deserialize Binary Tree                     | BFS/DFS | [Link](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)                     | Coming Soon                                                    |
+| Tree  | Medium     | Validate Binary Search Tree                               | DFS     | [Link](https://leetcode.com/problems/validate-binary-search-tree/)                               | [Solution](./Trees.md#validate-binary-search-tree-leetcode-98)        |
+| Tree  | Medium     | Lowest Common Ancestor of BST                             | Tree    | [Link](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)            | Coming Soon                                                           |
+| Tree  | Medium     | Subtree of Another Tree                                   | DFS     | [Link](https://leetcode.com/problems/subtree-of-another-tree/)                                   | [Solution](./Trees.md#subtree-of-another-tree-leetcode-571)           |
+| Tree  | Medium     | Construct Binary Tree from Preorder and Inorder Traversal | Tree    | [Link](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | Coming Soon                                                           |
+| Tree  | Medium     | Kth Smallest Element in a BST                             | DFS     | [Link](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)                             | [Solution](./Trees.md#kth-smallest-element-in-a-bst-leetcode-230)     |
+| Tree  | Hard       | Binary Tree Maximum Path Sum                              | DFS     | [Link](https://leetcode.com/problems/binary-tree-maximum-path-sum/)                              | Coming Soon                                                           |
+| Tree  | Hard       | Serialize and Deserialize Binary Tree                     | BFS/DFS | [Link](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)                     | Coming Soon                                                           |
